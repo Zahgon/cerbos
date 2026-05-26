@@ -5,6 +5,4 @@
 
 package tracing
 
-func PolicyFQN(_ string) struct{} {
-	return struct{}{}
-}
+func PolicyFQN(_ string) struct{} { _ = "STUB: not implemented"; return nil }

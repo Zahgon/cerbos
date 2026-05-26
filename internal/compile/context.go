@@ -6,10 +6,7 @@
 package compile
 
 import (
-	"fmt"
-
 	policyv1 "github.com/cerbos/cerbos/api/genpb/cerbos/policy/v1"
-	runtimev1 "github.com/cerbos/cerbos/api/genpb/cerbos/runtime/v1"
 	sourcev1 "github.com/cerbos/cerbos/api/genpb/cerbos/source/v1"
 	"github.com/cerbos/cerbos/internal/namer"
 	"github.com/cerbos/cerbos/internal/parser"
@@ -21,28 +18,11 @@ type unitCtx struct {
 	errors *ErrorSet
 }
 
-func newUnitCtx(unit *policy.CompilationUnit) *unitCtx {
-	return &unitCtx{unit: unit, errors: newErrorSet()}
-}
+func newUnitCtx(unit *policy.CompilationUnit) *unitCtx { _ = "STUB: not implemented"; return nil }
 
-func (uc *unitCtx) error() error {
-	return uc.errors.ErrOrNil()
-}
+func (uc *unitCtx) error() error { _ = "STUB: not implemented"; return nil }
 
-func (uc *unitCtx) moduleCtx(id namer.ModuleID) *moduleCtx {
-	def, ok := uc.unit.Definitions[id]
-	if !ok {
-		return nil
-	}
-
-	return &moduleCtx{
-		unitCtx:    uc,
-		def:        def,
-		srcCtx:     uc.unit.SourceContexts[id],
-		fqn:        namer.FQN(def),
-		sourceFile: policy.GetSourceFile(def),
-	}
-}
+func (uc *unitCtx) moduleCtx(id namer.ModuleID) *moduleCtx { _ = "STUB: not implemented"; return nil }
 
 type moduleCtx struct {
 	*unitCtx
@@ -54,38 +34,31 @@ type moduleCtx struct {
 	sourceFile string
 }
 
-func (mc *moduleCtx) error() error {
-	return mc.errors.ErrOrNil()
-}
+func (mc *moduleCtx) error() error { _ = "STUB: not implemented"; return nil }
 
 func (mc *moduleCtx) addErrWithDesc(err error, description string, params ...any) {
-	mc.errors.Add(newError(mc.sourceFile, fmt.Sprintf(description, params...), err))
+	_ = "STUB: not implemented"
+	return
 }
 
 func (mc *moduleCtx) addErrForMapKeyAtProtoPath(path string, err error, description string, args ...any) {
-	pos, context := mc.srcCtx.PositionAndContextForMapKeyAtProtoPath(path)
-	mc.addErrWithPositionAndContext(pos, context, err, description, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (mc *moduleCtx) addErrForValueAtProtoPath(path string, err error, description string, args ...any) {
-	pos, context := mc.srcCtx.PositionAndContextForValueAtProtoPath(path)
-	mc.addErrWithPositionAndContext(pos, context, err, description, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (mc *moduleCtx) addErrWithPositionAndContext(pos *sourcev1.Position, context string, err error, description string, args ...any) {
-	mc.errors.Add(&Error{
-		CompileErrors_Err: &runtimev1.CompileErrors_Err{
-			File:        mc.sourceFile,
-			Error:       err.Error(),
-			Description: fmt.Sprintf(description, args...),
-			Position:    pos,
-			Context:     context,
-		},
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 func (mc *moduleCtx) constantCtx(source, path string) *constantCtx {
-	return &constantCtx{moduleCtx: mc, path: path, source: source}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type constantCtx struct {
@@ -95,11 +68,13 @@ type constantCtx struct {
 }
 
 func (cc *constantCtx) withSource(source string) *constantCtx {
-	return &constantCtx{moduleCtx: cc.moduleCtx, path: cc.path, source: source}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (mc *moduleCtx) variableCtx(source, path string) *variableCtx {
-	return &variableCtx{moduleCtx: mc, path: path, source: source}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type variableCtx struct {
@@ -109,5 +84,6 @@ type variableCtx struct {
 }
 
 func (vc *variableCtx) withSource(source string) *variableCtx {
-	return &variableCtx{moduleCtx: vc.moduleCtx, path: vc.path, source: source}
+	_ = "STUB: not implemented"
+	return nil
 }

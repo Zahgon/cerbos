@@ -4,14 +4,8 @@
 package namer
 
 import (
-	"fmt"
 	"iter"
 	"regexp"
-	"strconv"
-	"strings"
-
-	runtimev1 "github.com/cerbos/cerbos/api/genpb/cerbos/runtime/v1"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 var (
@@ -38,209 +32,127 @@ type ModuleID struct {
 	hash uint64
 }
 
-func (m *ModuleID) String() string {
-	return strconv.FormatUint(m.hash, 10)
-}
+func (m *ModuleID) String() string { _ = "STUB: not implemented"; return "" }
 
-func (m *ModuleID) HexStr() string {
-	return fmt.Sprintf("%X", m.hash)
-}
+func (m *ModuleID) HexStr() string { _ = "STUB: not implemented"; return "" }
 
 func (m ModuleID) RawValue() uint64 {
-	return m.hash
+	_ = "STUB: not implemented"
+
+	// GenModuleIDFromFQN generates a short ID for the given module name.
+	return 0
 }
 
-// GenModuleIDFromFQN generates a short ID for the given module name.
-func GenModuleIDFromFQN(name string) ModuleID {
-	return ModuleID{hash: util.HashStr(name)}
-}
+func GenModuleIDFromFQN(name string) ModuleID { _ = "STUB: not implemented"; return *new(ModuleID) }
 
 func buildFQNTree[T any](fqn, scope string, elementFn func(string) T) []T {
-	if scope == "" {
-		return []T{elementFn(fqn)}
-	}
-
-	fqnTree := []T{elementFn(withScope(fqn, scope))}
-
-	for i := len(scope) - 1; i >= 0; i-- {
-		if scope[i] == '.' {
-			fqnTree = append(fqnTree, elementFn(withScope(fqn, scope[:i])))
-		}
-	}
-
-	// add the no scope FQN as the root
-	fqnTree = append(fqnTree, elementFn(fqn))
-
-	return fqnTree
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func ScopeParents(scope string) iter.Seq[string] {
-	return func(yield func(string) bool) {
-		for i := len(scope) - 1; i >= 0; i-- {
-			if scope[i] == '.' || i == 0 {
-				if !yield(scope[:i]) {
-					return
-				}
-			}
-		}
-	}
-}
+// add the no scope FQN as the root
 
-func ScopeFromFQN(fqn string) string {
-	_, scope, _ := strings.Cut(fqn, "/")
-	return scope
-}
+func ScopeParents(scope string) iter.Seq[string] { _ = "STUB: not implemented"; return nil }
+
+func ScopeFromFQN(fqn string) string { _ = "STUB: not implemented"; return "" }
 
 // PolicyKeyFromFQN returns a policy key from the module name.
-func PolicyKeyFromFQN(m string) string {
-	return strings.TrimPrefix(m, fqnPrefix)
-}
+func PolicyKeyFromFQN(m string) string { _ = "STUB: not implemented"; return "" }
 
 // FQNFromPolicyKey returns FQN from the policy key.
-func FQNFromPolicyKey(s string) string {
-	return fqnPrefix + s
-}
+func FQNFromPolicyKey(s string) string { _ = "STUB: not implemented"; return "" }
 
-func SanitizedResource(resource string) string {
-	return sanitize(resource)
-}
+func SanitizedResource(resource string) string { _ = "STUB: not implemented"; return "" }
 
 // ResourcePolicyFQN returns the fully-qualified name for the resource policy with given resource, version and scope.
 func ResourcePolicyFQN(resource, version, scope string) string {
-	fqn := fmt.Sprintf("%s.%s.v%s", ResourcePoliciesPrefix, sanitize(resource), sanitize(version))
-	return withScope(fqn, scope)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 // ResourcePolicyModuleID returns the module ID for the resource policy with given resource, version and scope.
 func ResourcePolicyModuleID(resource, version, scope string) ModuleID {
-	return GenModuleIDFromFQN(ResourcePolicyFQN(resource, version, scope))
+	_ = "STUB: not implemented"
+	return *new(ModuleID)
 }
 
 // ScopedResourcePolicyModuleIDs returns a list of module IDs for each scope segment if `genTree` is true.
 // For example, if the scope is `a.b.c`, the list will contain the module IDs for scopes `a.b.c`, `a.b`, `a` and `""` in that order.
 func ScopedResourcePolicyModuleIDs(resource, version, scope string, genTree bool) []ModuleID {
-	if !genTree || scope == "" {
-		return []ModuleID{ResourcePolicyModuleID(resource, version, scope)}
-	}
-
-	return buildFQNTree(ResourcePolicyFQN(resource, version, ""), scope, GenModuleIDFromFQN)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PrincipalPolicyFQN returns the fully-qualified module name for the principal policy with given principal, version and scope.
 func PrincipalPolicyFQN(principal, version, scope string) string {
-	fqn := fmt.Sprintf("%s.%s.v%s", PrincipalPoliciesPrefix, sanitize(principal), sanitize(version))
-	return withScope(fqn, scope)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 // PrincipalPolicyModuleID returns the module ID for the principal policy with given principal and version.
 func PrincipalPolicyModuleID(principal, version, scope string) ModuleID {
-	return GenModuleIDFromFQN(PrincipalPolicyFQN(principal, version, scope))
+	_ = "STUB: not implemented"
+	return *new(ModuleID)
 }
 
 // RolePolicyFQN returns the fully-qualified module name for the role policies with the given scope.
 // If version is empty, it defaults to DefaultVersion.
-func RolePolicyFQN(role, version, scope string) string {
-	if version == "" {
-		version = DefaultVersion
-	}
-	fqn := fmt.Sprintf("%s.%s.v%s", RolePoliciesPrefix, sanitize(role), sanitize(version))
-	return withScope(fqn, scope)
-}
+func RolePolicyFQN(role, version, scope string) string { _ = "STUB: not implemented"; return "" }
 
 // RolePolicyModuleID returns the module ID for the role policies with the given scope.
 func RolePolicyModuleID(role, version, scope string) ModuleID {
-	return GenModuleIDFromFQN(RolePolicyFQN(role, version, scope))
+	_ = "STUB: not implemented"
+	return *new(ModuleID)
 }
 
 // ScopedPrincipalPolicyModuleIDs returns a list of module IDs for each scope segment if `strict` is false.
 // For example, if the scope is `a.b.c`, the list will contain the module IDs for scopes `a.b.c`, `a.b`, `a` and `""` in that order.
 func ScopedPrincipalPolicyModuleIDs(principal, version, scope string, genTree bool) []ModuleID {
-	if !genTree || scope == "" {
-		return []ModuleID{PrincipalPolicyModuleID(principal, version, scope)}
-	}
-
-	return buildFQNTree(PrincipalPolicyFQN(principal, version, ""), scope, GenModuleIDFromFQN)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DerivedRolesFQN returns the fully-qualified module name for the given derived roles set.
-func DerivedRolesFQN(roleSetName string) string {
-	return fmt.Sprintf("%s.%s", DerivedRolesPrefix, sanitize(roleSetName))
-}
+func DerivedRolesFQN(roleSetName string) string { _ = "STUB: not implemented"; return "" }
 
 // DerivedRolesModuleID returns the module ID for the given derived roles set.
 func DerivedRolesModuleID(roleSetName string) ModuleID {
-	return GenModuleIDFromFQN(DerivedRolesFQN(roleSetName))
+	_ = "STUB: not implemented"
+	return *new(ModuleID)
 }
 
 // ExportConstantsFQN returns the fully-qualified module name for the given exported constant definitions.
-func ExportConstantsFQN(constantsName string) string {
-	return fmt.Sprintf("%s.%s", ExportConstantsPrefix, sanitize(constantsName))
-}
+func ExportConstantsFQN(constantsName string) string { _ = "STUB: not implemented"; return "" }
 
 // ExportConstantsModuleID returns the module ID for the given exported constant definitions.
 func ExportConstantsModuleID(constantsName string) ModuleID {
-	return GenModuleIDFromFQN(ExportConstantsFQN(constantsName))
+	_ = "STUB: not implemented"
+	return *new(ModuleID)
 }
 
 // ExportVariablesFQN returns the fully-qualified module name for the given exported variable definitions.
-func ExportVariablesFQN(variablesName string) string {
-	return fmt.Sprintf("%s.%s", ExportVariablesPrefix, sanitize(variablesName))
-}
+func ExportVariablesFQN(variablesName string) string { _ = "STUB: not implemented"; return "" }
 
 // ExportVariablesModuleID returns the module ID for the given exported variable definitions.
 func ExportVariablesModuleID(variablesName string) ModuleID {
-	return GenModuleIDFromFQN(ExportVariablesFQN(variablesName))
+	_ = "STUB: not implemented"
+	return *new(ModuleID)
 }
 
 // SimpleName extracts the simple name from a derived roles, exported constants, or exported variables FQN.
-func SimpleName(fqn string) string {
-	return strings.TrimPrefix(strings.TrimPrefix(strings.TrimPrefix(fqn, ExportVariablesPrefix+"."), ExportConstantsPrefix+"."), DerivedRolesPrefix+".")
-}
+func SimpleName(fqn string) string { _ = "STUB: not implemented"; return "" }
 
-func withScope(fqn, scope string) string {
-	if scope == "" {
-		return fqn
-	}
-
-	return fqn + "/" + scope
-}
+func withScope(fqn, scope string) string { _ = "STUB: not implemented"; return "" }
 
 // sanitize replaces special characters in the string with underscores.
 // Before Cerbos 0.30 the names of resources or principals had to follow a certain pattern. We then replaced some of
 // the non-word characters with underscores because earlier versions of Cerbos used to generate Rego code for policies.
 // Because we used the sanitized name for computing the module ID of the policy, in order to maintain backward compatibility
 // and not break database stores we still have to do the same if the name matches the pattern.
-func sanitize(v string) string {
-	if oldNamePattern.MatchString(v) {
-		return invalidIdentifierChars.ReplaceAllLiteralString(v, "_")
-	}
-	return v
-}
+func sanitize(v string) string { _ = "STUB: not implemented"; return "" }
 
 // RuleFQN returns the FQN for the resource rule or principal resource action rule with scope granularity.
-func RuleFQN(rpsMeta any, scope, ruleName string) string {
-	var policyFqn string
-
-	switch m := rpsMeta.(type) {
-	case *runtimev1.RunnableResourcePolicySet_Metadata:
-		policyFqn = ResourcePolicyFQN(m.Resource, m.Version, scope)
-	case *runtimev1.RunnablePrincipalPolicySet_Metadata:
-		policyFqn = PrincipalPolicyFQN(m.Principal, m.Version, scope)
-	case *runtimev1.RuleTableMetadata:
-		switch t := m.Name.(type) {
-		case *runtimev1.RuleTableMetadata_Principal:
-			policyFqn = PrincipalPolicyFQN(t.Principal, m.Version, scope)
-		case *runtimev1.RuleTableMetadata_Resource:
-			policyFqn = ResourcePolicyFQN(t.Resource, m.Version, scope)
-		case *runtimev1.RuleTableMetadata_Role:
-			policyFqn = RolePolicyFQN(t.Role, m.Version, scope)
-		}
-	default:
-		panic(fmt.Errorf("unknown runnable policy set meta type %T", m))
-	}
-
-	return fmt.Sprintf("%s#%s", PolicyKeyFromFQN(policyFqn), ruleName)
-}
+func RuleFQN(rpsMeta any, scope, ruleName string) string { _ = "STUB: not implemented"; return "" }
 
 type PolicyCoords struct {
 	Kind    string
@@ -249,33 +161,11 @@ type PolicyCoords struct {
 	Scope   string
 }
 
-func (pc PolicyCoords) FQN() string {
-	prefix := fqnPrefix + strings.ToLower(pc.Kind)
-	switch prefix {
-	case DerivedRolesPrefix:
-		return DerivedRolesFQN(pc.Name)
-	case ExportConstantsPrefix:
-		return ExportConstantsFQN(pc.Name)
-	case ExportVariablesPrefix:
-		return ExportVariablesFQN(pc.Name)
-	case PrincipalPoliciesPrefix:
-		return PrincipalPolicyFQN(pc.Name, pc.Version, pc.Scope)
-	case ResourcePoliciesPrefix:
-		return ResourcePolicyFQN(pc.Name, pc.Version, pc.Scope)
-	case RolePoliciesPrefix:
-		return RolePolicyFQN(pc.Name, pc.Version, pc.Scope)
-	default:
-		panic(fmt.Errorf("unknown kind %q", pc.Kind))
-	}
-}
+func (pc PolicyCoords) FQN() string { _ = "STUB: not implemented"; return "" }
 
-func (pc PolicyCoords) PolicyKey() string {
-	return PolicyKeyFromFQN(pc.FQN())
-}
+func (pc PolicyCoords) PolicyKey() string { _ = "STUB: not implemented"; return "" }
 
-func ScopeValue(scope string) string {
-	return strings.TrimPrefix(scope, ".")
-}
+func ScopeValue(scope string) string { _ = "STUB: not implemented"; return "" }
 
 type Policy struct {
 	PolicyCoords

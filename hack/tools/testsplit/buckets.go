@@ -8,21 +8,8 @@ type testBucket struct {
 	TotalTime float64
 }
 
-func (tb *testBucket) Add(time testTime) {
-	tb.Packages = append(tb.Packages, time.Package)
-	tb.TotalTime += time.Time
-}
+func (tb *testBucket) Add(time testTime) { _ = "STUB: not implemented"; return }
 
 type testBuckets []testBucket
 
-func (tbs testBuckets) LeastFull() *testBucket {
-	var result *testBucket
-
-	for i := range tbs {
-		if result == nil || result.TotalTime > tbs[i].TotalTime {
-			result = &tbs[i]
-		}
-	}
-
-	return result
-}
+func (tbs testBuckets) LeastFull() *testBucket { _ = "STUB: not implemented"; return nil }

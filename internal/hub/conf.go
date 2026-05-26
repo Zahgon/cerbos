@@ -4,13 +4,9 @@
 package hub
 
 import (
-	"os"
 	"time"
 
 	"github.com/cerbos/cloud-api/credentials"
-
-	"github.com/cerbos/cerbos/internal/config"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 type EnvVarKey int
@@ -39,24 +35,7 @@ var envVars = map[EnvVarKey][]string{
 	PlaygroundIDKey:    {"CERBOS_HUB_PLAYGROUND_ID"},
 }
 
-func GetEnv(key EnvVarKey) string {
-	varNames, ok := envVars[key]
-	if !ok {
-		return ""
-	}
-
-	for i, v := range varNames {
-		val, ok := os.LookupEnv(v)
-		if ok {
-			if i > 0 {
-				util.DeprecationReplacedWarning(v, varNames[0])
-			}
-			return val
-		}
-	}
-
-	return ""
-}
+func GetEnv(key EnvVarKey) string { _ = "STUB: not implemented"; return "" }
 
 const (
 	confKey                  = "hub"
@@ -76,23 +55,11 @@ type Conf struct {
 	Connection ConnectionConf `yaml:"connection" conf:",ignore"`
 }
 
-func (conf *Conf) Key() string {
-	return confKey
-}
+func (conf *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (conf *Conf) SetDefaults() {
-	conf.Credentials = CredentialsConf{
-		ClientID:        GetEnv(ClientIDKey),
-		ClientSecret:    GetEnv(ClientSecretKey),
-		PDPID:           GetEnv(PDPIDKey),
-		WorkspaceSecret: GetEnv(WorkspaceSecretKey),
-	}
-}
+func (conf *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (conf *Conf) Validate() (outErr error) {
-	_ = conf.Connection.Validate()
-	return conf.Credentials.Validate()
-}
+func (conf *Conf) Validate() (outErr error) { _ = "STUB: not implemented"; return nil }
 
 // CredentialsConf holds credentials for accessing Cerbos Hub.
 type CredentialsConf struct {
@@ -111,43 +78,20 @@ type CredentialsConf struct {
 }
 
 func (cc *CredentialsConf) Validate() (outErr error) {
+	_ = "STUB: not implemented"
 	// SecretKey was renamed to WorkspaceSecret in Cerbos 0.31.0
-	if cc.WorkspaceSecret == "" && cc.SecretKey != "" {
-		util.DeprecationReplacedWarning("credentials.secretKey", "credentials.workspaceSecret")
-		cc.WorkspaceSecret = cc.SecretKey
-	}
-
-	// InstanceID was renamed to PDPID in Cerbos 0.31.0
-	if cc.PDPID == "" && cc.InstanceID != "" {
-		util.DeprecationReplacedWarning("credentials.instanceID", "credentials.pdpID")
-		cc.PDPID = cc.InstanceID
-	}
-
-	// We don't do any validation here because some fields are optional depending on the use case.
-
 	return nil
 }
 
-func (cc *CredentialsConf) LoadFromEnv() {
-	if cc.ClientID == "" {
-		cc.ClientID = GetEnv(ClientIDKey)
-	}
+// InstanceID was renamed to PDPID in Cerbos 0.31.0
 
-	if cc.ClientSecret == "" {
-		cc.ClientSecret = GetEnv(ClientSecretKey)
-	}
+// We don't do any validation here because some fields are optional depending on the use case.
 
-	if cc.PDPID == "" {
-		cc.PDPID = GetEnv(PDPIDKey)
-	}
-
-	if cc.WorkspaceSecret == "" {
-		cc.WorkspaceSecret = GetEnv(WorkspaceSecretKey)
-	}
-}
+func (cc *CredentialsConf) LoadFromEnv() { _ = "STUB: not implemented"; return }
 
 func (cc CredentialsConf) ToCredentials() (*credentials.Credentials, error) {
-	return credentials.New(cc.ClientID, cc.ClientSecret, cc.WorkspaceSecret)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ConnectionConf holds configuration for the remote connection.
@@ -168,42 +112,9 @@ type ConnectionConf struct {
 	HeartbeatInterval time.Duration `yaml:"heartbeatInterval" conf:",example=2m"`
 }
 
-func (cc ConnectionConf) IsUnset() bool {
-	return cc == ConnectionConf{}
-}
+func (cc ConnectionConf) IsUnset() bool { _ = "STUB: not implemented"; return false }
 
-func (cc *ConnectionConf) Validate() error {
-	if cc.APIEndpoint == "" {
-		cc.APIEndpoint = defaultAPIEndpoint
-	}
-
-	if cc.BootstrapEndpoint == "" {
-		cc.BootstrapEndpoint = defaultBootstrapHost
-	}
-
-	if cc.MinRetryWait == 0 {
-		cc.MinRetryWait = defaultMinRetryWait
-	}
-
-	if cc.MaxRetryWait == 0 {
-		cc.MaxRetryWait = defaultMaxRetryWait
-	}
-
-	if cc.NumRetries == 0 {
-		cc.NumRetries = defaultNumRetries
-	}
-
-	switch {
-	case cc.HeartbeatInterval < 0:
-		cc.HeartbeatInterval = 0
-	case cc.HeartbeatInterval == 0:
-		cc.HeartbeatInterval = defaultHeartbeatInterval
-	case cc.HeartbeatInterval > 0 && cc.HeartbeatInterval < minHeartbeatInterval:
-		cc.HeartbeatInterval = minHeartbeatInterval
-	}
-
-	return nil
-}
+func (cc *ConnectionConf) Validate() error { _ = "STUB: not implemented"; return nil }
 
 // TLSConf holds TLS configuration for the remote connection.
 type TLSConf struct {
@@ -213,9 +124,4 @@ type TLSConf struct {
 	CACert string `yaml:"caCert" conf:",example=/path/to/CA_certificate"`
 }
 
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

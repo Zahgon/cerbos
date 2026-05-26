@@ -5,7 +5,6 @@ package client
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/cerbos/cerbos-sdk-go/cerbos"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/internal/flagset"
@@ -19,27 +18,11 @@ type Context struct {
 }
 
 func GetAdminClient(globals *flagset.Globals) (*cerbos.GRPCAdminClient, error) {
-	if globals.Username == "" || globals.Password == "" {
-		return nil, errInvalidCredentials
-	}
-
-	opts := globals.ToClientOpts()
-
-	ac, err := cerbos.NewAdminClientWithCredentials("passthrough:///"+globals.Server, globals.Username, globals.Password, opts...)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create the admin client: %w", err)
-	}
-
-	return ac, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func GetClient(globals *flagset.Globals) (*cerbos.GRPCClient, error) {
-	opts := globals.ToClientOpts()
-
-	c, err := cerbos.New("passthrough:///"+globals.Server, opts...)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create the client: %w", err)
-	}
-
-	return c, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

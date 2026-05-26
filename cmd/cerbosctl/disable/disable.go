@@ -4,12 +4,8 @@
 package disable
 
 import (
-	"context"
-	"fmt"
-
 	"github.com/alecthomas/kong"
 
-	"github.com/cerbos/cerbos-sdk-go/cerbos"
 	internalclient "github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
 )
 
@@ -32,19 +28,8 @@ type PolicyCmd struct { //betteralign:ignore
 }
 
 func (c *Cmd) Run(k *kong.Kong, ctx *internalclient.Context) error {
-	if len(c.Policy.PolicyIds) == 0 {
-		return fmt.Errorf("no policy id(s) provided")
-	}
-
-	disabledPolicies, err := cerbos.BatchAdminClientCall(context.Background(), ctx.AdminClient.DisablePolicy, c.Policy.PolicyIds...)
-	if err != nil {
-		return fmt.Errorf("failed to disable policies: %w", err)
-	}
-
-	_, _ = fmt.Fprintf(k.Stdout, "Number of policies disabled is %d", disabledPolicies)
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (pc *PolicyCmd) Help() string {
-	return policyCmdHelp
-}
+func (pc *PolicyCmd) Help() string { _ = "STUB: not implemented"; return "" }

@@ -8,7 +8,6 @@ package storage
 import (
 	"context"
 	"errors"
-	"fmt"
 	"io"
 	"sync"
 
@@ -37,16 +36,13 @@ type InvalidPolicyError struct {
 	Message string
 }
 
-func (ipe InvalidPolicyError) Error() string {
-	return fmt.Sprintf("%s: %v", ipe.Message, ipe.Err)
-}
+func (ipe InvalidPolicyError) Error() string { _ = "STUB: not implemented"; return "" }
 
-func (ipe InvalidPolicyError) Unwrap() error {
-	return ipe.Err
-}
+func (ipe InvalidPolicyError) Unwrap() error { _ = "STUB: not implemented"; return nil }
 
 func NewInvalidPolicyError(err error, msg string, args ...any) InvalidPolicyError {
-	return InvalidPolicyError{Message: fmt.Sprintf(msg, args...), Err: err}
+	_ = "STUB: not implemented"
+	return *new(InvalidPolicyError)
 }
 
 // InvalidSchemaError is a custom error to signal that a schema is invalid.
@@ -55,63 +51,34 @@ type InvalidSchemaError struct {
 	Message string
 }
 
-func (ise InvalidSchemaError) Error() string {
-	return fmt.Sprintf("%s: %v", ise.Message, ise.Err)
-}
+func (ise InvalidSchemaError) Error() string { _ = "STUB: not implemented"; return "" }
 
-func (ise InvalidSchemaError) Unwrap() error {
-	return ise.Err
-}
+func (ise InvalidSchemaError) Unwrap() error { _ = "STUB: not implemented"; return nil }
 
 func NewInvalidSchemaError(err error, msg string, args ...any) InvalidSchemaError {
-	return InvalidSchemaError{Message: fmt.Sprintf(msg, args...), Err: err}
+	_ = "STUB: not implemented"
+	return *new(InvalidSchemaError)
 }
 
 // Constructor is a constructor function for a storage driver.
 type Constructor func(context.Context, *config.Wrapper) (Store, error)
 
 // RegisterDriver registers a storage driver.
-func RegisterDriver(name string, cons Constructor) {
-	driversMu.Lock()
-	defer driversMu.Unlock()
-
-	drivers[name] = cons
-}
+func RegisterDriver(name string, cons Constructor) { _ = "STUB: not implemented"; return }
 
 // GetDriverConstructor registers a storage driver.
 func GetDriverConstructor(name string) (Constructor, error) {
-	driversMu.RLock()
-	defer driversMu.RUnlock()
-
-	cons, ok := drivers[name]
-	if !ok {
-		return nil, fmt.Errorf("unknown storage driver [%s]", name)
-	}
-
-	return cons, nil
+	_ = "STUB: not implemented"
+	return *new(Constructor), nil
 }
 
 // New returns a storage driver implementation based on the configured driver.
-func New(ctx context.Context) (Store, error) {
-	return NewFromConf(ctx, config.Global())
-}
+func New(ctx context.Context) (Store, error) { _ = "STUB: not implemented"; return *new(Store), nil }
 
 // NewFromConf returns a storage driver implementation based on the provided configuration.
 func NewFromConf(ctx context.Context, confWrapper *config.Wrapper) (Store, error) {
-	conf := new(Conf)
-	if err := confWrapper.GetSection(conf); err != nil {
-		return nil, fmt.Errorf("failed to get storage driver configuration: %w", err)
-	}
-
-	driversMu.RLock()
-	cons, ok := drivers[conf.Driver]
-	driversMu.RUnlock()
-
-	if !ok {
-		return nil, fmt.Errorf("unknown storage driver [%s]", conf.Driver)
-	}
-
-	return cons(ctx, confWrapper)
+	_ = "STUB: not implemented"
+	return *new(Store), nil
 }
 
 type ListPolicyIDsParams struct {
@@ -229,45 +196,22 @@ type Event struct {
 	PolicyID    namer.ModuleID
 }
 
-func (evt Event) String() string {
-	var kind string
-	id := evt.PolicyID.String()
-	switch evt.Kind {
-	case EventAddOrUpdatePolicy:
-		kind = "ADD/UPDATE"
-	case EventDeleteOrDisablePolicy:
-		kind = "DELETE/DISABLE"
-	case EventAddOrUpdateSchema:
-		kind = "ADD/UPDATE SCHEMA"
-		id = evt.SchemaFile
-	case EventDeleteSchema:
-		kind = "DELETE SCHEMA"
-		id = evt.SchemaFile
-	case EventReload:
-		kind = "RELOAD"
-	case EventNop:
-		kind = "NOP"
-	default:
-		kind = "UNKNOWN"
-	}
-
-	return fmt.Sprintf("%s [%s]", kind, id)
-}
+func (evt Event) String() string { _ = "STUB: not implemented"; return "" }
 
 // NewPolicyEvent creates a new storage event for a policy.
 func NewPolicyEvent(kind EventKind, policyID namer.ModuleID) Event {
-	return Event{Kind: kind, PolicyID: policyID}
+	_ = "STUB: not implemented"
+	return *new(Event)
 }
 
 // NewSchemaEvent creates a new storage event for a schema.
 func NewSchemaEvent(kind EventKind, schemaFile string) Event {
-	return Event{Kind: kind, SchemaFile: schemaFile}
+	_ = "STUB: not implemented"
+	return *new(Event)
 }
 
 // NewReloadEvent creates a new reload event.
-func NewReloadEvent() Event {
-	return Event{Kind: EventReload}
-}
+func NewReloadEvent() Event { _ = "STUB: not implemented"; return *new(Event) }
 
 type RepoStats struct {
 	PolicyCount           map[policy.Kind]int

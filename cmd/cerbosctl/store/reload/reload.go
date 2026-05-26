@@ -4,9 +4,6 @@
 package reload
 
 import (
-	"context"
-	"fmt"
-
 	"github.com/alecthomas/kong"
 
 	cmdclient "github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
@@ -23,21 +20,8 @@ type Cmd struct { //betteralign:ignore
 }
 
 func (c *Cmd) Run(k *kong.Kong, ctx *cmdclient.Context) error {
-	_, _ = fmt.Fprint(k.Stdout, "Initiated a store reload\n")
-	err := ctx.AdminClient.ReloadStore(context.Background(), c.Wait)
-	if err != nil {
-		return err
-	}
-
-	if c.Wait {
-		_, _ = fmt.Fprint(k.Stdout, "Successfully reloaded the store\n")
-	} else {
-		_, _ = fmt.Fprint(k.Stdout, "Reload request submitted\n")
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (c *Cmd) Help() string {
-	return help
-}
+func (c *Cmd) Help() string { _ = "STUB: not implemented"; return "" }

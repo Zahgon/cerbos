@@ -5,9 +5,9 @@ package tracer
 
 import (
 	enginev1 "github.com/cerbos/cerbos/api/genpb/cerbos/engine/v1"
-	"github.com/cerbos/cerbos/internal/engine/tracer"
 )
 
 func TracesToBatch(traces []*enginev1.Trace) *enginev1.TraceBatch {
-	return tracer.TracesToBatch(traces)
+	_ = "STUB: not implemented"
+	return nil
 }

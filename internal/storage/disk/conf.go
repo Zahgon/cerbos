@@ -6,7 +6,6 @@
 package disk
 
 import (
-	"github.com/cerbos/cerbos/internal/config"
 	"github.com/cerbos/cerbos/internal/storage"
 )
 
@@ -23,13 +22,6 @@ type Conf struct {
 	WatchForChanges bool `yaml:"watchForChanges" conf:"required,example=false"`
 }
 
-func (conf *Conf) Key() string {
-	return confKey
-}
+func (conf *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

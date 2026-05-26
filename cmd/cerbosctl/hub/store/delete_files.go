@@ -4,12 +4,7 @@
 package store
 
 import (
-	"context"
-	"slices"
-
 	"github.com/alecthomas/kong"
-
-	"github.com/cerbos/cerbos-sdk-go/cerbos/hub"
 )
 
 const deleteFilesHelp = `
@@ -28,36 +23,6 @@ type DeleteFilesCmd struct { //betteralign:ignore
 	VersionMustEq int64    `help:"Require that the store is at this version before committing the change" optional:""`
 }
 
-func (*DeleteFilesCmd) Help() string {
-	return deleteFilesHelp
-}
+func (*DeleteFilesCmd) Help() string { _ = "STUB: not implemented"; return "" }
 
-func (dfc *DeleteFilesCmd) Run(k *kong.Kong, cmd *Cmd) error {
-	client, err := cmd.storeClient()
-	if err != nil {
-		return dfc.toCommandError(k.Stderr, err)
-	}
-
-	version := dfc.VersionMustEq
-	for batch := range slices.Chunk(dfc.Paths, modifyFilesBatchSize) {
-		req := hub.NewModifyFilesRequest(cmd.StoreID, dfc.Message)
-		for _, path := range batch {
-			req.DeleteFile(path)
-		}
-		if version > 0 {
-			req.OnlyIfVersionEquals(version)
-		}
-
-		resp, err := client.ModifyFilesLenient(context.Background(), req)
-		if err != nil {
-			return dfc.toCommandError(k.Stderr, err)
-		}
-
-		if resp != nil {
-			version = resp.GetNewStoreVersion()
-		}
-	}
-
-	dfc.printNewVersion(k.Stdout, version)
-	return nil
-}
+func (dfc *DeleteFilesCmd) Run(k *kong.Kong, cmd *Cmd) error { _ = "STUB: not implemented"; return nil }

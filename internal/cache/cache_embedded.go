@@ -16,45 +16,21 @@ type Cache[K, V any] struct {
 }
 
 func New[K, V any](kind string, size uint, _ ...any) *Cache[K, V] {
-	cache := &Cache[K, V]{}
-	cache.cache = gcache.
-		New(int(size)).
-		ARC().
-		Build()
-
-	return cache
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (c *Cache[K, V]) Has(k K) bool {
-	return c.cache.Has(k)
-}
+func (c *Cache[K, V]) Has(k K) bool { _ = "STUB: not implemented"; return false }
 
-func (c *Cache[K, V]) Get(k K) (V, bool) {
-	var zero V
+func (c *Cache[K, V]) Get(k K) (V, bool) { _ = "STUB: not implemented"; return *new(V), false }
 
-	entry, err := c.cache.GetIFPresent(k)
-	if err == nil {
-		v, ok := entry.(V)
-		if ok {
-			return v, true
-		}
-	}
-
-	return zero, false
-}
-
-func (c *Cache[K, V]) Set(k K, v V) {
-	_ = c.cache.Set(k, v)
-}
+func (c *Cache[K, V]) Set(k K, v V) { _ = "STUB: not implemented"; return }
 
 func (c *Cache[K, V]) SetWithExpire(k K, v V, expiry time.Duration) {
-	_ = c.cache.SetWithExpire(k, v, expiry)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (c *Cache[K, V]) Remove(k K) bool {
-	return c.cache.Remove(k)
-}
+func (c *Cache[K, V]) Remove(k K) bool { _ = "STUB: not implemented"; return false }
 
-func (c *Cache[K, V]) Purge() {
-	c.cache.Purge()
-}
+func (c *Cache[K, V]) Purge() { _ = "STUB: not implemented"; return }

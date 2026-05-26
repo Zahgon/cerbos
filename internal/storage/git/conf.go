@@ -7,22 +7,11 @@ package git
 
 import (
 	"context"
-	"errors"
-	"fmt"
-	"net/url"
-	"os"
-	"path/filepath"
-	"strings"
 	"time"
 
 	"github.com/go-git/go-git/v6/plumbing/client"
-	"github.com/go-git/go-git/v6/plumbing/transport/http"
-	"github.com/go-git/go-git/v6/plumbing/transport/ssh"
-	"go.uber.org/multierr"
 
-	"github.com/cerbos/cerbos/internal/config"
 	"github.com/cerbos/cerbos/internal/storage"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -66,16 +55,8 @@ type SSHAuth struct {
 }
 
 func (sa *SSHAuth) Auth() (client.SSHAuth, error) {
-	if sa == nil || sa.PrivateKeyFile == "" {
-		return nil, nil
-	}
-
-	user := "git"
-	if sa.User != "" {
-		user = sa.User
-	}
-
-	return ssh.NewPublicKeysFromFile(user, sa.PrivateKeyFile, sa.Password)
+	_ = "STUB: not implemented"
+	return *new(client.SSHAuth), nil
 }
 
 // HTTPSAuth holds auth details for the HTTPS protocol.
@@ -87,111 +68,26 @@ type HTTPSAuth struct {
 }
 
 func (ha *HTTPSAuth) Auth() (client.HTTPAuth, error) {
-	if ha == nil || (ha.Username == "" && ha.Password == "") {
-		return nil, nil
-	}
-
-	return &http.BasicAuth{Username: ha.Username, Password: ha.Password}, nil
+	_ = "STUB: not implemented"
+	return *new(client.HTTPAuth), nil
 }
 
-func (conf *Conf) Key() string {
-	return confKey
-}
+func (conf *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (conf *Conf) Validate() (errs error) {
-	if conf.URL == "" {
-		errs = multierr.Append(errs, errors.New("git URL is required"))
-	}
+func (conf *Conf) Validate() (errs error) { _ = "STUB: not implemented"; return nil }
 
-	switch conf.Protocol {
-	case "ssh":
-	case "http", "https", "file":
-		gitURL, err := url.Parse(conf.URL)
-		if err != nil {
-			errs = multierr.Append(errs, fmt.Errorf("invalid git URL: %w", err))
-		} else if gitURL.Scheme != conf.Protocol {
-			if gitURL.Scheme == "" {
-				gitURL.Scheme = conf.Protocol
-				conf.URL = gitURL.String()
-			} else {
-				errs = multierr.Append(errs, fmt.Errorf("the URL scheme of storage.git.url (%s) should match the storage.git.protocol value (%s)", gitURL.Scheme, conf.Protocol))
-			}
-		}
+func (conf *Conf) getSubDir() string { _ = "STUB: not implemented"; return "" }
 
-	default:
-		errs = multierr.Append(errs, fmt.Errorf("unknown git protocol: %s", conf.Protocol))
-	}
-
-	if conf.CheckoutDir == "" {
-		cacheDir, err := os.UserCacheDir()
-		if err != nil {
-			errs = multierr.Append(errs, fmt.Errorf("checkoutDir unspecified and failed to determine user cache dir: %w", err))
-		} else {
-			conf.CheckoutDir = filepath.Join(cacheDir, util.AppName, "git")
-		}
-	}
-
-	subDir := conf.getSubDir()
-	if filepath.IsAbs(subDir) || strings.HasPrefix(subDir, "../") || subDir == ".." {
-		errs = multierr.Append(errs, errors.New("subDir must be a relative path within the repository"))
-	}
-
-	return errs
-}
-
-func (conf *Conf) getSubDir() string {
-	return filepath.ToSlash(filepath.Clean(conf.SubDir))
-}
-
-func (conf *Conf) getBranch() string {
-	branch := "master"
-	if conf.Branch != "" {
-		branch = conf.Branch
-	}
-
-	return branch
-}
+func (conf *Conf) getBranch() string { _ = "STUB: not implemented"; return "" }
 
 func (conf *Conf) getAuth() (client.Option, error) {
-	switch conf.Protocol {
-	case "https":
-		httpAuth, err := conf.HTTPS.Auth()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get HTTP credentials: %w", err)
-		}
-
-		if httpAuth == nil {
-			return nil, nil
-		}
-
-		return client.WithHTTPAuth(httpAuth), nil
-	case "ssh":
-		sshAuth, err := conf.SSH.Auth()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get SSH credentials: %w", err)
-		}
-
-		if sshAuth == nil {
-			return nil, nil
-		}
-
-		return client.WithSSHAuth(sshAuth), nil
-	default:
-		return nil, nil
-	}
+	_ = "STUB: not implemented"
+	return *new(client.Option), nil
 }
 
 func (conf *Conf) getOpCtx(parent context.Context) (context.Context, context.CancelFunc) {
-	if conf.OperationTimeout == nil {
-		return context.WithTimeout(parent, defaultOperationTimeout)
-	}
-
-	return context.WithTimeout(parent, *conf.OperationTimeout)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(context.CancelFunc)
 }
 
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

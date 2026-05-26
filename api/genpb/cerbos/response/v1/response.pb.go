@@ -10,6 +10,8 @@
 package responsev1
 
 import (
+	sync "sync"
+
 	v12 "github.com/cerbos/cerbos/api/genpb/cerbos/audit/v1"
 	v14 "github.com/cerbos/cerbos/api/genpb/cerbos/effect/v1"
 	v1 "github.com/cerbos/cerbos/api/genpb/cerbos/engine/v1"
@@ -19,9 +21,6 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	structpb "google.golang.org/protobuf/types/known/structpb"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -54,30 +53,34 @@ var (
 )
 
 func (x InspectPoliciesResponse_Attribute_Kind) Enum() *InspectPoliciesResponse_Attribute_Kind {
-	p := new(InspectPoliciesResponse_Attribute_Kind)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x InspectPoliciesResponse_Attribute_Kind) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (InspectPoliciesResponse_Attribute_Kind) Descriptor() protoreflect.EnumDescriptor {
-	return file_cerbos_response_v1_response_proto_enumTypes[0].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (InspectPoliciesResponse_Attribute_Kind) Type() protoreflect.EnumType {
-	return &file_cerbos_response_v1_response_proto_enumTypes[0]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x InspectPoliciesResponse_Attribute_Kind) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Attribute_Kind.Descriptor instead.
 func (InspectPoliciesResponse_Attribute_Kind) EnumDescriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type InspectPoliciesResponse_DerivedRole_Kind int32
@@ -106,30 +109,34 @@ var (
 )
 
 func (x InspectPoliciesResponse_DerivedRole_Kind) Enum() *InspectPoliciesResponse_DerivedRole_Kind {
-	p := new(InspectPoliciesResponse_DerivedRole_Kind)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x InspectPoliciesResponse_DerivedRole_Kind) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (InspectPoliciesResponse_DerivedRole_Kind) Descriptor() protoreflect.EnumDescriptor {
-	return file_cerbos_response_v1_response_proto_enumTypes[1].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (InspectPoliciesResponse_DerivedRole_Kind) Type() protoreflect.EnumType {
-	return &file_cerbos_response_v1_response_proto_enumTypes[1]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x InspectPoliciesResponse_DerivedRole_Kind) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use InspectPoliciesResponse_DerivedRole_Kind.Descriptor instead.
 func (InspectPoliciesResponse_DerivedRole_Kind) EnumDescriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type InspectPoliciesResponse_Constant_Kind int32
@@ -164,30 +171,34 @@ var (
 )
 
 func (x InspectPoliciesResponse_Constant_Kind) Enum() *InspectPoliciesResponse_Constant_Kind {
-	p := new(InspectPoliciesResponse_Constant_Kind)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x InspectPoliciesResponse_Constant_Kind) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (InspectPoliciesResponse_Constant_Kind) Descriptor() protoreflect.EnumDescriptor {
-	return file_cerbos_response_v1_response_proto_enumTypes[2].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (InspectPoliciesResponse_Constant_Kind) Type() protoreflect.EnumType {
-	return &file_cerbos_response_v1_response_proto_enumTypes[2]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x InspectPoliciesResponse_Constant_Kind) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Constant_Kind.Descriptor instead.
 func (InspectPoliciesResponse_Constant_Kind) EnumDescriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 2, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type InspectPoliciesResponse_Variable_Kind int32
@@ -222,30 +233,34 @@ var (
 )
 
 func (x InspectPoliciesResponse_Variable_Kind) Enum() *InspectPoliciesResponse_Variable_Kind {
-	p := new(InspectPoliciesResponse_Variable_Kind)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (x InspectPoliciesResponse_Variable_Kind) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (InspectPoliciesResponse_Variable_Kind) Descriptor() protoreflect.EnumDescriptor {
-	return file_cerbos_response_v1_response_proto_enumTypes[3].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (InspectPoliciesResponse_Variable_Kind) Type() protoreflect.EnumType {
-	return &file_cerbos_response_v1_response_proto_enumTypes[3]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x InspectPoliciesResponse_Variable_Kind) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Variable_Kind.Descriptor instead.
 func (InspectPoliciesResponse_Variable_Kind) EnumDescriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 3, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type PlanResourcesResponse struct {
@@ -264,99 +279,50 @@ type PlanResourcesResponse struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *PlanResourcesResponse) Reset() {
-	*x = PlanResourcesResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlanResourcesResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlanResourcesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlanResourcesResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlanResourcesResponse) ProtoMessage() {}
+func (*PlanResourcesResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlanResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlanResourcesResponse.ProtoReflect.Descriptor instead.
 func (*PlanResourcesResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlanResourcesResponse) GetRequestId() string {
-	if x != nil {
-		return x.RequestId
-	}
-	return ""
-}
+func (x *PlanResourcesResponse) GetRequestId() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated: Marked as deprecated in cerbos/response/v1/response.proto.
-func (x *PlanResourcesResponse) GetAction() string {
-	if x != nil {
-		return x.Action
-	}
-	return ""
-}
+func (x *PlanResourcesResponse) GetAction() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PlanResourcesResponse) GetActions() []string {
-	if x != nil {
-		return x.Actions
-	}
-	return nil
-}
+func (x *PlanResourcesResponse) GetActions() []string { _ = "STUB: not implemented"; return nil }
 
-func (x *PlanResourcesResponse) GetResourceKind() string {
-	if x != nil {
-		return x.ResourceKind
-	}
-	return ""
-}
+func (x *PlanResourcesResponse) GetResourceKind() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PlanResourcesResponse) GetPolicyVersion() string {
-	if x != nil {
-		return x.PolicyVersion
-	}
-	return ""
-}
+func (x *PlanResourcesResponse) GetPolicyVersion() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlanResourcesResponse) GetFilter() *v1.PlanResourcesFilter {
-	if x != nil {
-		return x.Filter
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlanResourcesResponse) GetMeta() *PlanResourcesResponse_Meta {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlanResourcesResponse) GetValidationErrors() []*v11.ValidationError {
-	if x != nil {
-		return x.ValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *PlanResourcesResponse) GetCerbosCallId() string {
-	if x != nil {
-		return x.CerbosCallId
-	}
-	return ""
-}
+func (x *PlanResourcesResponse) GetCerbosCallId() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated. See CheckResourcesResponse.
 type CheckResourceSetResponse struct {
@@ -368,54 +334,32 @@ type CheckResourceSetResponse struct {
 	sizeCache         protoimpl.SizeCache
 }
 
-func (x *CheckResourceSetResponse) Reset() {
-	*x = CheckResourceSetResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceSetResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CheckResourceSetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CheckResourceSetResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CheckResourceSetResponse) ProtoMessage() {}
+func (*CheckResourceSetResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceSetResponse.ProtoReflect.Descriptor instead.
 func (*CheckResourceSetResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *CheckResourceSetResponse) GetRequestId() string {
-	if x != nil {
-		return x.RequestId
-	}
-	return ""
-}
+func (x *CheckResourceSetResponse) GetRequestId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *CheckResourceSetResponse) GetResourceInstances() map[string]*CheckResourceSetResponse_ActionEffectMap {
-	if x != nil {
-		return x.ResourceInstances
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourceSetResponse) GetMeta() *CheckResourceSetResponse_Meta {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -428,47 +372,27 @@ type CheckResourceBatchResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CheckResourceBatchResponse) Reset() {
-	*x = CheckResourceBatchResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceBatchResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CheckResourceBatchResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CheckResourceBatchResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CheckResourceBatchResponse) ProtoMessage() {}
+func (*CheckResourceBatchResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceBatchResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceBatchResponse.ProtoReflect.Descriptor instead.
 func (*CheckResourceBatchResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *CheckResourceBatchResponse) GetRequestId() string {
-	if x != nil {
-		return x.RequestId
-	}
-	return ""
-}
+func (x *CheckResourceBatchResponse) GetRequestId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *CheckResourceBatchResponse) GetResults() []*CheckResourceBatchResponse_ActionEffectMap {
-	if x != nil {
-		return x.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -481,56 +405,31 @@ type CheckResourcesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CheckResourcesResponse) Reset() {
-	*x = CheckResourcesResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourcesResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CheckResourcesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CheckResourcesResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CheckResourcesResponse) ProtoMessage() {}
+func (*CheckResourcesResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourcesResponse.ProtoReflect.Descriptor instead.
 func (*CheckResourcesResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *CheckResourcesResponse) GetRequestId() string {
-	if x != nil {
-		return x.RequestId
-	}
-	return ""
-}
+func (x *CheckResourcesResponse) GetRequestId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *CheckResourcesResponse) GetResults() []*CheckResourcesResponse_ResultEntry {
-	if x != nil {
-		return x.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *CheckResourcesResponse) GetCerbosCallId() string {
-	if x != nil {
-		return x.CerbosCallId
-	}
-	return ""
-}
+func (x *CheckResourcesResponse) GetCerbosCallId() string { _ = "STUB: not implemented"; return "" }
 
 type PlaygroundFailure struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
@@ -539,40 +438,22 @@ type PlaygroundFailure struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundFailure) Reset() {
-	*x = PlaygroundFailure{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundFailure) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundFailure) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundFailure) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundFailure) ProtoMessage() {}
+func (*PlaygroundFailure) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundFailure) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundFailure.ProtoReflect.Descriptor instead.
-func (*PlaygroundFailure) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{4}
-}
+func (*PlaygroundFailure) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func (x *PlaygroundFailure) GetErrors() []*PlaygroundFailure_Error {
-	if x != nil {
-		return x.Errors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -588,65 +469,37 @@ type PlaygroundValidateResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundValidateResponse) Reset() {
-	*x = PlaygroundValidateResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundValidateResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundValidateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundValidateResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundValidateResponse) ProtoMessage() {}
+func (*PlaygroundValidateResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundValidateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundValidateResponse.ProtoReflect.Descriptor instead.
 func (*PlaygroundValidateResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlaygroundValidateResponse) GetPlaygroundId() string {
-	if x != nil {
-		return x.PlaygroundId
-	}
-	return ""
-}
+func (x *PlaygroundValidateResponse) GetPlaygroundId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlaygroundValidateResponse) GetOutcome() isPlaygroundValidateResponse_Outcome {
-	if x != nil {
-		return x.Outcome
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isPlaygroundValidateResponse_Outcome)
 }
 
 func (x *PlaygroundValidateResponse) GetFailure() *PlaygroundFailure {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundValidateResponse_Failure); ok {
-			return x.Failure
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundValidateResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundValidateResponse_Success); ok {
-			return x.Success
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -662,9 +515,15 @@ type PlaygroundValidateResponse_Success struct {
 	Success *emptypb.Empty `protobuf:"bytes,3,opt,name=success,proto3,oneof"`
 }
 
-func (*PlaygroundValidateResponse_Failure) isPlaygroundValidateResponse_Outcome() {}
+func (*PlaygroundValidateResponse_Failure) isPlaygroundValidateResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundValidateResponse_Success) isPlaygroundValidateResponse_Outcome() {}
+func (*PlaygroundValidateResponse_Success) isPlaygroundValidateResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type PlaygroundTestResponse struct {
 	state        protoimpl.MessageState `protogen:"open.v1"`
@@ -678,65 +537,37 @@ type PlaygroundTestResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundTestResponse) Reset() {
-	*x = PlaygroundTestResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundTestResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundTestResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundTestResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundTestResponse) ProtoMessage() {}
+func (*PlaygroundTestResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundTestResponse.ProtoReflect.Descriptor instead.
 func (*PlaygroundTestResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlaygroundTestResponse) GetPlaygroundId() string {
-	if x != nil {
-		return x.PlaygroundId
-	}
-	return ""
-}
+func (x *PlaygroundTestResponse) GetPlaygroundId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlaygroundTestResponse) GetOutcome() isPlaygroundTestResponse_Outcome {
-	if x != nil {
-		return x.Outcome
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isPlaygroundTestResponse_Outcome)
 }
 
 func (x *PlaygroundTestResponse) GetFailure() *PlaygroundFailure {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundTestResponse_Failure); ok {
-			return x.Failure
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundTestResponse) GetSuccess() *PlaygroundTestResponse_TestResults {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundTestResponse_Success); ok {
-			return x.Success
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -752,9 +583,15 @@ type PlaygroundTestResponse_Success struct {
 	Success *PlaygroundTestResponse_TestResults `protobuf:"bytes,3,opt,name=success,proto3,oneof"`
 }
 
-func (*PlaygroundTestResponse_Failure) isPlaygroundTestResponse_Outcome() {}
+func (*PlaygroundTestResponse_Failure) isPlaygroundTestResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundTestResponse_Success) isPlaygroundTestResponse_Outcome() {}
+func (*PlaygroundTestResponse_Success) isPlaygroundTestResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type PlaygroundEvaluateResponse struct {
 	state        protoimpl.MessageState `protogen:"open.v1"`
@@ -768,65 +605,37 @@ type PlaygroundEvaluateResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundEvaluateResponse) Reset() {
-	*x = PlaygroundEvaluateResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundEvaluateResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundEvaluateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundEvaluateResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundEvaluateResponse) ProtoMessage() {}
+func (*PlaygroundEvaluateResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundEvaluateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundEvaluateResponse.ProtoReflect.Descriptor instead.
 func (*PlaygroundEvaluateResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlaygroundEvaluateResponse) GetPlaygroundId() string {
-	if x != nil {
-		return x.PlaygroundId
-	}
-	return ""
-}
+func (x *PlaygroundEvaluateResponse) GetPlaygroundId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlaygroundEvaluateResponse) GetOutcome() isPlaygroundEvaluateResponse_Outcome {
-	if x != nil {
-		return x.Outcome
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isPlaygroundEvaluateResponse_Outcome)
 }
 
 func (x *PlaygroundEvaluateResponse) GetFailure() *PlaygroundFailure {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundEvaluateResponse_Failure); ok {
-			return x.Failure
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundEvaluateResponse) GetSuccess() *PlaygroundEvaluateResponse_EvalResultList {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundEvaluateResponse_Success); ok {
-			return x.Success
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -842,9 +651,15 @@ type PlaygroundEvaluateResponse_Success struct {
 	Success *PlaygroundEvaluateResponse_EvalResultList `protobuf:"bytes,3,opt,name=success,proto3,oneof"`
 }
 
-func (*PlaygroundEvaluateResponse_Failure) isPlaygroundEvaluateResponse_Outcome() {}
+func (*PlaygroundEvaluateResponse_Failure) isPlaygroundEvaluateResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundEvaluateResponse_Success) isPlaygroundEvaluateResponse_Outcome() {}
+func (*PlaygroundEvaluateResponse_Success) isPlaygroundEvaluateResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type PlaygroundProxyResponse struct {
 	state        protoimpl.MessageState `protogen:"open.v1"`
@@ -861,92 +676,52 @@ type PlaygroundProxyResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundProxyResponse) Reset() {
-	*x = PlaygroundProxyResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundProxyResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundProxyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundProxyResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundProxyResponse) ProtoMessage() {}
+func (*PlaygroundProxyResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundProxyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundProxyResponse.ProtoReflect.Descriptor instead.
 func (*PlaygroundProxyResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlaygroundProxyResponse) GetPlaygroundId() string {
-	if x != nil {
-		return x.PlaygroundId
-	}
-	return ""
-}
+func (x *PlaygroundProxyResponse) GetPlaygroundId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlaygroundProxyResponse) GetOutcome() isPlaygroundProxyResponse_Outcome {
-	if x != nil {
-		return x.Outcome
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isPlaygroundProxyResponse_Outcome)
 }
 
 func (x *PlaygroundProxyResponse) GetFailure() *PlaygroundFailure {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundProxyResponse_Failure); ok {
-			return x.Failure
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundProxyResponse) GetCheckResourceSet() *CheckResourceSetResponse {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundProxyResponse_CheckResourceSet); ok {
-			return x.CheckResourceSet
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundProxyResponse) GetCheckResourceBatch() *CheckResourceBatchResponse {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundProxyResponse_CheckResourceBatch); ok {
-			return x.CheckResourceBatch
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundProxyResponse) GetPlanResources() *PlanResourcesResponse {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundProxyResponse_PlanResources); ok {
-			return x.PlanResources
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundProxyResponse) GetCheckResources() *CheckResourcesResponse {
-	if x != nil {
-		if x, ok := x.Outcome.(*PlaygroundProxyResponse_CheckResources); ok {
-			return x.CheckResources
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -974,15 +749,30 @@ type PlaygroundProxyResponse_CheckResources struct {
 	CheckResources *CheckResourcesResponse `protobuf:"bytes,6,opt,name=check_resources,json=checkResources,proto3,oneof"`
 }
 
-func (*PlaygroundProxyResponse_Failure) isPlaygroundProxyResponse_Outcome() {}
+func (*PlaygroundProxyResponse_Failure) isPlaygroundProxyResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundProxyResponse_CheckResourceSet) isPlaygroundProxyResponse_Outcome() {}
+func (*PlaygroundProxyResponse_CheckResourceSet) isPlaygroundProxyResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundProxyResponse_CheckResourceBatch) isPlaygroundProxyResponse_Outcome() {}
+func (*PlaygroundProxyResponse_CheckResourceBatch) isPlaygroundProxyResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundProxyResponse_PlanResources) isPlaygroundProxyResponse_Outcome() {}
+func (*PlaygroundProxyResponse_PlanResources) isPlaygroundProxyResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*PlaygroundProxyResponse_CheckResources) isPlaygroundProxyResponse_Outcome() {}
+func (*PlaygroundProxyResponse_CheckResources) isPlaygroundProxyResponse_Outcome() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type AddOrUpdatePolicyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -991,40 +781,25 @@ type AddOrUpdatePolicyResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddOrUpdatePolicyResponse) Reset() {
-	*x = AddOrUpdatePolicyResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AddOrUpdatePolicyResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AddOrUpdatePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AddOrUpdatePolicyResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AddOrUpdatePolicyResponse) ProtoMessage() {}
+func (*AddOrUpdatePolicyResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AddOrUpdatePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AddOrUpdatePolicyResponse.ProtoReflect.Descriptor instead.
 func (*AddOrUpdatePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *AddOrUpdatePolicyResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		return x.Success
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1039,58 +814,35 @@ type ListAuditLogEntriesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListAuditLogEntriesResponse) Reset() {
-	*x = ListAuditLogEntriesResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ListAuditLogEntriesResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListAuditLogEntriesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListAuditLogEntriesResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListAuditLogEntriesResponse) ProtoMessage() {}
+func (*ListAuditLogEntriesResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListAuditLogEntriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListAuditLogEntriesResponse.ProtoReflect.Descriptor instead.
 func (*ListAuditLogEntriesResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ListAuditLogEntriesResponse) GetEntry() isListAuditLogEntriesResponse_Entry {
-	if x != nil {
-		return x.Entry
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isListAuditLogEntriesResponse_Entry)
 }
 
 func (x *ListAuditLogEntriesResponse) GetAccessLogEntry() *v12.AccessLogEntry {
-	if x != nil {
-		if x, ok := x.Entry.(*ListAuditLogEntriesResponse_AccessLogEntry); ok {
-			return x.AccessLogEntry
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ListAuditLogEntriesResponse) GetDecisionLogEntry() *v12.DecisionLogEntry {
-	if x != nil {
-		if x, ok := x.Entry.(*ListAuditLogEntriesResponse_DecisionLogEntry); ok {
-			return x.DecisionLogEntry
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1106,9 +858,15 @@ type ListAuditLogEntriesResponse_DecisionLogEntry struct {
 	DecisionLogEntry *v12.DecisionLogEntry `protobuf:"bytes,2,opt,name=decision_log_entry,json=decisionLogEntry,proto3,oneof"`
 }
 
-func (*ListAuditLogEntriesResponse_AccessLogEntry) isListAuditLogEntriesResponse_Entry() {}
+func (*ListAuditLogEntriesResponse_AccessLogEntry) isListAuditLogEntriesResponse_Entry() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ListAuditLogEntriesResponse_DecisionLogEntry) isListAuditLogEntriesResponse_Entry() {}
+func (*ListAuditLogEntriesResponse_DecisionLogEntry) isListAuditLogEntriesResponse_Entry() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type ServerInfoResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1119,56 +877,25 @@ type ServerInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerInfoResponse) Reset() {
-	*x = ServerInfoResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerInfoResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerInfoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerInfoResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerInfoResponse) ProtoMessage() {}
+func (*ServerInfoResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerInfoResponse.ProtoReflect.Descriptor instead.
-func (*ServerInfoResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{11}
-}
+func (*ServerInfoResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ServerInfoResponse) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *ServerInfoResponse) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerInfoResponse) GetCommit() string {
-	if x != nil {
-		return x.Commit
-	}
-	return ""
-}
+func (x *ServerInfoResponse) GetCommit() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerInfoResponse) GetBuildDate() string {
-	if x != nil {
-		return x.BuildDate
-	}
-	return ""
-}
+func (x *ServerInfoResponse) GetBuildDate() string { _ = "STUB: not implemented"; return "" }
 
 type ListPoliciesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1177,42 +904,24 @@ type ListPoliciesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListPoliciesResponse) Reset() {
-	*x = ListPoliciesResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ListPoliciesResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListPoliciesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListPoliciesResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListPoliciesResponse) ProtoMessage() {}
+func (*ListPoliciesResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListPoliciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListPoliciesResponse.ProtoReflect.Descriptor instead.
 func (*ListPoliciesResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{12}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ListPoliciesResponse) GetPolicyIds() []string {
-	if x != nil {
-		return x.PolicyIds
-	}
-	return nil
-}
+func (x *ListPoliciesResponse) GetPolicyIds() []string { _ = "STUB: not implemented"; return nil }
 
 type GetPolicyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1221,42 +930,21 @@ type GetPolicyResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetPolicyResponse) Reset() {
-	*x = GetPolicyResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *GetPolicyResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetPolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetPolicyResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetPolicyResponse) ProtoMessage() {}
+func (*GetPolicyResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetPolicyResponse.ProtoReflect.Descriptor instead.
-func (*GetPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{13}
-}
+func (*GetPolicyResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *GetPolicyResponse) GetPolicies() []*v13.Policy {
-	if x != nil {
-		return x.Policies
-	}
-	return nil
-}
+func (x *GetPolicyResponse) GetPolicies() []*v13.Policy { _ = "STUB: not implemented"; return nil }
 
 type DeletePolicyResponse struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
@@ -1265,42 +953,24 @@ type DeletePolicyResponse struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *DeletePolicyResponse) Reset() {
-	*x = DeletePolicyResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *DeletePolicyResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeletePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeletePolicyResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeletePolicyResponse) ProtoMessage() {}
+func (*DeletePolicyResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeletePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeletePolicyResponse.ProtoReflect.Descriptor instead.
 func (*DeletePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{14}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DeletePolicyResponse) GetDeletedPolicies() uint32 {
-	if x != nil {
-		return x.DeletedPolicies
-	}
-	return 0
-}
+func (x *DeletePolicyResponse) GetDeletedPolicies() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type DeletePolicyErrorDetails struct {
 	state         protoimpl.MessageState      `protogen:"open.v1"`
@@ -1309,40 +979,25 @@ type DeletePolicyErrorDetails struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeletePolicyErrorDetails) Reset() {
-	*x = DeletePolicyErrorDetails{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *DeletePolicyErrorDetails) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeletePolicyErrorDetails) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeletePolicyErrorDetails) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeletePolicyErrorDetails) ProtoMessage() {}
+func (*DeletePolicyErrorDetails) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeletePolicyErrorDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeletePolicyErrorDetails.ProtoReflect.Descriptor instead.
 func (*DeletePolicyErrorDetails) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{15}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *DeletePolicyErrorDetails) GetErrors() map[string]*IntegrityErrors {
-	if x != nil {
-		return x.Errors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1353,42 +1008,24 @@ type DisablePolicyResponse struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *DisablePolicyResponse) Reset() {
-	*x = DisablePolicyResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *DisablePolicyResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DisablePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DisablePolicyResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DisablePolicyResponse) ProtoMessage() {}
+func (*DisablePolicyResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DisablePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DisablePolicyResponse.ProtoReflect.Descriptor instead.
 func (*DisablePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{16}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DisablePolicyResponse) GetDisabledPolicies() uint32 {
-	if x != nil {
-		return x.DisabledPolicies
-	}
-	return 0
-}
+func (x *DisablePolicyResponse) GetDisabledPolicies() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type DisablePolicyErrorDetails struct {
 	state         protoimpl.MessageState      `protogen:"open.v1"`
@@ -1397,40 +1034,25 @@ type DisablePolicyErrorDetails struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DisablePolicyErrorDetails) Reset() {
-	*x = DisablePolicyErrorDetails{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *DisablePolicyErrorDetails) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DisablePolicyErrorDetails) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DisablePolicyErrorDetails) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DisablePolicyErrorDetails) ProtoMessage() {}
+func (*DisablePolicyErrorDetails) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DisablePolicyErrorDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DisablePolicyErrorDetails.ProtoReflect.Descriptor instead.
 func (*DisablePolicyErrorDetails) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{17}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *DisablePolicyErrorDetails) GetErrors() map[string]*IntegrityErrors {
-	if x != nil {
-		return x.Errors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1442,47 +1064,27 @@ type IntegrityErrors struct {
 	sizeCache               protoimpl.SizeCache
 }
 
-func (x *IntegrityErrors) Reset() {
-	*x = IntegrityErrors{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IntegrityErrors) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IntegrityErrors) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IntegrityErrors) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IntegrityErrors) ProtoMessage() {}
+func (*IntegrityErrors) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IntegrityErrors) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IntegrityErrors.ProtoReflect.Descriptor instead.
-func (*IntegrityErrors) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{18}
-}
+func (*IntegrityErrors) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func (x *IntegrityErrors) GetBreaksScopeChain() *IntegrityErrors_BreaksScopeChain {
-	if x != nil {
-		return x.BreaksScopeChain
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *IntegrityErrors) GetRequiredByOtherPolicies() *IntegrityErrors_RequiredByOtherPolicies {
-	if x != nil {
-		return x.RequiredByOtherPolicies
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1493,42 +1095,24 @@ type EnablePolicyResponse struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *EnablePolicyResponse) Reset() {
-	*x = EnablePolicyResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *EnablePolicyResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *EnablePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *EnablePolicyResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*EnablePolicyResponse) ProtoMessage() {}
+func (*EnablePolicyResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *EnablePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use EnablePolicyResponse.ProtoReflect.Descriptor instead.
 func (*EnablePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{19}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *EnablePolicyResponse) GetEnabledPolicies() uint32 {
-	if x != nil {
-		return x.EnabledPolicies
-	}
-	return 0
-}
+func (x *EnablePolicyResponse) GetEnabledPolicies() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type InspectPoliciesResponse struct {
 	state         protoimpl.MessageState                     `protogen:"open.v1"`
@@ -1537,40 +1121,25 @@ type InspectPoliciesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectPoliciesResponse) Reset() {
-	*x = InspectPoliciesResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectPoliciesResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectPoliciesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectPoliciesResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectPoliciesResponse) ProtoMessage() {}
+func (*InspectPoliciesResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectPoliciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectPoliciesResponse.ProtoReflect.Descriptor instead.
 func (*InspectPoliciesResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectPoliciesResponse) GetResults() map[string]*InspectPoliciesResponse_Result {
-	if x != nil {
-		return x.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1580,34 +1149,21 @@ type AddOrUpdateSchemaResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddOrUpdateSchemaResponse) Reset() {
-	*x = AddOrUpdateSchemaResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AddOrUpdateSchemaResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AddOrUpdateSchemaResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AddOrUpdateSchemaResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AddOrUpdateSchemaResponse) ProtoMessage() {}
+func (*AddOrUpdateSchemaResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AddOrUpdateSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AddOrUpdateSchemaResponse.ProtoReflect.Descriptor instead.
 func (*AddOrUpdateSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{21}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type ListSchemasResponse struct {
@@ -1617,42 +1173,24 @@ type ListSchemasResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListSchemasResponse) Reset() {
-	*x = ListSchemasResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ListSchemasResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ListSchemasResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ListSchemasResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ListSchemasResponse) ProtoMessage() {}
+func (*ListSchemasResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ListSchemasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ListSchemasResponse.ProtoReflect.Descriptor instead.
 func (*ListSchemasResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{22}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ListSchemasResponse) GetSchemaIds() []string {
-	if x != nil {
-		return x.SchemaIds
-	}
-	return nil
-}
+func (x *ListSchemasResponse) GetSchemaIds() []string { _ = "STUB: not implemented"; return nil }
 
 type GetSchemaResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1661,42 +1199,21 @@ type GetSchemaResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetSchemaResponse) Reset() {
-	*x = GetSchemaResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *GetSchemaResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *GetSchemaResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *GetSchemaResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*GetSchemaResponse) ProtoMessage() {}
+func (*GetSchemaResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *GetSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use GetSchemaResponse.ProtoReflect.Descriptor instead.
-func (*GetSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{23}
-}
+func (*GetSchemaResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *GetSchemaResponse) GetSchemas() []*v11.Schema {
-	if x != nil {
-		return x.Schemas
-	}
-	return nil
-}
+func (x *GetSchemaResponse) GetSchemas() []*v11.Schema { _ = "STUB: not implemented"; return nil }
 
 type DeleteSchemaResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
@@ -1705,42 +1222,24 @@ type DeleteSchemaResponse struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *DeleteSchemaResponse) Reset() {
-	*x = DeleteSchemaResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *DeleteSchemaResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *DeleteSchemaResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *DeleteSchemaResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*DeleteSchemaResponse) ProtoMessage() {}
+func (*DeleteSchemaResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *DeleteSchemaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use DeleteSchemaResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSchemaResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{24}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *DeleteSchemaResponse) GetDeletedSchemas() uint32 {
-	if x != nil {
-		return x.DeletedSchemas
-	}
-	return 0
-}
+func (x *DeleteSchemaResponse) GetDeletedSchemas() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type ReloadStoreResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1748,34 +1247,21 @@ type ReloadStoreResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReloadStoreResponse) Reset() {
-	*x = ReloadStoreResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ReloadStoreResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ReloadStoreResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ReloadStoreResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ReloadStoreResponse) ProtoMessage() {}
+func (*ReloadStoreResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ReloadStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ReloadStoreResponse.ProtoReflect.Descriptor instead.
 func (*ReloadStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{25}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type PurgeStoreRevisionsResponse struct {
@@ -1785,42 +1271,24 @@ type PurgeStoreRevisionsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PurgeStoreRevisionsResponse) Reset() {
-	*x = PurgeStoreRevisionsResponse{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PurgeStoreRevisionsResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PurgeStoreRevisionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PurgeStoreRevisionsResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PurgeStoreRevisionsResponse) ProtoMessage() {}
+func (*PurgeStoreRevisionsResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PurgeStoreRevisionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PurgeStoreRevisionsResponse.ProtoReflect.Descriptor instead.
 func (*PurgeStoreRevisionsResponse) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{26}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PurgeStoreRevisionsResponse) GetAffectedRows() uint32 {
-	if x != nil {
-		return x.AffectedRows
-	}
-	return 0
-}
+func (x *PurgeStoreRevisionsResponse) GetAffectedRows() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type PlanResourcesResponse_Meta struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
@@ -1832,55 +1300,30 @@ type PlanResourcesResponse_Meta struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlanResourcesResponse_Meta) Reset() {
-	*x = PlanResourcesResponse_Meta{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlanResourcesResponse_Meta) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlanResourcesResponse_Meta) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlanResourcesResponse_Meta) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlanResourcesResponse_Meta) ProtoMessage() {}
+func (*PlanResourcesResponse_Meta) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlanResourcesResponse_Meta) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlanResourcesResponse_Meta.ProtoReflect.Descriptor instead.
 func (*PlanResourcesResponse_Meta) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlanResourcesResponse_Meta) GetFilterDebug() string {
-	if x != nil {
-		return x.FilterDebug
-	}
-	return ""
-}
+func (x *PlanResourcesResponse_Meta) GetFilterDebug() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated: Marked as deprecated in cerbos/response/v1/response.proto.
-func (x *PlanResourcesResponse_Meta) GetMatchedScope() string {
-	if x != nil {
-		return x.MatchedScope
-	}
-	return ""
-}
+func (x *PlanResourcesResponse_Meta) GetMatchedScope() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlanResourcesResponse_Meta) GetMatchedScopes() map[string]string {
-	if x != nil {
-		return x.MatchedScopes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1892,47 +1335,33 @@ type CheckResourceSetResponse_ActionEffectMap struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *CheckResourceSetResponse_ActionEffectMap) Reset() {
-	*x = CheckResourceSetResponse_ActionEffectMap{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceSetResponse_ActionEffectMap) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_ActionEffectMap) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourceSetResponse_ActionEffectMap) ProtoMessage() {}
+func (*CheckResourceSetResponse_ActionEffectMap) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_ActionEffectMap) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceSetResponse_ActionEffectMap.ProtoReflect.Descriptor instead.
 func (*CheckResourceSetResponse_ActionEffectMap) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourceSetResponse_ActionEffectMap) GetActions() map[string]v14.Effect {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourceSetResponse_ActionEffectMap) GetValidationErrors() []*v11.ValidationError {
-	if x != nil {
-		return x.ValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1943,40 +1372,25 @@ type CheckResourceSetResponse_Meta struct {
 	sizeCache         protoimpl.SizeCache
 }
 
-func (x *CheckResourceSetResponse_Meta) Reset() {
-	*x = CheckResourceSetResponse_Meta{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceSetResponse_Meta) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CheckResourceSetResponse_Meta) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CheckResourceSetResponse_Meta) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CheckResourceSetResponse_Meta) ProtoMessage() {}
+func (*CheckResourceSetResponse_Meta) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_Meta) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceSetResponse_Meta.ProtoReflect.Descriptor instead.
 func (*CheckResourceSetResponse_Meta) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourceSetResponse_Meta) GetResourceInstances() map[string]*CheckResourceSetResponse_Meta_ActionMeta {
-	if x != nil {
-		return x.ResourceInstances
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1988,47 +1402,33 @@ type CheckResourceSetResponse_Meta_EffectMeta struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CheckResourceSetResponse_Meta_EffectMeta) Reset() {
-	*x = CheckResourceSetResponse_Meta_EffectMeta{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceSetResponse_Meta_EffectMeta) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_Meta_EffectMeta) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourceSetResponse_Meta_EffectMeta) ProtoMessage() {}
+func (*CheckResourceSetResponse_Meta_EffectMeta) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_Meta_EffectMeta) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceSetResponse_Meta_EffectMeta.ProtoReflect.Descriptor instead.
 func (*CheckResourceSetResponse_Meta_EffectMeta) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{1, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourceSetResponse_Meta_EffectMeta) GetMatchedPolicy() string {
-	if x != nil {
-		return x.MatchedPolicy
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CheckResourceSetResponse_Meta_EffectMeta) GetMatchedScope() string {
-	if x != nil {
-		return x.MatchedScope
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -2040,47 +1440,33 @@ type CheckResourceSetResponse_Meta_ActionMeta struct {
 	sizeCache             protoimpl.SizeCache
 }
 
-func (x *CheckResourceSetResponse_Meta_ActionMeta) Reset() {
-	*x = CheckResourceSetResponse_Meta_ActionMeta{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceSetResponse_Meta_ActionMeta) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_Meta_ActionMeta) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourceSetResponse_Meta_ActionMeta) ProtoMessage() {}
+func (*CheckResourceSetResponse_Meta_ActionMeta) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceSetResponse_Meta_ActionMeta) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceSetResponse_Meta_ActionMeta.ProtoReflect.Descriptor instead.
 func (*CheckResourceSetResponse_Meta_ActionMeta) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{1, 1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourceSetResponse_Meta_ActionMeta) GetActions() map[string]*CheckResourceSetResponse_Meta_EffectMeta {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourceSetResponse_Meta_ActionMeta) GetEffectiveDerivedRoles() []string {
-	if x != nil {
-		return x.EffectiveDerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2093,54 +1479,41 @@ type CheckResourceBatchResponse_ActionEffectMap struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *CheckResourceBatchResponse_ActionEffectMap) Reset() {
-	*x = CheckResourceBatchResponse_ActionEffectMap{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourceBatchResponse_ActionEffectMap) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourceBatchResponse_ActionEffectMap) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourceBatchResponse_ActionEffectMap) ProtoMessage() {}
+func (*CheckResourceBatchResponse_ActionEffectMap) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (x *CheckResourceBatchResponse_ActionEffectMap) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourceBatchResponse_ActionEffectMap.ProtoReflect.Descriptor instead.
 func (*CheckResourceBatchResponse_ActionEffectMap) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{2, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourceBatchResponse_ActionEffectMap) GetResourceId() string {
-	if x != nil {
-		return x.ResourceId
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CheckResourceBatchResponse_ActionEffectMap) GetActions() map[string]v14.Effect {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourceBatchResponse_ActionEffectMap) GetValidationErrors() []*v11.ValidationError {
-	if x != nil {
-		return x.ValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2155,68 +1528,45 @@ type CheckResourcesResponse_ResultEntry struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *CheckResourcesResponse_ResultEntry) Reset() {
-	*x = CheckResourcesResponse_ResultEntry{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourcesResponse_ResultEntry) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CheckResourcesResponse_ResultEntry) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CheckResourcesResponse_ResultEntry) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CheckResourcesResponse_ResultEntry) ProtoMessage() {}
+func (*CheckResourcesResponse_ResultEntry) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourcesResponse_ResultEntry) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourcesResponse_ResultEntry.ProtoReflect.Descriptor instead.
 func (*CheckResourcesResponse_ResultEntry) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{3, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry) GetResource() *CheckResourcesResponse_ResultEntry_Resource {
-	if x != nil {
-		return x.Resource
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry) GetActions() map[string]v14.Effect {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry) GetValidationErrors() []*v11.ValidationError {
-	if x != nil {
-		return x.ValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry) GetMeta() *CheckResourcesResponse_ResultEntry_Meta {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry) GetOutputs() []*v1.OutputEntry {
-	if x != nil {
-		return x.Outputs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2230,61 +1580,46 @@ type CheckResourcesResponse_ResultEntry_Resource struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CheckResourcesResponse_ResultEntry_Resource) Reset() {
-	*x = CheckResourcesResponse_ResultEntry_Resource{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourcesResponse_ResultEntry_Resource) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourcesResponse_ResultEntry_Resource) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourcesResponse_ResultEntry_Resource) ProtoMessage() {}
+func (*CheckResourcesResponse_ResultEntry_Resource) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (x *CheckResourcesResponse_ResultEntry_Resource) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourcesResponse_ResultEntry_Resource.ProtoReflect.Descriptor instead.
 func (*CheckResourcesResponse_ResultEntry_Resource) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{3, 0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Resource) GetId() string {
-	if x != nil {
-		return x.Id
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Resource) GetKind() string {
-	if x != nil {
-		return x.Kind
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Resource) GetPolicyVersion() string {
-	if x != nil {
-		return x.PolicyVersion
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Resource) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -2296,47 +1631,33 @@ type CheckResourcesResponse_ResultEntry_Meta struct {
 	sizeCache             protoimpl.SizeCache
 }
 
-func (x *CheckResourcesResponse_ResultEntry_Meta) Reset() {
-	*x = CheckResourcesResponse_ResultEntry_Meta{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[41]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CheckResourcesResponse_ResultEntry_Meta) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourcesResponse_ResultEntry_Meta) ProtoMessage() {}
+func (*CheckResourcesResponse_ResultEntry_Meta) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[41]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourcesResponse_ResultEntry_Meta.ProtoReflect.Descriptor instead.
 func (*CheckResourcesResponse_ResultEntry_Meta) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{3, 0, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta) GetActions() map[string]*CheckResourcesResponse_ResultEntry_Meta_EffectMeta {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta) GetEffectiveDerivedRoles() []string {
-	if x != nil {
-		return x.EffectiveDerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2349,46 +1670,38 @@ type CheckResourcesResponse_ResultEntry_Meta_EffectMeta struct {
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta_EffectMeta) Reset() {
-	*x = CheckResourcesResponse_ResultEntry_Meta_EffectMeta{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[43]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta_EffectMeta) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CheckResourcesResponse_ResultEntry_Meta_EffectMeta) ProtoMessage() {}
+func (*CheckResourcesResponse_ResultEntry_Meta_EffectMeta) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (x *CheckResourcesResponse_ResultEntry_Meta_EffectMeta) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[43]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CheckResourcesResponse_ResultEntry_Meta_EffectMeta.ProtoReflect.Descriptor instead.
 func (*CheckResourcesResponse_ResultEntry_Meta_EffectMeta) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{3, 0, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta_EffectMeta) GetMatchedPolicy() string {
-	if x != nil {
-		return x.MatchedPolicy
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CheckResourcesResponse_ResultEntry_Meta_EffectMeta) GetMatchedScope() string {
-	if x != nil {
-		return x.MatchedScope
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -2401,56 +1714,28 @@ type PlaygroundFailure_ErrorDetails struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundFailure_ErrorDetails) Reset() {
-	*x = PlaygroundFailure_ErrorDetails{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[45]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundFailure_ErrorDetails) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundFailure_ErrorDetails) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundFailure_ErrorDetails) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundFailure_ErrorDetails) ProtoMessage() {}
+func (*PlaygroundFailure_ErrorDetails) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundFailure_ErrorDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[45]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundFailure_ErrorDetails.ProtoReflect.Descriptor instead.
 func (*PlaygroundFailure_ErrorDetails) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{4, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlaygroundFailure_ErrorDetails) GetLine() uint32 {
-	if x != nil {
-		return x.Line
-	}
-	return 0
-}
+func (x *PlaygroundFailure_ErrorDetails) GetLine() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *PlaygroundFailure_ErrorDetails) GetColumn() uint32 {
-	if x != nil {
-		return x.Column
-	}
-	return 0
-}
+func (x *PlaygroundFailure_ErrorDetails) GetColumn() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *PlaygroundFailure_ErrorDetails) GetContext() string {
-	if x != nil {
-		return x.Context
-	}
-	return ""
-}
+func (x *PlaygroundFailure_ErrorDetails) GetContext() string { _ = "STUB: not implemented"; return "" }
 
 type PlaygroundFailure_Error struct {
 	state         protoimpl.MessageState          `protogen:"open.v1"`
@@ -2461,54 +1746,29 @@ type PlaygroundFailure_Error struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundFailure_Error) Reset() {
-	*x = PlaygroundFailure_Error{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[46]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundFailure_Error) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundFailure_Error) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundFailure_Error) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundFailure_Error) ProtoMessage() {}
+func (*PlaygroundFailure_Error) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundFailure_Error) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[46]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundFailure_Error.ProtoReflect.Descriptor instead.
 func (*PlaygroundFailure_Error) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{4, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *PlaygroundFailure_Error) GetFile() string {
-	if x != nil {
-		return x.File
-	}
-	return ""
-}
+func (x *PlaygroundFailure_Error) GetFile() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PlaygroundFailure_Error) GetError() string {
-	if x != nil {
-		return x.Error
-	}
-	return ""
-}
+func (x *PlaygroundFailure_Error) GetError() string { _ = "STUB: not implemented"; return "" }
 
 func (x *PlaygroundFailure_Error) GetDetails() *PlaygroundFailure_ErrorDetails {
-	if x != nil {
-		return x.Details
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2519,40 +1779,25 @@ type PlaygroundTestResponse_TestResults struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlaygroundTestResponse_TestResults) Reset() {
-	*x = PlaygroundTestResponse_TestResults{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[47]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundTestResponse_TestResults) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PlaygroundTestResponse_TestResults) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PlaygroundTestResponse_TestResults) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PlaygroundTestResponse_TestResults) ProtoMessage() {}
+func (*PlaygroundTestResponse_TestResults) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundTestResponse_TestResults) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[47]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundTestResponse_TestResults.ProtoReflect.Descriptor instead.
 func (*PlaygroundTestResponse_TestResults) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{6, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *PlaygroundTestResponse_TestResults) GetResults() *v13.TestResults {
-	if x != nil {
-		return x.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2569,70 +1814,50 @@ type PlaygroundEvaluateResponse_EvalResult struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *PlaygroundEvaluateResponse_EvalResult) Reset() {
-	*x = PlaygroundEvaluateResponse_EvalResult{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[48]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundEvaluateResponse_EvalResult) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundEvaluateResponse_EvalResult) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*PlaygroundEvaluateResponse_EvalResult) ProtoMessage() {}
+func (*PlaygroundEvaluateResponse_EvalResult) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundEvaluateResponse_EvalResult) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[48]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundEvaluateResponse_EvalResult.ProtoReflect.Descriptor instead.
 func (*PlaygroundEvaluateResponse_EvalResult) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{7, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResult) GetAction() string {
-	if x != nil {
-		return x.Action
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResult) GetEffect() v14.Effect {
-	if x != nil {
-		return x.Effect
-	}
-	return v14.Effect(0)
+	_ = "STUB: not implemented"
+	return *new(v14.Effect)
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResult) GetPolicy() string {
-	if x != nil {
-		return x.Policy
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 // Deprecated: Marked as deprecated in cerbos/response/v1/response.proto.
 func (x *PlaygroundEvaluateResponse_EvalResult) GetEffectiveDerivedRoles() []string {
-	if x != nil {
-		return x.EffectiveDerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Deprecated: Marked as deprecated in cerbos/response/v1/response.proto.
 func (x *PlaygroundEvaluateResponse_EvalResult) GetValidationErrors() []*v11.ValidationError {
-	if x != nil {
-		return x.ValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2646,61 +1871,43 @@ type PlaygroundEvaluateResponse_EvalResultList struct {
 	sizeCache             protoimpl.SizeCache
 }
 
-func (x *PlaygroundEvaluateResponse_EvalResultList) Reset() {
-	*x = PlaygroundEvaluateResponse_EvalResultList{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[49]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PlaygroundEvaluateResponse_EvalResultList) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundEvaluateResponse_EvalResultList) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*PlaygroundEvaluateResponse_EvalResultList) ProtoMessage() {}
+func (*PlaygroundEvaluateResponse_EvalResultList) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PlaygroundEvaluateResponse_EvalResultList) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[49]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PlaygroundEvaluateResponse_EvalResultList.ProtoReflect.Descriptor instead.
 func (*PlaygroundEvaluateResponse_EvalResultList) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{7, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResultList) GetResults() []*PlaygroundEvaluateResponse_EvalResult {
-	if x != nil {
-		return x.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResultList) GetEffectiveDerivedRoles() []string {
-	if x != nil {
-		return x.EffectiveDerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResultList) GetValidationErrors() []*v11.ValidationError {
-	if x != nil {
-		return x.ValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *PlaygroundEvaluateResponse_EvalResultList) GetOutputs() []*v1.OutputEntry {
-	if x != nil {
-		return x.Outputs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2711,40 +1918,25 @@ type IntegrityErrors_BreaksScopeChain struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IntegrityErrors_BreaksScopeChain) Reset() {
-	*x = IntegrityErrors_BreaksScopeChain{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[52]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IntegrityErrors_BreaksScopeChain) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IntegrityErrors_BreaksScopeChain) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IntegrityErrors_BreaksScopeChain) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IntegrityErrors_BreaksScopeChain) ProtoMessage() {}
+func (*IntegrityErrors_BreaksScopeChain) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IntegrityErrors_BreaksScopeChain) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[52]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IntegrityErrors_BreaksScopeChain.ProtoReflect.Descriptor instead.
 func (*IntegrityErrors_BreaksScopeChain) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{18, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *IntegrityErrors_BreaksScopeChain) GetDescendants() []string {
-	if x != nil {
-		return x.Descendants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2755,40 +1947,28 @@ type IntegrityErrors_RequiredByOtherPolicies struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IntegrityErrors_RequiredByOtherPolicies) Reset() {
-	*x = IntegrityErrors_RequiredByOtherPolicies{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[53]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IntegrityErrors_RequiredByOtherPolicies) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *IntegrityErrors_RequiredByOtherPolicies) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*IntegrityErrors_RequiredByOtherPolicies) ProtoMessage() {}
+func (*IntegrityErrors_RequiredByOtherPolicies) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IntegrityErrors_RequiredByOtherPolicies) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[53]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IntegrityErrors_RequiredByOtherPolicies.ProtoReflect.Descriptor instead.
 func (*IntegrityErrors_RequiredByOtherPolicies) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{18, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *IntegrityErrors_RequiredByOtherPolicies) GetDependents() []string {
-	if x != nil {
-		return x.Dependents
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2800,49 +1980,29 @@ type InspectPoliciesResponse_Attribute struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectPoliciesResponse_Attribute) Reset() {
-	*x = InspectPoliciesResponse_Attribute{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[54]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectPoliciesResponse_Attribute) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectPoliciesResponse_Attribute) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectPoliciesResponse_Attribute) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectPoliciesResponse_Attribute) ProtoMessage() {}
+func (*InspectPoliciesResponse_Attribute) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectPoliciesResponse_Attribute) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[54]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Attribute.ProtoReflect.Descriptor instead.
 func (*InspectPoliciesResponse_Attribute) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectPoliciesResponse_Attribute) GetKind() InspectPoliciesResponse_Attribute_Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return InspectPoliciesResponse_Attribute_KIND_UNSPECIFIED
+	_ = "STUB: not implemented"
+	return *new(InspectPoliciesResponse_Attribute_Kind)
 }
 
-func (x *InspectPoliciesResponse_Attribute) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Attribute) GetName() string { _ = "STUB: not implemented"; return "" }
 
 type InspectPoliciesResponse_DerivedRole struct {
 	state         protoimpl.MessageState                   `protogen:"open.v1"`
@@ -2853,54 +2013,35 @@ type InspectPoliciesResponse_DerivedRole struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectPoliciesResponse_DerivedRole) Reset() {
-	*x = InspectPoliciesResponse_DerivedRole{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[55]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectPoliciesResponse_DerivedRole) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectPoliciesResponse_DerivedRole) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectPoliciesResponse_DerivedRole) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectPoliciesResponse_DerivedRole) ProtoMessage() {}
+func (*InspectPoliciesResponse_DerivedRole) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectPoliciesResponse_DerivedRole) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[55]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectPoliciesResponse_DerivedRole.ProtoReflect.Descriptor instead.
 func (*InspectPoliciesResponse_DerivedRole) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectPoliciesResponse_DerivedRole) GetName() string {
-	if x != nil {
-		return x.Name
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *InspectPoliciesResponse_DerivedRole) GetKind() InspectPoliciesResponse_DerivedRole_Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return InspectPoliciesResponse_DerivedRole_KIND_UNSPECIFIED
+	_ = "STUB: not implemented"
+	return *new(InspectPoliciesResponse_DerivedRole_Kind)
 }
 
 func (x *InspectPoliciesResponse_DerivedRole) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -2915,70 +2056,38 @@ type InspectPoliciesResponse_Constant struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectPoliciesResponse_Constant) Reset() {
-	*x = InspectPoliciesResponse_Constant{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[56]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectPoliciesResponse_Constant) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectPoliciesResponse_Constant) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectPoliciesResponse_Constant) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectPoliciesResponse_Constant) ProtoMessage() {}
+func (*InspectPoliciesResponse_Constant) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectPoliciesResponse_Constant) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[56]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Constant.ProtoReflect.Descriptor instead.
 func (*InspectPoliciesResponse_Constant) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *InspectPoliciesResponse_Constant) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Constant) GetName() string { _ = "STUB: not implemented"; return "" }
 
 func (x *InspectPoliciesResponse_Constant) GetValue() *structpb.Value {
-	if x != nil {
-		return x.Value
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectPoliciesResponse_Constant) GetKind() InspectPoliciesResponse_Constant_Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return InspectPoliciesResponse_Constant_KIND_UNSPECIFIED
+	_ = "STUB: not implemented"
+	return *new(InspectPoliciesResponse_Constant_Kind)
 }
 
-func (x *InspectPoliciesResponse_Constant) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Constant) GetSource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *InspectPoliciesResponse_Constant) GetUsed() bool {
-	if x != nil {
-		return x.Used
-	}
-	return false
-}
+func (x *InspectPoliciesResponse_Constant) GetUsed() bool { _ = "STUB: not implemented"; return false }
 
 type InspectPoliciesResponse_Variable struct {
 	state         protoimpl.MessageState                `protogen:"open.v1"`
@@ -2991,70 +2100,35 @@ type InspectPoliciesResponse_Variable struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectPoliciesResponse_Variable) Reset() {
-	*x = InspectPoliciesResponse_Variable{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[57]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectPoliciesResponse_Variable) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectPoliciesResponse_Variable) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectPoliciesResponse_Variable) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectPoliciesResponse_Variable) ProtoMessage() {}
+func (*InspectPoliciesResponse_Variable) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectPoliciesResponse_Variable) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[57]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Variable.ProtoReflect.Descriptor instead.
 func (*InspectPoliciesResponse_Variable) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *InspectPoliciesResponse_Variable) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Variable) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *InspectPoliciesResponse_Variable) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Variable) GetValue() string { _ = "STUB: not implemented"; return "" }
 
 func (x *InspectPoliciesResponse_Variable) GetKind() InspectPoliciesResponse_Variable_Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return InspectPoliciesResponse_Variable_KIND_UNSPECIFIED
+	_ = "STUB: not implemented"
+	return *new(InspectPoliciesResponse_Variable_Kind)
 }
 
-func (x *InspectPoliciesResponse_Variable) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Variable) GetSource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *InspectPoliciesResponse_Variable) GetUsed() bool {
-	if x != nil {
-		return x.Used
-	}
-	return false
-}
+func (x *InspectPoliciesResponse_Variable) GetUsed() bool { _ = "STUB: not implemented"; return false }
 
 type InspectPoliciesResponse_Result struct {
 	state         protoimpl.MessageState                 `protogen:"open.v1"`
@@ -3068,75 +2142,47 @@ type InspectPoliciesResponse_Result struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectPoliciesResponse_Result) Reset() {
-	*x = InspectPoliciesResponse_Result{}
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[58]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectPoliciesResponse_Result) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectPoliciesResponse_Result) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectPoliciesResponse_Result) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectPoliciesResponse_Result) ProtoMessage() {}
+func (*InspectPoliciesResponse_Result) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectPoliciesResponse_Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_response_v1_response_proto_msgTypes[58]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectPoliciesResponse_Result.ProtoReflect.Descriptor instead.
 func (*InspectPoliciesResponse_Result) Descriptor() ([]byte, []int) {
-	return file_cerbos_response_v1_response_proto_rawDescGZIP(), []int{20, 4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectPoliciesResponse_Result) GetActions() []string {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectPoliciesResponse_Result) GetVariables() []*InspectPoliciesResponse_Variable {
-	if x != nil {
-		return x.Variables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *InspectPoliciesResponse_Result) GetPolicyId() string {
-	if x != nil {
-		return x.PolicyId
-	}
-	return ""
-}
+func (x *InspectPoliciesResponse_Result) GetPolicyId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *InspectPoliciesResponse_Result) GetDerivedRoles() []*InspectPoliciesResponse_DerivedRole {
-	if x != nil {
-		return x.DerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectPoliciesResponse_Result) GetAttributes() []*InspectPoliciesResponse_Attribute {
-	if x != nil {
-		return x.Attributes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectPoliciesResponse_Result) GetConstants() []*InspectPoliciesResponse_Constant {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3430,10 +2476,8 @@ var (
 )
 
 func file_cerbos_response_v1_response_proto_rawDescGZIP() []byte {
-	file_cerbos_response_v1_response_proto_rawDescOnce.Do(func() {
-		file_cerbos_response_v1_response_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cerbos_response_v1_response_proto_rawDesc), len(file_cerbos_response_v1_response_proto_rawDesc)))
-	})
-	return file_cerbos_response_v1_response_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_cerbos_response_v1_response_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
@@ -3591,50 +2635,5 @@ var file_cerbos_response_v1_response_proto_depIdxs = []int32{
 	0,  // [0:68] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_response_v1_response_proto_init() }
-func file_cerbos_response_v1_response_proto_init() {
-	if File_cerbos_response_v1_response_proto != nil {
-		return
-	}
-	file_cerbos_response_v1_response_proto_msgTypes[5].OneofWrappers = []any{
-		(*PlaygroundValidateResponse_Failure)(nil),
-		(*PlaygroundValidateResponse_Success)(nil),
-	}
-	file_cerbos_response_v1_response_proto_msgTypes[6].OneofWrappers = []any{
-		(*PlaygroundTestResponse_Failure)(nil),
-		(*PlaygroundTestResponse_Success)(nil),
-	}
-	file_cerbos_response_v1_response_proto_msgTypes[7].OneofWrappers = []any{
-		(*PlaygroundEvaluateResponse_Failure)(nil),
-		(*PlaygroundEvaluateResponse_Success)(nil),
-	}
-	file_cerbos_response_v1_response_proto_msgTypes[8].OneofWrappers = []any{
-		(*PlaygroundProxyResponse_Failure)(nil),
-		(*PlaygroundProxyResponse_CheckResourceSet)(nil),
-		(*PlaygroundProxyResponse_CheckResourceBatch)(nil),
-		(*PlaygroundProxyResponse_PlanResources)(nil),
-		(*PlaygroundProxyResponse_CheckResources)(nil),
-	}
-	file_cerbos_response_v1_response_proto_msgTypes[10].OneofWrappers = []any{
-		(*ListAuditLogEntriesResponse_AccessLogEntry)(nil),
-		(*ListAuditLogEntriesResponse_DecisionLogEntry)(nil),
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_response_v1_response_proto_rawDesc), len(file_cerbos_response_v1_response_proto_rawDesc)),
-			NumEnums:      4,
-			NumMessages:   60,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_cerbos_response_v1_response_proto_goTypes,
-		DependencyIndexes: file_cerbos_response_v1_response_proto_depIdxs,
-		EnumInfos:         file_cerbos_response_v1_response_proto_enumTypes,
-		MessageInfos:      file_cerbos_response_v1_response_proto_msgTypes,
-	}.Build()
-	File_cerbos_response_v1_response_proto = out.File
-	file_cerbos_response_v1_response_proto_goTypes = nil
-	file_cerbos_response_v1_response_proto_depIdxs = nil
-}
+func init()                                        { file_cerbos_response_v1_response_proto_init() }
+func file_cerbos_response_v1_response_proto_init() { _ = "STUB: not implemented"; return }

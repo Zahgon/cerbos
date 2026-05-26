@@ -5,10 +5,8 @@ package otel
 
 import (
 	"context"
-	"fmt"
 
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 )
 
 type EnvVar struct {
@@ -54,33 +52,14 @@ var noopCloseFn = func() error { return nil }
 
 type Env func(string) (string, bool)
 
-func (env Env) Get(ev EnvVar) (string, bool) {
-	val, ok := env(ev.Name)
-	if !ok && ev.Alt != "" {
-		val, ok = env(ev.Alt)
-	}
-
-	return val, ok
-}
+func (env Env) Get(ev EnvVar) (string, bool) { _ = "STUB: not implemented"; return "", false }
 
 func (env Env) GetOrDefault(ev EnvVar, defaultVal string) string {
-	val, ok := env.Get(ev)
-	if !ok {
-		return defaultVal
-	}
-
-	return val
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func newResource(ctx context.Context, serviceName string) (*resource.Resource, error) {
-	res, err := resource.New(ctx,
-		resource.WithAttributes(semconv.ServiceNameKey.String(serviceName)),
-		resource.WithProcessPID(),
-		resource.WithHost(),
-		resource.WithFromEnv())
-	if err != nil {
-		return nil, fmt.Errorf("failed to initialize otel resource: %w", err)
-	}
-
-	return res, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

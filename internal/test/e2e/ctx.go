@@ -9,10 +9,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"maps"
-	"os"
-	"path/filepath"
-	"runtime"
 	"strconv"
 	"testing"
 	"time"
@@ -47,22 +43,9 @@ func init() {
 	flag.BoolVar(&conf.NoCleanup, "no-cleanup", noCleanup, "Do not cleanup after tests")
 }
 
-func findSourceRoot() (string, error) {
-	_, currFile, _, ok := runtime.Caller(0)
-	if !ok {
-		return "", fmt.Errorf("failed to find path to current file")
-	}
+func findSourceRoot() (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-	return filepath.Abs(filepath.Join(filepath.Dir(currFile), "..", "..", ".."))
-}
-
-func envOrDefault(envVar, def string) string {
-	if v := os.Getenv(envVar); v != "" {
-		return v
-	}
-
-	return def
-}
+func envOrDefault(envVar, def string) string { _ = "STUB: not implemented"; return "" }
 
 type Config struct {
 	RunID          string        `json:"run_id"`
@@ -74,7 +57,8 @@ type Config struct {
 }
 
 func NewCtx(t *testing.T, contextID string, noTLS bool) Ctx {
-	return Ctx{ContextID: contextID, Config: conf, T: t, NoTLS: noTLS}
+	_ = "STUB: not implemented"
+	return *new(Ctx)
 }
 
 type Ctx struct {
@@ -85,65 +69,23 @@ type Ctx struct {
 	Config
 }
 
-func (c Ctx) Environ() []string {
-	defaults := map[string]string{
-		"E2E_CERBOS_IMG_REPO": c.CerbosImgRepo,
-		"E2E_CERBOS_IMG_TAG":  c.CerbosImgTag,
-		"E2E_CONTEXT_ID":      c.ContextID,
-		"E2E_NO_CLEANUP":      strconv.FormatBool(c.NoCleanup),
-		"E2E_NS":              c.Namespace(),
-		"E2E_RUN_ID":          c.RunID,
-		"E2E_SRC_ROOT":        c.SourceRoot,
-	}
+func (c Ctx) Environ() []string { _ = "STUB: not implemented"; return nil }
 
-	if c.ComputedEnv != nil {
-		maps.Copy(defaults, c.ComputedEnv)
-	}
+//nolint:prealloc
 
-	var e2eVars []string //nolint:prealloc
-	for k, v := range defaults {
-		// Remove conflicts. Env vars that already exist take precedence over our defaults.
-		if _, ok := os.LookupEnv(k); ok {
-			continue
-		}
-		e2eVars = append(e2eVars, fmt.Sprintf("%s=%s", k, v))
-	}
+// Remove conflicts. Env vars that already exist take precedence over our defaults.
 
-	env := os.Environ()
-	newEnv := make([]string, len(env)+len(e2eVars))
-	copy(newEnv, env)
-	copy(newEnv[len(env):], e2eVars)
+func (c Ctx) CerbosHost() string { _ = "STUB: not implemented"; return "" }
 
-	return newEnv
-}
+func (c Ctx) Namespace() string { _ = "STUB: not implemented"; return "" }
 
-func (c Ctx) CerbosHost() string {
-	if hostname, ok := c.ComputedEnv[cerbosHostNameEnvVar]; ok {
-		return hostname
-	}
-	return fmt.Sprintf("cerbos-%s.%s.svc.cluster.local", c.ContextID, c.Namespace())
-}
+func (c Ctx) GRPCAddr() string { _ = "STUB: not implemented"; return "" }
 
-func (c Ctx) Namespace() string {
-	return fmt.Sprintf("e2e-%s", c.RunID)
-}
+func (c Ctx) HTTPAddr() string { _ = "STUB: not implemented"; return "" }
 
-func (c Ctx) GRPCAddr() string {
-	return fmt.Sprintf("%s:%d", c.CerbosHost(), GRPCPort)
-}
-
-func (c Ctx) HTTPAddr() string {
-	protocol := "https"
-	if c.NoTLS {
-		protocol = "http"
-	}
-	return fmt.Sprintf("%s://%s:%d", protocol, c.CerbosHost(), HTTPPort)
-}
-
-func (c Ctx) HealthURL() string {
-	return fmt.Sprintf("%s%s", c.HTTPAddr(), HealthEndpoint)
-}
+func (c Ctx) HealthURL() string { _ = "STUB: not implemented"; return "" }
 
 func (c Ctx) CommandTimeoutCtx() (context.Context, context.CancelFunc) {
-	return context.WithTimeout(context.Background(), c.CommandTimeout)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(context.CancelFunc)
 }

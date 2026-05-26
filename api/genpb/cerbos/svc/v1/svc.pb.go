@@ -14,8 +14,6 @@ import (
 	v11 "github.com/cerbos/cerbos/api/genpb/cerbos/response/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	unsafe "unsafe"
 )
 
 const (
@@ -198,25 +196,5 @@ var file_cerbos_svc_v1_svc_proto_depIdxs = []int32{
 	0,  // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_svc_v1_svc_proto_init() }
-func file_cerbos_svc_v1_svc_proto_init() {
-	if File_cerbos_svc_v1_svc_proto != nil {
-		return
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_svc_v1_svc_proto_rawDesc), len(file_cerbos_svc_v1_svc_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   0,
-			NumExtensions: 0,
-			NumServices:   3,
-		},
-		GoTypes:           file_cerbos_svc_v1_svc_proto_goTypes,
-		DependencyIndexes: file_cerbos_svc_v1_svc_proto_depIdxs,
-	}.Build()
-	File_cerbos_svc_v1_svc_proto = out.File
-	file_cerbos_svc_v1_svc_proto_goTypes = nil
-	file_cerbos_svc_v1_svc_proto_depIdxs = nil
-}
+func init()                              { file_cerbos_svc_v1_svc_proto_init() }
+func file_cerbos_svc_v1_svc_proto_init() { _ = "STUB: not implemented"; return }

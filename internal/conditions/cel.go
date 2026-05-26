@@ -5,7 +5,6 @@ package conditions
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/google/cel-go/cel"
 	"github.com/google/cel-go/common/decls"
@@ -93,68 +92,27 @@ func init() {
 }
 
 func compileConstant(value string) (*exprpb.CheckedExpr, error) {
-	ast, iss := StdEnv.Compile(value)
-	if iss.Err() != nil {
-		return nil, fmt.Errorf("failed to compile constant %q: %w", value, iss.Err())
-	}
-
-	expr, err := cel.AstToCheckedExpr(ast)
-	if err != nil {
-		return nil, fmt.Errorf("failed to convert constant %q to checked expression: %w", value, err)
-	}
-
-	return expr, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func Fqn(s string) string {
-	return fmt.Sprintf("%s.%s", CELRequestIdent, s)
-}
+func Fqn(s string) string { _ = "STUB: not implemented"; return "" }
 
-func ResourceFqn(s string) string {
-	return fmt.Sprintf("%s.%s.%s", CELRequestIdent, CELResourceField, s)
-}
+func ResourceFqn(s string) string { _ = "STUB: not implemented"; return "" }
 
-func ResourceAttributeNames(s string) []string {
-	return []string{
-		fmt.Sprintf("%s.%s.%s", CELResourceAbbrev, CELAttrField, s),     // R.attr.<s>
-		fmt.Sprintf("%s.%s.%s", Fqn(CELResourceField), CELAttrField, s), // request.resource.attr.<s>
-	}
-}
+func ResourceAttributeNames(s string) []string { _ = "STUB: not implemented"; return nil }
 
-func ResourceFieldNames(s string) []string {
-	return []string{
-		fmt.Sprintf("%s.%s", CELResourceAbbrev, s),     // R.<s>
-		fmt.Sprintf("%s.%s", Fqn(CELResourceField), s), // request.resource.<s>
-	}
-}
+// R.attr.<s>
+// request.resource.attr.<s>
 
-func PrincipalFieldNames(s string) []string {
-	return []string{
-		fmt.Sprintf("%s.%s", CELPrincipalAbbrev, s),     // P.<s>
-		fmt.Sprintf("%s.%s", Fqn(CELPrincipalField), s), // request.principal.<s>
-	}
-}
+func ResourceFieldNames(s string) []string { _ = "STUB: not implemented"; return nil }
 
-func ExpandAbbrev(s string) string {
-	prefix, rest, ok := strings.Cut(s, ".")
+// R.<s>
+// request.resource.<s>
 
-	expanded := prefix
-	switch prefix {
-	case CELPrincipalAbbrev:
-		expanded = Fqn(CELPrincipalField)
-	case CELResourceAbbrev:
-		expanded = Fqn(CELResourceField)
-	case CELConstantsAbbrev:
-		expanded = CELConstantsIdent
-	case CELVariablesAbbrev:
-		expanded = CELVariablesIdent
-	case CELGlobalsAbbrev:
-		expanded = CELGlobalsIdent
-	}
+func PrincipalFieldNames(s string) []string { _ = "STUB: not implemented"; return nil }
 
-	if ok {
-		return fmt.Sprintf("%s.%s", expanded, rest)
-	}
+// P.<s>
+// request.principal.<s>
 
-	return expanded
-}
+func ExpandAbbrev(s string) string { _ = "STUB: not implemented"; return "" }

@@ -5,6 +5,4 @@
 
 package tracer
 
-func Start(sink Sink) Context {
-	return noopContext{}
-}
+func Start(sink Sink) Context { _ = "STUB: not implemented"; return *new(Context) }

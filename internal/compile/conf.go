@@ -7,8 +7,6 @@ package compile
 
 import (
 	"time"
-
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const confKey = "compile"
@@ -21,20 +19,8 @@ type Conf struct {
 	CacheDuration time.Duration `yaml:"cacheDuration" conf:",ignore"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (c *Conf) Validate() error {
-	if c.CacheSize != 0 {
-		util.DeprecationWarning("compile.cacheSize")
-	}
-
-	if c.CacheDuration != 0 {
-		util.DeprecationWarning("compile.cacheDuration")
-	}
-
-	return nil
-}
+func (c *Conf) Validate() error { _ = "STUB: not implemented"; return nil }

@@ -4,8 +4,6 @@
 package flagset
 
 import (
-	"fmt"
-
 	"github.com/cerbos/cerbos/internal/policy"
 )
 
@@ -13,26 +11,9 @@ type Sort struct {
 	SortBy SortBy `help:"Sort policies by column" default:""`
 }
 
-func (s Sort) Validate(kind policy.Kind, listing bool) error {
-	if !listing && s.SortBy != SortByNone {
-		return fmt.Errorf("--sort-by flag is only available when listing")
-	}
+func (s Sort) Validate(kind policy.Kind, listing bool) error { _ = "STUB: not implemented"; return nil }
 
-	if listing && s.SortBy == SortByVersion {
-		switch kind { //nolint:exhaustive
-		case policy.DerivedRolesKind:
-			return fmt.Errorf("value of --sort-by flag cannot be %q when listing derived roles", SortByVersion)
-
-		case policy.ExportConstantsKind:
-			return fmt.Errorf("value of --sort-by flag cannot be %q when listing exported constants", SortByVersion)
-
-		case policy.ExportVariablesKind:
-			return fmt.Errorf("value of --sort-by flag cannot be %q when listing exported variables", SortByVersion)
-		}
-	}
-
-	return nil
-}
+//nolint:exhaustive
 
 type SortBy string
 

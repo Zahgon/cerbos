@@ -4,11 +4,10 @@
 package statev1
 
 import (
-	protowire "google.golang.org/protobuf/encoding/protowire"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	hash "hash"
 	sync "sync"
-	unsafe "unsafe"
+
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 var hashpb_bufPool = sync.Pool{
@@ -36,22 +35,11 @@ var hashpb_uint64KeyPool = sync.Pool{
 }
 
 func cerbos_state_v1_TelemetryState_hashpb_sum(m *TelemetryState, hasher hash.Hash, ignore map[string]struct{}, b *[10]byte) {
-	if _, ok := ignore["cerbos.state.v1.TelemetryState.uuid"]; !ok {
-		_, _ = hasher.Write(protowire.AppendVarint(b[:0], uint64(len(m.GetUuid()))))
-		_, _ = hasher.Write(unsafe.Slice(unsafe.StringData(m.GetUuid()), len(m.GetUuid())))
-	}
-	if _, ok := ignore["cerbos.state.v1.TelemetryState.last_timestamp"]; !ok {
-		if m.GetLastTimestamp() != nil {
-			google_protobuf_Timestamp_hashpb_sum(m.GetLastTimestamp(), hasher, ignore, b)
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func google_protobuf_Timestamp_hashpb_sum(m *timestamppb.Timestamp, hasher hash.Hash, ignore map[string]struct{}, b *[10]byte) {
-	if _, ok := ignore["google.protobuf.Timestamp.seconds"]; !ok {
-		_, _ = hasher.Write(protowire.AppendVarint(b[:0], uint64(m.GetSeconds())))
-	}
-	if _, ok := ignore["google.protobuf.Timestamp.nanos"]; !ok {
-		_, _ = hasher.Write(protowire.AppendVarint(b[:0], uint64(m.GetNanos())))
-	}
+	_ = "STUB: not implemented"
+	return
 }

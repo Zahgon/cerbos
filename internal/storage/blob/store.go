@@ -7,35 +7,23 @@ package blob
 
 import (
 	"context"
-	"encoding/base64"
 	"errors"
 	"fmt"
 	"io"
-	"io/fs"
 	"net/url"
 	"os"
 	"path/filepath"
-	"time"
 
-	awshttp "github.com/aws/aws-sdk-go-v2/aws/transport/http"
-	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"go.uber.org/zap"
-	gcaws "gocloud.dev/aws"
 	"gocloud.dev/blob"
-	"gocloud.dev/blob/gcsblob"
-	"gocloud.dev/blob/s3blob"
-	"gocloud.dev/gcp"
-	"google.golang.org/protobuf/types/known/structpb"
 
 	auditv1 "github.com/cerbos/cerbos/api/genpb/cerbos/audit/v1"
 	responsev1 "github.com/cerbos/cerbos/api/genpb/cerbos/response/v1"
 	"github.com/cerbos/cerbos/internal/config"
 	"github.com/cerbos/cerbos/internal/namer"
-	"github.com/cerbos/cerbos/internal/observability/metrics"
 	"github.com/cerbos/cerbos/internal/policy"
 	"github.com/cerbos/cerbos/internal/storage"
 	"github.com/cerbos/cerbos/internal/storage/index"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -97,71 +85,25 @@ func init() {
 }
 
 func newBucket(ctx context.Context, conf *Conf) (*blob.Bucket, string, error) {
-	u, err := url.Parse(conf.Bucket)
-	if err != nil {
-		return nil, "", fmt.Errorf("failed to parse bucket URL %q: %w", conf.Bucket, err)
-	}
-	var bucket *blob.Bucket
-	switch u.Scheme {
-	case "s3":
-		bucket, err = openS3Bucket(ctx, conf, u)
-	case "gs":
-		bucket, err = openGSBucket(ctx, conf, u)
-	default:
-		err = ErrUnsupportedBucketScheme
-	}
-	if err != nil {
-		return nil, "", err
-	}
-
-	if conf.Prefix != "" {
-		bucket = blob.PrefixedBucket(bucket, conf.Prefix)
-	}
-
-	return bucket, u.Redacted(), nil
+	_ = "STUB: not implemented"
+	return nil, "", nil
 }
 
 func openGSBucket(ctx context.Context, conf *Conf, bucketURL *url.URL) (*blob.Bucket, error) {
-	creds, err := gcp.DefaultCredentials(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("could not get default GCP credentials: %w", err)
-	}
-	client, err := gcp.NewHTTPClient(gcp.DefaultTransport(), creds.TokenSource)
-	if err != nil {
-		return nil, fmt.Errorf("could not create gcp HTTP client: %w", err)
-	}
-	client.Timeout = *conf.RequestTimeout
-	opener := gcsblob.URLOpener{Client: client}
-	// The following query parameters are supported:
-	//
-	//   - access_id: sets Options.GoogleAccessID
-	//   - private_key_path: path to read for Options.PrivateKey
-	//
-	// Currently their use is limited to SignedURL.
-	return opener.OpenBucketURL(ctx, bucketURL)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// The following query parameters are supported:
+//
+//   - access_id: sets Options.GoogleAccessID
+//   - private_key_path: path to read for Options.PrivateKey
+//
+// Currently their use is limited to SignedURL.
+
 func openS3Bucket(ctx context.Context, conf *Conf, bucketURL *url.URL) (*blob.Bucket, error) {
-	var opts []func(*s3.Options)
-	q := bucketURL.Query()
-	if q.Has("use_path_style") {
-		q.Del("use_path_style")
-		opts = append(opts, func(o *s3.Options) { o.UsePathStyle = true })
-	}
-
-	if q.Has("disable_https") {
-		q.Del("disable_https")
-		opts = append(opts, func(o *s3.Options) { o.EndpointOptions.DisableHTTPS = true })
-	}
-
-	cfg, err := gcaws.V2ConfigFromURLParams(ctx, q)
-	if err != nil {
-		return nil, fmt.Errorf("failed to load AWS config: %w", err)
-	}
-
-	cfg.HTTPClient = awshttp.NewBuildableClient().WithTimeout(*conf.RequestTimeout)
-	s3Client := s3.NewFromConfig(cfg, opts...)
-	return s3blob.OpenBucket(ctx, s3Client, bucketURL.Host, nil)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type bucketCloner interface {
@@ -176,7 +118,8 @@ type symlinker interface {
 type symlinkerFunc func(destination, source string) error
 
 func (s symlinkerFunc) Symlink(destination, source string) error {
-	return s(destination, source)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type Store struct {
@@ -192,31 +135,11 @@ type Store struct {
 	workDir     string
 }
 
-func (s *Store) Subscribe(sub storage.Subscriber) {
-	s.SubscriptionManager.Subscribe(sub)
-}
+func (s *Store) Subscribe(sub storage.Subscriber) { _ = "STUB: not implemented"; return }
 
 func NewStore(ctx context.Context, conf *Conf, workFS FS, cloner bucketCloner, symlink symlinker, source *auditv1.PolicySource) (*Store, error) {
-	s := &Store{
-		log: zap.S().Named(DriverName).With(
-			"bucket", conf.Bucket,
-			"workDir", conf.WorkDir,
-		),
-		conf:                conf,
-		workDir:             conf.WorkDir,
-		workFS:              workFS,
-		cloner:              cloner,
-		symlink:             symlink,
-		SubscriptionManager: storage.NewSubscriptionManager(ctx),
-		source:              source,
-	}
-
-	if err := s.init(ctx); err != nil {
-		s.log.Errorw("Failed to initialize blob store", "error", err)
-		return nil, err
-	}
-
-	return s, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) init(ctx context.Context) error {
@@ -242,193 +165,41 @@ func (s *Store) init(ctx context.Context) error {
 	return nil
 }
 
-func (s *Store) updateIndex(ctx context.Context) (err error) {
-	s.log.Debug("Checking for updates")
-	cr, err := s.clone(ctx)
-	if err != nil {
-		return fmt.Errorf("failed to clone blob store: %w", err)
-	}
+func (s *Store) updateIndex(ctx context.Context) (err error) { _ = "STUB: not implemented"; return nil }
 
-	if cr.isEmpty() {
-		s.log.Debug("No changes")
-		return nil
-	}
+// to prevent duplicating shared dependents across multiple events, we create a single stub event
+// which carries all dependents not already included in this batch of events
 
-	s.log.Infof("Detected changes: added or updated (%d), deleted (%d)", len(cr.addedOrUpdated), len(cr.deleted))
-
-	evts := make([]storage.Event, 0, len(cr.addedOrUpdated)+len(cr.deleted)+1)
-	modIDs := make([]namer.ModuleID, len(cr.addedOrUpdated)+len(cr.deleted))
-	processedModIDs := make(map[namer.ModuleID]struct{}, len(cr.addedOrUpdated)+len(cr.deleted))
-	for i, inf := range cr.deleted {
-		e, err := s.deleteEvent(inf.file)
-		if err != nil {
-			return fmt.Errorf("failed to create delete event: %w", err)
-		}
-		evts = append(evts, e)
-		modIDs[i] = e.PolicyID
-		processedModIDs[e.PolicyID] = struct{}{}
-	}
-
-	dir, dirName, ts, err := s.prepareWorkDir(ctx, cr.all)
-	if err != nil {
-		return fmt.Errorf("failed to prepare temp directory from the new set of files: %w", err)
-	}
-
-	for i, inf := range cr.addedOrUpdated {
-		e, err := s.addOrUpdateEvent(inf.etag, inf.file, dirName, ts)
-		if err != nil {
-			return fmt.Errorf("failed to create add or update event: %w", err)
-		}
-		evts = append(evts, e)
-		modIDs[i] = e.PolicyID
-		processedModIDs[e.PolicyID] = struct{}{}
-	}
-
-	depsMap, err := s.idx.GetDependents(modIDs...)
-	if err != nil {
-		return fmt.Errorf("failed to get dependents: %w", err)
-	}
-
-	// to prevent duplicating shared dependents across multiple events, we create a single stub event
-	// which carries all dependents not already included in this batch of events
-	depEvent := storage.Event{Kind: storage.EventAddOrUpdatePolicy}
-	for _, deps := range depsMap {
-		for _, d := range deps {
-			if _, ok := processedModIDs[d]; !ok {
-				depEvent.Dependents = append(depEvent.Dependents, d)
-				processedModIDs[d] = struct{}{}
-			}
-		}
-	}
-
-	if len(depEvent.Dependents) > 0 {
-		evts = append(evts, depEvent)
-	}
-
-	// we need to emit all events regardless of validity as some subscribers (such as the rule table)
-	// need to be kept in sync.
-	defer func() {
-		s.NotifySubscribers(evts...)
-	}()
-
-	idx, err := s.buildIndexFromWorkDir(ctx, dir, dirName, ts)
-	if err != nil {
-		return fmt.Errorf("failed to build index in new work directory: %w", err)
-	}
-
-	oldDirName := s.currDirName
-	s.currDirName = dirName
-	s.idx = idx
-
-	s.log.Info("Index updated")
-
-	if err := s.cloner.Clean(); err != nil {
-		s.log.Warnw("Failed to clean up the cache", "error", err)
-	}
-
-	if err := s.workFS.RemoveAll(oldDirName); err != nil && !errors.Is(err, fs.ErrNotExist) {
-		s.log.Warnw(fmt.Sprintf("Failed to remove old work directory %s", oldDirName), "error", err)
-	}
-
-	return nil
-}
+// we need to emit all events regardless of validity as some subscribers (such as the rule table)
+// need to be kept in sync.
 
 func (s *Store) addOrUpdateEvent(etag, file, currDirName string, ts int64) (storage.Event, error) {
-	if schemaFile, ok := util.RelativeSchemaPath(file); ok {
-		return storage.NewSchemaEvent(storage.EventAddOrUpdateSchema, schemaFile), nil
-	}
-
-	p, err := policy.ReadPolicyFromFile(newBlobFS(filepath.Join(s.workDir, currDirName)), file)
-	if err != nil {
-		return storage.Event{}, fmt.Errorf("failed to read policy from file %s: %w", file, err)
-	}
-	wp := policy.Wrap(policy.WithSourceAttributes(p, driverSourceAttr, etagSourceAttr(etag), indexBuildTSSourceAttr(ts)))
-
-	evt := storage.NewPolicyEvent(storage.EventAddOrUpdatePolicy, wp.ID)
-
-	return evt, nil
+	_ = "STUB: not implemented"
+	return *new(storage.Event), nil
 }
 
 func (s *Store) deleteEvent(file string) (storage.Event, error) {
-	if schemaFile, ok := util.RelativeSchemaPath(file); ok {
-		return storage.NewSchemaEvent(storage.EventDeleteSchema, schemaFile), nil
-	}
-
-	p, err := policy.ReadPolicyFromFile(newBlobFS(filepath.Join(s.workDir, s.currDirName)), file)
-	if err != nil {
-		return storage.Event{}, fmt.Errorf("failed to read policy from file %s: %w", file, err)
-	}
-
-	modID := namer.GenModuleID(p)
-	evt := storage.NewPolicyEvent(storage.EventDeleteOrDisablePolicy, modID)
-
-	return evt, nil
+	_ = "STUB: not implemented"
+	return *new(storage.Event), nil
 }
 
 func (s *Store) clone(ctx context.Context) (*CloneResult, error) {
-	ctx, cancelFunc := s.conf.getCloneCtx(ctx)
-	defer cancelFunc()
-
-	return s.cloner.Clone(ctx)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (s *Store) pollForUpdates(ctx context.Context) {
-	if s.conf.UpdatePollInterval <= 0 {
-		s.log.Info("Polling disabled: new updates will not be pulled automatically")
-		return
-	}
-
-	s.log.Infof("Polling for updates every %s", s.conf.UpdatePollInterval)
-
-	ticker := time.NewTicker(s.conf.UpdatePollInterval)
-	defer ticker.Stop()
-
-	for {
-		select {
-		case <-ctx.Done():
-			s.log.Info("Stopped polling for updates")
-			return
-		case <-ticker.C:
-			if err := s.updateIndex(ctx); err != nil {
-				if errors.Is(err, &indexBuildError{}) {
-					s.log.Warnw("Remote store is in an invalid state", "error", err)
-					s.log.Warnf("Remote store is in an invalid state. Using the last good state from %s", s.workDir)
-				} else {
-					s.log.Warnw("Failed to check for updates", "error", err)
-				}
-			}
-		}
-	}
-}
+func (s *Store) pollForUpdates(ctx context.Context) { _ = "STUB: not implemented"; return }
 
 func (s *Store) createSymlink(tmpDir, destination, source string) error {
-	src := filepath.Join(tmpDir, source)
-	if err := s.workFS.Remove(src); err != nil && !errors.Is(err, fs.ErrNotExist) {
-		return fmt.Errorf("failed to delete left-over symlink at %s: %w", src, err)
-	}
-
-	// If there are subdirectories in the blob storage we need to create them in the source directory before creation
-	// of the symlink
-	if err := s.workFS.MkdirAll(filepath.Dir(src), perm775); err != nil {
-		return fmt.Errorf("failed to create directory %s: %w", src, err)
-	}
-
-	if err := s.symlink.Symlink(destination, src); err != nil {
-		return fmt.Errorf("failed to create symlink to destination %s from source %s: %w", destination, src, err)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (s *Store) createSymlinks(all map[string][]string, tmpDir string) error {
-	for etag, files := range all {
-		for _, file := range files {
-			if err := s.createSymlink(tmpDir, etag, file); err != nil {
-				return fmt.Errorf("failed to create symbolic link for %s: %w", file, err)
-			}
-		}
-	}
+// If there are subdirectories in the blob storage we need to create them in the source directory before creation
+// of the symlink
 
+func (s *Store) createSymlinks(all map[string][]string, tmpDir string) error {
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -438,161 +209,95 @@ type indexBuildError struct {
 	dir string
 }
 
-func (e *indexBuildError) Error() string {
-	return fmt.Sprintf("failed to build index at temporary work directory at %s: %v", e.dir, e.err)
-}
+func (e *indexBuildError) Error() string { _ = "STUB: not implemented"; return "" }
 
 // buildIndex creates a new work directory with its name set to current timestamp, creates symlinks targeted to
 // s.cacheDir according to the given map 'all' and tries to build a temporary index to see if there are any errors
 // with the incoming policies/schemas. If there are no errors returns the index built and the path to the new work directory.
 func (s *Store) buildIndex(ctx context.Context, all map[string][]string) (index.Index, string, error) {
-	dir, dirName, ts, err := s.prepareWorkDir(ctx, all)
-	if err != nil {
-		return nil, "", err
-	}
-
-	idx, err := s.buildIndexFromWorkDir(ctx, dir, dirName, ts)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return idx, dirName, nil
+	_ = "STUB: not implemented"
+	return *new(index.Index), "", nil
 }
 
 func (s *Store) prepareWorkDir(ctx context.Context, all map[string][]string) (dir, currDirName string, ts int64, err error) {
-	ts = time.Now().UnixMilli()
-	defer func() {
-		metrics.Inc(ctx, metrics.StorePollCount(), metrics.DriverKey(DriverName))
-		if err != nil {
-			metrics.Inc(ctx, metrics.StoreSyncErrorCount(), metrics.DriverKey(DriverName))
-		}
-	}()
-
-	dir, err = os.MkdirTemp(s.workDir, fmt.Sprintf("cerbos-%s-%d-*", DriverName, ts))
-	if err != nil {
-		return "", "", 0, fmt.Errorf("failed to create new temporary storage directory: %w", err)
-	}
-
-	if currDirName, err = filepath.Rel(s.workDir, dir); err != nil {
-		return "", "", 0, fmt.Errorf("failed to determine relative path of directory %s: %w", dir, err)
-	}
-
-	if err := s.createSymlinks(all, currDirName); err != nil {
-		return "", "", ts, fmt.Errorf("failed to create symbolic links for the new work directory: %w", err)
-	}
-
-	return dir, currDirName, ts, nil
+	_ = "STUB: not implemented"
+	return "", "", 0, nil
 }
 
 func (s *Store) buildIndexFromWorkDir(ctx context.Context, dir, currDirName string, ts int64) (idx index.Index, err error) {
-	s.log.Debugw("Building index", "dir", dir)
-	if idx, err = index.Build(ctx, newBlobFS(dir), index.WithRootDir("."), index.WithSourceAttributes(driverSourceAttr)); err != nil {
-		metrics.Inc(ctx, metrics.StoreSyncErrorCount(), metrics.DriverKey(DriverName))
-
-		if rerr := s.workFS.RemoveAll(currDirName); rerr != nil && !errors.Is(rerr, fs.ErrNotExist) {
-			return nil, errors.Join(err, fmt.Errorf("failed to remove directory %s: %w", dir, rerr))
-		}
-
-		return nil, &indexBuildError{dir: dir, err: err}
-	}
-
-	metrics.Record(ctx, metrics.StoreLastSuccessfulRefresh(), ts, metrics.DriverKey(DriverName))
-
-	return idx, nil
+	_ = "STUB: not implemented"
+	return *new(index.Index), nil
 }
 
-func (s *Store) Driver() string {
-	return DriverName
-}
+func (s *Store) Driver() string { _ = "STUB: not implemented"; return "" }
 
 func (s *Store) GetFirstMatch(_ context.Context, candidates []namer.ModuleID) (*policy.CompilationUnit, error) {
-	return s.idx.GetFirstMatch(candidates)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) GetAll(ctx context.Context) ([]*policy.CompilationUnit, error) {
-	return s.idx.GetAll(ctx)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) GetAllMatching(_ context.Context, modIDs []namer.ModuleID) ([]*policy.CompilationUnit, error) {
-	return s.idx.GetAllMatching(modIDs)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) GetCompilationUnits(_ context.Context, ids ...namer.ModuleID) (map[namer.ModuleID]*policy.CompilationUnit, error) {
-	return s.idx.GetCompilationUnits(ids...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) GetDependents(_ context.Context, ids ...namer.ModuleID) (map[namer.ModuleID][]namer.ModuleID, error) {
-	return s.idx.GetDependents(ids...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) InspectPolicies(ctx context.Context, params storage.ListPolicyIDsParams) (map[string]*responsev1.InspectPoliciesResponse_Result, error) {
-	return s.idx.InspectPolicies(ctx, params.IDs...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) ListPolicyIDs(ctx context.Context, params storage.ListPolicyIDsParams) ([]string, error) {
-	return s.idx.ListPolicyIDs(ctx, params.IDs...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) ListSchemaIDs(ctx context.Context) ([]string, error) {
-	return s.idx.ListSchemaIDs(ctx)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) LoadSchema(ctx context.Context, url string) (io.ReadCloser, error) {
-	return s.idx.LoadSchema(ctx, url)
+	_ = "STUB: not implemented"
+	return *new(io.ReadCloser), nil
 }
 
 func (s *Store) LoadPolicy(ctx context.Context, file ...string) ([]*policy.Wrapper, error) {
-	return s.idx.LoadPolicy(ctx, file...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Store) RepoStats(ctx context.Context) storage.RepoStats {
-	return s.idx.RepoStats(ctx)
+	_ = "STUB: not implemented"
+	return *new(storage.RepoStats)
 }
 
-func (s *Store) Reload(ctx context.Context) error {
-	cr, err := s.clone(ctx)
-	if err != nil {
-		return fmt.Errorf("failed to clone blob store: %w", err)
-	}
+func (s *Store) Reload(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-	idx, dirName, err := s.buildIndex(ctx, cr.all)
-	if err != nil {
-		if errors.Is(err, &indexBuildError{}) {
-			s.log.Warnw("Remote store is in an invalid state", "error", err)
-			s.log.Warnf("Remote store is in an invalid state. Using the last good state from %s", s.workDir)
-		}
+func (s *Store) Source() *auditv1.PolicySource { _ = "STUB: not implemented"; return nil }
 
-		return fmt.Errorf("failed to reload state from remote store: %w", err)
-	}
-
-	oldDirName := s.currDirName
-	s.currDirName = dirName
-	s.idx = idx
-	s.NotifySubscribers(storage.NewReloadEvent())
-
-	if err := s.cloner.Clean(); err != nil {
-		s.log.Warnw("Failed to clean up the cache", "error", err)
-	}
-
-	if err := s.workFS.RemoveAll(oldDirName); err != nil && !errors.Is(err, fs.ErrNotExist) {
-		s.log.Warnw(fmt.Sprintf("Failed to remove old work directory %s", oldDirName), "error", err)
-	}
-
-	return nil
-}
-
-func (s *Store) Source() *auditv1.PolicySource {
-	return s.source
-}
-
-func cacheDir(bucketURL, workDir string) string {
-	return filepath.Join(workDir, dotcache, base64.URLEncoding.EncodeToString([]byte(bucketURL)))
-}
+func cacheDir(bucketURL, workDir string) string { _ = "STUB: not implemented"; return "" }
 
 func indexBuildTSSourceAttr(ts int64) policy.SourceAttribute {
-	return policy.SourceAttribute{Key: "index_build_ts", Value: structpb.NewNumberValue(float64(ts))}
+	_ = "STUB: not implemented"
+	return *new(policy.SourceAttribute)
 }
 
 func etagSourceAttr(etag string) policy.SourceAttribute {
-	return policy.SourceAttribute{Key: "etag", Value: structpb.NewStringValue(etag)}
+	_ = "STUB: not implemented"
+	return *new(policy.SourceAttribute)
 }

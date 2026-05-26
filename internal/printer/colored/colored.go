@@ -4,8 +4,6 @@
 package colored
 
 import (
-	"fmt"
-
 	"github.com/fatih/color"
 
 	sourcev1 "github.com/cerbos/cerbos/api/genpb/cerbos/source/v1"
@@ -45,9 +43,6 @@ var (
 )
 
 func Position(file string, position *sourcev1.Position) string {
-	if position == nil {
-		return FileName(file)
-	}
-
-	return fmt.Sprintf("%s:%s:%s", FileName(file), LineAndCol(position.GetLine()), LineAndCol(position.GetColumn()))
+	_ = "STUB: not implemented"
+	return ""
 }

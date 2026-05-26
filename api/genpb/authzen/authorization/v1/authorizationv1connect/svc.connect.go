@@ -8,12 +8,11 @@
 package authorizationv1connect
 
 import (
-	connect "connectrpc.com/connect"
 	context "context"
-	errors "errors"
-	v1 "github.com/cerbos/cerbos/api/genpb/authzen/authorization/v1"
 	http "net/http"
-	strings "strings"
+
+	connect "connectrpc.com/connect"
+	v1 "github.com/cerbos/cerbos/api/genpb/authzen/authorization/v1"
 )
 
 // This is a compile-time assertion to ensure that this generated file and the connect package are
@@ -67,28 +66,8 @@ type AuthorizationServiceClient interface {
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
 func NewAuthorizationServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) AuthorizationServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	authorizationServiceMethods := v1.File_authzen_authorization_v1_svc_proto.Services().ByName("AuthorizationService").Methods()
-	return &authorizationServiceClient{
-		metadata: connect.NewClient[v1.MetadataRequest, v1.MetadataResponse](
-			httpClient,
-			baseURL+AuthorizationServiceMetadataProcedure,
-			connect.WithSchema(authorizationServiceMethods.ByName("Metadata")),
-			connect.WithClientOptions(opts...),
-		),
-		accessEvaluation: connect.NewClient[v1.AccessEvaluationRequest, v1.AccessEvaluationResponse](
-			httpClient,
-			baseURL+AuthorizationServiceAccessEvaluationProcedure,
-			connect.WithSchema(authorizationServiceMethods.ByName("AccessEvaluation")),
-			connect.WithClientOptions(opts...),
-		),
-		accessEvaluationBatch: connect.NewClient[v1.AccessEvaluationBatchRequest, v1.AccessEvaluationBatchResponse](
-			httpClient,
-			baseURL+AuthorizationServiceAccessEvaluationBatchProcedure,
-			connect.WithSchema(authorizationServiceMethods.ByName("AccessEvaluationBatch")),
-			connect.WithClientOptions(opts...),
-		),
-	}
+	_ = "STUB: not implemented"
+	return *new(AuthorizationServiceClient)
 }
 
 // authorizationServiceClient implements AuthorizationServiceClient.
@@ -100,17 +79,20 @@ type authorizationServiceClient struct {
 
 // Metadata calls authzen.authorization.v1.AuthorizationService.Metadata.
 func (c *authorizationServiceClient) Metadata(ctx context.Context, req *connect.Request[v1.MetadataRequest]) (*connect.Response[v1.MetadataResponse], error) {
-	return c.metadata.CallUnary(ctx, req)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AccessEvaluation calls authzen.authorization.v1.AuthorizationService.AccessEvaluation.
 func (c *authorizationServiceClient) AccessEvaluation(ctx context.Context, req *connect.Request[v1.AccessEvaluationRequest]) (*connect.Response[v1.AccessEvaluationResponse], error) {
-	return c.accessEvaluation.CallUnary(ctx, req)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AccessEvaluationBatch calls authzen.authorization.v1.AuthorizationService.AccessEvaluationBatch.
 func (c *authorizationServiceClient) AccessEvaluationBatch(ctx context.Context, req *connect.Request[v1.AccessEvaluationBatchRequest]) (*connect.Response[v1.AccessEvaluationBatchResponse], error) {
-	return c.accessEvaluationBatch.CallUnary(ctx, req)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AuthorizationServiceHandler is an implementation of the
@@ -130,50 +112,24 @@ type AuthorizationServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewAuthorizationServiceHandler(svc AuthorizationServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	authorizationServiceMethods := v1.File_authzen_authorization_v1_svc_proto.Services().ByName("AuthorizationService").Methods()
-	authorizationServiceMetadataHandler := connect.NewUnaryHandler(
-		AuthorizationServiceMetadataProcedure,
-		svc.Metadata,
-		connect.WithSchema(authorizationServiceMethods.ByName("Metadata")),
-		connect.WithHandlerOptions(opts...),
-	)
-	authorizationServiceAccessEvaluationHandler := connect.NewUnaryHandler(
-		AuthorizationServiceAccessEvaluationProcedure,
-		svc.AccessEvaluation,
-		connect.WithSchema(authorizationServiceMethods.ByName("AccessEvaluation")),
-		connect.WithHandlerOptions(opts...),
-	)
-	authorizationServiceAccessEvaluationBatchHandler := connect.NewUnaryHandler(
-		AuthorizationServiceAccessEvaluationBatchProcedure,
-		svc.AccessEvaluationBatch,
-		connect.WithSchema(authorizationServiceMethods.ByName("AccessEvaluationBatch")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/authzen.authorization.v1.AuthorizationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case AuthorizationServiceMetadataProcedure:
-			authorizationServiceMetadataHandler.ServeHTTP(w, r)
-		case AuthorizationServiceAccessEvaluationProcedure:
-			authorizationServiceAccessEvaluationHandler.ServeHTTP(w, r)
-		case AuthorizationServiceAccessEvaluationBatchProcedure:
-			authorizationServiceAccessEvaluationBatchHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
+	_ = "STUB: not implemented"
+	return "", *new(http.Handler)
 }
 
 // UnimplementedAuthorizationServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAuthorizationServiceHandler struct{}
 
 func (UnimplementedAuthorizationServiceHandler) Metadata(context.Context, *connect.Request[v1.MetadataRequest]) (*connect.Response[v1.MetadataResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("authzen.authorization.v1.AuthorizationService.Metadata is not implemented"))
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (UnimplementedAuthorizationServiceHandler) AccessEvaluation(context.Context, *connect.Request[v1.AccessEvaluationRequest]) (*connect.Response[v1.AccessEvaluationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("authzen.authorization.v1.AuthorizationService.AccessEvaluation is not implemented"))
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (UnimplementedAuthorizationServiceHandler) AccessEvaluationBatch(context.Context, *connect.Request[v1.AccessEvaluationBatchRequest]) (*connect.Response[v1.AccessEvaluationBatchResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("authzen.authorization.v1.AuthorizationService.AccessEvaluationBatch is not implemented"))
+	_ = "STUB: not implemented"
+	return nil, nil
 }

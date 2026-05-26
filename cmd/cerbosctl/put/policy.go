@@ -4,16 +4,9 @@
 package put
 
 import (
-	"context"
-	"fmt"
-
 	"github.com/alecthomas/kong"
 
-	"github.com/cerbos/cerbos-sdk-go/cerbos"
 	cmdclient "github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
-	"github.com/cerbos/cerbos/cmd/cerbosctl/put/internal/errors"
-	"github.com/cerbos/cerbos/cmd/cerbosctl/put/internal/files"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const policyCmdHelp = `# Put policies
@@ -39,44 +32,8 @@ type PolicyCmd struct { //betteralign:ignore
 }
 
 func (pc *PolicyCmd) Run(k *kong.Kong, put *Cmd, ctx *cmdclient.Context) error {
-	if len(pc.Paths) == 0 {
-		return fmt.Errorf("no filename(s) provided")
-	}
-
-	policies := cerbos.NewPolicySet()
-	var errs []error
-	err := files.Find(pc.Paths, put.Recursive, util.FileTypePolicy, func(found files.Found) error {
-		f, err := found.Open()
-		if err != nil {
-			errs = append(errs, errors.NewPutError(found.Path(), err.Error()))
-		}
-
-		if _ = policies.AddPolicyFromReader(f); policies.Err() != nil {
-			errs = append(errs, errors.NewPutError(found.Path(), policies.Err().Error()))
-		}
-
-		return nil
-	})
-	if err != nil {
-		return err
-	}
-
-	err = ctx.AdminClient.AddOrUpdatePolicy(context.TODO(), policies)
-	if err != nil {
-		return fmt.Errorf("failed to add or update the policies: %w", err)
-	}
-
-	_, _ = fmt.Fprintf(k.Stdout, "Uploaded: %d\nIgnored: %d\n", policies.Size(), len(errs))
-	if len(errs) != 0 {
-		_, _ = fmt.Fprintln(k.Stdout, "Errors:")
-	}
-	for _, putErr := range errs {
-		_, _ = fmt.Fprintf(k.Stdout, "- %s\n", putErr.Error())
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (pc *PolicyCmd) Help() string {
-	return policyCmdHelp
-}
+func (pc *PolicyCmd) Help() string { _ = "STUB: not implemented"; return "" }

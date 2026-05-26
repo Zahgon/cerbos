@@ -3,8 +3,6 @@
 
 package flagset
 
-import "fmt"
-
 type OutputFormat string
 
 const (
@@ -15,13 +13,7 @@ const (
 
 type VerificationOutputFormat string
 
-func (v *VerificationOutputFormat) Validate() error {
-	if *v != "tree" && *v != "list" && *v != "json" && *v != "junit" {
-		return fmt.Errorf("valid options are tree, list, json or junit")
-	}
-
-	return nil
-}
+func (v *VerificationOutputFormat) Validate() error { _ = "STUB: not implemented"; return nil }
 
 const (
 	VerificationOutputFormatTree  VerificationOutputFormat = "tree"

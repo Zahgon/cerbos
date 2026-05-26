@@ -15,23 +15,10 @@ type testTime struct {
 
 type testTimes []testTime
 
-func (tts testTimes) Len() int {
-	return len(tts)
-}
+func (tts testTimes) Len() int { _ = "STUB: not implemented"; return 0 }
 
-func (tts testTimes) Less(i, j int) bool {
-	switch {
-	case tts[i].Time > tts[j].Time:
-		return true
-	case tts[i].Time < tts[j].Time:
-		return false
-	default:
-		return tts[i].Package < tts[j].Package
-	}
-}
+func (tts testTimes) Less(i, j int) bool { _ = "STUB: not implemented"; return false }
 
-func (tts testTimes) Swap(i, j int) {
-	tts[i], tts[j] = tts[j], tts[i]
-}
+func (tts testTimes) Swap(i, j int) { _ = "STUB: not implemented"; return }
 
 type testTimesByKind map[string]testTimes

@@ -10,5 +10,6 @@ import (
 )
 
 func NewCheckOptions(_ context.Context, conf *Conf, opts ...CheckOpt) *CheckOptions {
-	return newCheckOptions(nil, conf, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -4,7 +4,6 @@
 package conditions
 
 import (
-	"fmt"
 	"regexp"
 )
 
@@ -21,14 +20,4 @@ var (
 	identifierPattern = regexp.MustCompile(`^[_a-zA-Z][_a-zA-Z0-9]*$`)
 )
 
-func ValidateIdentifier(identifier string) error {
-	if _, ok := keywords[identifier]; ok {
-		return fmt.Errorf("%q is a reserved keyword and can't be used as an identifier", identifier)
-	}
-
-	if !identifierPattern.MatchString(identifier) {
-		return fmt.Errorf("%q is not a valid identifier", identifier)
-	}
-
-	return nil
-}
+func ValidateIdentifier(identifier string) error { _ = "STUB: not implemented"; return nil }

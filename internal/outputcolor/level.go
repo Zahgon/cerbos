@@ -4,8 +4,6 @@
 package outputcolor
 
 import (
-	"fmt"
-	"os"
 	"reflect"
 
 	"github.com/alecthomas/kong"
@@ -21,85 +19,21 @@ const (
 	Ansi16m = Level(supportscolor.Ansi16m)
 )
 
-func DefaultLevel() Level {
-	return Level(supportscolor.SupportsColor(os.Stdout.Fd(), supportscolor.SniffFlagsOption(false)).Level)
-}
+func DefaultLevel() Level { _ = "STUB: not implemented"; return *new(Level) }
 
 var TypeMapper = kong.TypeMapper(reflect.TypeFor[*Level](), kong.MapperFunc(decode))
 
-func (l *Level) Resolve(disable bool) Level {
-	if disable {
-		return None
-	}
+func (l *Level) Resolve(disable bool) Level { _ = "STUB: not implemented"; return *new(Level) }
 
-	if l != nil {
-		return *l
-	}
-
-	return DefaultLevel()
-}
-
-func (l Level) Enabled() bool {
-	return l > None
-}
+func (l Level) Enabled() bool { _ = "STUB: not implemented"; return false }
 
 func decode(ctx *kong.DecodeContext, target reflect.Value) error {
-	level, err := scan(ctx)
-	if err != nil {
-		return err
-	}
-
-	target.Set(reflect.ValueOf(level))
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func scan(ctx *kong.DecodeContext) (*Level, error) {
-	token := ctx.Scan.Peek()
+func scan(ctx *kong.DecodeContext) (*Level, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	switch token.Type {
-	case kong.FlagValueToken:
-		return parse(ctx.Scan.Pop().Value)
+func parse(v any) (*Level, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	case kong.ShortFlagTailToken, kong.UntypedToken:
-		level, err := parse(token.Value)
-		if err == nil {
-			ctx.Scan.Pop()
-			return level, nil
-		}
-
-	default:
-	}
-
-	return pointer(Basic), nil
-}
-
-func parse(v any) (*Level, error) {
-	s, ok := v.(string)
-	if !ok {
-		return nil, fmt.Errorf("invalid flag value (expected string, got %T)", v)
-	}
-
-	switch s {
-	case "auto":
-		return nil, nil
-
-	case "false", "never":
-		return pointer(None), nil
-
-	case "true", "always":
-		return pointer(Basic), nil
-
-	case "256":
-		return pointer(Ansi256), nil
-
-	case "16m", "full", "truecolor":
-		return pointer(Ansi16m), nil
-
-	default:
-		return nil, fmt.Errorf("invalid value for output color level: %q", s)
-	}
-}
-
-func pointer(level Level) *Level {
-	return &level
-}
+func pointer(level Level) *Level { _ = "STUB: not implemented"; return nil }

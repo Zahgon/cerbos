@@ -6,7 +6,6 @@
 package internal
 
 import (
-	"errors"
 	"time"
 
 	"github.com/cenkalti/backoff/v5"
@@ -25,16 +24,7 @@ type ConnPoolConf struct {
 	MaxIdle     uint          `yaml:"maxIdle"`
 }
 
-func (cc *ConnPoolConf) Configure(db *sqlx.DB) {
-	if cc == nil {
-		return
-	}
-
-	db.SetConnMaxLifetime(cc.MaxLifetime)
-	db.SetConnMaxIdleTime(cc.MaxIdleTime)
-	db.SetMaxIdleConns(int(cc.MaxIdle))
-	db.SetMaxOpenConns(int(cc.MaxOpen))
-}
+func (cc *ConnPoolConf) Configure(db *sqlx.DB) { _ = "STUB: not implemented"; return }
 
 // ConnRetryConf holds common retry settings for establishing a database connection.
 type ConnRetryConf struct {
@@ -46,46 +36,9 @@ type ConnRetryConf struct {
 	MaxInterval time.Duration `yaml:"maxInterval"`
 }
 
-func (rc *ConnRetryConf) Validate() (outErr error) {
-	if rc == nil {
-		return nil
-	}
-
-	if rc.InitialInterval < 0 {
-		outErr = errors.Join(outErr, errors.New("retry.initialInterval must be a positive value"))
-	}
-
-	if rc.MaxInterval < 0 {
-		outErr = errors.Join(outErr, errors.New("retry.maxInterval must be a positive value"))
-	}
-
-	if rc.MaxInterval < rc.InitialInterval {
-		outErr = errors.Join(outErr, errors.New("retry.maxInterval must be larger than retry.initialInterval"))
-	}
-
-	return outErr
-}
+func (rc *ConnRetryConf) Validate() (outErr error) { _ = "STUB: not implemented"; return nil }
 
 func (rc *ConnRetryConf) BackoffOptions() []backoff.RetryOption {
-	b := backoff.NewExponentialBackOff()
-	maxAttempts := defaultRetryMaxAttempts
-
-	if rc != nil {
-		if rc.MaxInterval > 0 {
-			b.MaxInterval = rc.MaxInterval
-		}
-
-		if rc.InitialInterval > 0 {
-			b.InitialInterval = rc.InitialInterval
-		}
-
-		if rc.MaxAttempts > 0 {
-			maxAttempts = rc.MaxAttempts
-		}
-	}
-
-	return []backoff.RetryOption{
-		backoff.WithBackOff(b),
-		backoff.WithMaxTries(maxAttempts),
-	}
+	_ = "STUB: not implemented"
+	return nil
 }

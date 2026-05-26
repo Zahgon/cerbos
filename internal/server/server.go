@@ -6,47 +6,21 @@ package server
 import (
 	"context"
 	"crypto/tls"
-	"crypto/x509"
 	"errors"
-	"fmt"
-	"io"
 	"net"
 	"net/http"
-	"net/textproto"
 	"os"
-	"strconv"
-	"strings"
 	"time"
 
-	"github.com/cloudflare/certinel/fswatcher"
-	"github.com/gorilla/mux"
-	grpc_logging "github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
-	grpc_validator "github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/protovalidate"
-	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
 	grpcruntime "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	reuseport "github.com/kavu/go_reuseport"
 	"github.com/sourcegraph/conc/pool"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/admin"
-	"google.golang.org/grpc/credentials"
-	"google.golang.org/grpc/credentials/local"
 	"google.golang.org/grpc/metadata"
-
-	authzenv1 "github.com/cerbos/cerbos/api/genpb/authzen/authorization/v1"
-	svcv1 "github.com/cerbos/cerbos/api/genpb/cerbos/svc/v1"
-	"github.com/cerbos/cerbos/internal/audit"
-	"github.com/cerbos/cerbos/internal/telemetry"
-	"github.com/cerbos/cerbos/internal/validator"
 
 	// Import the default grpc encoding to ensure that it gets replaced by VT.
 	_ "google.golang.org/grpc/encoding/proto"
 	"google.golang.org/grpc/health"
-	healthpb "google.golang.org/grpc/health/grpc_health_v1"
-	"google.golang.org/grpc/keepalive"
-	"google.golang.org/grpc/reflection"
-	"google.golang.org/protobuf/encoding/protojson"
 
 	// Import to register the Badger audit log backend.
 	_ "github.com/cerbos/cerbos/internal/audit/local"
@@ -56,8 +30,6 @@ import (
 	_ "github.com/cerbos/cerbos/internal/audit/kafka"
 	// Import to register the hub audit log backend.
 	_ "github.com/cerbos/cerbos/internal/audit/hub"
-	"github.com/cerbos/cerbos/internal/observability/metrics"
-	"github.com/cerbos/cerbos/internal/observability/tracing"
 
 	// Import blob to register the storage driver.
 	_ "github.com/cerbos/cerbos/internal/storage/blob"
@@ -74,9 +46,6 @@ import (
 	_ "github.com/cerbos/cerbos/internal/storage/disk"
 	// Import git to register the storage driver.
 	_ "github.com/cerbos/cerbos/internal/storage/git"
-	"github.com/cerbos/cerbos/internal/svc"
-	"github.com/cerbos/cerbos/internal/util"
-	"github.com/cerbos/cerbos/schema"
 )
 
 const (
@@ -96,23 +65,9 @@ const (
 var ErrInvalidStore = errors.New("store does not implement either SourceStore or BinaryStore interfaces")
 
 func Start(ctx context.Context) error {
+	_ = "STUB: not implemented"
 	// get configuration
-	conf, err := GetConf()
-	if err != nil {
-		return fmt.Errorf("failed to load server configuration: %w", err)
-	}
-
-	core, err := InitializeCerbosCore(ctx)
-	if err != nil {
-		return err
-	}
-
-	s := NewServer(conf)
-
-	telemetry.Start(ctx, core.Store)
-	defer telemetry.Stop()
-
-	return s.Start(ctx, core)
+	return nil
 }
 
 type Server struct {
@@ -123,393 +78,58 @@ type Server struct {
 	tlsConfig  *tls.Config
 }
 
-func NewServer(conf *Conf) *Server {
-	return &Server{
-		conf:   conf,
-		health: health.NewServer(),
-	}
-}
+func NewServer(conf *Conf) *Server { _ = "STUB: not implemented"; return nil }
 
 func (s *Server) Start(ctx context.Context, core *CoreComponents) error {
-	ctx, cancelFunc := context.WithCancel(ctx)
-	s.pool = pool.New().WithContext(ctx).WithCancelOnError().WithFirstError()
-	s.cancelFunc = cancelFunc
-
-	defer s.cancelFunc()
-
-	log := zap.L().Named("server")
-	if err := s.initializeTLSConfig(log); err != nil {
-		log.Error("Failed to initialize TLS configuration", zap.Error(err))
-	}
-
-	// It would be nice to have a single port to serve both gRPC and HTTP. Unfortunately, cmux
-	// can't deal effectively with both gRPC and HTTP/2 when TLS is enabled (see https://github.com/soheilhy/cmux/issues/68).
-	// Another potential issue with single-port gRPC and HTTP/2 is when a proxy like Envoy is in front of the server it
-	// would have a connection pool per port and would end up sending HTTP/2 traffic to gRPC and vice-versa.
-	// This is why we have two dedicated ports for HTTP and gRPC traffic. However, if gRPC traffic is sent to the HTTP port, it
-	// will still be handled correctly.
-
-	grpcL, err := s.createListener(ctx, s.conf.GRPCListenAddr)
-	if err != nil {
-		log.Error("Failed to create gRPC listener", zap.Error(err))
-		return err
-	}
-
-	httpL, err := s.createListener(ctx, s.conf.HTTPListenAddr)
-	if err != nil {
-		log.Error("Failed to create HTTP listener", zap.Error(err))
-		return err
-	}
-
-	// start servers
-	grpcServer, err := s.startGRPCServer(grpcL, core)
-	if err != nil {
-		log.Error("Failed to start GRPC server", zap.Error(err))
-		return err
-	}
-
-	httpServer, err := s.startHTTPServer(ctx, httpL, grpcServer, core.SuggestHub)
-	if err != nil {
-		log.Error("Failed to start HTTP server", zap.Error(err))
-		return err
-	}
-
-	s.pool.Go(func(ctx context.Context) error {
-		<-ctx.Done()
-		log.Info("Shutting down")
-
-		// mark this service as NOT_SERVING in the gRPC health check.
-		s.health.Shutdown()
-
-		log.Debug("Shutting down gRPC server")
-		grpcServer.GracefulStop()
-
-		log.Debug("Shutting down HTTP server")
-		shutdownCtx, cancelFunc := context.WithTimeout(context.Background(), defaultTimeout)
-		defer cancelFunc()
-
-		if err := httpServer.Shutdown(shutdownCtx); err != nil {
-			log.Error("Failed to cleanly shutdown HTTP server", zap.Error(err))
-		}
-
-		return nil
-	})
-
-	if err := s.pool.Wait(); err != nil {
-		log.Error("Stopping server due to error", zap.Error(err))
-		return err
-	}
-
-	log.Debug("Shutting down the audit log")
-	if err := core.AuditLog.Close(); err != nil {
-		log.Error("Failed to cleanly close audit log", zap.Error(err))
-	}
-
-	if closer, ok := core.Store.(io.Closer); ok {
-		log.Debug("Shutting down store")
-		if err := closer.Close(); err != nil {
-			log.Error("Store didn't shutdown correctly", zap.Error(err))
-		}
-	}
-
-	log.Info("Shutdown complete")
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (s *Server) initializeTLSConfig(log *zap.Logger) error {
-	if s.conf.TLS.Empty() {
-		return nil
-	}
-	conf := s.conf.TLS
+// It would be nice to have a single port to serve both gRPC and HTTP. Unfortunately, cmux
+// can't deal effectively with both gRPC and HTTP/2 when TLS is enabled (see https://github.com/soheilhy/cmux/issues/68).
+// Another potential issue with single-port gRPC and HTTP/2 is when a proxy like Envoy is in front of the server it
+// would have a connection pool per port and would end up sending HTTP/2 traffic to gRPC and vice-versa.
+// This is why we have two dedicated ports for HTTP and gRPC traffic. However, if gRPC traffic is sent to the HTTP port, it
+// will still be handled correctly.
 
-	certinel, err := fswatcher.New(conf.Cert, conf.Key)
-	if err != nil {
-		return fmt.Errorf("failed to load certificate and key: %w", err)
-	}
+// start servers
 
-	s.pool.Go(func(ctx context.Context) (outErr error) {
-		log.Info("Starting certificate watcher")
-		if err := certinel.Start(ctx); err != nil {
-			if !errors.Is(err, context.Canceled) {
-				log.Error("Stopping certificate watcher due to error", zap.Error(err))
-				return err
-			}
-		}
+// mark this service as NOT_SERVING in the gRPC health check.
 
-		log.Info("Stopping certificate watcher")
-		return nil
-	})
+func (s *Server) initializeTLSConfig(log *zap.Logger) error { _ = "STUB: not implemented"; return nil }
 
-	s.tlsConfig = util.DefaultTLSConfig()
-	s.tlsConfig.GetCertificate = certinel.GetCertificate
-
-	if conf.CACert != "" {
-		if _, err := os.Stat(conf.CACert); err != nil {
-			//nolint:nilerr
-			return nil
-		}
-
-		certPool := x509.NewCertPool()
-		bs, err := os.ReadFile(conf.CACert)
-		if err != nil {
-			return fmt.Errorf("failed to load CA certificate: %w", err)
-		}
-
-		ok := certPool.AppendCertsFromPEM(bs)
-		if !ok {
-			return errors.New("failed to append certificates to the pool")
-		}
-
-		s.tlsConfig.ClientAuth = tls.VerifyClientCertIfGiven
-		s.tlsConfig.ClientCAs = certPool
-	}
-
-	return nil
-}
+//nolint:nilerr
 
 func (s *Server) createListener(ctx context.Context, listenAddr string) (net.Listener, error) {
-	l, err := s.parseAndOpen(ctx, listenAddr)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create listener at '%s': %w", listenAddr, err)
-	}
-
-	if s.tlsConfig != nil {
-		l = tls.NewListener(l, s.tlsConfig)
-	}
-
-	return l, nil
+	_ = "STUB: not implemented"
+	return *new(net.Listener), nil
 }
 
 func (s *Server) startGRPCServer(l net.Listener, core *CoreComponents) (*grpc.Server, error) {
-	log := zap.L().Named("grpc")
-	server, err := s.mkGRPCServer(log, core)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create gRPC server: %w", err)
-	}
-
-	healthpb.RegisterHealthServer(server, s.health)
-	reflection.Register(server)
-
-	cerbosSvc := svc.NewCerbosService(core.Engine, core.AuxData, core.ReqLimits)
-	svcv1.RegisterCerbosServiceServer(server, cerbosSvc)
-	s.health.SetServingStatus(svcv1.CerbosService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-
-	authzenSvc := svc.NewAuthzenAuthorizationService(core.Engine, core.AuxData, core.ReqLimits)
-	authzenv1.RegisterAuthorizationServiceServer(server, authzenSvc)
-	s.health.SetServingStatus(authzenv1.AuthorizationService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-
-	if s.conf.AdminAPI.Enabled {
-		log.Info("Starting admin service")
-		creds := s.conf.AdminAPI.AdminCredentials
-
-		adminUser, adminPasswdHash, err := creds.usernameAndPasswordHash()
-		if err != nil {
-			log.Error("Failed to get admin API credentials", zap.Error(err))
-			return nil, err
-		}
-
-		go checkForUnsafeAdminCredentials(log, adminPasswdHash)
-
-		svcv1.RegisterCerbosAdminServiceServer(server, svc.NewCerbosAdminService(core.Store, core.AuditLog, adminUser, adminPasswdHash))
-		s.health.SetServingStatus(svcv1.CerbosAdminService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-	}
-
-	if s.conf.PlaygroundEnabled {
-		log.Info("Starting playground service")
-		svcv1.RegisterCerbosPlaygroundServiceServer(server, svc.NewCerbosPlaygroundService(core.ReqLimits))
-		s.health.SetServingStatus(svcv1.CerbosPlaygroundService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-	}
-
-	s.pool.Go(func(_ context.Context) error {
-		if !s.conf.EmbeddedMode {
-			log.Info(fmt.Sprintf("Starting gRPC server at %s", s.conf.GRPCListenAddr))
-		}
-
-		cleanup, err := admin.Register(server)
-		if err != nil {
-			log.Error("Failed to register gRPC admin interfaces", zap.Error(err))
-			return err
-		}
-		defer cleanup()
-
-		if err := server.Serve(l); err != nil {
-			log.Error("gRPC server failed", zap.Error(err))
-			return err
-		}
-
-		if !s.conf.EmbeddedMode {
-			log.Info("gRPC server stopped")
-		}
-		return nil
-	})
-
-	return server, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func checkForUnsafeAdminCredentials(log *zap.Logger, passwordHash []byte) {
-	unsafe, err := adminCredentialsAreUnsafe(passwordHash)
-	if err != nil {
-		log.Error("Failed to check admin API credentials", zap.Error(err))
-	} else if unsafe {
-		log.Warn("[INSECURE CONFIG] Admin API uses default credentials which are unsafe for production use. Please change the credentials by updating the configuration file.")
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func (s *Server) mkGRPCServer(log *zap.Logger, core *CoreComponents) (*grpc.Server, error) {
-	telemetryInt := telemetry.Intercept()
-
-	auditInterceptor, err := audit.NewUnaryInterceptor(core.AuditLog, core.Store, accessLogExclude)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create audit unary interceptor: %w", err)
-	}
-
-	opts := []grpc.ServerOption{
-		grpc.ChainStreamInterceptor(
-			grpc_recovery.StreamServerInterceptor(),
-			telemetryInt.StreamServerInterceptor(),
-			grpc_validator.StreamServerInterceptor(validator.Validator),
-			grpc_logging.StreamServerInterceptor(RequestLogger(log, "Handled request")),
-			grpc_logging.StreamServerInterceptor(PayloadLogger(s.conf), grpc_logging.WithLogOnEvents(grpc_logging.PayloadReceived, grpc_logging.PayloadSent)),
-		),
-		grpc.ChainUnaryInterceptor(
-			grpc_recovery.UnaryServerInterceptor(),
-			telemetryInt.UnaryServerInterceptor(),
-			grpc_validator.UnaryServerInterceptor(validator.Validator),
-			RequestMetadataUnaryServerInterceptor,
-			auditInterceptor,
-			grpc_logging.UnaryServerInterceptor(RequestLogger(log, "Handled request")),
-			grpc_logging.UnaryServerInterceptor(PayloadLogger(s.conf), grpc_logging.WithLogOnEvents(grpc_logging.PayloadReceived, grpc_logging.PayloadSent)),
-			cerbosVersionUnaryServerInterceptor,
-		),
-		grpc.StatsHandler(otelgrpc.NewServerHandler()),
-		grpc.KeepaliveParams(keepalive.ServerParameters{MaxConnectionAge: s.conf.Advanced.GRPC.MaxConnectionAge}),
-		grpc.MaxConcurrentStreams(s.conf.Advanced.GRPC.MaxConcurrentStreams),
-		grpc.ConnectionTimeout(s.conf.Advanced.GRPC.ConnectionTimeout),
-		grpc.MaxRecvMsgSize(int(s.conf.Advanced.GRPC.MaxRecvMsgSizeBytes)),
-		grpc.UnknownServiceHandler(handleUnknownServices),
-	}
-
-	return grpc.NewServer(opts...), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *Server) startHTTPServer(ctx context.Context, l net.Listener, grpcSrv *grpc.Server, suggestHub bool) (*http.Server, error) {
-	log := zap.S().Named("http")
-
-	grpcConn, err := s.mkGRPCConn()
-	if err != nil {
-		return nil, err
-	}
-
-	gwmux := mkGatewayMux(grpcConn)
-
-	if err := svcv1.RegisterCerbosServiceHandler(ctx, gwmux, grpcConn); err != nil {
-		log.Errorw("Failed to register Cerbos HTTP service", "error", err)
-		return nil, fmt.Errorf("failed to register Cerbos HTTP service: %w", err)
-	}
-
-	if err := authzenv1.RegisterAuthorizationServiceHandler(ctx, gwmux, grpcConn); err != nil {
-		log.Errorw("Failed to register AuthZen HTTP service", "error", err)
-		return nil, fmt.Errorf("failed to register AuthZen HTTP service: %w", err)
-	}
-
-	if s.conf.AdminAPI.Enabled {
-		if err := svcv1.RegisterCerbosAdminServiceHandler(ctx, gwmux, grpcConn); err != nil {
-			log.Errorw("Failed to register Cerbos admin HTTP service", "error", err)
-			return nil, fmt.Errorf("failed to register Cerbos admin HTTP service: %w", err)
-		}
-	}
-
-	if s.conf.PlaygroundEnabled {
-		if err := svcv1.RegisterCerbosPlaygroundServiceHandler(ctx, gwmux, grpcConn); err != nil {
-			log.Errorw("Continuing without playground due to registration error", "error", err)
-		}
-	}
-
-	cerbosMux := mux.NewRouter()
-	// handle gRPC requests that come over http
-	cerbosMux.MatcherFunc(func(r *http.Request, _ *mux.RouteMatch) bool {
-		return r.ProtoMajor == 2 && strings.Contains(r.Header.Get("Content-Type"), "application/grpc")
-	}).Handler(tracing.HTTPHandler(grpcSrv, "grpc"))
-
-	cerbosMux.PathPrefix(adminEndpoint).Handler(tracing.HTTPHandler(prettyJSON(gwmux), adminEndpoint))
-	cerbosMux.PathPrefix(apiEndpoint).Handler(tracing.HTTPHandler(prettyJSON(gwmux), apiEndpoint))
-	cerbosMux.PathPrefix(authzenEndpont).Handler(tracing.HTTPHandler(prettyJSON(gwmux), authzenEndpont))
-	cerbosMux.Path(authzenMetadataEnpoint).Handler(prettyJSON(gwmux))
-	cerbosMux.Path(healthEndpoint).Handler(prettyJSON(gwmux))
-	cerbosMux.Path(schemaEndpoint).HandlerFunc(schema.ServeSvcSwagger)
-
-	if s.conf.MetricsEnabled {
-		h, err := metrics.NewHandler()
-		if err != nil {
-			return nil, fmt.Errorf("failed to create Prometheus handler: %w", err)
-		}
-		cerbosMux.Path(metricsEndpoint).Handler(h)
-	}
-
-	if s.conf.APIExplorerEnabled {
-		cerbosMux.HandleFunc("/", schema.ServeUI)
-	}
-
-	httpHandler := withCORS(s.conf, cerbosMux)
-	protocols := new(http.Protocols)
-	protocols.SetHTTP1(true)
-	protocols.SetHTTP2(true)
-	protocols.SetUnencryptedHTTP2(true)
-
-	h := &http.Server{
-		ErrorLog:          zap.NewStdLog(zap.L().Named("http.error")),
-		Handler:           httpHandler,
-		Protocols:         protocols,
-		ReadHeaderTimeout: s.conf.Advanced.HTTP.ReadHeaderTimeout,
-		ReadTimeout:       s.conf.Advanced.HTTP.ReadTimeout,
-		WriteTimeout:      s.conf.Advanced.HTTP.WriteTimeout,
-		IdleTimeout:       s.conf.Advanced.HTTP.IdleTimeout,
-	}
-
-	s.pool.Go(func(_ context.Context) error {
-		if !s.conf.EmbeddedMode {
-			log.Infof("Starting HTTP server at %s", s.conf.HTTPListenAddr)
-		}
-
-		if suggestHub {
-			zap.L().Named("hub").Info("Cerbos Hub offers features like enhanced policy management, " +
-				"continuous deployment pipelines, and enterprise support. " +
-				"Learn more at https://go.cerbos.io/hub")
-		}
-		err := h.Serve(l)
-		if err != nil && !errors.Is(err, http.ErrServerClosed) {
-			log.Errorw("HTTP server failed", "error", err)
-			return err
-		}
-
-		if !s.conf.EmbeddedMode {
-			log.Info("HTTP server stopped")
-		}
-		return nil
-	})
-
-	return h, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// handle gRPC requests that come over http
+
 func mkGatewayMux(grpcConn grpc.ClientConnInterface) *grpcruntime.ServeMux {
-	return grpcruntime.NewServeMux(
-		grpcruntime.WithForwardResponseOption(customHTTPResponseCode),
-		grpcruntime.WithIncomingHeaderMatcher(incomingHeaderMatcher),
-		grpcruntime.WithMarshalerOption("application/json+pretty", &grpcJSONPb{
-			JSONPb: grpcruntime.JSONPb{
-				MarshalOptions:   protojson.MarshalOptions{Indent: "  "},
-				UnmarshalOptions: protojson.UnmarshalOptions{DiscardUnknown: false},
-			},
-		}),
-		grpcruntime.WithMarshalerOption(grpcruntime.MIMEWildcard, &grpcJSONPb{
-			JSONPb: grpcruntime.JSONPb{
-				UnmarshalOptions: protojson.UnmarshalOptions{DiscardUnknown: false},
-			},
-		}),
-		grpcruntime.WithMetadata(setPeerMetadata),
-		grpcruntime.WithRoutingErrorHandler(handleRoutingError),
-		grpcruntime.WithHealthEndpointAt(healthpb.NewHealthClient(grpcConn), healthEndpoint),
-	)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type grpcJSONPb struct {
@@ -518,115 +138,46 @@ type grpcJSONPb struct {
 
 var _ grpcruntime.StreamContentType = (*grpcJSONPb)(nil)
 
-func (*grpcJSONPb) StreamContentType(any) string {
-	return "application/x-ndjson"
-}
+func (*grpcJSONPb) StreamContentType(any) string { _ = "STUB: not implemented"; return "" }
 
 func defaultGRPCDialOpts() []grpc.DialOption {
+	_ = "STUB: not implemented"
 	// see https://github.com/grpc/grpc/blob/master/doc/connection-backoff.md
-	return []grpc.DialOption{
-		grpc.WithUserAgent("grpc-gateway"),
-		grpc.WithConnectParams(grpc.ConnectParams{MinConnectTimeout: minGRPCConnectTimeout}),
-		grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
-	}
+	return nil
 }
 
-func (s *Server) mkGRPCConn() (*grpc.ClientConn, error) {
-	opts := defaultGRPCDialOpts()
+func (s *Server) mkGRPCConn() (*grpc.ClientConn, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	if s.tlsConfig != nil {
-		tlsConf := s.tlsConfig.Clone()
-		tlsConf.InsecureSkipVerify = true // we are connecting as localhost which would differ from what the cert is issued for.
-		opts = append(opts, grpc.WithTransportCredentials(credentials.NewTLS(tlsConf)))
-	} else {
-		opts = append(opts, grpc.WithTransportCredentials(local.NewCredentials()))
-	}
-
-	grpcConn, err := util.EagerGRPCClient(s.conf.GRPCListenAddr, opts...)
-	if err != nil {
-		return nil, fmt.Errorf("failed to dial gRPC: %w", err)
-	}
-
-	return grpcConn, nil
-}
+// we are connecting as localhost which would differ from what the cert is issued for.
 
 // inspired by https://github.com/ghostunnel/ghostunnel/blob/6e58c75c8762fe371c1134e89dd55033a6d577a4/socket/net.go#L100
 func (s *Server) parseAndOpen(ctx context.Context, listenAddr string) (net.Listener, error) {
-	network, addr, err := util.ParseListenAddress(listenAddr)
-	if err != nil {
-		return nil, err
-	}
-
-	//nolint:nestif
-	if network == "unix" {
-		if err := os.RemoveAll(addr); err != nil {
-			return nil, err
-		}
-
-		netConf := &net.ListenConfig{}
-		listener, err := netConf.Listen(ctx, network, addr)
-		if err != nil {
-			return nil, err
-		}
-
-		if s.conf.UDSFileMode != defaultUDSFileMode {
-			fileMode := toUDSFileMode(s.conf.UDSFileMode)
-			if err := os.Chmod(addr, fileMode); err != nil {
-				return nil, fmt.Errorf("failed to change file mode of %q to %O: %w", addr, fileMode, err)
-			}
-		}
-
-		//nolint:forcetypeassert
-		listener.(*net.UnixListener).SetUnlinkOnClose(true)
-		return listener, nil
-	}
-
-	return reuseport.NewReusablePortListener(network, addr)
+	_ = "STUB: not implemented"
+	return *new(net.Listener), nil
 }
+
+//nolint:nestif
+
+//nolint:forcetypeassert
 
 //nolint:mnd
-func toUDSFileMode(modeStr string) os.FileMode {
-	m, err := strconv.ParseInt(modeStr, 0, 32)
-	if err != nil || m <= 0 {
-		return 0o766
-	}
+func toUDSFileMode(modeStr string) os.FileMode { _ = "STUB: not implemented"; return *new(os.FileMode) }
 
-	// Ignore everything but the last 9 bits which hold the user, group and world perms.
-	return os.FileMode(m & 0o777)
-}
+// Ignore everything but the last 9 bits which hold the user, group and world perms.
 
-func incomingHeaderMatcher(key string) (string, bool) {
-	switch textproto.CanonicalMIMEHeaderKey(key) {
-	// The gateway sets its own user agent, so we need to alias it
-	case "User-Agent":
-		return "Grpcgateway-User-Agent", true
+func incomingHeaderMatcher(key string) (string, bool) { _ = "STUB: not implemented"; return "", false }
 
-	case
-		// The request sent by the gateway will have a different content length
-		"Content-Length",
+// The gateway sets its own user agent, so we need to alias it
 
-		// Reserved for aliasing the incoming User-Agent header
-		"Grpcgateway-User-Agent",
+// The request sent by the gateway will have a different content length
 
-		// Translated to X-Forwarded-Host by the gateway
-		"Host",
+// Reserved for aliasing the incoming User-Agent header
 
-		// Connection-specific headers must be removed when translating HTTP/1.x to HTTP/2 (https://httpwg.org/specs/rfc9113.html#ConnectionSpecific)
-		"Connection",
-		"Keep-Alive",
-		"Proxy-Connection",
-		"Transfer-Encoding",
-		"Upgrade":
-		return "", false
+// Translated to X-Forwarded-Host by the gateway
 
-	default:
-		return key, true
-	}
-}
+// Connection-specific headers must be removed when translating HTTP/1.x to HTTP/2 (https://httpwg.org/specs/rfc9113.html#ConnectionSpecific)
 
 func setPeerMetadata(_ context.Context, req *http.Request) metadata.MD {
-	return metadata.Pairs(
-		audit.SetByGRPCGatewayKey, audit.SetByGRPCGatewayVal,
-		audit.HTTPRemoteAddrKey, req.RemoteAddr,
-	)
+	_ = "STUB: not implemented"
+	return *new(metadata.MD)
 }

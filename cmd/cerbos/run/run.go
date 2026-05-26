@@ -5,30 +5,13 @@ package run
 
 import (
 	"context"
-	"errors"
-	"fmt"
 	"io"
 	"net/http"
-	"os"
-	"os/signal"
-	"path/filepath"
-	"strings"
 	"sync"
-	"syscall"
 	"time"
 
 	"github.com/alecthomas/kong"
 	"github.com/go-cmd/cmd"
-	gomaxecs "github.com/rdforte/gomaxecs/maxprocs"
-	"go.uber.org/automaxprocs/maxprocs"
-	"go.uber.org/zap"
-	"helm.sh/helm/v3/pkg/strvals"
-
-	"github.com/cerbos/cerbos/internal/config"
-	"github.com/cerbos/cerbos/internal/observability/logging"
-	runutils "github.com/cerbos/cerbos/internal/run"
-	"github.com/cerbos/cerbos/internal/server"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -73,197 +56,36 @@ type Cmd struct { //betteralign:ignore
 	wg       sync.WaitGroup `kong:"-"`
 }
 
-func (c *Cmd) Run(k *kong.Kong) error {
-	if c.Command[0] == "--" {
-		if len(c.Command) == 1 {
-			return errors.New("a command to run must be provided")
-		}
-		c.Command = c.Command[1:]
-	}
+func (c *Cmd) Run(k *kong.Kong) error { _ = "STUB: not implemented"; return nil }
 
-	notifyCtx, stopFunc := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stopFunc()
-
-	logging.InitLogging(notifyCtx, c.LogLevel, nil)
-	defer zap.L().Sync() //nolint:errcheck
-
-	log := zap.S().Named("run")
-
-	var undo func()
-	if gomaxecs.IsECS() {
-		undo, _ = gomaxecs.Set(gomaxecs.WithLogger(log.Infof))
-	} else {
-		undo, _ = maxprocs.Set(maxprocs.Logger(log.Infof))
-	}
-	defer undo()
-
-	if err := c.loadConfig(); err != nil {
-		log.Errorw("Failed to load configuration", "error", err)
-		return err
-	}
-
-	pdp, err := c.startPDP(notifyCtx)
-	if err != nil {
-		log.Errorw("Failed to start the PDP", "error", err)
-		return err
-	}
-
-	command := c.prepCommand(pdp, k.Stdout, k.Stderr)
-	statusChan := command.Start()
-
-	cleanup := func() {
-		if cerr := command.Stop(); cerr != nil && !errors.Is(cerr, cmd.ErrNotStarted) {
-			log.Errorw("Error stopping command", "error", cerr)
-		}
-
-		pdp.stopFn()
-		c.wg.Wait()
-	}
-
-	select {
-	case err := <-pdp.errors:
-		log.Errorw("Cerbos PDP error", "error", err)
-		cleanup()
-
-		return err
-	case status := <-statusChan:
-		if status.Error != nil {
-			log.Errorw("Command execution error", "command", c.Command, "error", err)
-			cleanup()
-
-			return err
-		}
-
-		if status.Complete {
-			log.Infof("Command finished with status %d", status.Exit)
-		}
-
-		cleanup()
-
-		if status.Exit != 0 {
-			stopFunc()
-			undo()
-			k.Exit(status.Exit)
-		}
-	case <-notifyCtx.Done():
-		log.Info("Terminated by signal")
-		cleanup()
-	}
-
-	return nil
-}
+//nolint:errcheck
 
 func (c *Cmd) loadConfig() error {
+	_ = "STUB: not implemented"
 	// load any config overrides
-	confOverrides := map[string]any{}
-	for _, override := range c.Set {
-		if err := strvals.ParseInto(override, confOverrides); err != nil {
-			return fmt.Errorf("failed to parse config override [%s]: %w", override, err)
-		}
-	}
-
-	// load configuration
-	//nolint:nestif
-	if c.Config != "" {
-		if err := config.Load(c.Config, confOverrides); err != nil {
-			return fmt.Errorf("failed to load configuration from %s: %w", c.Config, err)
-		}
-	} else if fd, err := os.Stat(".cerbos.yaml"); err == nil && !fd.IsDir() {
-		if err := config.Load(".cerbos.yaml", confOverrides); err != nil {
-			return fmt.Errorf("failed to load configuration from .cerbos.yaml: %w", err)
-		}
-	} else {
-		wd, err := os.Getwd()
-		if err != nil {
-			return fmt.Errorf("failed to determine current working directory: %w", err)
-		}
-
-		policyDir := filepath.Join(wd, "policies")
-		if _, err := os.Stat(policyDir); err != nil && errors.Is(err, os.ErrNotExist) {
-			if err := os.Mkdir(policyDir, 0o744); err != nil { //nolint:mnd
-				return fmt.Errorf("unable to create policies directory: %w", err)
-			}
-		}
-
-		confYAML := fmt.Sprintf(confDefault, policyDir)
-		if err := config.LoadReader(strings.NewReader(confYAML), confOverrides); err != nil {
-			return fmt.Errorf("failed to load default Cerbos configuration: %w", err)
-		}
-	}
-
 	return nil
 }
 
+// load configuration
+//nolint:nestif
+
+//nolint:mnd
+
 func (c *Cmd) startPDP(ctx context.Context) (*pdpInstance, error) {
-	var conf server.Conf
-	if err := config.GetSection(&conf); err != nil {
-		return nil, fmt.Errorf("failed to obtain server config; %w", err)
-	}
-
-	client, httpAddr, err := util.NewInsecureHTTPClient(conf.HTTPListenAddr, !conf.TLS.Empty())
-	if err != nil {
-		return nil, fmt.Errorf("failed to create HTTP client for %s: %w", conf.HTTPListenAddr, err)
-	}
-
-	instance := &pdpInstance{
-		httpAddr: httpAddr,
-		grpcAddr: conf.GRPCListenAddr,
-		errors:   make(chan error, 1),
-		client:   client,
-	}
-
-	serverCtx, stopFn := context.WithCancel(context.Background()) //nolint:gosec
-	instance.stopFn = stopFn
-
-	c.goroutine(func() {
-		instance.errors <- server.Start(serverCtx)
-		close(instance.errors)
-	})
-
-	waitCtx, cancelFn := context.WithTimeout(ctx, c.Timeout)
-	defer cancelFn()
-	if err := instance.waitForReady(waitCtx); err != nil {
-		return nil, fmt.Errorf("error starting Cerbos PDP: %w", err)
-	}
-
-	return instance, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+//nolint:gosec
 
 func (c *Cmd) prepCommand(pdp *pdpInstance, stdout, stderr io.Writer) *cmd.Cmd {
-	httpAddr := fmt.Sprintf("CERBOS_HTTP=%s", pdp.httpAddr)
-	grpcAddr := fmt.Sprintf("CERBOS_GRPC=%s", pdp.grpcAddr)
-
-	env := os.Environ()
-	env = append([]string{httpAddr, grpcAddr}, env...)
-
-	opt := cmd.Options{Streaming: true}
-	command := cmd.NewCmdOptions(opt, c.Command[0], c.Command[1:]...)
-	command.Env = env
-
-	c.goroutine(func() {
-		for line := range command.Stdout {
-			fmt.Fprintln(stdout, line)
-		}
-	})
-
-	c.goroutine(func() {
-		for line := range command.Stderr {
-			fmt.Fprintln(stderr, line)
-		}
-	})
-
-	return command
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (c *Cmd) goroutine(fn func()) {
-	c.wg.Go(func() {
-		fn()
-	})
-}
+func (c *Cmd) goroutine(fn func()) { _ = "STUB: not implemented"; return }
 
-func (c *Cmd) Help() string {
-	return help
-}
+func (c *Cmd) Help() string { _ = "STUB: not implemented"; return "" }
 
 type pdpInstance struct {
 	errors   chan error
@@ -274,5 +96,6 @@ type pdpInstance struct {
 }
 
 func (pdp *pdpInstance) waitForReady(ctx context.Context) error {
-	return runutils.WaitForReady(ctx, pdp.errors, pdp.client, pdp.httpAddr)
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -4,19 +4,10 @@
 package audit
 
 import (
-	"context"
-	"time"
-
-	"go.uber.org/zap"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/types/known/timestamppb"
 
 	auditv1 "github.com/cerbos/cerbos/api/genpb/cerbos/audit/v1"
-	"github.com/cerbos/cerbos/internal/observability/logging"
-	"github.com/cerbos/cerbos/internal/observability/tracing"
 	"github.com/cerbos/cerbos/internal/storage"
 )
 
@@ -26,47 +17,8 @@ type (
 )
 
 func NewUnaryInterceptor(log Log, store storage.Store, exclude ExcludeMethod) (grpc.UnaryServerInterceptor, error) {
-	mdExtractor, err := NewMetadataExtractor()
-	if err != nil {
-		return nil, err
-	}
-
-	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (any, error) {
-		if exclude(info.FullMethod) {
-			return handler(ctx, req)
-		}
-
-		ts := time.Now()
-		callID, err := NewID()
-		if err != nil {
-			logging.FromContext(ctx).Warn("Failed to generate call ID", zap.Error(err))
-			return handler(ctx, req)
-		}
-
-		requestContext := extractRequestContext(req)
-		resp, err := handler(NewContextWithCallID(NewContextWithRequestContext(ctx, requestContext), callID), req)
-
-		if logErr := log.WriteAccessLogEntry(ctx, func() (*auditv1.AccessLogEntry, error) {
-			ctx, span := tracing.StartSpan(ctx, "audit.WriteAccessLog")
-			defer span.End()
-
-			return &auditv1.AccessLogEntry{
-				CallId:         string(callID),
-				Timestamp:      timestamppb.New(ts),
-				Peer:           PeerFromContext(ctx),
-				Method:         info.FullMethod,
-				StatusCode:     uint32(status.Code(err)),
-				Metadata:       mdExtractor(ctx),
-				PolicySource:   store.Source(),
-				RequestContext: requestContext,
-			}, nil
-		}); logErr != nil {
-			logging.FromContext(ctx).Warn("Failed to write access log entry", zap.Error(logErr))
-		}
-
-		setCerbosCallID(string(callID), resp)
-		return resp, err
-	}, nil
+	_ = "STUB: not implemented"
+	return *new(grpc.UnaryServerInterceptor), nil
 }
 
 type cerbosAPIResponse interface {
@@ -74,36 +26,12 @@ type cerbosAPIResponse interface {
 	GetCerbosCallId() string
 }
 
-func setCerbosCallID(callID string, resp any) {
-	if resp == nil {
-		return
-	}
+func setCerbosCallID(callID string, resp any) { _ = "STUB: not implemented"; return }
 
-	// don't panic in case there's nil pointer error
-	defer func() {
-		_ = recover()
-	}()
-
-	if r, ok := resp.(cerbosAPIResponse); ok {
-		fd := r.ProtoReflect().Descriptor().Fields().ByTextName("cerbos_call_id")
-		if fd != nil {
-			r.ProtoReflect().Set(fd, protoreflect.ValueOf(callID))
-		}
-	}
-}
+// don't panic in case there's nil pointer error
 
 type cerbosRequestWithContext interface {
 	GetRequestContext() *auditv1.RequestContext
 }
 
-func extractRequestContext(req any) *auditv1.RequestContext {
-	if req == nil {
-		return nil
-	}
-
-	if cerbosReq, ok := req.(cerbosRequestWithContext); ok {
-		return cerbosReq.GetRequestContext()
-	}
-
-	return nil
-}
+func extractRequestContext(req any) *auditv1.RequestContext { _ = "STUB: not implemented"; return nil }

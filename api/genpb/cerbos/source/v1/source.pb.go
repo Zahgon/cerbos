@@ -10,12 +10,11 @@
 package sourcev1
 
 import (
+	sync "sync"
+
 	v1 "github.com/cerbos/cerbos/api/genpb/cerbos/policy/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -47,32 +46,27 @@ var (
 	}
 )
 
-func (x Error_Kind) Enum() *Error_Kind {
-	p := new(Error_Kind)
-	*p = x
-	return p
-}
+func (x Error_Kind) Enum() *Error_Kind { _ = "STUB: not implemented"; return nil }
 
-func (x Error_Kind) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x Error_Kind) String() string { _ = "STUB: not implemented"; return "" }
 
 func (Error_Kind) Descriptor() protoreflect.EnumDescriptor {
-	return file_cerbos_source_v1_source_proto_enumTypes[0].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (Error_Kind) Type() protoreflect.EnumType {
-	return &file_cerbos_source_v1_source_proto_enumTypes[0]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x Error_Kind) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use Error_Kind.Descriptor instead.
-func (Error_Kind) EnumDescriptor() ([]byte, []int) {
-	return file_cerbos_source_v1_source_proto_rawDescGZIP(), []int{1, 0}
-}
+func (Error_Kind) EnumDescriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 type Position struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -83,56 +77,25 @@ type Position struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Position) Reset() {
-	*x = Position{}
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Position) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Position) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Position) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Position) ProtoMessage() {}
+func (*Position) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Position) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Position.ProtoReflect.Descriptor instead.
-func (*Position) Descriptor() ([]byte, []int) {
-	return file_cerbos_source_v1_source_proto_rawDescGZIP(), []int{0}
-}
+func (*Position) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Position) GetLine() uint32 {
-	if x != nil {
-		return x.Line
-	}
-	return 0
-}
+func (x *Position) GetLine() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Position) GetColumn() uint32 {
-	if x != nil {
-		return x.Column
-	}
-	return 0
-}
+func (x *Position) GetColumn() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *Position) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
+func (x *Position) GetPath() string { _ = "STUB: not implemented"; return "" }
 
 type Error struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -144,63 +107,27 @@ type Error struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Error) Reset() {
-	*x = Error{}
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Error) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Error) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Error) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Error) ProtoMessage() {}
+func (*Error) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Error) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Error.ProtoReflect.Descriptor instead.
-func (*Error) Descriptor() ([]byte, []int) {
-	return file_cerbos_source_v1_source_proto_rawDescGZIP(), []int{1}
-}
+func (*Error) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Error) GetKind() Error_Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return Error_KIND_UNSPECIFIED
-}
+func (x *Error) GetKind() Error_Kind { _ = "STUB: not implemented"; return *new(Error_Kind) }
 
-func (x *Error) GetPosition() *Position {
-	if x != nil {
-		return x.Position
-	}
-	return nil
-}
+func (x *Error) GetPosition() *Position { _ = "STUB: not implemented"; return nil }
 
-func (x *Error) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
+func (x *Error) GetMessage() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Error) GetContext() string {
-	if x != nil {
-		return x.Context
-	}
-	return ""
-}
+func (x *Error) GetContext() string { _ = "STUB: not implemented"; return "" }
 
 type StartPosition struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -211,56 +138,25 @@ type StartPosition struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StartPosition) Reset() {
-	*x = StartPosition{}
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *StartPosition) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *StartPosition) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *StartPosition) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*StartPosition) ProtoMessage() {}
+func (*StartPosition) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *StartPosition) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use StartPosition.ProtoReflect.Descriptor instead.
-func (*StartPosition) Descriptor() ([]byte, []int) {
-	return file_cerbos_source_v1_source_proto_rawDescGZIP(), []int{2}
-}
+func (*StartPosition) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *StartPosition) GetLine() uint32 {
-	if x != nil {
-		return x.Line
-	}
-	return 0
-}
+func (x *StartPosition) GetLine() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *StartPosition) GetColumn() uint32 {
-	if x != nil {
-		return x.Column
-	}
-	return 0
-}
+func (x *StartPosition) GetColumn() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *StartPosition) GetOffset() uint32 {
-	if x != nil {
-		return x.Offset
-	}
-	return 0
-}
+func (x *StartPosition) GetOffset() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type SourceContext struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
@@ -272,61 +168,31 @@ type SourceContext struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *SourceContext) Reset() {
-	*x = SourceContext{}
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *SourceContext) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SourceContext) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SourceContext) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SourceContext) ProtoMessage() {}
+func (*SourceContext) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SourceContext) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SourceContext.ProtoReflect.Descriptor instead.
-func (*SourceContext) Descriptor() ([]byte, []int) {
-	return file_cerbos_source_v1_source_proto_rawDescGZIP(), []int{3}
-}
+func (*SourceContext) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *SourceContext) GetStartPosition() *StartPosition {
-	if x != nil {
-		return x.StartPosition
-	}
-	return nil
-}
+func (x *SourceContext) GetStartPosition() *StartPosition { _ = "STUB: not implemented"; return nil }
 
 func (x *SourceContext) GetFieldPositions() map[string]*Position {
-	if x != nil {
-		return x.FieldPositions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *SourceContext) GetErrors() []*Error {
-	if x != nil {
-		return x.Errors
-	}
-	return nil
-}
+func (x *SourceContext) GetErrors() []*Error { _ = "STUB: not implemented"; return nil }
 
 func (x *SourceContext) GetMapKeyPositions() map[string]*Position {
-	if x != nil {
-		return x.MapKeyPositions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -343,84 +209,33 @@ type PolicyWrapper struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PolicyWrapper) Reset() {
-	*x = PolicyWrapper{}
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *PolicyWrapper) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *PolicyWrapper) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *PolicyWrapper) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*PolicyWrapper) ProtoMessage() {}
+func (*PolicyWrapper) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *PolicyWrapper) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_source_v1_source_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use PolicyWrapper.ProtoReflect.Descriptor instead.
-func (*PolicyWrapper) Descriptor() ([]byte, []int) {
-	return file_cerbos_source_v1_source_proto_rawDescGZIP(), []int{4}
-}
+func (*PolicyWrapper) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *PolicyWrapper) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *PolicyWrapper) GetId() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (x *PolicyWrapper) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
+func (x *PolicyWrapper) GetKey() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PolicyWrapper) GetPolicy() *v1.Policy {
-	if x != nil {
-		return x.Policy
-	}
-	return nil
-}
+func (x *PolicyWrapper) GetPolicy() *v1.Policy { _ = "STUB: not implemented"; return nil }
 
-func (x *PolicyWrapper) GetKind() v1.Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return v1.Kind(0)
-}
+func (x *PolicyWrapper) GetKind() v1.Kind { _ = "STUB: not implemented"; return *new(v1.Kind) }
 
-func (x *PolicyWrapper) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *PolicyWrapper) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PolicyWrapper) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *PolicyWrapper) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *PolicyWrapper) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *PolicyWrapper) GetScope() string { _ = "STUB: not implemented"; return "" }
 
 var File_cerbos_source_v1_source_proto protoreflect.FileDescriptor
 
@@ -469,12 +284,7 @@ var (
 	file_cerbos_source_v1_source_proto_rawDescData []byte
 )
 
-func file_cerbos_source_v1_source_proto_rawDescGZIP() []byte {
-	file_cerbos_source_v1_source_proto_rawDescOnce.Do(func() {
-		file_cerbos_source_v1_source_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cerbos_source_v1_source_proto_rawDesc), len(file_cerbos_source_v1_source_proto_rawDesc)))
-	})
-	return file_cerbos_source_v1_source_proto_rawDescData
-}
+func file_cerbos_source_v1_source_proto_rawDescGZIP() []byte { _ = "STUB: not implemented"; return nil }
 
 var file_cerbos_source_v1_source_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cerbos_source_v1_source_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
@@ -508,27 +318,5 @@ var file_cerbos_source_v1_source_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_source_v1_source_proto_init() }
-func file_cerbos_source_v1_source_proto_init() {
-	if File_cerbos_source_v1_source_proto != nil {
-		return
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_source_v1_source_proto_rawDesc), len(file_cerbos_source_v1_source_proto_rawDesc)),
-			NumEnums:      1,
-			NumMessages:   7,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_cerbos_source_v1_source_proto_goTypes,
-		DependencyIndexes: file_cerbos_source_v1_source_proto_depIdxs,
-		EnumInfos:         file_cerbos_source_v1_source_proto_enumTypes,
-		MessageInfos:      file_cerbos_source_v1_source_proto_msgTypes,
-	}.Build()
-	File_cerbos_source_v1_source_proto = out.File
-	file_cerbos_source_v1_source_proto_goTypes = nil
-	file_cerbos_source_v1_source_proto_depIdxs = nil
-}
+func init()                                    { file_cerbos_source_v1_source_proto_init() }
+func file_cerbos_source_v1_source_proto_init() { _ = "STUB: not implemented"; return }

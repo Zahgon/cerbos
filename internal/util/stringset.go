@@ -3,18 +3,8 @@
 
 package util
 
-func ToStringSet(values []string) StringSet {
-	ss := make(StringSet)
-	for _, v := range values {
-		ss[v] = struct{}{}
-	}
-
-	return ss
-}
+func ToStringSet(values []string) StringSet { _ = "STUB: not implemented"; return *new(StringSet) }
 
 type StringSet map[string]struct{}
 
-func (ss StringSet) Contains(value string) bool {
-	_, exists := ss[value]
-	return exists
-}
+func (ss StringSet) Contains(value string) bool { _ = "STUB: not implemented"; return false }

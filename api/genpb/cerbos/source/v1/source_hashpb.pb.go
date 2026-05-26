@@ -11,49 +11,34 @@ import (
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *Position) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		cerbos_source_v1_Position_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *Error) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		cerbos_source_v1_Error_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *StartPosition) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		cerbos_source_v1_StartPosition_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *SourceContext) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		cerbos_source_v1_SourceContext_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *PolicyWrapper) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		cerbos_source_v1_PolicyWrapper_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }

@@ -18,20 +18,4 @@ type Globals struct {
 	Plaintext     bool   `help:"Use plaintext protocol without TLS"`
 }
 
-func (g *Globals) ToClientOpts() []cerbos.Opt {
-	opts := []cerbos.Opt{cerbos.WithMaxRecvMsgSizeBytes(maxRecvMsgSizeBytes)}
-	if g.Plaintext {
-		opts = append(opts, cerbos.WithPlaintext())
-	}
-	if g.Insecure {
-		opts = append(opts, cerbos.WithTLSInsecure())
-	}
-	if cert := g.CaCert; cert != "" {
-		opts = append(opts, cerbos.WithTLSCACert(cert))
-	}
-	if cert := g.TLSClientCert; cert != "" {
-		opts = append(opts, cerbos.WithTLSClientCert(cert, g.TLSClientKey))
-	}
-
-	return opts
-}
+func (g *Globals) ToClientOpts() []cerbos.Opt { _ = "STUB: not implemented"; return nil }

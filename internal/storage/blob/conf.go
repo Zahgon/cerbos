@@ -7,17 +7,9 @@ package blob
 
 import (
 	"context"
-	"errors"
-	"fmt"
-	"os"
-	"path/filepath"
 	"time"
 
-	"go.uber.org/multierr"
-
-	"github.com/cerbos/cerbos/internal/config"
 	"github.com/cerbos/cerbos/internal/storage"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -43,57 +35,17 @@ type Conf struct {
 	UpdatePollInterval time.Duration `yaml:"updatePollInterval" conf:",example=15s"`
 }
 
-func (conf *Conf) Key() string {
-	return confKey
-}
+func (conf *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (conf *Conf) Validate() error {
-	var errs []error
+func (conf *Conf) Validate() error { _ = "STUB: not implemented"; return nil }
 
-	if conf.Bucket == "" {
-		errs = append(errs, errors.New("bucket is required"))
-	}
+func pd(d time.Duration) *time.Duration { _ = "STUB: not implemented"; return nil }
 
-	if conf.WorkDir == "" {
-		cacheDir, err := os.UserCacheDir()
-		if err != nil {
-			errs = append(errs, fmt.Errorf("workDir unspecified and failed to determine user cache dir: %w", err))
-		} else {
-			conf.WorkDir = filepath.Join(cacheDir, util.AppName, DriverName)
-		}
-	}
-
-	if *conf.RequestTimeout > *conf.DownloadTimeout {
-		errs = append(errs, fmt.Errorf("request timeout (%.0fs) is greater than download timeout (%.0fs)", conf.RequestTimeout.Seconds(), conf.DownloadTimeout.Seconds()))
-	}
-
-	if len(errs) > 0 {
-		return multierr.Combine(errs...)
-	}
-
-	return nil
-}
-
-func pd(d time.Duration) *time.Duration {
-	return &d
-}
-
-func (conf *Conf) SetDefaults() {
-	if conf.RequestTimeout == nil {
-		conf.RequestTimeout = pd(defaultRequestTimeout)
-	}
-	if conf.DownloadTimeout == nil {
-		conf.DownloadTimeout = pd(defaultDownloadTimeout)
-	}
-}
+func (conf *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
 func (conf *Conf) getCloneCtx(parent context.Context) (context.Context, context.CancelFunc) {
-	return context.WithTimeout(parent, *conf.DownloadTimeout)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(context.CancelFunc)
 }
 
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

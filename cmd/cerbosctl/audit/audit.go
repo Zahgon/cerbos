@@ -5,22 +5,13 @@ package audit
 
 import (
 	"bufio"
-	"context"
-	"fmt"
 	"io"
-	"strings"
 
 	"github.com/alecthomas/chroma/v2"
-	"github.com/alecthomas/chroma/v2/formatters"
-	"github.com/alecthomas/chroma/v2/lexers"
-	"github.com/alecthomas/chroma/v2/styles"
 	"github.com/alecthomas/kong"
-	"github.com/jwalton/gchalk"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/cerbos/cerbos-sdk-go/cerbos"
-	auditv1 "github.com/cerbos/cerbos/api/genpb/cerbos/audit/v1"
 	cmdclient "github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/internal/flagset"
 )
@@ -60,66 +51,16 @@ type Cmd struct { //betteralign:ignore
 }
 
 func (c *Cmd) Run(k *kong.Kong, ctx *cmdclient.Context) error {
-	var writer auditLogWriter
-	if c.Raw {
-		writer = newRawAuditLogWriter(k.Stdout)
-	} else {
-		writer = newRichAuditLogWriter(k.Stdout)
-	}
-	defer writer.flush()
-
-	logOptions := c.GenOptions()
-
-	switch kind := c.Kind; kind {
-	case "access":
-		logOptions.Type = cerbos.AccessLogs
-	case "decision":
-		logOptions.Type = cerbos.DecisionLogs
-	}
-
-	logs, err := ctx.AdminClient.AuditLogs(context.Background(), logOptions)
-	if err != nil {
-		return fmt.Errorf("could not get decision logs: %w", err)
-	}
-
-	if err = streamLogsToWriter(writer, logs); err != nil {
-		return fmt.Errorf("could not write decision logs: %w", err)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (c *Cmd) Help() string {
-	return help
-}
+func (c *Cmd) Help() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Cmd) Validate() error {
-	return c.AuditFilters.Validate()
-}
+func (c *Cmd) Validate() error { _ = "STUB: not implemented"; return nil }
 
 func streamLogsToWriter(writer auditLogWriter, entries <-chan *cerbos.AuditLogEntry) error {
-	for e := range entries {
-		aLog, err := e.AccessLog()
-		if err != nil {
-			return fmt.Errorf("error while receiving access logs: %w", err)
-		}
-		if aLog != nil {
-			if err := writer.write(aLog); err != nil {
-				return err
-			}
-			continue
-		}
-
-		dLog, err := e.DecisionLog()
-		if err != nil {
-			return fmt.Errorf("error while receiving decision logs: %w", err)
-		}
-		if dLog != nil {
-			if err := writer.write(dLog); err != nil {
-				return err
-			}
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -128,29 +69,15 @@ type auditLogWriter interface {
 	flush()
 }
 
-func newRawAuditLogWriter(out io.Writer) *rawAuditLogWriter {
-	return &rawAuditLogWriter{out: out}
-}
+func newRawAuditLogWriter(out io.Writer) *rawAuditLogWriter { _ = "STUB: not implemented"; return nil }
 
 type rawAuditLogWriter struct {
 	out io.Writer
 }
 
-func (r *rawAuditLogWriter) write(entry proto.Message) error {
-	outBytes, err := protojson.Marshal(entry)
-	if err != nil {
-		return err
-	}
+func (r *rawAuditLogWriter) write(entry proto.Message) error { _ = "STUB: not implemented"; return nil }
 
-	if _, err := r.out.Write(outBytes); err != nil {
-		return err
-	}
-
-	_, err = r.out.Write(newline)
-	return err
-}
-
-func (r *rawAuditLogWriter) flush() {}
+func (r *rawAuditLogWriter) flush() { _ = "STUB: not implemented"; return }
 
 type richAuditLogWriter struct {
 	out       *bufio.Writer
@@ -161,63 +88,20 @@ type richAuditLogWriter struct {
 }
 
 func newRichAuditLogWriter(out io.Writer) *richAuditLogWriter {
-	lexer := lexers.Get("json")
-	if lexer == nil {
-		lexer = lexers.Fallback
-	}
-
-	var formatter chroma.Formatter
-	switch gchalk.GetLevel() {
-	case gchalk.LevelAnsi256:
-		formatter = formatters.TTY256
-	case gchalk.LevelAnsi16m:
-		formatter = formatters.TTY16m
-	default:
-		formatter = formatters.TTY
-	}
-
-	return &richAuditLogWriter{
-		out:       bufio.NewWriter(out),
-		lexer:     chroma.Coalesce(lexer),
-		formatter: formatter,
-		rowStyle:  gchalk.WithHex("#eeeeee").WithBgHex("#005fff").Bold,
-		jsonStyle: styles.Get("solarized-dark256"),
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (r *richAuditLogWriter) write(entry proto.Message) error {
-	switch e := entry.(type) {
-	case *auditv1.AccessLogEntry:
-		r.header(fmt.Sprintf("%s %s", e.CallId, strings.Repeat("┈", dashLen)))
-		return r.formattedJSON(e)
-	case *auditv1.DecisionLogEntry:
-		r.header(fmt.Sprintf("%s %s", e.CallId, strings.Repeat("┈", dashLen)))
-		return r.formattedJSON(e)
-	default:
-		return nil
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (r *richAuditLogWriter) header(h string) {
-	_, _ = r.out.WriteString("\n\n")
-	_, _ = r.out.WriteString(r.rowStyle(h))
-	_, _ = r.out.WriteString("\n")
-}
+func (r *richAuditLogWriter) header(h string) { _ = "STUB: not implemented"; return }
 
 func (r *richAuditLogWriter) formattedJSON(msg proto.Message) error {
-	iterator, err := r.lexer.Tokenise(nil, protojson.Format(msg))
-	if err != nil {
-		return err
-	}
-
-	if err := r.formatter.Format(r.out, r.jsonStyle, iterator); err != nil {
-		return err
-	}
-
-	_, err = r.out.Write(newline)
-	return err
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (r *richAuditLogWriter) flush() {
-	_ = r.out.Flush()
-}
+func (r *richAuditLogWriter) flush() { _ = "STUB: not implemented"; return }

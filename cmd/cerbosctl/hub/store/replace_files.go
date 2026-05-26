@@ -4,17 +4,8 @@
 package store
 
 import (
-	"archive/zip"
-	"bytes"
-	"context"
-	"errors"
-	"fmt"
-	"io"
-	"os"
-
 	"github.com/alecthomas/kong"
 	"github.com/cerbos/cerbos-sdk-go/cerbos/hub"
-	"github.com/go-git/go-git/v6"
 )
 
 const (
@@ -45,102 +36,21 @@ type ReplaceFilesCmd struct { //betteralign:ignore
 	VersionMustEq int64 `help:"Require that the store is at this version before committing the change" optional:""`
 }
 
-func (*ReplaceFilesCmd) Help() string {
-	return replaceFilesHelp
-}
+func (*ReplaceFilesCmd) Help() string { _ = "STUB: not implemented"; return "" }
 
 func (rfc *ReplaceFilesCmd) Run(k *kong.Kong, cmd *Cmd) error {
-	client, err := cmd.storeClient()
-	if err != nil {
-		return rfc.toCommandError(k.Stderr, err)
-	}
-
-	newStoreVersion, err := replaceFiles(client, cmd.StoreID, rfc.Path, rfc.ChangeDetails, rfc.VersionMustEq)
-	if err != nil {
-		return rfc.toCommandError(k.Stderr, err)
-	}
-
-	rfc.printNewVersion(k.Stdout, newStoreVersion)
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func replaceFiles(storeClient *hub.StoreClient, storeID, path string, cd ChangeDetails, versionMustEq int64) (int64, error) {
-	var zipContents []byte
-	var err error
-	var gitChangeDetails *changeDetails
-
-	//nolint:nestif
-	if path == "-" {
-		zipContents, err = io.ReadAll(os.Stdin)
-		if err != nil {
-			return 0, fmt.Errorf("failed to read stdin: %w", err)
-		}
-
-		if _, err = zip.NewReader(bytes.NewReader(zipContents), int64(len(zipContents))); err != nil {
-			return 0, errors.New("piped content is not valid zip data")
-		}
-	} else {
-		stat, err := os.Stat(path)
-		if err != nil {
-			return 0, err
-		}
-
-		if stat.IsDir() {
-			zipContents, err = hub.Zip(os.DirFS(path))
-			if err != nil {
-				return 0, fmt.Errorf("failed to zip %s: %w", path, err)
-			}
-
-			gitChangeDetails, _ = changeDetailsFromGit(path)
-		} else {
-			if _, err = zip.OpenReader(path); err != nil {
-				return 0, fmt.Errorf("invalid zip file %s: %w", path, err)
-			}
-
-			zipContents, err = os.ReadFile(path)
-			if err != nil {
-				return 0, fmt.Errorf("failed to read zip file %s: %w", path, err)
-			}
-		}
-	}
-
-	if len(zipContents) > replaceFilesZipMaxSize {
-		return 0, errors.New("zipped data size is too large")
-	}
-
-	changeDetails, message, err := cd.ChangeDetails(gitChangeDetails)
-	if err != nil {
-		return 0, fmt.Errorf("failed to get change details: %w", err)
-	}
-
-	req := hub.
-		NewReplaceFilesRequest(storeID, message).
-		WithChangeDetails(changeDetails).
-		WithZippedContents(zipContents)
-	if versionMustEq > 0 {
-		req.OnlyIfVersionEquals(versionMustEq)
-	}
-
-	resp, err := storeClient.ReplaceFilesLenient(context.Background(), req)
-	if err != nil {
-		return 0, err
-	}
-
-	return resp.GetNewStoreVersion(), nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
+//nolint:nestif
+
 func changeDetailsFromGit(path string) (*changeDetails, error) {
-	r, err := git.PlainOpenWithOptions(path, &git.PlainOpenOptions{
-		DetectDotGit: true,
-	})
-	if err != nil {
-		return nil, fmt.Errorf("failed to open git repository at %q: %w", path, err)
-	}
-
-	ref, err := r.Head()
-	if err != nil {
-		return nil, fmt.Errorf("failed to get HEAD: %w", err)
-	}
-
-	return changeDetailsFromHash(r, ref.Hash())
+	_ = "STUB: not implemented"
+	return nil, nil
 }

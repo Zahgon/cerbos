@@ -3,14 +3,6 @@
 
 package audit
 
-import (
-	"fmt"
-
-	"gopkg.in/yaml.v3"
-
-	"github.com/cerbos/cerbos/internal/config"
-)
-
 const (
 	ConfKey = "audit"
 )
@@ -57,6 +49,7 @@ type PlanResourcesFilter struct {
 }
 
 func (c *Conf) UnmarshalYAML(unmarshal func(any) error) error {
+	_ = "STUB: not implemented"
 	// This is a workaround to circumvent strict config parsing.
 	// Consider the following:
 	//
@@ -72,33 +65,11 @@ func (c *Conf) UnmarshalYAML(unmarshal func(any) error) error {
 	// definition to the audit config struct for each plugin we introduce.
 	// This hack is slightly inefficient because it marshals and unmarshals YAML twice. It is an
 	// acceptable sacrifice to make because config is only read once on startup.
-
-	var confMap map[string]any
-	if err := unmarshal(&confMap); err != nil {
-		return fmt.Errorf("failed to unmarshal audit config: %w", err)
-	}
-
-	yamlBytes, err := yaml.Marshal(confMap)
-	if err != nil {
-		return fmt.Errorf("failed to marshal audit config [%v]: %w", confMap, err)
-	}
-
-	c.confHolder = confHolder{AccessLogsEnabled: true, DecisionLogsEnabled: true}
-	return yaml.Unmarshal(yamlBytes, &c.confHolder)
+	return nil
 }
 
-func (c *Conf) Key() string {
-	return ConfKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.AccessLogsEnabled = true
-	c.DecisionLogsEnabled = true
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

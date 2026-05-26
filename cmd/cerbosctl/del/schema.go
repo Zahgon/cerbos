@@ -4,11 +4,8 @@
 package del
 
 import (
-	"fmt"
-
 	"github.com/alecthomas/kong"
 
-	"github.com/cerbos/cerbos/cmd/cerbosctl/del/internal/schema"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
 )
 
@@ -33,19 +30,8 @@ type SchemaCmd struct { //betteralign:ignore
 }
 
 func (c *SchemaCmd) Run(k *kong.Kong, ctx *client.Context) error {
-	if len(c.SchemaIds) == 0 {
-		return fmt.Errorf("no schema id(s) provided")
-	}
-
-	deletedSchemas, err := schema.Delete(ctx.AdminClient, c.SchemaIds...)
-	if err != nil {
-		return fmt.Errorf("failed to delete schemas: %w", err)
-	}
-
-	_, _ = fmt.Fprintf(k.Stdout, "Number of schemas deleted is %d", deletedSchemas)
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (c *SchemaCmd) Help() string {
-	return schemaCmdHelp
-}
+func (c *SchemaCmd) Help() string { _ = "STUB: not implemented"; return "" }

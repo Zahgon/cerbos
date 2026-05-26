@@ -16,17 +16,8 @@ type Hashable interface {
 	HashPB(hash.Hash, map[string]struct{})
 }
 
-func HashPB(h Hashable, ignore map[string]struct{}) uint64 {
-	d := hashPool.Get().(*xxhash.Digest) //nolint:forcetypeassert
-	h.HashPB(d, ignore)
-	res := d.Sum64()
+func HashPB(h Hashable, ignore map[string]struct{}) uint64 { _ = "STUB: not implemented"; return 0 }
 
-	d.Reset()
-	hashPool.Put(d)
+//nolint:forcetypeassert
 
-	return res
-}
-
-func HashStr(s string) uint64 {
-	return xxhash.Sum64String(s)
-}
+func HashStr(s string) uint64 { _ = "STUB: not implemented"; return 0 }

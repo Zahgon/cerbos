@@ -4,9 +4,6 @@
 package revisions
 
 import (
-	"context"
-	"fmt"
-
 	"github.com/alecthomas/kong"
 
 	"github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
@@ -25,15 +22,8 @@ type PurgeCmd struct { //betteralign:ignore
 }
 
 func (c *PurgeCmd) Run(k *kong.Kong, ctx *client.Context) error {
-	affectedRows, err := ctx.AdminClient.PurgeStoreRevisions(context.Background(), c.KeepLast)
-	if err != nil {
-		return fmt.Errorf("failed to purge store revisions: %w", err)
-	}
-
-	_, _ = fmt.Fprintf(k.Stdout, "Number of rows affected is %d", affectedRows)
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (c *PurgeCmd) Help() string {
-	return purgeCmdHelp
-}
+func (c *PurgeCmd) Help() string { _ = "STUB: not implemented"; return "" }

@@ -11,99 +11,69 @@ import (
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *Subject) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_Subject_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *Resource) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_Resource_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *Action) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_Action_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *AccessEvaluationRequest) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_AccessEvaluationRequest_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *AccessEvaluationResponse) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_AccessEvaluationResponse_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *AccessEvaluationBatchRequest) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_AccessEvaluationBatchRequest_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *AccessEvaluationBatchRequest_Evaluation) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_AccessEvaluationBatchRequest_Evaluation_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *AccessEvaluationBatchResponse) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_AccessEvaluationBatchResponse_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *MetadataResponse) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_MetadataResponse_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *AccessEvaluationsOptions) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		authzen_authorization_v1_AccessEvaluationsOptions_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }

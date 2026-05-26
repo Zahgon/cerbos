@@ -6,7 +6,6 @@
 package util
 
 import (
-	"fmt"
 	"regexp"
 	"sync"
 )
@@ -16,28 +15,10 @@ type RegexpCache struct {
 	mu    sync.RWMutex
 }
 
-func NewRegexpCache() *RegexpCache {
-	return &RegexpCache{
-		cache: make(map[string]*regexp.Regexp),
-	}
-}
+func NewRegexpCache() *RegexpCache { _ = "STUB: not implemented"; return nil }
 
 // GetCompiledExpr lazily compiles (and stores) regexp.
 func (c *RegexpCache) GetCompiledExpr(re string) (*regexp.Regexp, error) {
-	c.mu.RLock()
-	r, ok := c.cache[re]
-	c.mu.RUnlock()
-
-	if !ok {
-		var err error
-		if r, err = regexp.Compile(re); err != nil {
-			return nil, fmt.Errorf("failed to compile regexp: %s", re)
-		}
-
-		c.mu.Lock()
-		c.cache[re] = r
-		c.mu.Unlock()
-	}
-
-	return r, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

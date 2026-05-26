@@ -16,16 +16,11 @@ import (
 	pdpv1 "github.com/cerbos/cloud-api/genpb/cerbos/cloud/pdp/v1"
 	"github.com/google/uuid"
 	"github.com/keygen-sh/machineid"
-	"go.uber.org/zap"
 )
 
-func DeprecationWarning(deprecated string) {
-	zap.S().Warnf("[DEPRECATED CONFIG] %s is deprecated and will be removed in a future release.", deprecated)
-}
+func DeprecationWarning(deprecated string) { _ = "STUB: not implemented"; return }
 
-func DeprecationReplacedWarning(deprecated, replacement string) {
-	zap.S().Warnf("[DEPRECATED CONFIG] %s is deprecated and will be removed in a future release. Please use %s instead.", deprecated, replacement)
-}
+func DeprecationReplacedWarning(deprecated, replacement string) { _ = "STUB: not implemented"; return }
 
 var getPdpID = sync.OnceValue(func() string {
 	machineID, err := machineid.ID()
@@ -45,13 +40,4 @@ var getPdpID = sync.OnceValue(func() string {
 	return fmt.Sprintf("%X-%d", safeID, os.Getpid())
 })
 
-func PDPIdentifier(pdpID string) *pdpv1.Identifier {
-	if pdpID == "" {
-		pdpID = getPdpID()
-	}
-
-	return &pdpv1.Identifier{
-		Instance: pdpID,
-		Version:  AppShortVersion(),
-	}
-}
+func PDPIdentifier(pdpID string) *pdpv1.Identifier { _ = "STUB: not implemented"; return nil }

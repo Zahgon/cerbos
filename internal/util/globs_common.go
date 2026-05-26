@@ -14,74 +14,31 @@ type globCache struct {
 	cache *cache.Cache[string, glob.Glob]
 }
 
-func (gc *globCache) matches(globExpr, val string) bool {
-	g := gc.getOrCompile(globExpr)
-	if g == nil {
-		return false
-	}
-	return g.Match(val)
-}
+func (gc *globCache) matches(globExpr, val string) bool { _ = "STUB: not implemented"; return false }
 
 func (gc *globCache) getOrCompile(globExpr string) glob.Glob {
-	cachedGlob, ok := gc.cache.Get(globExpr)
-	if ok {
-		return cachedGlob
-	}
-
-	g, err := glob.Compile(globExpr, ':')
-	if err != nil {
-		logError(globExpr, err)
-		return nil
-	}
-
-	gc.cache.Set(globExpr, g)
-	return g
+	_ = "STUB: not implemented"
+	return *new(glob.Glob)
 }
 
 // MatchesGlob returns true if the given glob expression matches the given string.
-func MatchesGlob(g, val string) bool {
-	return globs.matches(fixGlob(g), val)
-}
+func MatchesGlob(g, val string) bool { _ = "STUB: not implemented"; return false }
 
 // FilterGlob returns the set of values that match the given glob.
-func FilterGlob(g string, values []string) []string {
-	globExp := fixGlob(g)
-	var out []string
-
-	for _, v := range values {
-		if globs.matches(globExp, v) {
-			out = append(out, v)
-		}
-	}
-
-	return out
-}
+func FilterGlob(g string, values []string) []string { _ = "STUB: not implemented"; return nil }
 
 // FilterGlobNotMatches returns the set of values that do not match the given glob.
 func FilterGlobNotMatches(g string, values []string) []string {
-	globExp := fixGlob(g)
-	var out []string
-
-	for _, v := range values {
-		if !globs.matches(globExp, v) {
-			out = append(out, v)
-		}
-	}
-
-	return out
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func fixGlob(g string) string {
+	_ = "STUB: not implemented"
 	// for backward compatibility, consider single * as **
-	if g == "*" {
-		return "**"
-	}
-
-	return g
+	return ""
 }
 
 // GetOrCompileGlob returns a compiled glob for the given expression, using the global cache.
 // Returns nil if the glob expression is invalid.
-func GetOrCompileGlob(globExpr string) glob.Glob {
-	return globs.getOrCompile(fixGlob(globExpr))
-}
+func GetOrCompileGlob(globExpr string) glob.Glob { _ = "STUB: not implemented"; return *new(glob.Glob) }

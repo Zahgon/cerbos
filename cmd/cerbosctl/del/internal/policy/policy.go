@@ -4,17 +4,10 @@
 package policy
 
 import (
-	"context"
-	"fmt"
-
 	"github.com/cerbos/cerbos-sdk-go/cerbos"
 )
 
 func Delete(c *cerbos.GRPCAdminClient, ids ...string) (uint32, error) {
-	deletedPolicies, err := cerbos.BatchAdminClientCall(context.Background(), c.DeletePolicy, ids...)
-	if err != nil {
-		return 0, fmt.Errorf("error while deleting policy: %w", err)
-	}
-
-	return deletedPolicies, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }

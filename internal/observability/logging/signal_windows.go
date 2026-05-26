@@ -13,5 +13,6 @@ import (
 )
 
 func handleUSR1Signal(_ context.Context, _ zapcore.Level, _ *zap.AtomicLevel) {
+	_ = "STUB: not implemented"
 	return
 }

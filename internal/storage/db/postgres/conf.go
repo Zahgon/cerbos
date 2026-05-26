@@ -23,10 +23,6 @@ type Conf struct {
 	SkipSchemaCheck bool `yaml:"skipSchemaCheck" conf:",example=false"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) Validate() error {
-	return c.ConnRetry.Validate()
-}
+func (c *Conf) Validate() error { _ = "STUB: not implemented"; return nil }

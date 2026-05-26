@@ -6,7 +6,6 @@ package types
 import (
 	"fmt"
 	"reflect"
-	"strings"
 
 	"github.com/google/cel-go/cel"
 	"github.com/google/cel-go/common/decls"
@@ -136,48 +135,15 @@ var (
 )
 
 func newFunction(name string, opts ...decls.FunctionOpt) *decls.FunctionDecl {
-	f, err := decls.NewFunction(name, opts...)
-	if err != nil {
-		panic(err)
-	}
-	return f
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func unaryHierarchyFnImpl(v ref.Val) ref.Val {
-	switch hv := v.(type) {
-	case Hierarchy:
-		return hv
-	case types.String:
-		return Hierarchy(strings.Split(string(hv), hierarchyDelim))
-	case traits.Lister:
-		hieraEls, err := hv.ConvertToNative(reflect.SliceOf(reflect.TypeFor[string]()))
-		if err != nil {
-			return types.NewErr("failed to convert list to string slice: %v", err)
-		}
-
-		h, ok := hieraEls.([]string)
-		if !ok {
-			return types.NewErr("expected string slice but got %T", hieraEls)
-		}
-
-		return Hierarchy(h)
-	default:
-		return types.MaybeNoSuchOverloadErr(v)
-	}
-}
+func unaryHierarchyFnImpl(v ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 func binaryHierarchyFnImpl(v, delim ref.Val) ref.Val {
-	vStr, ok := v.(types.String)
-	if !ok {
-		return types.NoSuchOverloadErr()
-	}
-
-	delimStr, ok := delim.(types.String)
-	if !ok {
-		return types.NoSuchOverloadErr()
-	}
-
-	return Hierarchy(strings.Split(string(vStr), string(delimStr)))
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Hierarchy is a type that represents a dot-separated hierarchy such as a.b.c.d.
@@ -185,226 +151,85 @@ type Hierarchy []string
 
 // ConvertToNative implements ref.Val.ConvertToNative.
 func (h Hierarchy) ConvertToNative(typeDesc reflect.Type) (any, error) {
+	_ = "STUB: not implemented"
 	//nolint:exhaustive
-	switch typeDesc.Kind() {
-	case reflect.String:
-		return strings.Join(h, hierarchyDelim), nil
-	case reflect.Interface:
-		hv := h.Value()
-		if reflect.TypeOf(hv).Implements(typeDesc) {
-			return hv, nil
-		}
-
-		if reflect.TypeFor[Hierarchy]().Implements(typeDesc) {
-			return h, nil
-		}
-	}
-
-	return nil, fmt.Errorf("unsupported native conversion from hierarchy to '%v'", typeDesc)
+	return *new(any), nil
 }
 
 // ConvertToType implements ref.Val.ConvertToType.
 func (h Hierarchy) ConvertToType(typeVal ref.Type) ref.Val {
-	switch typeVal {
-	case types.StringType:
-		return types.String(strings.Join(h, hierarchyDelim))
-	case types.TypeType:
-		return HierarchyType
-	}
-
-	return types.NewErr("type conversion error from '%s' to '%s'", HierarchyType, typeVal)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Type implements ref.Val.Type.
 func (h Hierarchy) Type() ref.Type {
-	return HierarchyType
+	_ = "STUB: not implemented"
+	return *
+
+	// Value implements ref.Val.Value.
+	new(ref.Type)
 }
 
-// Value implements ref.Val.Value.
 func (h Hierarchy) Value() any {
-	return []string(h)
+	_ = "STUB: not implemented"
+
+	// Equal implements ref.Val.Equal.
+	return *new(any)
 }
 
-// Equal implements ref.Val.Equal.
-func (h Hierarchy) Equal(other ref.Val) ref.Val {
-	otherH, ok := other.(Hierarchy)
-	if !ok {
-		return types.MaybeNoSuchOverloadErr(other)
-	}
-
-	if len(otherH) != len(h) {
-		return types.Bool(false)
-	}
-
-	for i, s := range h {
-		if otherH[i] != s {
-			return types.Bool(false)
-		}
-	}
-
-	return types.Bool(true)
-}
+func (h Hierarchy) Equal(other ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 // Receive implements traits.Receiver.Receive.
 func (h Hierarchy) Receive(function, _ string, args []ref.Val) ref.Val {
-	if len(args) == 1 {
-		if f, found := hierarchyOneArgOverloads[function]; found {
-			return f(h, args[0])
-		}
-	}
-	return types.NoSuchOverloadErr()
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Get implements traits.Indexer.Get.
-func (h Hierarchy) Get(index ref.Val) ref.Val {
-	i, ok := index.(types.Int)
-	if !ok {
-		return types.ValOrErr(index, "unsupported index type '%s'", index.Type())
-	}
-
-	idx := int(i)
-	if idx < 0 || idx >= len(h) {
-		return types.NewErr("index out of range")
-	}
-
-	return types.String(h[idx])
-}
+func (h Hierarchy) Get(index ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 // Size implements traits.Sizer.Size.
-func (h Hierarchy) Size() ref.Val {
-	return types.Int(len(h))
-}
+func (h Hierarchy) Size() ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 func hierarchyAncestorOf(h Hierarchy, path ref.Val) ref.Val {
-	childHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
-
-	if len(childHierarchy) <= len(h) {
-		return types.Bool(false)
-	}
-
-	for i, s := range h {
-		if childHierarchy[i] != s {
-			return types.Bool(false)
-		}
-	}
-
-	return types.Bool(true)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func hierarchyCommonAncestors(h Hierarchy, path ref.Val) ref.Val {
-	otherHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
-
-	shortList := h
-	longList := otherHierarchy
-	if len(otherHierarchy) < len(h) {
-		longList, shortList = h, otherHierarchy
-	}
-
-	if size := len(longList); size == len(shortList) {
-		longList = longList[:size-1]
-		shortList = shortList[:size-1]
-	}
-
-	var ancestors Hierarchy //nolint:prealloc
-	for i, s := range shortList {
-		if longList[i] != s {
-			break
-		}
-
-		ancestors = append(ancestors, s)
-	}
-
-	return ancestors
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
-func hierarchyDescendentOf(h Hierarchy, path ref.Val) ref.Val {
-	parentHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
+//nolint:prealloc
 
-	return hierarchyAncestorOf(parentHierarchy, h)
+func hierarchyDescendentOf(h Hierarchy, path ref.Val) ref.Val {
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func hierarchyImmediateChildOf(h Hierarchy, path ref.Val) ref.Val {
-	parentHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
-
-	return hierarchyImmediateParentOf(parentHierarchy, h)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func hierarchyImmediateParentOf(h Hierarchy, path ref.Val) ref.Val {
-	childHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
-
-	if len(childHierarchy) != len(h)+1 {
-		return types.Bool(false)
-	}
-
-	for i, s := range h {
-		if childHierarchy[i] != s {
-			return types.Bool(false)
-		}
-	}
-
-	return types.Bool(true)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func hierarchySiblingOf(h Hierarchy, path ref.Val) ref.Val {
-	otherHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
-
-	if len(otherHierarchy) != len(h) {
-		return types.Bool(false)
-	}
-
-	for i := range len(h) - 1 {
-		if h[i] != otherHierarchy[i] {
-			return types.Bool(false)
-		}
-	}
-
-	return types.Bool(true)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func hierarchyOverlaps(h Hierarchy, path ref.Val) ref.Val {
-	otherHierarchy, err := toHierarchy(path)
-	if err != nil {
-		return err
-	}
-
-	shortList := h
-	longList := otherHierarchy
-	if len(otherHierarchy) < len(h) {
-		longList, shortList = h, otherHierarchy
-	}
-
-	for i, s := range shortList {
-		if longList[i] != s {
-			return types.Bool(false)
-		}
-	}
-
-	return types.Bool(true)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func toHierarchy(v ref.Val) (Hierarchy, ref.Val) {
-	hv, ok := v.(Hierarchy)
-	if !ok {
-		return nil, types.MaybeNoSuchOverloadErr(v)
-	}
-
-	return hv, nil
+	_ = "STUB: not implemented"
+	return *new(Hierarchy), *new(ref.Val)
 }

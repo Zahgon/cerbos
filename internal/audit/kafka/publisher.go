@@ -6,17 +6,10 @@ package kafka
 import (
 	"context"
 	"fmt"
-	"os"
 	"time"
 
 	"github.com/twmb/franz-go/pkg/kgo"
-	"github.com/twmb/franz-go/plugin/kzap"
-	"go.uber.org/zap"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
-
-	"github.com/cerbos/cerbos/internal/observability/logging"
-	"github.com/cerbos/cerbos/internal/observability/metrics"
 
 	"github.com/cerbos/cerbos/internal/audit"
 	"github.com/cerbos/cerbos/internal/config"
@@ -81,153 +74,41 @@ type Publisher struct {
 }
 
 func NewPublisher(ctx context.Context, conf *Conf, decisionFilter audit.DecisionLogEntryFilter) (*Publisher, error) {
-	clientOpts := []kgo.Opt{
-		kgo.ClientID(conf.ClientID),
-		kgo.SeedBrokers(conf.Brokers...),
-		kgo.DefaultProduceTopic(conf.Topic),
-		kgo.MaxBufferedRecords(conf.MaxBufferedRecords),
-	}
-
-	if _, ok := os.LookupEnv("CERBOS_DEBUG_KAFKA"); ok {
-		clientOpts = append(clientOpts, kgo.WithLogger(
-			kzap.New(zap.L().Named("kafka"), kzap.Level(kgo.LogLevelDebug)),
-		))
-	}
-
-	ack, err := formatAck(conf.Ack)
-	if err != nil {
-		return nil, err
-	}
-	clientOpts = append(clientOpts, kgo.RequiredAcks(ack))
-	if conf.Ack != AckAll {
-		clientOpts = append(clientOpts, kgo.DisableIdempotentWrite())
-	}
-
-	compression, err := formatCompression(conf.Compression)
-	if err != nil {
-		return nil, err
-	}
-
-	clientOpts = append(clientOpts, kgo.ProducerBatchCompression(compression...))
-
-	if conf.Authentication.TLS != nil {
-		tlsConfig, err := NewTLSConfig(ctx,
-			conf.Authentication.TLS.ReloadInterval,
-			conf.Authentication.TLS.InsecureSkipVerify,
-			conf.Authentication.TLS.CAPath,
-			conf.Authentication.TLS.CertPath,
-			conf.Authentication.TLS.KeyPath)
-		if err != nil {
-			return nil, err
-		}
-
-		clientOpts = append(clientOpts, kgo.DialTLSConfig(tlsConfig))
-	}
-
-	client, err := kgo.NewClient(clientOpts...)
-	if err != nil {
-		return nil, err
-	}
-
-	return &Publisher{
-		Client:         client,
-		decisionFilter: decisionFilter,
-		marshaller:     newMarshaller(conf.Encoding),
-		sync:           conf.ProduceSync,
-		closeTimeout:   conf.CloseTimeout,
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (p *Publisher) Close() error {
-	flushCtx, flushCancel := context.WithTimeout(context.Background(), p.closeTimeout)
-	defer flushCancel()
-	if err := p.Client.Flush(flushCtx); err != nil {
-		return err
-	}
+func (p *Publisher) Close() error { _ = "STUB: not implemented"; return nil }
 
-	p.Client.Close()
-	return nil
-}
+func (p *Publisher) Backend() string { _ = "STUB: not implemented"; return "" }
 
-func (p *Publisher) Backend() string {
-	return Backend
-}
-
-func (p *Publisher) Enabled() bool {
-	return true
-}
+func (p *Publisher) Enabled() bool { _ = "STUB: not implemented"; return false }
 
 func (p *Publisher) WriteAccessLogEntry(ctx context.Context, record audit.AccessLogEntryMaker) error {
-	rec, err := record()
-	if err != nil {
-		return err
-	}
-
-	msg, err := p.marshaller.Marshal(rec, KindAccess)
-	if err != nil {
-		return err
-	}
-
-	return p.write(ctx, msg)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (p *Publisher) WriteDecisionLogEntry(ctx context.Context, record audit.DecisionLogEntryMaker) error {
-	rec, err := record()
-	if err != nil {
-		return err
-	}
-
-	if p.decisionFilter != nil {
-		rec = p.decisionFilter(rec)
-		if rec == nil {
-			return nil
-		}
-	}
-
-	msg, err := p.marshaller.Marshal(rec, KindDecision)
-	if err != nil {
-		return err
-	}
-
-	return p.write(ctx, msg)
-}
-
-func (p *Publisher) write(ctx context.Context, msg *kgo.Record) error {
-	if p.sync {
-		return p.Client.ProduceSync(ctx, msg).FirstErr()
-	}
-
-	// detach the context from the caller so the request can return
-	// without cancelling any async kafka operations
-	ctx = context.WithoutCancel(ctx)
-
-	p.Client.TryProduce(ctx, msg, func(r *kgo.Record, err error) {
-		if err == nil {
-			return
-		}
-
-		// TODO: Currently have to duplicate logWrapper as it does not support async audit publishing.
-		logging.FromContext(ctx).Warn("failed to write audit log entry", zap.Error(err))
-
-		// Due to async nature of this callback, we need to pull the `kind` out of the header
-		var kind string
-		for _, h := range r.Headers {
-			if h.Key == HeaderKeyKind {
-				kind = string(h.Value)
-				break
-			}
-		}
-
-		metrics.Inc(ctx, metrics.AuditErrorCount(), metrics.KindKey(kind))
-	})
+	_ = "STUB: not implemented"
 	return nil
 }
 
+func (p *Publisher) write(ctx context.Context, msg *kgo.Record) error {
+	_ = "STUB: not implemented"
+	return nil
+}
+
+// detach the context from the caller so the request can return
+// without cancelling any async kafka operations
+
+// TODO: Currently have to duplicate logWrapper as it does not support async audit publishing.
+
+// Due to async nature of this callback, we need to pull the `kind` out of the header
+
 func newMarshaller(enc Encoding) recordMarshaller {
-	return recordMarshaller{
-		encoding:    enc,
-		encodingKey: []byte(enc),
-	}
+	_ = "STUB: not implemented"
+	return *new(recordMarshaller)
 }
 
 type recordMarshaller struct {
@@ -242,37 +123,6 @@ type auditEntry interface {
 }
 
 func (m recordMarshaller) Marshal(entry auditEntry, kind Kind) (*kgo.Record, error) {
-	partitionKey, err := audit.ID(entry.GetCallId()).Repr()
-	if err != nil {
-		return nil, fmt.Errorf("invalid call ID: %w", err)
-	}
-
-	var payload []byte
-	switch m.encoding {
-	default:
-		return nil, fmt.Errorf("invalid encoding format: %s", m.encoding)
-	case EncodingJSON:
-		payload, err = protojson.Marshal(entry)
-	case EncodingProtobuf:
-		payload, err = entry.MarshalVT()
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("failed to marshal entry: %w", err)
-	}
-
-	return &kgo.Record{
-		Key:   partitionKey.Bytes(),
-		Value: payload,
-		Headers: []kgo.RecordHeader{
-			{
-				Key:   HeaderKeyEncoding,
-				Value: m.encodingKey,
-			},
-			{
-				Key:   HeaderKeyKind,
-				Value: kind,
-			},
-		},
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

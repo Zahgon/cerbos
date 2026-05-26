@@ -4,7 +4,6 @@
 package files
 
 import (
-	"fmt"
 	"io"
 	"io/fs"
 )
@@ -22,18 +21,10 @@ type foundInFs struct {
 }
 
 func (f foundInFs) Open() (io.Reader, error) {
-	file, err := f.fsys.Open(f.path)
-	if err != nil {
-		return nil, fmt.Errorf("failed to open found file from %s: %w", f.path, err)
-	}
-
-	return file, nil
+	_ = "STUB: not implemented"
+	return *new(io.Reader), nil
 }
 
-func (f foundInFs) ID() string {
-	return f.id
-}
+func (f foundInFs) ID() string { _ = "STUB: not implemented"; return "" }
 
-func (f foundInFs) Path() string {
-	return f.path
-}
+func (f foundInFs) Path() string { _ = "STUB: not implemented"; return "" }

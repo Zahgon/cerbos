@@ -4,12 +4,7 @@
 package auxdata
 
 import (
-	"fmt"
 	"time"
-
-	"go.uber.org/multierr"
-
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -67,58 +62,6 @@ type LocalSource struct {
 	PEM bool `yaml:"pem" conf:",example=true"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) Validate() (errs error) {
-	if c.JWT == nil {
-		return nil
-	}
-
-	if c.JWT.CacheSize != nil {
-		util.DeprecationWarning("auxData.jwt.cacheSize")
-	}
-
-	if c.JWT.AcceptableTimeSkew < 0 {
-		errs = multierr.Append(errs, fmt.Errorf("acceptableTimeSkew must be positive"))
-	}
-
-	idSet := make(map[string]struct{}, len(c.JWT.KeySets))
-	for _, ks := range c.JWT.KeySets {
-		if _, ok := idSet[ks.ID]; ok {
-			errs = multierr.Append(errs, fmt.Errorf("duplicate keyset id '%s'", ks.ID))
-			continue
-		}
-
-		idSet[ks.ID] = struct{}{}
-
-		if ks.Remote == nil && ks.Local == nil {
-			errs = multierr.Append(errs, fmt.Errorf("keyset '%s': should have one of `local` or `remote` defined", ks.ID))
-			continue
-		}
-
-		if ks.Remote != nil && ks.Local != nil {
-			errs = multierr.Append(errs, fmt.Errorf("keyset '%s': only one of `local` or `remote` should be defined", ks.ID))
-			continue
-		}
-
-		if ks.Remote != nil && ks.Remote.URL == "" {
-			errs = multierr.Append(errs, fmt.Errorf("keyset '%s': remote URL is empty", ks.ID))
-			continue
-		}
-
-		if l := ks.Local; l != nil {
-			if l.Data == "" && l.File == "" {
-				errs = multierr.Append(errs, fmt.Errorf("keyset '%s': at least one of 'local.data' or 'local.file' must be defined", ks.ID))
-				continue
-			}
-
-			if l.Data != "" && l.File != "" {
-				errs = multierr.Append(errs, fmt.Errorf("keyset '%s': only one of 'loca.data' or 'local.file' must be defined", ks.ID))
-			}
-		}
-	}
-
-	return errs
-}
+func (c *Conf) Validate() (errs error) { _ = "STUB: not implemented"; return nil }

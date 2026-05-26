@@ -5,15 +5,7 @@ package evaluator
 
 import (
 	"errors"
-	"fmt"
-	"runtime"
-	"strings"
 	"time"
-
-	"github.com/cerbos/cerbos/internal/conditions"
-	"github.com/cerbos/cerbos/internal/config"
-	"github.com/cerbos/cerbos/internal/namer"
-	"go.uber.org/multierr"
 )
 
 const (
@@ -40,34 +32,10 @@ type Conf struct {
 	NumWorkers          uint          `yaml:"numWorkers" conf:",ignore"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.DefaultPolicyVersion = namer.DefaultVersion
-	c.DefaultScope = namer.DefaultScope
-	c.PolicyLoaderTimeout = defaultPolicyLoaderTimeout
-	c.NumWorkers = uint(runtime.NumCPU() + extraWorkersOverCPUs)
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (c *Conf) Validate() (outErr error) {
-	if strings.TrimSpace(c.DefaultPolicyVersion) == "" {
-		multierr.AppendInto(&outErr, errEmptyDefaultVersion)
-	}
+func (c *Conf) Validate() (outErr error) { _ = "STUB: not implemented"; return nil }
 
-	for identifier := range c.Globals {
-		if err := conditions.ValidateIdentifier(identifier); err != nil {
-			multierr.AppendInto(&outErr, fmt.Errorf("engine.globals: %w", err))
-		}
-	}
-
-	return outErr
-}
-
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

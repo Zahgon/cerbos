@@ -4,11 +4,8 @@
 package hub
 
 import (
-	"errors"
 	"fmt"
 	"time"
-
-	"go.uber.org/multierr"
 
 	"github.com/cerbos/cerbos/internal/audit"
 	"github.com/cerbos/cerbos/internal/audit/local"
@@ -66,47 +63,8 @@ type PipeOutputConf struct {
 	Enabled bool   `yaml:"enabled" conf:",example=false"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.Conf.SetDefaults()
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-	c.Ingest.MaxBatchSizeBytes = defaultMaxBatchSizeBytes
-	c.Ingest.MinFlushInterval = defaultMinFlushInterval
-	c.Ingest.FlushTimeout = defaultFlushTimeout
-	c.Ingest.NumGoRoutines = defaultNumGoRoutines
-}
-
-func (c *Conf) Validate() (outErr error) {
-	if err := c.Conf.Validate(); err != nil {
-		outErr = multierr.Append(outErr, err)
-	}
-
-	if c.Ingest.MaxBatchSizeBytes < BatchSizeToleranceBytes {
-		outErr = multierr.Append(outErr, fmt.Errorf("maxBatchSizeBytes must be at least %d", BatchSizeToleranceBytes))
-	}
-
-	if c.Ingest.MaxBatchSizeBytes > local.MaxAllowedBatchSizeBytes-BatchSizeToleranceBytes {
-		outErr = multierr.Append(outErr, fmt.Errorf("maxBatchSizeBytes cannot exceed %d bytes", local.MaxAllowedBatchSizeBytes-BatchSizeToleranceBytes))
-	}
-
-	if c.Ingest.MinFlushInterval < minMinFlushInterval {
-		outErr = multierr.Append(outErr, errInvalidFlushInterval)
-	}
-
-	if c.Ingest.FlushTimeout > maxFlushTimeout {
-		outErr = multierr.Append(outErr, errInvalidFlushTimeout)
-	}
-
-	if c.Ingest.MinFlushInterval >= c.Advanced.FlushInterval {
-		outErr = multierr.Append(outErr, errors.New("ingest.minFlushInterval must be less than advanced.flushInterval"))
-	}
-
-	if c.PipeOutput.Enabled && c.PipeOutput.Backend == Backend {
-		outErr = multierr.Append(outErr, errors.New("cannot use hub as its own pipe output backend"))
-	}
-
-	return outErr
-}
+func (c *Conf) Validate() (outErr error) { _ = "STUB: not implemented"; return nil }

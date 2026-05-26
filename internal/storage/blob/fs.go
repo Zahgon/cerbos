@@ -6,12 +6,8 @@
 package blob
 
 import (
-	"errors"
-	"fmt"
 	"io"
 	"io/fs"
-	"os"
-	"path/filepath"
 )
 
 const (
@@ -30,12 +26,7 @@ type FS interface {
 	MkdirAll(path string, perm fs.FileMode) error
 }
 
-func newBlobFS(dir string) FS {
-	return &blobFS{
-		dir:  dir,
-		fsys: os.DirFS(dir),
-	}
-}
+func newBlobFS(dir string) FS { _ = "STUB: not implemented"; return *new(FS) }
 
 type blobFS struct {
 	fsys fs.FS
@@ -43,48 +34,31 @@ type blobFS struct {
 }
 
 func (s blobFS) Create(name string) (io.WriteCloser, error) {
-	return os.Create(filepath.Join(s.dir, name))
+	_ = "STUB: not implemented"
+	return *new(io.WriteCloser), nil
 }
 
 func (s blobFS) MkdirAll(path string, perm fs.FileMode) error {
-	return os.MkdirAll(filepath.Join(s.dir, path), perm)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s blobFS) Open(name string) (fs.File, error) {
-	return s.fsys.Open(name)
+	_ = "STUB: not implemented"
+	return *new(fs.File), nil
 }
 
-func (s blobFS) Remove(name string) error {
-	return os.Remove(filepath.Join(s.dir, name))
-}
+func (s blobFS) Remove(name string) error { _ = "STUB: not implemented"; return nil }
 
-func (s blobFS) RemoveAll(name string) error {
-	return os.RemoveAll(filepath.Join(s.dir, name))
-}
+func (s blobFS) RemoveAll(name string) error { _ = "STUB: not implemented"; return nil }
 
-func (s blobFS) Rename(name, newName string) error {
-	return os.Rename(filepath.Join(s.dir, name), filepath.Join(s.dir, newName))
-}
+func (s blobFS) Rename(name, newName string) error { _ = "STUB: not implemented"; return nil }
 
 func (s blobFS) Stat(name string) (fs.FileInfo, error) {
-	return fs.Stat(s.fsys, name)
+	_ = "STUB: not implemented"
+	return *new(fs.FileInfo), nil
 }
 
-func createOrValidateDir(dir string) error {
-	fileInfo, err := os.Stat(dir)
-	if err != nil {
-		if !errors.Is(err, os.ErrNotExist) {
-			return fmt.Errorf("failed to stat directory %s: %w", dir, err)
-		}
+func createOrValidateDir(dir string) error { _ = "STUB: not implemented"; return nil }
 
-		if err := os.MkdirAll(dir, 0o775); err != nil { //nolint:mnd
-			return fmt.Errorf("failed to create directory %s: %w", dir, err)
-		}
-	}
-
-	if fileInfo != nil && !fileInfo.IsDir() {
-		return fmt.Errorf("dir is not a directory: %s", dir)
-	}
-
-	return nil
-}
+//nolint:mnd

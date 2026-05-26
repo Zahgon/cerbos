@@ -5,8 +5,6 @@ package local
 
 import (
 	"errors"
-	"fmt"
-	"strings"
 	"time"
 
 	"github.com/cerbos/cerbos/internal/audit"
@@ -48,38 +46,8 @@ type AdvancedConf struct {
 	GCInterval    time.Duration `yaml:"gcInterval" conf:",example=60s"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.RetentionPeriod = defaultRetentionPeriod
-	c.Advanced.BufferSize = defaultBufferSize
-	c.Advanced.MaxBatchSize = defaultMaxBatchSize
-	c.Advanced.FlushInterval = defaultFlushInterval
-	c.Advanced.GCInterval = defaultGCInterval
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (c *Conf) Validate() error {
-	if strings.TrimSpace(c.StoragePath) == "" {
-		return errEmptyStoragePath
-	}
-
-	if c.RetentionPeriod < minRetentionPeriod || c.RetentionPeriod > maxRetentionPeriod {
-		return fmt.Errorf("retentionPeriod must be between %s and %s", minRetentionPeriod, maxRetentionPeriod)
-	}
-
-	if c.Advanced.BufferSize < 1 {
-		return errInvalidBufferSize
-	}
-
-	if c.Advanced.MaxBatchSize < 1 {
-		return errInvalidMaxBatchSize
-	}
-
-	if c.Advanced.FlushInterval < minFlushInterval {
-		return fmt.Errorf("flushInterval must be at least %s", minFlushInterval)
-	}
-
-	return nil
-}
+func (c *Conf) Validate() error { _ = "STUB: not implemented"; return nil }

@@ -7,12 +7,7 @@ import (
 
 	// signal to the compiler that files need to be embedded.
 	_ "embed"
-	"io"
 	"net/http"
-
-	"github.com/tidwall/sjson"
-
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 //go:embed openapiv2/cerbos/svc/v1/svc.swagger.json
@@ -33,72 +28,25 @@ var ResourceFixturesJSONSchema string
 //go:embed jsonschema/cerbos/policy/v1/TestFixture/AuxData.schema.json
 var AuxDataFixturesJSONSchema string
 
-func ServeSvcSwagger(w http.ResponseWriter, r *http.Request) {
-	defer cleanup(r)
+func ServeSvcSwagger(w http.ResponseWriter, r *http.Request) { _ = "STUB: not implemented"; return }
 
-	httpScheme := "http"
-	if r.TLS != nil || r.Header.Get("X-Forwarded-Proto") == "https" {
-		httpScheme = "https"
-	}
+//nolint:gosec
 
-	schema, err := newSwaggerMod().setVersion(util.Version).setHost(r.Host).setScheme(httpScheme).build()
-	if err != nil {
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
-		return
-	}
+func ServeUI(w http.ResponseWriter, r *http.Request) { _ = "STUB: not implemented"; return }
 
-	w.Header().Set("Content-Type", "application/json")
-	_, _ = w.Write(schema) //nolint:gosec
-}
-
-func ServeUI(w http.ResponseWriter, r *http.Request) {
-	defer cleanup(r)
-
-	_, _ = w.Write(rapidocHTML)
-}
-
-func cleanup(r *http.Request) {
-	if r.Body != nil {
-		_, _ = io.Copy(io.Discard, r.Body)
-		r.Body.Close()
-	}
-}
+func cleanup(r *http.Request) { _ = "STUB: not implemented"; return }
 
 type swaggerMod struct {
 	err    error
 	schema []byte
 }
 
-func newSwaggerMod() *swaggerMod {
-	return &swaggerMod{
-		schema: svcSwaggerRaw,
-	}
-}
+func newSwaggerMod() *swaggerMod { _ = "STUB: not implemented"; return nil }
 
-func (sm *swaggerMod) setVersion(version string) *swaggerMod {
-	if sm.err == nil {
-		sm.schema, sm.err = sjson.SetBytes(sm.schema, "info.version", version)
-	}
+func (sm *swaggerMod) setVersion(version string) *swaggerMod { _ = "STUB: not implemented"; return nil }
 
-	return sm
-}
+func (sm *swaggerMod) setHost(host string) *swaggerMod { _ = "STUB: not implemented"; return nil }
 
-func (sm *swaggerMod) setHost(host string) *swaggerMod {
-	if sm.err == nil {
-		sm.schema, sm.err = sjson.SetBytes(sm.schema, "host", host)
-	}
+func (sm *swaggerMod) setScheme(scheme string) *swaggerMod { _ = "STUB: not implemented"; return nil }
 
-	return sm
-}
-
-func (sm *swaggerMod) setScheme(scheme string) *swaggerMod {
-	if sm.err == nil {
-		sm.schema, sm.err = sjson.SetBytes(sm.schema, "schemes.0", scheme)
-	}
-
-	return sm
-}
-
-func (sm *swaggerMod) build() ([]byte, error) {
-	return sm.schema, sm.err
-}
+func (sm *swaggerMod) build() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }

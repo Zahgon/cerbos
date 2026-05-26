@@ -4,94 +4,56 @@
 package policy
 
 import (
-	"fmt"
-
 	policyv1 "github.com/cerbos/cerbos/api/genpb/cerbos/policy/v1"
 )
 
-func ResourcePolicyRuleProtoPath(idx int) string {
-	return fmt.Sprintf("resource_policy.rules[%d]", idx)
-}
+func ResourcePolicyRuleProtoPath(idx int) string { _ = "STUB: not implemented"; return "" }
 
 func ResourcePolicyRuleReferencedDerivedRoleProtoPath(ruleIdx, roleIdx int) string {
-	return fmt.Sprintf("%s.derived_roles[%d]", ResourcePolicyRuleProtoPath(ruleIdx), roleIdx)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func ResourcePolicyImportDerivedRolesProtoPath(idx int) string {
-	return fmt.Sprintf("resource_policy.import_derived_roles[%d]", idx)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func ResourcePolicyPrincipalSchemaProtoPath() string {
-	return "resource_policy.schemas.principal_schema.ref"
-}
+func ResourcePolicyPrincipalSchemaProtoPath() string { _ = "STUB: not implemented"; return "" }
 
-func ResourcePolicyResourceSchemaProtoPath() string {
-	return "resource_policy.schemas.resource_schema.ref"
-}
+func ResourcePolicyResourceSchemaProtoPath() string { _ = "STUB: not implemented"; return "" }
 
-func PrincipalPolicyRuleProtoPath(idx int) string {
-	return fmt.Sprintf("principal_policy.rules[%d]", idx)
-}
+func PrincipalPolicyRuleProtoPath(idx int) string { _ = "STUB: not implemented"; return "" }
 
 func PrincipalPolicyActionRuleProtoPath(parentIdx, idx int) string {
-	return fmt.Sprintf("%s.actions[%d]", PrincipalPolicyRuleProtoPath(parentIdx), idx)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func RolePolicyRuleProtoPath(idx int) string {
-	return fmt.Sprintf("role_policy.rules[%d]", idx)
-}
+func RolePolicyRuleProtoPath(idx int) string { _ = "STUB: not implemented"; return "" }
 
-func RolePolicyConditionProtoPath(idx int) string {
-	return fmt.Sprintf("%s.condition", RolePolicyRuleProtoPath(idx))
-}
+func RolePolicyConditionProtoPath(idx int) string { _ = "STUB: not implemented"; return "" }
 
-func DerivedRoleConditionProtoPath(idx int) string {
-	return fmt.Sprintf("%s.condition", DerivedRoleRuleProtoPath(idx))
-}
+func DerivedRoleConditionProtoPath(idx int) string { _ = "STUB: not implemented"; return "" }
 
-func DerivedRoleRuleProtoPath(idx int) string {
-	return fmt.Sprintf("derived_roles.definitions[%d]", idx)
-}
+func DerivedRoleRuleProtoPath(idx int) string { _ = "STUB: not implemented"; return "" }
 
-func ExportConstantsConstantProtoPath() string {
-	return "export_constants.definitions"
-}
+func ExportConstantsConstantProtoPath() string { _ = "STUB: not implemented"; return "" }
 
 func ConstantsImportProtoPath(p *policyv1.Policy, idx int) string {
-	return fmt.Sprintf("%s.constants.import[%d]", policyKind(p), idx)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func ConstantsLocalProtoPath(p *policyv1.Policy) string {
-	return fmt.Sprintf("%s.constants.local", policyKind(p))
-}
+func ConstantsLocalProtoPath(p *policyv1.Policy) string { _ = "STUB: not implemented"; return "" }
 
-func ExportVariablesVariableProtoPath() string {
-	return "export_variables.definitions"
-}
+func ExportVariablesVariableProtoPath() string { _ = "STUB: not implemented"; return "" }
 
 func VariablesImportProtoPath(p *policyv1.Policy, idx int) string {
-	return fmt.Sprintf("%s.variables.import[%d]", policyKind(p), idx)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func VariablesLocalProtoPath(p *policyv1.Policy) string {
-	return fmt.Sprintf("%s.variables.local", policyKind(p))
-}
+func VariablesLocalProtoPath(p *policyv1.Policy) string { _ = "STUB: not implemented"; return "" }
 
-func policyKind(p *policyv1.Policy) string {
-	switch p.PolicyType.(type) {
-	case *policyv1.Policy_ResourcePolicy:
-		return "resource_policy"
-	case *policyv1.Policy_PrincipalPolicy:
-		return "principal_policy"
-	case *policyv1.Policy_RolePolicy:
-		return "role_policy"
-	case *policyv1.Policy_DerivedRoles:
-		return "derived_roles"
-	case *policyv1.Policy_ExportConstants:
-		return "export_constants"
-	case *policyv1.Policy_ExportVariables:
-		return "export_variables"
-	default:
-		return ""
-	}
-}
+func policyKind(p *policyv1.Policy) string { _ = "STUB: not implemented"; return "" }

@@ -37,50 +37,62 @@ type Context interface {
 
 type noopContext struct{}
 
-func (c noopContext) StartAction(string) Context { return c }
+func (c noopContext) StartAction(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartConditionAll() Context { return c }
+func (c noopContext) StartConditionAll() Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartConditionAny() Context { return c }
+func (c noopContext) StartConditionAny() Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartConditionNone() Context { return c }
+func (c noopContext) StartConditionNone() Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartCondition() Context { return c }
+func (c noopContext) StartCondition() Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartDerivedRole(string) Context { return c }
+func (c noopContext) StartDerivedRole(string) Context {
+	_ = "STUB: not implemented"
+	return *new(Context)
+}
 
-func (c noopContext) StartExpr(string) Context { return c }
+func (c noopContext) StartExpr(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartNthCondition(int) Context { return c }
+func (c noopContext) StartNthCondition(int) Context {
+	_ = "STUB: not implemented"
+	return *new(Context)
+}
 
-func (c noopContext) StartPolicy(string) Context { return c }
+func (c noopContext) StartPolicy(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartRolePolicyScope(string) Context { return c }
+func (c noopContext) StartRolePolicyScope(string) Context {
+	_ = "STUB: not implemented"
+	return *new(Context)
+}
 
-func (c noopContext) StartResource(string) Context { return c }
+func (c noopContext) StartResource(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartRole(string) Context { return c }
+func (c noopContext) StartRole(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartRule(string) Context { return c }
+func (c noopContext) StartRule(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartScope(string) Context { return c }
+func (c noopContext) StartScope(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartVariable(string, string) Context { return c }
+func (c noopContext) StartVariable(string, string) Context {
+	_ = "STUB: not implemented"
+	return *new(Context)
+}
 
-func (c noopContext) StartVariables() Context { return c }
+func (c noopContext) StartVariables() Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (c noopContext) StartOutput(string) Context { return c }
+func (c noopContext) StartOutput(string) Context { _ = "STUB: not implemented"; return *new(Context) }
 
-func (noopContext) Activated() {}
+func (noopContext) Activated() { _ = "STUB: not implemented"; return }
 
-func (noopContext) AppliedEffect(effectv1.Effect, string) {}
+func (noopContext) AppliedEffect(effectv1.Effect, string) { _ = "STUB: not implemented"; return }
 
-func (noopContext) ComputedBoolResult(bool, error, string) {}
+func (noopContext) ComputedBoolResult(bool, error, string) { _ = "STUB: not implemented"; return }
 
-func (noopContext) ComputedOutput(*enginev1.OutputEntry) {}
+func (noopContext) ComputedOutput(*enginev1.OutputEntry) { _ = "STUB: not implemented"; return }
 
-func (noopContext) ComputedResult(any) {}
+func (noopContext) ComputedResult(any) { _ = "STUB: not implemented"; return }
 
-func (noopContext) Failed(error, string) {}
+func (noopContext) Failed(error, string) { _ = "STUB: not implemented"; return }
 
-func (noopContext) Skipped(error, string) {}
+func (noopContext) Skipped(error, string) { _ = "STUB: not implemented"; return }

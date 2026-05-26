@@ -6,15 +6,7 @@ package server
 import (
 	"encoding/base64"
 	"errors"
-	"fmt"
-	"strconv"
 	"time"
-
-	"go.uber.org/multierr"
-	"golang.org/x/crypto/bcrypt"
-
-	"github.com/cerbos/cerbos/internal/config"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -83,9 +75,7 @@ type TLSConf struct {
 	CACert string `yaml:"caCert" conf:",example=/path/to/CA_certificate"`
 }
 
-func (t *TLSConf) Empty() bool {
-	return t == nil || t.Key == "" || t.Cert == ""
-}
+func (t *TLSConf) Empty() bool { _ = "STUB: not implemented"; return false }
 
 type CORSConf struct {
 	// AllowedOrigins is the contents of the allowed-origins header.
@@ -113,27 +103,13 @@ type AdminCredentialsConf struct {
 }
 
 func (a *AdminCredentialsConf) usernameAndPasswordHash() (string, []byte, error) {
-	if a == nil {
-		return "", nil, errAdminCredsUndefined
-	}
-
-	passwordHashBytes, err := base64.StdEncoding.DecodeString(a.PasswordHash)
-	if err != nil {
-		return "", nil, fmt.Errorf("failed to base64 decode admin passwordHash: %w", err)
-	}
-
-	return a.Username, passwordHashBytes, nil
+	_ = "STUB: not implemented"
+	return "", nil, nil
 }
 
 func adminCredentialsAreUnsafe(passwordHash []byte) (bool, error) {
-	err := bcrypt.CompareHashAndPassword(passwordHash, []byte(defaultAdminPassword))
-	if err == nil {
-		return true, nil
-	} else if errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
-		return false, nil
-	}
-
-	return false, err
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 type RequestLimitsConf struct {
@@ -172,73 +148,10 @@ type AdvancedGRPCConf struct {
 	MaxConcurrentStreams uint32 `yaml:"maxConcurrentStreams" conf:",example=1024"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.HTTPListenAddr = defaultHTTPListenAddr
-	c.GRPCListenAddr = defaultGRPCListenAddr
-	c.MetricsEnabled = true
-	c.APIExplorerEnabled = true
-	c.UDSFileMode = defaultUDSFileMode
-	c.RequestLimits = RequestLimitsConf{
-		MaxActionsPerResource:  defaultMaxActionsPerResource,
-		MaxResourcesPerRequest: defaultMaxResourcesPerRequest,
-	}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-	if c.AdminAPI.AdminCredentials == nil {
-		c.AdminAPI.AdminCredentials = &AdminCredentialsConf{
-			Username:     defaultAdminUsername,
-			PasswordHash: defaultAdminPasswordHash,
-		}
-	}
+func (c *Conf) Validate() (errs error) { _ = "STUB: not implemented"; return nil }
 
-	c.Advanced = AdvancedConf{
-		HTTP: AdvancedHTTPConf{
-			ReadTimeout:       defaultHTTPReadTimeout,
-			ReadHeaderTimeout: defaultHTTPReadHeaderTimeout,
-			WriteTimeout:      defaultHTTPWriteTimeout,
-			IdleTimeout:       defaultHTTPIdleTimeout,
-		},
-		GRPC: AdvancedGRPCConf{
-			MaxRecvMsgSizeBytes:  defaultGRPCMaxRecvMsgSizeBytes,
-			MaxConcurrentStreams: defaultGRPCMaxConcurrentStreams,
-			MaxConnectionAge:     defaultGRPCMaxConnectionAge,
-			ConnectionTimeout:    defaultGRPCConnectionTimeout,
-		},
-	}
-}
-
-func (c *Conf) Validate() (errs error) {
-	if _, _, err := util.ParseListenAddress(c.HTTPListenAddr); err != nil {
-		errs = multierr.Append(errs, fmt.Errorf("invalid httpListenAddr '%s': %w", c.HTTPListenAddr, err))
-	}
-
-	if _, _, err := util.ParseListenAddress(c.GRPCListenAddr); err != nil {
-		errs = multierr.Append(errs, fmt.Errorf("invalid grpcListenAddr '%s': %w", c.GRPCListenAddr, err))
-	}
-
-	if mode, err := strconv.ParseInt(c.UDSFileMode, 0, 32); err != nil {
-		errs = multierr.Append(errs, fmt.Errorf("invalid udsFileMode %q: %w", c.UDSFileMode, err))
-	} else if mode <= 0 {
-		errs = multierr.Append(errs, fmt.Errorf("invalid udsFileMode %q", c.UDSFileMode))
-	}
-
-	if c.RequestLimits.MaxActionsPerResource < 1 || c.RequestLimits.MaxActionsPerResource > requestItemsMax {
-		errs = multierr.Append(errs, fmt.Errorf("maxActionsPerResource must be between 1 and %d", requestItemsMax))
-	}
-
-	if c.RequestLimits.MaxResourcesPerRequest < 1 || c.RequestLimits.MaxResourcesPerRequest > requestItemsMax {
-		errs = multierr.Append(errs, fmt.Errorf("maxResourcesPerRequest must be between 1 and %d", requestItemsMax))
-	}
-
-	return errs
-}
-
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

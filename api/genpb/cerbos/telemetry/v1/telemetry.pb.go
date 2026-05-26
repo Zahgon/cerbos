@@ -10,12 +10,11 @@
 package telemetryv1
 
 import (
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -35,63 +34,27 @@ type ServerLaunch struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch) Reset() {
-	*x = ServerLaunch{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch) ProtoMessage() {}
+func (*ServerLaunch) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch.ProtoReflect.Descriptor instead.
-func (*ServerLaunch) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0}
-}
+func (*ServerLaunch) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ServerLaunch) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *ServerLaunch) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch) GetSource() *ServerLaunch_Source {
-	if x != nil {
-		return x.Source
-	}
-	return nil
-}
+func (x *ServerLaunch) GetSource() *ServerLaunch_Source { _ = "STUB: not implemented"; return nil }
 
-func (x *ServerLaunch) GetFeatures() *ServerLaunch_Features {
-	if x != nil {
-		return x.Features
-	}
-	return nil
-}
+func (x *ServerLaunch) GetFeatures() *ServerLaunch_Features { _ = "STUB: not implemented"; return nil }
 
-func (x *ServerLaunch) GetStats() *ServerLaunch_Stats {
-	if x != nil {
-		return x.Stats
-	}
-	return nil
-}
+func (x *ServerLaunch) GetStats() *ServerLaunch_Stats { _ = "STUB: not implemented"; return nil }
 
 type ServerStop struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -102,56 +65,25 @@ type ServerStop struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerStop) Reset() {
-	*x = ServerStop{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerStop) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerStop) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerStop) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerStop) ProtoMessage() {}
+func (*ServerStop) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerStop) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerStop.ProtoReflect.Descriptor instead.
-func (*ServerStop) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{1}
-}
+func (*ServerStop) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ServerStop) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *ServerStop) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerStop) GetUptime() *durationpb.Duration {
-	if x != nil {
-		return x.Uptime
-	}
-	return nil
-}
+func (x *ServerStop) GetUptime() *durationpb.Duration { _ = "STUB: not implemented"; return nil }
 
-func (x *ServerStop) GetRequestsTotal() uint64 {
-	if x != nil {
-		return x.RequestsTotal
-	}
-	return 0
-}
+func (x *ServerStop) GetRequestsTotal() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type Event struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -163,51 +95,23 @@ type Event struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Event) Reset() {
-	*x = Event{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Event) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Event) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Event) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Event) ProtoMessage() {}
+func (*Event) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Event) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Event.ProtoReflect.Descriptor instead.
-func (*Event) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{2}
-}
+func (*Event) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Event) GetData() isEvent_Data {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
+func (x *Event) GetData() isEvent_Data { _ = "STUB: not implemented"; return *new(isEvent_Data) }
 
-func (x *Event) GetApiActivity() *Event_ApiActivity {
-	if x != nil {
-		if x, ok := x.Data.(*Event_ApiActivity_); ok {
-			return x.ApiActivity
-		}
-	}
-	return nil
-}
+func (x *Event) GetApiActivity() *Event_ApiActivity { _ = "STUB: not implemented"; return nil }
 
 type isEvent_Data interface {
 	isEvent_Data()
@@ -217,7 +121,7 @@ type Event_ApiActivity_ struct {
 	ApiActivity *Event_ApiActivity `protobuf:"bytes,1,opt,name=api_activity,json=apiActivity,proto3,oneof"`
 }
 
-func (*Event_ApiActivity_) isEvent_Data() {}
+func (*Event_ApiActivity_) isEvent_Data() { _ = "STUB: not implemented"; return }
 
 type ServerLaunch_Cerbos struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
@@ -230,70 +134,32 @@ type ServerLaunch_Cerbos struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Cerbos) Reset() {
-	*x = ServerLaunch_Cerbos{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Cerbos) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Cerbos) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Cerbos) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Cerbos) ProtoMessage() {}
+func (*ServerLaunch_Cerbos) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Cerbos) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Cerbos.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Cerbos) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ServerLaunch_Cerbos) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *ServerLaunch_Cerbos) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch_Cerbos) GetCommit() string {
-	if x != nil {
-		return x.Commit
-	}
-	return ""
-}
+func (x *ServerLaunch_Cerbos) GetCommit() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch_Cerbos) GetBuildDate() string {
-	if x != nil {
-		return x.BuildDate
-	}
-	return ""
-}
+func (x *ServerLaunch_Cerbos) GetBuildDate() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch_Cerbos) GetModuleVersion() string {
-	if x != nil {
-		return x.ModuleVersion
-	}
-	return ""
-}
+func (x *ServerLaunch_Cerbos) GetModuleVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch_Cerbos) GetModuleChecksum() string {
-	if x != nil {
-		return x.ModuleChecksum
-	}
-	return ""
-}
+func (x *ServerLaunch_Cerbos) GetModuleChecksum() string { _ = "STUB: not implemented"; return "" }
 
 type ServerLaunch_Source struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -305,63 +171,33 @@ type ServerLaunch_Source struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Source) Reset() {
-	*x = ServerLaunch_Source{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Source) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Source) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Source) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Source) ProtoMessage() {}
+func (*ServerLaunch_Source) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Source) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Source.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Source) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Source) GetCerbos() *ServerLaunch_Cerbos {
-	if x != nil {
-		return x.Cerbos
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *ServerLaunch_Source) GetOs() string {
-	if x != nil {
-		return x.Os
-	}
-	return ""
-}
+func (x *ServerLaunch_Source) GetOs() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch_Source) GetArch() string {
-	if x != nil {
-		return x.Arch
-	}
-	return ""
-}
+func (x *ServerLaunch_Source) GetArch() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerLaunch_Source) GetNumCpus() uint32 {
-	if x != nil {
-		return x.NumCpus
-	}
-	return 0
-}
+func (x *ServerLaunch_Source) GetNumCpus() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type ServerLaunch_Features struct {
 	state         protoimpl.MessageState          `protogen:"open.v1"`
@@ -373,61 +209,40 @@ type ServerLaunch_Features struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features) Reset() {
-	*x = ServerLaunch_Features{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features) ProtoMessage() {}
+func (*ServerLaunch_Features) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Features) GetAudit() *ServerLaunch_Features_Audit {
-	if x != nil {
-		return x.Audit
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Features) GetSchema() *ServerLaunch_Features_Schema {
-	if x != nil {
-		return x.Schema
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Features) GetAdminApi() *ServerLaunch_Features_AdminApi {
-	if x != nil {
-		return x.AdminApi
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Features) GetStorage() *ServerLaunch_Features_Storage {
-	if x != nil {
-		return x.Storage
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -439,47 +254,27 @@ type ServerLaunch_Stats struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Stats) Reset() {
-	*x = ServerLaunch_Stats{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Stats) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Stats) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Stats) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Stats) ProtoMessage() {}
+func (*ServerLaunch_Stats) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Stats) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Stats.ProtoReflect.Descriptor instead.
-func (*ServerLaunch_Stats) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 3}
-}
+func (*ServerLaunch_Stats) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func (x *ServerLaunch_Stats) GetPolicy() *ServerLaunch_Stats_Policy {
-	if x != nil {
-		return x.Policy
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats) GetSchema() *ServerLaunch_Stats_Schema {
-	if x != nil {
-		return x.Schema
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -491,49 +286,26 @@ type ServerLaunch_Features_Audit struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Audit) Reset() {
-	*x = ServerLaunch_Features_Audit{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Audit) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_Audit) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_Audit) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_Audit) ProtoMessage() {}
+func (*ServerLaunch_Features_Audit) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Audit) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Audit.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Audit) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ServerLaunch_Features_Audit) GetEnabled() bool {
-	if x != nil {
-		return x.Enabled
-	}
-	return false
-}
+func (x *ServerLaunch_Features_Audit) GetEnabled() bool { _ = "STUB: not implemented"; return false }
 
-func (x *ServerLaunch_Features_Audit) GetBackend() string {
-	if x != nil {
-		return x.Backend
-	}
-	return ""
-}
+func (x *ServerLaunch_Features_Audit) GetBackend() string { _ = "STUB: not implemented"; return "" }
 
 type ServerLaunch_Features_Schema struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -542,40 +314,25 @@ type ServerLaunch_Features_Schema struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Schema) Reset() {
-	*x = ServerLaunch_Features_Schema{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Schema) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_Schema) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_Schema) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_Schema) ProtoMessage() {}
+func (*ServerLaunch_Features_Schema) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Schema) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Schema.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Schema) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Features_Schema) GetEnforcement() string {
-	if x != nil {
-		return x.Enforcement
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -586,42 +343,24 @@ type ServerLaunch_Features_AdminApi struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_AdminApi) Reset() {
-	*x = ServerLaunch_Features_AdminApi{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_AdminApi) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_AdminApi) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_AdminApi) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_AdminApi) ProtoMessage() {}
+func (*ServerLaunch_Features_AdminApi) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_AdminApi) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_AdminApi.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_AdminApi) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ServerLaunch_Features_AdminApi) GetEnabled() bool {
-	if x != nil {
-		return x.Enabled
-	}
-	return false
-}
+func (x *ServerLaunch_Features_AdminApi) GetEnabled() bool { _ = "STUB: not implemented"; return false }
 
 type ServerLaunch_Features_Storage struct {
 	state  protoimpl.MessageState `protogen:"open.v1"`
@@ -637,83 +376,47 @@ type ServerLaunch_Features_Storage struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Storage) Reset() {
-	*x = ServerLaunch_Features_Storage{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Storage) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_Storage) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_Storage) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_Storage) ProtoMessage() {}
+func (*ServerLaunch_Features_Storage) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Storage) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Storage.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Storage) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ServerLaunch_Features_Storage) GetDriver() string {
-	if x != nil {
-		return x.Driver
-	}
-	return ""
-}
+func (x *ServerLaunch_Features_Storage) GetDriver() string { _ = "STUB: not implemented"; return "" }
 
 func (x *ServerLaunch_Features_Storage) GetStore() isServerLaunch_Features_Storage_Store {
-	if x != nil {
-		return x.Store
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isServerLaunch_Features_Storage_Store)
 }
 
 func (x *ServerLaunch_Features_Storage) GetDisk() *ServerLaunch_Features_Storage_Disk {
-	if x != nil {
-		if x, ok := x.Store.(*ServerLaunch_Features_Storage_Disk_); ok {
-			return x.Disk
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Features_Storage) GetGit() *ServerLaunch_Features_Storage_Git {
-	if x != nil {
-		if x, ok := x.Store.(*ServerLaunch_Features_Storage_Git_); ok {
-			return x.Git
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Features_Storage) GetBlob() *ServerLaunch_Features_Storage_Blob {
-	if x != nil {
-		if x, ok := x.Store.(*ServerLaunch_Features_Storage_Blob_); ok {
-			return x.Blob
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Features_Storage) GetBundle() *ServerLaunch_Features_Storage_Bundle {
-	if x != nil {
-		if x, ok := x.Store.(*ServerLaunch_Features_Storage_Bundle_); ok {
-			return x.Bundle
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -737,13 +440,25 @@ type ServerLaunch_Features_Storage_Bundle_ struct {
 	Bundle *ServerLaunch_Features_Storage_Bundle `protobuf:"bytes,5,opt,name=bundle,proto3,oneof"`
 }
 
-func (*ServerLaunch_Features_Storage_Disk_) isServerLaunch_Features_Storage_Store() {}
+func (*ServerLaunch_Features_Storage_Disk_) isServerLaunch_Features_Storage_Store() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerLaunch_Features_Storage_Git_) isServerLaunch_Features_Storage_Store() {}
+func (*ServerLaunch_Features_Storage_Git_) isServerLaunch_Features_Storage_Store() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerLaunch_Features_Storage_Blob_) isServerLaunch_Features_Storage_Store() {}
+func (*ServerLaunch_Features_Storage_Blob_) isServerLaunch_Features_Storage_Store() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerLaunch_Features_Storage_Bundle_) isServerLaunch_Features_Storage_Store() {}
+func (*ServerLaunch_Features_Storage_Bundle_) isServerLaunch_Features_Storage_Store() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type ServerLaunch_Features_Storage_Disk struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -752,40 +467,25 @@ type ServerLaunch_Features_Storage_Disk struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Storage_Disk) Reset() {
-	*x = ServerLaunch_Features_Storage_Disk{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Storage_Disk) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_Storage_Disk) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_Storage_Disk) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_Storage_Disk) ProtoMessage() {}
+func (*ServerLaunch_Features_Storage_Disk) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Storage_Disk) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Storage_Disk.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Storage_Disk) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 3, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Features_Storage_Disk) GetWatch() bool {
-	if x != nil {
-		return x.Watch
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
@@ -798,54 +498,32 @@ type ServerLaunch_Features_Storage_Git struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Storage_Git) Reset() {
-	*x = ServerLaunch_Features_Storage_Git{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Storage_Git) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_Storage_Git) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_Storage_Git) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_Storage_Git) ProtoMessage() {}
+func (*ServerLaunch_Features_Storage_Git) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Storage_Git) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Storage_Git.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Storage_Git) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 3, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Features_Storage_Git) GetProtocol() string {
-	if x != nil {
-		return x.Protocol
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
-func (x *ServerLaunch_Features_Storage_Git) GetAuth() bool {
-	if x != nil {
-		return x.Auth
-	}
-	return false
-}
+func (x *ServerLaunch_Features_Storage_Git) GetAuth() bool { _ = "STUB: not implemented"; return false }
 
 func (x *ServerLaunch_Features_Storage_Git) GetPollInterval() *durationpb.Duration {
-	if x != nil {
-		return x.PollInterval
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -857,47 +535,30 @@ type ServerLaunch_Features_Storage_Blob struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Storage_Blob) Reset() {
-	*x = ServerLaunch_Features_Storage_Blob{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Storage_Blob) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Features_Storage_Blob) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Features_Storage_Blob) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Features_Storage_Blob) ProtoMessage() {}
+func (*ServerLaunch_Features_Storage_Blob) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Storage_Blob) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Storage_Blob.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Storage_Blob) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 3, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Features_Storage_Blob) GetProvider() string {
-	if x != nil {
-		return x.Provider
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *ServerLaunch_Features_Storage_Blob) GetPollInterval() *durationpb.Duration {
-	if x != nil {
-		return x.PollInterval
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -910,54 +571,38 @@ type ServerLaunch_Features_Storage_Bundle struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Features_Storage_Bundle) Reset() {
-	*x = ServerLaunch_Features_Storage_Bundle{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Features_Storage_Bundle) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Storage_Bundle) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerLaunch_Features_Storage_Bundle) ProtoMessage() {}
+func (*ServerLaunch_Features_Storage_Bundle) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Features_Storage_Bundle) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Features_Storage_Bundle.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Features_Storage_Bundle) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 2, 3, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Features_Storage_Bundle) GetPdpId() string {
-	if x != nil {
-		return x.PdpId
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *ServerLaunch_Features_Storage_Bundle) GetBundleSource() string {
-	if x != nil {
-		return x.BundleSource
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *ServerLaunch_Features_Storage_Bundle) GetClientId() string {
-	if x != nil {
-		return x.ClientId
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -978,110 +623,72 @@ type ServerLaunch_Stats_Policy struct {
 	sizeCache             protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Stats_Policy) Reset() {
-	*x = ServerLaunch_Stats_Policy{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Stats_Policy) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Stats_Policy) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Stats_Policy) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Stats_Policy) ProtoMessage() {}
+func (*ServerLaunch_Stats_Policy) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Stats_Policy) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Stats_Policy.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Stats_Policy) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 3, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetCount() map[string]uint32 {
-	if x != nil {
-		return x.Count
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetAvgRuleCount() map[string]float64 {
-	if x != nil {
-		return x.AvgRuleCount
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetAvgConditionCount() map[string]float64 {
-	if x != nil {
-		return x.AvgConditionCount
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetConditionCount() map[string]uint32 {
-	if x != nil {
-		return x.ConditionCount
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetRuleCount() map[string]uint32 {
-	if x != nil {
-		return x.RuleCount
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetMaxConditionCount() map[string]uint32 {
-	if x != nil {
-		return x.MaxConditionCount
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetMaxRuleCount() map[string]uint32 {
-	if x != nil {
-		return x.MaxRuleCount
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerLaunch_Stats_Policy) GetDistinctActionCount() uint32 {
-	if x != nil {
-		return x.DistinctActionCount
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
 func (x *ServerLaunch_Stats_Policy) GetDistinctResourceCount() uint32 {
-	if x != nil {
-		return x.DistinctResourceCount
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
-func (x *ServerLaunch_Stats_Policy) GetHasOutput() bool {
-	if x != nil {
-		return x.HasOutput
-	}
-	return false
-}
+func (x *ServerLaunch_Stats_Policy) GetHasOutput() bool { _ = "STUB: not implemented"; return false }
 
 func (x *ServerLaunch_Stats_Policy) GetHasScopedPolicies() bool {
-	if x != nil {
-		return x.HasScopedPolicies
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
@@ -1092,42 +699,24 @@ type ServerLaunch_Stats_Schema struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerLaunch_Stats_Schema) Reset() {
-	*x = ServerLaunch_Stats_Schema{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerLaunch_Stats_Schema) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerLaunch_Stats_Schema) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerLaunch_Stats_Schema) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerLaunch_Stats_Schema) ProtoMessage() {}
+func (*ServerLaunch_Stats_Schema) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerLaunch_Stats_Schema) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerLaunch_Stats_Schema.ProtoReflect.Descriptor instead.
 func (*ServerLaunch_Stats_Schema) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{0, 3, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ServerLaunch_Stats_Schema) GetCount() uint32 {
-	if x != nil {
-		return x.Count
-	}
-	return 0
-}
+func (x *ServerLaunch_Stats_Schema) GetCount() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type Event_CountStat struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1137,49 +726,23 @@ type Event_CountStat struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Event_CountStat) Reset() {
-	*x = Event_CountStat{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Event_CountStat) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Event_CountStat) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Event_CountStat) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Event_CountStat) ProtoMessage() {}
+func (*Event_CountStat) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Event_CountStat) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Event_CountStat.ProtoReflect.Descriptor instead.
-func (*Event_CountStat) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{2, 0}
-}
+func (*Event_CountStat) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Event_CountStat) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
+func (x *Event_CountStat) GetKey() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Event_CountStat) GetCount() uint64 {
-	if x != nil {
-		return x.Count
-	}
-	return 0
-}
+func (x *Event_CountStat) GetCount() uint64 { _ = "STUB: not implemented"; return 0 }
 
 type Event_ApiActivity struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1191,61 +754,31 @@ type Event_ApiActivity struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Event_ApiActivity) Reset() {
-	*x = Event_ApiActivity{}
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Event_ApiActivity) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Event_ApiActivity) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Event_ApiActivity) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Event_ApiActivity) ProtoMessage() {}
+func (*Event_ApiActivity) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Event_ApiActivity) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_telemetry_v1_telemetry_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Event_ApiActivity.ProtoReflect.Descriptor instead.
-func (*Event_ApiActivity) Descriptor() ([]byte, []int) {
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP(), []int{2, 1}
-}
+func (*Event_ApiActivity) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Event_ApiActivity) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *Event_ApiActivity) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Event_ApiActivity) GetUptime() *durationpb.Duration {
-	if x != nil {
-		return x.Uptime
-	}
-	return nil
-}
+func (x *Event_ApiActivity) GetUptime() *durationpb.Duration { _ = "STUB: not implemented"; return nil }
 
 func (x *Event_ApiActivity) GetMethodCalls() []*Event_CountStat {
-	if x != nil {
-		return x.MethodCalls
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *Event_ApiActivity) GetUserAgents() []*Event_CountStat {
-	if x != nil {
-		return x.UserAgents
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1371,10 +904,8 @@ var (
 )
 
 func file_cerbos_telemetry_v1_telemetry_proto_rawDescGZIP() []byte {
-	file_cerbos_telemetry_v1_telemetry_proto_rawDescOnce.Do(func() {
-		file_cerbos_telemetry_v1_telemetry_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cerbos_telemetry_v1_telemetry_proto_rawDesc), len(file_cerbos_telemetry_v1_telemetry_proto_rawDesc)))
-	})
-	return file_cerbos_telemetry_v1_telemetry_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_cerbos_telemetry_v1_telemetry_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
@@ -1443,35 +974,5 @@ var file_cerbos_telemetry_v1_telemetry_proto_depIdxs = []int32{
 	0,  // [0:28] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_telemetry_v1_telemetry_proto_init() }
-func file_cerbos_telemetry_v1_telemetry_proto_init() {
-	if File_cerbos_telemetry_v1_telemetry_proto != nil {
-		return
-	}
-	file_cerbos_telemetry_v1_telemetry_proto_msgTypes[2].OneofWrappers = []any{
-		(*Event_ApiActivity_)(nil),
-	}
-	file_cerbos_telemetry_v1_telemetry_proto_msgTypes[10].OneofWrappers = []any{
-		(*ServerLaunch_Features_Storage_Disk_)(nil),
-		(*ServerLaunch_Features_Storage_Git_)(nil),
-		(*ServerLaunch_Features_Storage_Blob_)(nil),
-		(*ServerLaunch_Features_Storage_Bundle_)(nil),
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_telemetry_v1_telemetry_proto_rawDesc), len(file_cerbos_telemetry_v1_telemetry_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   26,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_cerbos_telemetry_v1_telemetry_proto_goTypes,
-		DependencyIndexes: file_cerbos_telemetry_v1_telemetry_proto_depIdxs,
-		MessageInfos:      file_cerbos_telemetry_v1_telemetry_proto_msgTypes,
-	}.Build()
-	File_cerbos_telemetry_v1_telemetry_proto = out.File
-	file_cerbos_telemetry_v1_telemetry_proto_goTypes = nil
-	file_cerbos_telemetry_v1_telemetry_proto_depIdxs = nil
-}
+func init()                                          { file_cerbos_telemetry_v1_telemetry_proto_init() }
+func file_cerbos_telemetry_v1_telemetry_proto_init() { _ = "STUB: not implemented"; return }

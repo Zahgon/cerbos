@@ -4,39 +4,12 @@
 package internal
 
 import (
-	"fmt"
-
 	"github.com/alecthomas/participle/v2"
-	"github.com/alecthomas/participle/v2/lexer"
 )
 
 func NewParser() (*participle.Parser[REPLDirective], error) {
-	lex, err := lexer.New(lexer.Rules{
-		"Root": {
-			{Name: "Ident", Pattern: `[a-zA-Z]\w*(\.\w+)*`},
-			{Name: "#", Pattern: `#`},
-			{Name: "Int", Pattern: `[0-9]+`},
-			{Name: "Path", Pattern: `(?:((?:[\/]?)(?:[^\/]+\/)+)([^\/]+))`},
-			{Name: "Assign", Pattern: `=`, Action: lexer.Push("Assign")},
-			{Name: "Whitespace", Pattern: `\s+`},
-		},
-		"Assign": {
-			{Name: "Any", Pattern: `.*$`, Action: lexer.Pop()},
-		},
-	})
-	if err != nil {
-		return nil, fmt.Errorf("failed to create lexer: %w", err)
-	}
-
-	parser, err := participle.Build[REPLDirective](
-		participle.Lexer(lex),
-		participle.Elide("Whitespace"),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create parser: %w", err)
-	}
-
-	return parser, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 //nolint:govet

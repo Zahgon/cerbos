@@ -5,21 +5,14 @@ package conditions
 
 import (
 	"context"
-	"fmt"
-	"net"
-	"reflect"
 	"time"
 
 	"github.com/google/cel-go/cel"
 	celast "github.com/google/cel-go/common/ast"
-	"github.com/google/cel-go/common/types"
 	"github.com/google/cel-go/common/types/ref"
 	"github.com/google/cel-go/common/types/traits"
 	"github.com/google/cel-go/interpreter"
 	"github.com/google/cel-go/interpreter/functions"
-
-	"github.com/cerbos/cerbos/internal/conditions/crosspath"
-	customtypes "github.com/cerbos/cerbos/internal/conditions/types"
 )
 
 const (
@@ -46,215 +39,22 @@ const (
 )
 
 // CerbosCELLib returns the custom CEL functions provided by Cerbos.
-func CerbosCELLib() cel.EnvOption {
-	return cel.Lib(cerbosLib{})
-}
+func CerbosCELLib() cel.EnvOption { _ = "STUB: not implemented"; return *new(cel.EnvOption) }
 
 type cerbosLib struct{}
 
-func (clib cerbosLib) CompileOptions() []cel.EnvOption {
-	genericListType := cel.ListType(cel.TypeParamType("A"))
+func (clib cerbosLib) CompileOptions() []cel.EnvOption { _ = "STUB: not implemented"; return nil }
 
-	// options for set operations like intersect and except
-	setOpFuncOverloads := func(name string, fn functions.BinaryOp) []cel.FunctionOpt {
-		return []cel.FunctionOpt{
-			cel.Overload(
-				fmt.Sprintf("%s_overload", name),
-				[]*cel.Type{genericListType, genericListType},
-				genericListType,
-				cel.BinaryBinding(fn),
-				cel.OverloadIsNonStrict(),
-			),
-			cel.MemberOverload(
-				fmt.Sprintf("%s_member_overload", name),
-				[]*cel.Type{genericListType, genericListType},
-				genericListType,
-				cel.BinaryBinding(fn),
-			),
-		}
-	}
+// options for set operations like intersect and except
 
-	// options for set checks like isIntersection and isSubset
-	setCheckFuncOverloads := func(name string, fn functions.BinaryOp) []cel.FunctionOpt {
-		return []cel.FunctionOpt{
-			cel.Overload(
-				fmt.Sprintf("%s_overload", name),
-				[]*cel.Type{genericListType, genericListType},
-				cel.BoolType,
-				cel.BinaryBinding(fn),
-				cel.OverloadIsNonStrict(),
-			),
-			cel.MemberOverload(
-				fmt.Sprintf("%s_member_overload", name),
-				[]*cel.Type{genericListType, genericListType},
-				cel.BoolType,
-				cel.BinaryBinding(fn),
-			),
-		}
-	}
+// options for set checks like isIntersection and isSubset
 
-	return []cel.EnvOption{
-		cel.FunctionDecls(customtypes.HierarchyDeclrations...),
-		cel.FunctionDecls(customtypes.SPIFFEDeclrations...),
-		cel.Types(customtypes.HierarchyType, customtypes.SPIFFEIDType, customtypes.SPIFFETrustDomainType, customtypes.SPIFFEMatcherType),
-		cel.Function(exceptFn, setOpFuncOverloads(exceptFn, exceptList)...),
-		cel.Function(hasIntersectionFn, setCheckFuncOverloads(hasIntersectionFn, hasIntersection)...),
-		cel.Function(hasIntersectionFnDeprecated, setCheckFuncOverloads(hasIntersectionFnDeprecated, hasIntersection)...),
-		cel.Function(inIPAddrRangeFn, cel.MemberOverload(
-			fmt.Sprintf("%s_string", inIPAddrRangeFn),
-			[]*cel.Type{cel.StringType, cel.StringType},
-			cel.BoolType,
-			cel.BinaryBinding(callInStringStringOutBool(clib.inIPAddrRangeFunc)),
-		)),
-		cel.Function(intersectFn, setOpFuncOverloads(intersectFn, intersect)...),
-		cel.Function(isSubsetFn, setCheckFuncOverloads(isSubsetFn, isSubset)...),
-		cel.Function(isSubsetFnDeprecated, setCheckFuncOverloads(isSubsetFnDeprecated, isSubset)...),
-		cel.Function(nowFn,
-			cel.Overload(nowFn,
-				nil,
-				cel.TimestampType,
-				cel.FunctionBinding(callInNothingOutTimestamp(time.Now)),
-			),
-		),
-		cel.Function(timeSinceFn,
-			cel.Overload(fmt.Sprintf("%s_overload", timeSinceFn),
-				[]*cel.Type{cel.TimestampType},
-				cel.DurationType,
-				cel.UnaryBinding(callInTimestampOutDuration(time.Now().Sub)),
-			),
-			cel.MemberOverload(fmt.Sprintf("%s_member_overload", timeSinceFn),
-				[]*cel.Type{cel.TimestampType},
-				cel.DurationType,
-				cel.UnaryBinding(callInTimestampOutDuration(time.Now().Sub)),
-			),
-		),
-		cel.Function(IDFn,
-			cel.Overload(fmt.Sprintf("%s_overload", IDFn),
-				[]*cel.Type{cel.DynType},
-				cel.DynType,
-				cel.UnaryBinding(func(value ref.Val) ref.Val { return value }),
-			),
-		),
-		cel.Function(
-			basePathFn,
-			cel.Overload(
-				fmt.Sprintf("%s_string", basePathFn),
-				[]*cel.Type{cel.StringType},
-				cel.StringType,
-				cel.UnaryBinding(callInStringOutStringErr(crosspath.Base)),
-			),
-		),
-		cel.Function(
-			dirPathFn,
-			cel.Overload(
-				fmt.Sprintf("%s_string", dirPathFn),
-				[]*cel.Type{cel.StringType},
-				cel.StringType,
-				cel.UnaryBinding(callInStringOutStringErr(crosspath.Dir)),
-			),
-		),
-		cel.Function(
-			extPathFn,
-			cel.Overload(
-				fmt.Sprintf("%s_string", extPathFn),
-				[]*cel.Type{cel.StringType},
-				cel.StringType,
-				cel.UnaryBinding(callInStringOutStringErr(crosspath.Ext)),
-			),
-		),
-		cel.Function(
-			joinPathFn,
-			cel.Overload(
-				fmt.Sprintf("%s_stringarray", joinPathFn),
-				[]*cel.Type{cel.ListType(cel.StringType)},
-				cel.StringType,
-				cel.UnaryBinding(callInStringSliceOutStringErr(crosspath.Join)),
-			),
-		),
-		cel.Function(
-			pathHasPrefixFn,
-			cel.Overload(
-				fmt.Sprintf("%s_overload", pathHasPrefixFn),
-				[]*cel.Type{cel.StringType, cel.StringType},
-				cel.BoolType,
-				cel.BinaryBinding(callInStringStringOutBool(pathHasPrefix)),
-			),
-			cel.MemberOverload(
-				fmt.Sprintf("%s_member_overload", pathHasPrefixFn),
-				[]*cel.Type{cel.StringType, cel.StringType},
-				cel.BoolType,
-				cel.BinaryBinding(callInStringStringOutBool(pathHasPrefix)),
-			),
-		),
-		cel.Function(
-			pathMatchFn,
-			cel.Overload(
-				fmt.Sprintf("%s_overload", pathMatchFn),
-				[]*cel.Type{cel.StringType, cel.StringType},
-				cel.BoolType,
-				cel.BinaryBinding(callInStringStringOutBool(crosspath.Match)),
-			),
-			cel.MemberOverload(
-				fmt.Sprintf("%s_member_overload", pathMatchFn),
-				[]*cel.Type{cel.StringType, cel.StringType},
-				cel.BoolType,
-				cel.BinaryBinding(callInStringStringOutBool(crosspath.Match)),
-			),
-		),
-		cel.Function(
-			pathMatchAnyOfFn,
-			cel.Overload(
-				fmt.Sprintf("%s_overload", pathMatchAnyOfFn),
-				[]*cel.Type{cel.StringType, cel.ListType(cel.StringType)},
-				cel.BoolType,
-				cel.BinaryBinding(callInStringStringSliceOutBoolErr(pathMatchAnyOf)),
-			),
-			cel.MemberOverload(
-				fmt.Sprintf("%s_member_overload", pathMatchAnyOfFn),
-				[]*cel.Type{cel.StringType, cel.ListType(cel.StringType)},
-				cel.BoolType,
-				cel.BinaryBinding(callInStringStringSliceOutBoolErr(pathMatchAnyOf)),
-			),
-		),
-		cel.Function(
-			relPathFn,
-			cel.Overload(
-				fmt.Sprintf("%s_string_string", relPathFn),
-				[]*cel.Type{cel.StringType, cel.StringType},
-				cel.StringType,
-				cel.BinaryBinding(callInStringStringOutStringErr(crosspath.Rel)),
-			),
-		),
-		cel.Function(
-			volumeNameFn,
-			cel.Overload(
-				fmt.Sprintf("%s_string", volumeNameFn),
-				[]*cel.Type{cel.StringType},
-				cel.StringType,
-				cel.UnaryBinding(callInStringOutString(crosspath.VolumeName)),
-			),
-		),
-		customtypes.HierarchyFunc,
-		customtypes.SPIFFEIDFunc,
-		customtypes.SPIFFEMatchAnyFunc,
-		customtypes.SPIFFEMatchExactFunc,
-		customtypes.SPIFFEMatchOneOfFunc,
-		customtypes.SPIFFEMatchTrustDomainFunc,
-		customtypes.SPIFFETrustDomainFunc,
-	}
-}
-
-func (clib cerbosLib) ProgramOptions() []cel.ProgramOption {
-	return nil
-}
+func (clib cerbosLib) ProgramOptions() []cel.ProgramOption { _ = "STUB: not implemented"; return nil }
 
 type NowFunc = func() time.Time
 
 // Now returns a NowFunc that always returns the time at which Now was called.
-func Now() NowFunc {
-	now := time.Now()
-	return func() time.Time { return now }
-}
+func Now() NowFunc { _ = "STUB: not implemented"; return *new(NowFunc) }
 
 // ContextEval returns the result of an evaluation of the ast and environment against the input vars,
 // providing time-based functions with a static definition of the current time.
@@ -263,32 +63,18 @@ func Now() NowFunc {
 //
 // See https://pkg.go.dev/github.com/google/cel-go/cel#Program.ContextEval.
 func ContextEval(ctx context.Context, env *cel.Env, ast *celast.AST, vars any, nowFunc NowFunc, opts ...cel.ProgramOption) (ref.Val, *cel.EvalDetails, error) {
-	programOpts := append([]cel.ProgramOption{cel.CustomDecorator(newTimeDecorator(nowFunc))}, opts...)
-	prg, err := env.PlanProgram(ast, programOpts...)
-	if err != nil {
-		return nil, nil, err
-	}
-	return prg.ContextEval(ctx, vars)
+	_ = "STUB: not implemented"
+	return *new(ref.Val), nil, nil
 }
 
 func CacheFriendlyTimeDecorator() interpreter.InterpretableDecorator {
-	return cacheFriendlyTimeDecorate
+	_ = "STUB: not implemented"
+	return *new(interpreter.InterpretableDecorator)
 }
 
 func cacheFriendlyTimeDecorate(in interpreter.Interpretable) (interpreter.Interpretable, error) {
-	call, ok := in.(interpreter.InterpretableCall)
-	if !ok {
-		return in, nil
-	}
-
-	switch call.Function() {
-	case nowFn:
-		return &nowInterp{id: call.ID()}, nil
-	case timeSinceFn:
-		return &timeSinceInterp{id: call.ID(), arg: call.Args()[0]}, nil
-	default:
-		return in, nil
-	}
+	_ = "STUB: not implemented"
+	return *new(interpreter.Interpretable), nil
 }
 
 // nowInterp is a custom Interpretable that looks up NowFunc from the activation at eval time.
@@ -296,18 +82,11 @@ type nowInterp struct {
 	id int64
 }
 
-func (n *nowInterp) ID() int64 { return n.id }
+func (n *nowInterp) ID() int64 { _ = "STUB: not implemented"; return 0 }
 
 func (n *nowInterp) Eval(activation interpreter.Activation) ref.Val {
-	nowFn, found := activation.ResolveName(CELNowFnActivationKey)
-	if !found {
-		return types.NewErr("now() called but %s not found in activation", CELNowFnActivationKey)
-	}
-	fn, ok := nowFn.(NowFunc)
-	if !ok {
-		return types.NewErr("now() called but %s is not a NowFunc", CELNowFnActivationKey)
-	}
-	return types.DefaultTypeAdapter.NativeToValue(fn())
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // timeSinceInterp is a custom Interpretable that looks up NowFunc from the activation at eval time.
@@ -316,37 +95,18 @@ type timeSinceInterp struct {
 	id  int64
 }
 
-func (t *timeSinceInterp) ID() int64 { return t.id }
+func (t *timeSinceInterp) ID() int64 { _ = "STUB: not implemented"; return 0 }
 
 func (t *timeSinceInterp) Eval(activation interpreter.Activation) ref.Val {
-	nowFn, found := activation.ResolveName(CELNowFnActivationKey)
-	if !found {
-		return types.NewErr("timeSince() called but %s not found in activation", CELNowFnActivationKey)
-	}
-	fn, ok := nowFn.(NowFunc)
-	if !ok {
-		return types.NewErr("timeSince() called but %s is not a NowFunc", CELNowFnActivationKey)
-	}
-
-	argVal := t.arg.Eval(activation)
-	if types.IsError(argVal) {
-		return argVal
-	}
-
-	tsVal := argVal.Value()
-	ts, ok := tsVal.(time.Time)
-	if !ok {
-		return types.NoSuchOverloadErr()
-	}
-
-	return types.DefaultTypeAdapter.NativeToValue(fn().Sub(ts))
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // newTimeDecorator creates a decorator that bakes in the nowFunc at compile time.
 // This is used for backward compatibility with ContextEval.
 func newTimeDecorator(nowFunc NowFunc) interpreter.InterpretableDecorator {
-	td := timeDecorator{nowFunc: nowFunc}
-	return td.decorate
+	_ = "STUB: not implemented"
+	return *new(interpreter.InterpretableDecorator)
 }
 
 type timeDecorator struct {
@@ -354,412 +114,96 @@ type timeDecorator struct {
 }
 
 func (t *timeDecorator) decorate(in interpreter.Interpretable) (interpreter.Interpretable, error) {
-	call, ok := in.(interpreter.InterpretableCall)
-	if !ok {
-		return in, nil
-	}
-
-	funcName := call.Function()
-	switch funcName {
-	case nowFn:
-		return interpreter.NewConstValue(call.ID(), types.DefaultTypeAdapter.NativeToValue(t.nowFunc())), nil
-	case timeSinceFn:
-		return interpreter.NewCall(call.ID(), funcName, call.OverloadID(), call.Args(), func(values ...ref.Val) ref.Val {
-			if len(values) != 1 {
-				return types.NoSuchOverloadErr()
-			}
-
-			tsVal := values[0].Value()
-			ts, ok := tsVal.(time.Time)
-			if !ok {
-				return types.NoSuchOverloadErr()
-			}
-
-			return types.DefaultTypeAdapter.NativeToValue(t.nowFunc().Sub(ts))
-		}), nil
-	default:
-		return in, nil
-	}
+	_ = "STUB: not implemented"
+	return *new(interpreter.Interpretable), nil
 }
 
 // hashable checks whether the type is hashable, i.e. can be used in a Go map.
-func hashable(t ref.Type) bool {
-	return t == types.StringType ||
-		t == types.IntType ||
-		t == types.DoubleType ||
-		t == types.DurationType ||
-		t == types.TimestampType ||
-		t == types.UintType
-}
+func hashable(t ref.Type) bool { _ = "STUB: not implemented"; return false }
 
 // exceptList implements difference lhs-rhs returning
 // items in lhs (list) that are not members of rhs (list).
-func exceptList(lhs, rhs ref.Val) ref.Val {
-	a, ok := lhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(lhs) {
-			return lhs
-		}
-		return types.ValOrErr(a, "no such overload")
-	}
-
-	b, ok := rhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(rhs) {
-			return rhs
-		}
-		return types.ValOrErr(b, "no such overload")
-	}
-
-	m := convertToMap(b)
-
-	var items []ref.Val
-	for ai := a.Iterator(); ai.HasNext() == types.True; {
-		va := ai.Next()
-		var found bool
-		if m != nil {
-			_, found = m[va]
-		} else {
-			found = find(b.Iterator(), va)
-		}
-		if !found {
-			items = append(items, va)
-		}
-	}
-	return types.NewRefValList(types.DefaultTypeAdapter, items)
-}
+func exceptList(lhs, rhs ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 // isSubset returns true value if lhs (list) is a subset of rhs (list).
-func isSubset(lhs, rhs ref.Val) ref.Val {
-	a, ok := lhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(lhs) {
-			return lhs
-		}
-		return types.ValOrErr(a, "no such overload")
-	}
+func isSubset(lhs, rhs ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
-	b, ok := rhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(rhs) {
-			return rhs
-		}
-		return types.ValOrErr(b, "no such overload")
-	}
-
-	m := convertToMap(b)
-
-	for ai := a.Iterator(); ai.HasNext() == types.True; {
-		va := ai.Next()
-		if m != nil {
-			if _, ok := m[va]; !ok {
-				return types.False
-			}
-		} else {
-			if !find(b.Iterator(), va) {
-				return types.False
-			}
-		}
-	}
-
-	return types.True
-}
-
-func find(i traits.Iterator, item ref.Val) bool {
-	for i.HasNext() == types.True {
-		current := i.Next()
-		if item.Equal(current) == types.True {
-			return true
-		}
-	}
-	return false
-}
+func find(i traits.Iterator, item ref.Val) bool { _ = "STUB: not implemented"; return false }
 
 const minListLengthToConvert = 3
 
-func convertToMap(b traits.Lister) map[ref.Val]struct{} {
-	var m map[ref.Val]struct{}
-	if item := b.Get(types.IntZero); !types.IsError(item) && hashable(item.Type()) {
-		size, ok := b.Size().(types.Int)
-		if !ok || size <= minListLengthToConvert {
-			return nil
-		}
-		m = make(map[ref.Val]struct{}, size)
+func convertToMap(b traits.Lister) map[ref.Val]struct{} { _ = "STUB: not implemented"; return nil }
 
-		for i := b.Iterator(); i.HasNext() == types.True; {
-			item := i.Next()
-			if !hashable(item.Type()) {
-				m = nil
-				break
-			}
-			m[item] = struct{}{}
-		}
-	}
-	return m
-}
+func hasIntersection(lhs, rhs ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
-func hasIntersection(lhs, rhs ref.Val) ref.Val {
-	a, ok := lhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(lhs) {
-			return lhs
-		}
-		return types.ValOrErr(a, "no such overload")
-	}
+//nolint:forcetypeassert
 
-	b, ok := rhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(rhs) {
-			return rhs
-		}
-		return types.ValOrErr(b, "no such overload")
-	}
+// b is the longest list
 
-	//nolint:forcetypeassert
-	aSize := a.Size().(types.Int)
-	if aSize.Compare(b.Size()) == types.IntOne {
-		a, b = b, a // b is the longest list
-	}
-	m := convertToMap(b)
+func intersect(lhs, rhs ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
-	for ai := a.Iterator(); ai.HasNext() == types.True; {
-		va := ai.Next()
+//nolint:forcetypeassert
 
-		var found bool
-		if m != nil {
-			_, found = m[va]
-		} else {
-			found = find(b.Iterator(), va)
-		}
-
-		if found {
-			return types.True
-		}
-	}
-
-	return types.False
-}
-
-func intersect(lhs, rhs ref.Val) ref.Val {
-	a, ok := lhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(lhs) {
-			return lhs
-		}
-		return types.ValOrErr(a, "no such overload")
-	}
-
-	b, ok := rhs.(traits.Lister)
-	if !ok {
-		if types.IsUnknown(rhs) {
-			return rhs
-		}
-		return types.ValOrErr(b, "no such overload")
-	}
-
-	//nolint:forcetypeassert
-	aSize := a.Size().(types.Int)
-	if aSize.Compare(b.Size()) == types.IntOne {
-		a, b = b, a // b is the longest list
-	}
-	m := convertToMap(b)
-	var items []ref.Val
-	for ai := a.Iterator(); ai.HasNext() == types.True; {
-		va := ai.Next()
-		if m != nil {
-			if _, ok := m[va]; ok {
-				items = append(items, va)
-			}
-		} else {
-			if find(b.Iterator(), va) {
-				items = append(items, va)
-			}
-		}
-	}
-	return types.NewRefValList(types.DefaultTypeAdapter, items)
-}
+// b is the longest list
 
 func (clib cerbosLib) inIPAddrRangeFunc(ipAddrVal, cidrVal string) (bool, error) {
-	ipAddr := net.ParseIP(ipAddrVal)
-	if ipAddr == nil {
-		return false, fmt.Errorf("invalid IP address: %s", ipAddrVal)
-	}
-
-	_, cidr, err := net.ParseCIDR(cidrVal)
-	if err != nil {
-		return false, err
-	}
-
-	return cidr.Contains(ipAddr), nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func pathHasPrefix(path, prefix string) (bool, error) {
-	if prefix == path {
-		return true, nil
-	}
-
-	rel, err := crosspath.Rel(prefix, path)
-	if err != nil {
-		return false, err
-	}
-
-	return len(rel) > 0 && rel[0] != '.' && rel[0] != '/', nil
-}
+func pathHasPrefix(path, prefix string) (bool, error) { _ = "STUB: not implemented"; return false, nil }
 
 func pathMatchAnyOf(path string, patterns ...string) (bool, error) {
-	for _, pattern := range patterns {
-		matched, err := crosspath.Match(path, pattern)
-		if err != nil {
-			return false, err
-		}
-
-		if matched {
-			return true, nil
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return false, nil
 }
 
 func callInStringStringOutBool(fn func(string, string) (bool, error)) functions.BinaryOp {
-	return func(lhsVal, rhsVal ref.Val) ref.Val {
-		lhs, ok := lhsVal.(types.String)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(lhsVal)
-		}
-
-		rhs, ok := rhsVal.(types.String)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(rhsVal)
-		}
-
-		retVal, err := fn(string(lhs), string(rhs))
-		if err != nil {
-			return types.NewErr("%s", err.Error()) //nolint:govet
-		}
-
-		return types.DefaultTypeAdapter.NativeToValue(retVal)
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.BinaryOp)
 }
 
-func callInTimestampOutDuration(fn func(time.Time) time.Duration) functions.UnaryOp {
-	return func(val ref.Val) ref.Val {
-		ts, ok := val.(types.Timestamp)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(val)
-		}
+//nolint:govet
 
-		return types.DefaultTypeAdapter.NativeToValue(fn(ts.Time))
-	}
+func callInTimestampOutDuration(fn func(time.Time) time.Duration) functions.UnaryOp {
+	_ = "STUB: not implemented"
+	return *new(functions.UnaryOp)
 }
 
 func callInNothingOutTimestamp(fn func() time.Time) functions.FunctionOp {
-	return func(_ ...ref.Val) ref.Val {
-		return types.DefaultTypeAdapter.NativeToValue(fn())
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.FunctionOp)
 }
 
 func callInStringOutString(fn func(string) string) functions.UnaryOp {
-	return func(val ref.Val) ref.Val {
-		stringVal, ok := val.Value().(string)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(val)
-		}
-
-		return types.DefaultTypeAdapter.NativeToValue(fn(stringVal))
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.UnaryOp)
 }
 
 func callInStringOutStringErr(fn func(string) (string, error)) functions.UnaryOp {
-	return func(val ref.Val) ref.Val {
-		stringVal, ok := val.Value().(string)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(val)
-		}
-
-		retVal, err := fn(stringVal)
-		if err != nil {
-			return types.NewErr("%s", err.Error()) //nolint:govet
-		}
-
-		return types.DefaultTypeAdapter.NativeToValue(retVal)
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.UnaryOp)
 }
+
+//nolint:govet
 
 func callInStringStringOutStringErr(fn func(string, string) (string, error)) functions.BinaryOp {
-	return func(lhsVal, rhsVal ref.Val) ref.Val {
-		lhs, ok := lhsVal.(types.String)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(lhsVal)
-		}
-
-		rhs, ok := rhsVal.(types.String)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(rhsVal)
-		}
-
-		retVal, err := fn(string(lhs), string(rhs))
-		if err != nil {
-			return types.NewErr("%s", err.Error()) //nolint:govet
-		}
-
-		return types.DefaultTypeAdapter.NativeToValue(retVal)
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.BinaryOp)
 }
+
+//nolint:govet
 
 func callInStringSliceOutStringErr(fn func(...string) (string, error)) functions.UnaryOp {
-	return func(val ref.Val) ref.Val {
-		list, ok := val.(traits.Lister)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(val)
-		}
-
-		native, err := list.ConvertToNative(reflect.SliceOf(reflect.TypeFor[string]()))
-		if err != nil {
-			return types.NewErr("failed to convert list to string slice: %v", err)
-		}
-
-		elements, ok := native.([]string)
-		if !ok {
-			return types.NewErr("expected string slice but got %T", native)
-		}
-
-		retVal, err := fn(elements...)
-		if err != nil {
-			return types.NewErr("%s", err.Error()) //nolint:govet
-		}
-
-		return types.DefaultTypeAdapter.NativeToValue(retVal)
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.UnaryOp)
 }
+
+//nolint:govet
 
 func callInStringStringSliceOutBoolErr(fn func(string, ...string) (bool, error)) functions.BinaryOp {
-	return func(lhsVal, rhsVal ref.Val) ref.Val {
-		lhs, ok := lhsVal.(types.String)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(lhsVal)
-		}
-
-		rhs, ok := rhsVal.(traits.Lister)
-		if !ok {
-			return types.MaybeNoSuchOverloadErr(rhsVal)
-		}
-
-		native, err := rhs.ConvertToNative(reflect.SliceOf(reflect.TypeFor[string]()))
-		if err != nil {
-			return types.NewErr("failed to convert list to string slice: %v", err)
-		}
-
-		elements, ok := native.([]string)
-		if !ok {
-			return types.NewErr("expected string slice but got %T", native)
-		}
-
-		retVal, err := fn(string(lhs), elements...)
-		if err != nil {
-			return types.NewErr("%s", err.Error()) //nolint:govet
-		}
-
-		return types.DefaultTypeAdapter.NativeToValue(retVal)
-	}
+	_ = "STUB: not implemented"
+	return *new(functions.BinaryOp)
 }
+
+//nolint:govet

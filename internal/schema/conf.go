@@ -3,8 +3,6 @@
 
 package schema
 
-import "github.com/cerbos/cerbos/internal/config"
-
 const (
 	confKey            = "schema"
 	defaultEnforcement = EnforcementNone
@@ -19,14 +17,9 @@ type Conf struct {
 	CacheSize uint `yaml:"cacheSize" conf:",example=1024"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.Enforcement = defaultEnforcement
-	c.CacheSize = defaultCacheSize
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
 // Enforcement level for schema validation.
 type Enforcement string
@@ -37,17 +30,6 @@ const (
 	EnforcementReject Enforcement = "reject" // In case schema is not validated, reject.
 )
 
-func NewConf(enforcement Enforcement) *Conf {
-	c := &Conf{}
-	c.SetDefaults()
+func NewConf(enforcement Enforcement) *Conf { _ = "STUB: not implemented"; return nil }
 
-	c.Enforcement = enforcement
-	return c
-}
-
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

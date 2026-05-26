@@ -10,6 +10,8 @@
 package privatev1
 
 import (
+	sync "sync"
+
 	v17 "github.com/cerbos/cerbos/api/genpb/authzen/authorization/v1"
 	v12 "github.com/cerbos/cerbos/api/genpb/cerbos/audit/v1"
 	v11 "github.com/cerbos/cerbos/api/genpb/cerbos/engine/v1"
@@ -26,9 +28,6 @@ import (
 	structpb "google.golang.org/protobuf/types/known/structpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -49,68 +48,36 @@ type InspectTestCase struct {
 	sizeCache             protoimpl.SizeCache
 }
 
-func (x *InspectTestCase) Reset() {
-	*x = InspectTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectTestCase) ProtoMessage() {}
+func (*InspectTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectTestCase.ProtoReflect.Descriptor instead.
-func (*InspectTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{0}
-}
+func (*InspectTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *InspectTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *InspectTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *InspectTestCase) GetInputs() []*v1.Policy {
-	if x != nil {
-		return x.Inputs
-	}
-	return nil
-}
+func (x *InspectTestCase) GetInputs() []*v1.Policy { _ = "STUB: not implemented"; return nil }
 
 func (x *InspectTestCase) GetPoliciesExpectation() *InspectTestCase_PoliciesExpectation {
-	if x != nil {
-		return x.PoliciesExpectation
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase) GetPolicySetsExpectation() *InspectTestCase_PolicySetsExpectation {
-	if x != nil {
-		return x.PolicySetsExpectation
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase) GetRuleTablesExpectation() *InspectTestCase_RuleTablesExpectation {
-	if x != nil {
-		return x.RuleTablesExpectation
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -122,47 +89,27 @@ type BlobClonerTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase) Reset() {
-	*x = BlobClonerTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase) ProtoMessage() {}
+func (*BlobClonerTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase.ProtoReflect.Descriptor instead.
-func (*BlobClonerTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1}
-}
+func (*BlobClonerTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func (x *BlobClonerTestCase) GetInputs() []*BlobClonerTestCase_File {
-	if x != nil {
-		return x.Inputs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BlobClonerTestCase) GetSteps() []*BlobClonerTestCase_Step {
-	if x != nil {
-		return x.Steps
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -177,68 +124,30 @@ type EngineTestCase struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *EngineTestCase) Reset() {
-	*x = EngineTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *EngineTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *EngineTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *EngineTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*EngineTestCase) ProtoMessage() {}
+func (*EngineTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *EngineTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use EngineTestCase.ProtoReflect.Descriptor instead.
-func (*EngineTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{2}
-}
+func (*EngineTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *EngineTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *EngineTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *EngineTestCase) GetInputs() []*v11.CheckInput {
-	if x != nil {
-		return x.Inputs
-	}
-	return nil
-}
+func (x *EngineTestCase) GetInputs() []*v11.CheckInput { _ = "STUB: not implemented"; return nil }
 
-func (x *EngineTestCase) GetWantOutputs() []*v11.CheckOutput {
-	if x != nil {
-		return x.WantOutputs
-	}
-	return nil
-}
+func (x *EngineTestCase) GetWantOutputs() []*v11.CheckOutput { _ = "STUB: not implemented"; return nil }
 
-func (x *EngineTestCase) GetWantError() bool {
-	if x != nil {
-		return x.WantError
-	}
-	return false
-}
+func (x *EngineTestCase) GetWantError() bool { _ = "STUB: not implemented"; return false }
 
 func (x *EngineTestCase) GetWantDecisionLogs() []*v12.DecisionLogEntry {
-	if x != nil {
-		return x.WantDecisionLogs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -267,176 +176,93 @@ type ServerTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase) Reset() {
-	*x = ServerTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase) ProtoMessage() {}
+func (*ServerTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase.ProtoReflect.Descriptor instead.
-func (*ServerTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3}
-}
+func (*ServerTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ServerTestCase) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *ServerTestCase) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *ServerTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ServerTestCase) GetWantError() bool {
-	if x != nil {
-		return x.WantError
-	}
-	return false
-}
+func (x *ServerTestCase) GetWantError() bool { _ = "STUB: not implemented"; return false }
 
 func (x *ServerTestCase) GetWantStatus() *ServerTestCase_Status {
-	if x != nil {
-		return x.WantStatus
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetCallKind() isServerTestCase_CallKind {
-	if x != nil {
-		return x.CallKind
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isServerTestCase_CallKind)
 }
 
 func (x *ServerTestCase) GetCheckResourceSet() *ServerTestCase_CheckResourceSetCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_CheckResourceSet); ok {
-			return x.CheckResourceSet
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetCheckResourceBatch() *ServerTestCase_CheckResourceBatchCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_CheckResourceBatch); ok {
-			return x.CheckResourceBatch
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetPlaygroundValidate() *ServerTestCase_PlaygroundValidateCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_PlaygroundValidate); ok {
-			return x.PlaygroundValidate
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetPlaygroundEvaluate() *ServerTestCase_PlaygroundEvaluateCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_PlaygroundEvaluate); ok {
-			return x.PlaygroundEvaluate
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetAdminAddOrUpdatePolicy() *ServerTestCase_AdminAddOrUpdatePolicyCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_AdminAddOrUpdatePolicy); ok {
-			return x.AdminAddOrUpdatePolicy
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetPlaygroundProxy() *ServerTestCase_PlaygroundProxyCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_PlaygroundProxy); ok {
-			return x.PlaygroundProxy
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetPlanResources() *ServerTestCase_PlanResourcesCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_PlanResources); ok {
-			return x.PlanResources
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetAdminAddOrUpdateSchema() *ServerTestCase_AdminAddOrUpdateSchemaCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_AdminAddOrUpdateSchema); ok {
-			return x.AdminAddOrUpdateSchema
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetPlaygroundTest() *ServerTestCase_PlaygroundTestCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_PlaygroundTest); ok {
-			return x.PlaygroundTest
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetCheckResources() *ServerTestCase_CheckResourcesCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_CheckResources); ok {
-			return x.CheckResources
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetAccessEvaluation() *ServerTestCase_AccessEvaluationCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_AccessEvaluation); ok {
-			return x.AccessEvaluation
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase) GetAccessEvaluationBatch() *ServerTestCase_AccessEvaluationBatchCall {
-	if x != nil {
-		if x, ok := x.CallKind.(*ServerTestCase_AccessEvaluationBatch); ok {
-			return x.AccessEvaluationBatch
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -492,29 +318,62 @@ type ServerTestCase_AccessEvaluationBatch struct {
 	AccessEvaluationBatch *ServerTestCase_AccessEvaluationBatchCall `protobuf:"bytes,16,opt,name=access_evaluation_batch,json=accessEvaluationBatch,proto3,oneof"`
 }
 
-func (*ServerTestCase_CheckResourceSet) isServerTestCase_CallKind() {}
+func (*ServerTestCase_CheckResourceSet) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_CheckResourceBatch) isServerTestCase_CallKind() {}
+func (*ServerTestCase_CheckResourceBatch) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_PlaygroundValidate) isServerTestCase_CallKind() {}
+func (*ServerTestCase_PlaygroundValidate) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_PlaygroundEvaluate) isServerTestCase_CallKind() {}
+func (*ServerTestCase_PlaygroundEvaluate) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_AdminAddOrUpdatePolicy) isServerTestCase_CallKind() {}
+func (*ServerTestCase_AdminAddOrUpdatePolicy) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_PlaygroundProxy) isServerTestCase_CallKind() {}
+func (*ServerTestCase_PlaygroundProxy) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_PlanResources) isServerTestCase_CallKind() {}
+func (*ServerTestCase_PlanResources) isServerTestCase_CallKind() { _ = "STUB: not implemented"; return }
 
-func (*ServerTestCase_AdminAddOrUpdateSchema) isServerTestCase_CallKind() {}
+func (*ServerTestCase_AdminAddOrUpdateSchema) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_PlaygroundTest) isServerTestCase_CallKind() {}
+func (*ServerTestCase_PlaygroundTest) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_CheckResources) isServerTestCase_CallKind() {}
+func (*ServerTestCase_CheckResources) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_AccessEvaluation) isServerTestCase_CallKind() {}
+func (*ServerTestCase_AccessEvaluation) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*ServerTestCase_AccessEvaluationBatch) isServerTestCase_CallKind() {}
+func (*ServerTestCase_AccessEvaluationBatch) isServerTestCase_CallKind() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type IndexBuilderTestCase struct {
 	state                protoimpl.MessageState                  `protogen:"open.v1"`
@@ -526,61 +385,34 @@ type IndexBuilderTestCase struct {
 	sizeCache            protoimpl.SizeCache
 }
 
-func (x *IndexBuilderTestCase) Reset() {
-	*x = IndexBuilderTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuilderTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuilderTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuilderTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuilderTestCase) ProtoMessage() {}
+func (*IndexBuilderTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuilderTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuilderTestCase.ProtoReflect.Descriptor instead.
 func (*IndexBuilderTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *IndexBuilderTestCase) GetFiles() map[string]string {
-	if x != nil {
-		return x.Files
-	}
-	return nil
-}
+func (x *IndexBuilderTestCase) GetFiles() map[string]string { _ = "STUB: not implemented"; return nil }
 
 func (x *IndexBuilderTestCase) GetWantErrList() *v13.IndexBuildErrors {
-	if x != nil {
-		return x.WantErrList
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *IndexBuilderTestCase) GetWantErr() string {
-	if x != nil {
-		return x.WantErr
-	}
-	return ""
-}
+func (x *IndexBuilderTestCase) GetWantErr() string { _ = "STUB: not implemented"; return "" }
 
 func (x *IndexBuilderTestCase) GetWantCompilationUnits() []*IndexBuilderTestCase_CompilationUnit {
-	if x != nil {
-		return x.WantCompilationUnits
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -593,54 +425,29 @@ type CompileTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CompileTestCase) Reset() {
-	*x = CompileTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CompileTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CompileTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CompileTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CompileTestCase) ProtoMessage() {}
+func (*CompileTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CompileTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CompileTestCase.ProtoReflect.Descriptor instead.
-func (*CompileTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{5}
-}
+func (*CompileTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CompileTestCase) GetMainDef() string {
-	if x != nil {
-		return x.MainDef
-	}
-	return ""
-}
+func (x *CompileTestCase) GetMainDef() string { _ = "STUB: not implemented"; return "" }
 
 func (x *CompileTestCase) GetWantErrors() []*v13.CompileErrors_Err {
-	if x != nil {
-		return x.WantErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CompileTestCase) GetWantVariables() []*CompileTestCase_Variables {
-	if x != nil {
-		return x.WantVariables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -654,63 +461,27 @@ type CelTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CelTestCase) Reset() {
-	*x = CelTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CelTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CelTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CelTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CelTestCase) ProtoMessage() {}
+func (*CelTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CelTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CelTestCase.ProtoReflect.Descriptor instead.
-func (*CelTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{6}
-}
+func (*CelTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CelTestCase) GetCondition() *v1.Match {
-	if x != nil {
-		return x.Condition
-	}
-	return nil
-}
+func (x *CelTestCase) GetCondition() *v1.Match { _ = "STUB: not implemented"; return nil }
 
-func (x *CelTestCase) GetRequest() *v11.Request {
-	if x != nil {
-		return x.Request
-	}
-	return nil
-}
+func (x *CelTestCase) GetRequest() *v11.Request { _ = "STUB: not implemented"; return nil }
 
-func (x *CelTestCase) GetWant() bool {
-	if x != nil {
-		return x.Want
-	}
-	return false
-}
+func (x *CelTestCase) GetWant() bool { _ = "STUB: not implemented"; return false }
 
-func (x *CelTestCase) GetWantError() bool {
-	if x != nil {
-		return x.WantError
-	}
-	return false
-}
+func (x *CelTestCase) GetWantError() bool { _ = "STUB: not implemented"; return false }
 
 type SchemaTestCase struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
@@ -727,86 +498,40 @@ type SchemaTestCase struct {
 	sizeCache            protoimpl.SizeCache
 }
 
-func (x *SchemaTestCase) Reset() {
-	*x = SchemaTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *SchemaTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *SchemaTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *SchemaTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*SchemaTestCase) ProtoMessage() {}
+func (*SchemaTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *SchemaTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use SchemaTestCase.ProtoReflect.Descriptor instead.
-func (*SchemaTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{7}
-}
+func (*SchemaTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *SchemaTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *SchemaTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *SchemaTestCase) GetSchemaRefs() *v1.Schemas {
-	if x != nil {
-		return x.SchemaRefs
-	}
-	return nil
-}
+func (x *SchemaTestCase) GetSchemaRefs() *v1.Schemas { _ = "STUB: not implemented"; return nil }
 
 func (x *SchemaTestCase) GetInput() isSchemaTestCase_Input {
-	if x != nil {
-		return x.Input
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isSchemaTestCase_Input)
 }
 
-func (x *SchemaTestCase) GetCheckInput() *v11.CheckInput {
-	if x != nil {
-		if x, ok := x.Input.(*SchemaTestCase_CheckInput); ok {
-			return x.CheckInput
-		}
-	}
-	return nil
-}
+func (x *SchemaTestCase) GetCheckInput() *v11.CheckInput { _ = "STUB: not implemented"; return nil }
 
 func (x *SchemaTestCase) GetPlanResourcesInput() *v11.PlanResourcesInput {
-	if x != nil {
-		if x, ok := x.Input.(*SchemaTestCase_PlanResourcesInput); ok {
-			return x.PlanResourcesInput
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *SchemaTestCase) GetWantError() bool {
-	if x != nil {
-		return x.WantError
-	}
-	return false
-}
+func (x *SchemaTestCase) GetWantError() bool { _ = "STUB: not implemented"; return false }
 
 func (x *SchemaTestCase) GetWantValidationErrors() []*v14.ValidationError {
-	if x != nil {
-		return x.WantValidationErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -822,9 +547,12 @@ type SchemaTestCase_PlanResourcesInput struct {
 	PlanResourcesInput *v11.PlanResourcesInput `protobuf:"bytes,4,opt,name=plan_resources_input,json=planResourcesInput,proto3,oneof"`
 }
 
-func (*SchemaTestCase_CheckInput) isSchemaTestCase_Input() {}
+func (*SchemaTestCase_CheckInput) isSchemaTestCase_Input() { _ = "STUB: not implemented"; return }
 
-func (*SchemaTestCase_PlanResourcesInput) isSchemaTestCase_Input() {}
+func (*SchemaTestCase_PlanResourcesInput) isSchemaTestCase_Input() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type ValidationErrContainer struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -833,40 +561,25 @@ type ValidationErrContainer struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ValidationErrContainer) Reset() {
-	*x = ValidationErrContainer{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ValidationErrContainer) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ValidationErrContainer) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ValidationErrContainer) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ValidationErrContainer) ProtoMessage() {}
+func (*ValidationErrContainer) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ValidationErrContainer) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ValidationErrContainer.ProtoReflect.Descriptor instead.
 func (*ValidationErrContainer) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ValidationErrContainer) GetErrors() []*v14.ValidationError {
-	if x != nil {
-		return x.Errors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -879,54 +592,32 @@ type QueryPlannerTestSuite struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *QueryPlannerTestSuite) Reset() {
-	*x = QueryPlannerTestSuite{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *QueryPlannerTestSuite) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *QueryPlannerTestSuite) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *QueryPlannerTestSuite) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*QueryPlannerTestSuite) ProtoMessage() {}
+func (*QueryPlannerTestSuite) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *QueryPlannerTestSuite) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use QueryPlannerTestSuite.ProtoReflect.Descriptor instead.
 func (*QueryPlannerTestSuite) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *QueryPlannerTestSuite) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *QueryPlannerTestSuite) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
 func (x *QueryPlannerTestSuite) GetPrincipal() *v11.Principal {
-	if x != nil {
-		return x.Principal
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *QueryPlannerTestSuite) GetTests() []*QueryPlannerTestSuite_Test {
-	if x != nil {
-		return x.Tests
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -939,54 +630,35 @@ type VerifyTestSuiteRunGetTestsTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VerifyTestSuiteRunGetTestsTestCase) Reset() {
-	*x = VerifyTestSuiteRunGetTestsTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *VerifyTestSuiteRunGetTestsTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *VerifyTestSuiteRunGetTestsTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *VerifyTestSuiteRunGetTestsTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*VerifyTestSuiteRunGetTestsTestCase) ProtoMessage() {}
+func (*VerifyTestSuiteRunGetTestsTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *VerifyTestSuiteRunGetTestsTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use VerifyTestSuiteRunGetTestsTestCase.ProtoReflect.Descriptor instead.
 func (*VerifyTestSuiteRunGetTestsTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *VerifyTestSuiteRunGetTestsTestCase) GetTable() *v1.TestTable {
-	if x != nil {
-		return x.Table
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *VerifyTestSuiteRunGetTestsTestCase) GetWantTests() []*v1.Test {
-	if x != nil {
-		return x.WantTests
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *VerifyTestSuiteRunGetTestsTestCase) GetWantErr() string {
-	if x != nil {
-		return x.WantErr
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -1000,63 +672,36 @@ type QueryPlannerFilterTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *QueryPlannerFilterTestCase) Reset() {
-	*x = QueryPlannerFilterTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *QueryPlannerFilterTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *QueryPlannerFilterTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *QueryPlannerFilterTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*QueryPlannerFilterTestCase) ProtoMessage() {}
+func (*QueryPlannerFilterTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *QueryPlannerFilterTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use QueryPlannerFilterTestCase.ProtoReflect.Descriptor instead.
 func (*QueryPlannerFilterTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{11}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *QueryPlannerFilterTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *QueryPlannerFilterTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
 func (x *QueryPlannerFilterTestCase) GetInput() *v11.PlanResourcesFilter {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *QueryPlannerFilterTestCase) GetWantFilter() *v11.PlanResourcesFilter {
-	if x != nil {
-		return x.WantFilter
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *QueryPlannerFilterTestCase) GetWantString() string {
-	if x != nil {
-		return x.WantString
-	}
-	return ""
-}
+func (x *QueryPlannerFilterTestCase) GetWantString() string { _ = "STUB: not implemented"; return "" }
 
 type VerifyTestCase struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1067,56 +712,25 @@ type VerifyTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VerifyTestCase) Reset() {
-	*x = VerifyTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *VerifyTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *VerifyTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *VerifyTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*VerifyTestCase) ProtoMessage() {}
+func (*VerifyTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *VerifyTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use VerifyTestCase.ProtoReflect.Descriptor instead.
-func (*VerifyTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{12}
-}
+func (*VerifyTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *VerifyTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *VerifyTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *VerifyTestCase) GetWantErr() bool {
-	if x != nil {
-		return x.WantErr
-	}
-	return false
-}
+func (x *VerifyTestCase) GetWantErr() bool { _ = "STUB: not implemented"; return false }
 
-func (x *VerifyTestCase) GetConfig() *VerifyTestCase_Config {
-	if x != nil {
-		return x.Config
-	}
-	return nil
-}
+func (x *VerifyTestCase) GetConfig() *VerifyTestCase_Config { _ = "STUB: not implemented"; return nil }
 
 type ProtoYamlTestCase struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
@@ -1127,56 +741,28 @@ type ProtoYamlTestCase struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ProtoYamlTestCase) Reset() {
-	*x = ProtoYamlTestCase{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ProtoYamlTestCase) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ProtoYamlTestCase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ProtoYamlTestCase) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ProtoYamlTestCase) ProtoMessage() {}
+func (*ProtoYamlTestCase) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ProtoYamlTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ProtoYamlTestCase.ProtoReflect.Descriptor instead.
-func (*ProtoYamlTestCase) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{13}
-}
+func (*ProtoYamlTestCase) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ProtoYamlTestCase) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *ProtoYamlTestCase) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
 func (x *ProtoYamlTestCase) GetWant() []*ProtoYamlTestCase_Want {
-	if x != nil {
-		return x.Want
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *ProtoYamlTestCase) GetWantErrors() []*v15.Error {
-	if x != nil {
-		return x.WantErrors
-	}
-	return nil
-}
+func (x *ProtoYamlTestCase) GetWantErrors() []*v15.Error { _ = "STUB: not implemented"; return nil }
 
 // Taken from
 // https://github.com/bufbuild/protobuf-conformance/blob/main/proto/google/protobuf/test_messages_proto3.proto
@@ -1217,250 +803,157 @@ type WellKnownTypes struct {
 	sizeCache             protoimpl.SizeCache
 }
 
-func (x *WellKnownTypes) Reset() {
-	*x = WellKnownTypes{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *WellKnownTypes) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *WellKnownTypes) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *WellKnownTypes) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*WellKnownTypes) ProtoMessage() {}
+func (*WellKnownTypes) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *WellKnownTypes) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use WellKnownTypes.ProtoReflect.Descriptor instead.
-func (*WellKnownTypes) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{14}
-}
+func (*WellKnownTypes) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func (x *WellKnownTypes) GetBoolWrapper() *wrapperspb.BoolValue {
-	if x != nil {
-		return x.BoolWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetInt32Wrapper() *wrapperspb.Int32Value {
-	if x != nil {
-		return x.Int32Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetInt64Wrapper() *wrapperspb.Int64Value {
-	if x != nil {
-		return x.Int64Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetUint32Wrapper() *wrapperspb.UInt32Value {
-	if x != nil {
-		return x.Uint32Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetUint64Wrapper() *wrapperspb.UInt64Value {
-	if x != nil {
-		return x.Uint64Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetFloatWrapper() *wrapperspb.FloatValue {
-	if x != nil {
-		return x.FloatWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetDoubleWrapper() *wrapperspb.DoubleValue {
-	if x != nil {
-		return x.DoubleWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetStringWrapper() *wrapperspb.StringValue {
-	if x != nil {
-		return x.StringWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetBytesWrapper() *wrapperspb.BytesValue {
-	if x != nil {
-		return x.BytesWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedBoolWrapper() []*wrapperspb.BoolValue {
-	if x != nil {
-		return x.RepeatedBoolWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedInt32Wrapper() []*wrapperspb.Int32Value {
-	if x != nil {
-		return x.RepeatedInt32Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedInt64Wrapper() []*wrapperspb.Int64Value {
-	if x != nil {
-		return x.RepeatedInt64Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedUint32Wrapper() []*wrapperspb.UInt32Value {
-	if x != nil {
-		return x.RepeatedUint32Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedUint64Wrapper() []*wrapperspb.UInt64Value {
-	if x != nil {
-		return x.RepeatedUint64Wrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedFloatWrapper() []*wrapperspb.FloatValue {
-	if x != nil {
-		return x.RepeatedFloatWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedDoubleWrapper() []*wrapperspb.DoubleValue {
-	if x != nil {
-		return x.RepeatedDoubleWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedStringWrapper() []*wrapperspb.StringValue {
-	if x != nil {
-		return x.RepeatedStringWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedBytesWrapper() []*wrapperspb.BytesValue {
-	if x != nil {
-		return x.RepeatedBytesWrapper
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *WellKnownTypes) GetDuration() *durationpb.Duration {
-	if x != nil {
-		return x.Duration
-	}
-	return nil
-}
+func (x *WellKnownTypes) GetDuration() *durationpb.Duration { _ = "STUB: not implemented"; return nil }
 
 func (x *WellKnownTypes) GetTimestamp() *timestamppb.Timestamp {
-	if x != nil {
-		return x.Timestamp
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *WellKnownTypes) GetStruct() *structpb.Struct {
-	if x != nil {
-		return x.Struct
-	}
-	return nil
-}
+func (x *WellKnownTypes) GetStruct() *structpb.Struct { _ = "STUB: not implemented"; return nil }
 
-func (x *WellKnownTypes) GetAny() *anypb.Any {
-	if x != nil {
-		return x.Any
-	}
-	return nil
-}
+func (x *WellKnownTypes) GetAny() *anypb.Any { _ = "STUB: not implemented"; return nil }
 
-func (x *WellKnownTypes) GetValue() *structpb.Value {
-	if x != nil {
-		return x.Value
-	}
-	return nil
-}
+func (x *WellKnownTypes) GetValue() *structpb.Value { _ = "STUB: not implemented"; return nil }
 
 func (x *WellKnownTypes) GetNullValue() structpb.NullValue {
-	if x != nil {
-		return x.NullValue
-	}
-	return structpb.NullValue(0)
+	_ = "STUB: not implemented"
+	return *new(structpb.NullValue)
 }
 
 func (x *WellKnownTypes) GetRepeatedDuration() []*durationpb.Duration {
-	if x != nil {
-		return x.RepeatedDuration
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedTimestamp() []*timestamppb.Timestamp {
-	if x != nil {
-		return x.RepeatedTimestamp
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedStruct() []*structpb.Struct {
-	if x != nil {
-		return x.RepeatedStruct
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *WellKnownTypes) GetRepeatedAny() []*anypb.Any {
-	if x != nil {
-		return x.RepeatedAny
-	}
-	return nil
-}
+func (x *WellKnownTypes) GetRepeatedAny() []*anypb.Any { _ = "STUB: not implemented"; return nil }
 
 func (x *WellKnownTypes) GetRepeatedValue() []*structpb.Value {
-	if x != nil {
-		return x.RepeatedValue
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetRepeatedListValue() []*structpb.ListValue {
-	if x != nil {
-		return x.RepeatedListValue
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *WellKnownTypes) GetOptionalNestedMsg() *WellKnownTypes_Nested {
-	if x != nil {
-		return x.OptionalNestedMsg
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1471,42 +964,21 @@ type TestTracesWrapper struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TestTracesWrapper) Reset() {
-	*x = TestTracesWrapper{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *TestTracesWrapper) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *TestTracesWrapper) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *TestTracesWrapper) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*TestTracesWrapper) ProtoMessage() {}
+func (*TestTracesWrapper) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *TestTracesWrapper) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use TestTracesWrapper.ProtoReflect.Descriptor instead.
-func (*TestTracesWrapper) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{15}
-}
+func (*TestTracesWrapper) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *TestTracesWrapper) GetEngineTrace() []*v11.Trace {
-	if x != nil {
-		return x.EngineTrace
-	}
-	return nil
-}
+func (x *TestTracesWrapper) GetEngineTrace() []*v11.Trace { _ = "STUB: not implemented"; return nil }
 
 type InspectTestCase_CompileErrors struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
@@ -1515,40 +987,25 @@ type InspectTestCase_CompileErrors struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectTestCase_CompileErrors) Reset() {
-	*x = InspectTestCase_CompileErrors{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectTestCase_CompileErrors) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectTestCase_CompileErrors) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectTestCase_CompileErrors) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectTestCase_CompileErrors) ProtoMessage() {}
+func (*InspectTestCase_CompileErrors) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase_CompileErrors) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectTestCase_CompileErrors.ProtoReflect.Descriptor instead.
 func (*InspectTestCase_CompileErrors) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectTestCase_CompileErrors) GetCompileErrors() []*v13.CompileErrors_Err {
-	if x != nil {
-		return x.CompileErrors
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1560,47 +1017,30 @@ type InspectTestCase_PoliciesExpectation struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *InspectTestCase_PoliciesExpectation) Reset() {
-	*x = InspectTestCase_PoliciesExpectation{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectTestCase_PoliciesExpectation) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *InspectTestCase_PoliciesExpectation) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *InspectTestCase_PoliciesExpectation) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*InspectTestCase_PoliciesExpectation) ProtoMessage() {}
+func (*InspectTestCase_PoliciesExpectation) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase_PoliciesExpectation) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectTestCase_PoliciesExpectation.ProtoReflect.Descriptor instead.
 func (*InspectTestCase_PoliciesExpectation) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{0, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectTestCase_PoliciesExpectation) GetPolicies() map[string]*v16.InspectPoliciesResponse_Result {
-	if x != nil {
-		return x.Policies
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase_PoliciesExpectation) GetMissingPolicies() []string {
-	if x != nil {
-		return x.MissingPolicies
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1616,65 +1056,43 @@ type InspectTestCase_PolicySetsExpectation struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectTestCase_PolicySetsExpectation) Reset() {
-	*x = InspectTestCase_PolicySetsExpectation{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectTestCase_PolicySetsExpectation) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase_PolicySetsExpectation) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*InspectTestCase_PolicySetsExpectation) ProtoMessage() {}
+func (*InspectTestCase_PolicySetsExpectation) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase_PolicySetsExpectation) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectTestCase_PolicySetsExpectation.ProtoReflect.Descriptor instead.
 func (*InspectTestCase_PolicySetsExpectation) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{0, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectTestCase_PolicySetsExpectation) GetPolicySets() map[string]*v16.InspectPoliciesResponse_Result {
-	if x != nil {
-		return x.PolicySets
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase_PolicySetsExpectation) GetErrors() isInspectTestCase_PolicySetsExpectation_Errors {
-	if x != nil {
-		return x.Errors
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isInspectTestCase_PolicySetsExpectation_Errors)
 }
 
 func (x *InspectTestCase_PolicySetsExpectation) GetCompileErrors() *InspectTestCase_CompileErrors {
-	if x != nil {
-		if x, ok := x.Errors.(*InspectTestCase_PolicySetsExpectation_CompileErrors); ok {
-			return x.CompileErrors
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase_PolicySetsExpectation) GetIndexBuildErrors() *v13.IndexBuildErrors {
-	if x != nil {
-		if x, ok := x.Errors.(*InspectTestCase_PolicySetsExpectation_IndexBuildErrors); ok {
-			return x.IndexBuildErrors
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1691,9 +1109,13 @@ type InspectTestCase_PolicySetsExpectation_IndexBuildErrors struct {
 }
 
 func (*InspectTestCase_PolicySetsExpectation_CompileErrors) isInspectTestCase_PolicySetsExpectation_Errors() {
+	_ = "STUB: not implemented"
+	return
 }
 
 func (*InspectTestCase_PolicySetsExpectation_IndexBuildErrors) isInspectTestCase_PolicySetsExpectation_Errors() {
+	_ = "STUB: not implemented"
+	return
 }
 
 type InspectTestCase_RuleTablesExpectation struct {
@@ -1708,65 +1130,43 @@ type InspectTestCase_RuleTablesExpectation struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *InspectTestCase_RuleTablesExpectation) Reset() {
-	*x = InspectTestCase_RuleTablesExpectation{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *InspectTestCase_RuleTablesExpectation) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase_RuleTablesExpectation) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*InspectTestCase_RuleTablesExpectation) ProtoMessage() {}
+func (*InspectTestCase_RuleTablesExpectation) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *InspectTestCase_RuleTablesExpectation) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use InspectTestCase_RuleTablesExpectation.ProtoReflect.Descriptor instead.
 func (*InspectTestCase_RuleTablesExpectation) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{0, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *InspectTestCase_RuleTablesExpectation) GetRuleTables() map[string]*v16.InspectPoliciesResponse_Result {
-	if x != nil {
-		return x.RuleTables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase_RuleTablesExpectation) GetErrors() isInspectTestCase_RuleTablesExpectation_Errors {
-	if x != nil {
-		return x.Errors
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isInspectTestCase_RuleTablesExpectation_Errors)
 }
 
 func (x *InspectTestCase_RuleTablesExpectation) GetCompileErrors() *InspectTestCase_CompileErrors {
-	if x != nil {
-		if x, ok := x.Errors.(*InspectTestCase_RuleTablesExpectation_CompileErrors); ok {
-			return x.CompileErrors
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *InspectTestCase_RuleTablesExpectation) GetIndexBuildErrors() *v13.IndexBuildErrors {
-	if x != nil {
-		if x, ok := x.Errors.(*InspectTestCase_RuleTablesExpectation_IndexBuildErrors); ok {
-			return x.IndexBuildErrors
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1783,9 +1183,13 @@ type InspectTestCase_RuleTablesExpectation_IndexBuildErrors struct {
 }
 
 func (*InspectTestCase_RuleTablesExpectation_CompileErrors) isInspectTestCase_RuleTablesExpectation_Errors() {
+	_ = "STUB: not implemented"
+	return
 }
 
 func (*InspectTestCase_RuleTablesExpectation_IndexBuildErrors) isInspectTestCase_RuleTablesExpectation_Errors() {
+	_ = "STUB: not implemented"
+	return
 }
 
 type BlobClonerTestCase_File struct {
@@ -1799,58 +1203,35 @@ type BlobClonerTestCase_File struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_File) Reset() {
-	*x = BlobClonerTestCase_File{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_File) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase_File) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase_File) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase_File) ProtoMessage() {}
+func (*BlobClonerTestCase_File) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_File) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_File.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_File) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_File) GetOperation() isBlobClonerTestCase_File_Operation {
-	if x != nil {
-		return x.Operation
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isBlobClonerTestCase_File_Operation)
 }
 
 func (x *BlobClonerTestCase_File) GetAddOrUpdate() *BlobClonerTestCase_File_AddOrUpdate {
-	if x != nil {
-		if x, ok := x.Operation.(*BlobClonerTestCase_File_AddOrUpdate_); ok {
-			return x.AddOrUpdate
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BlobClonerTestCase_File) GetDelete() *BlobClonerTestCase_File_Delete {
-	if x != nil {
-		if x, ok := x.Operation.(*BlobClonerTestCase_File_Delete_); ok {
-			return x.Delete
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1866,9 +1247,15 @@ type BlobClonerTestCase_File_Delete_ struct {
 	Delete *BlobClonerTestCase_File_Delete `protobuf:"bytes,2,opt,name=delete,proto3,oneof"`
 }
 
-func (*BlobClonerTestCase_File_AddOrUpdate_) isBlobClonerTestCase_File_Operation() {}
+func (*BlobClonerTestCase_File_AddOrUpdate_) isBlobClonerTestCase_File_Operation() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*BlobClonerTestCase_File_Delete_) isBlobClonerTestCase_File_Operation() {}
+func (*BlobClonerTestCase_File_Delete_) isBlobClonerTestCase_File_Operation() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type BlobClonerTestCase_Step struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1881,58 +1268,35 @@ type BlobClonerTestCase_Step struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_Step) Reset() {
-	*x = BlobClonerTestCase_Step{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_Step) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase_Step) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase_Step) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase_Step) ProtoMessage() {}
+func (*BlobClonerTestCase_Step) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_Step.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_Step) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_Step) GetOp() isBlobClonerTestCase_Step_Op {
-	if x != nil {
-		return x.Op
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isBlobClonerTestCase_Step_Op)
 }
 
 func (x *BlobClonerTestCase_Step) GetExpectation() *BlobClonerTestCase_Step_Expectation {
-	if x != nil {
-		if x, ok := x.Op.(*BlobClonerTestCase_Step_Expectation_); ok {
-			return x.Expectation
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BlobClonerTestCase_Step) GetDifferences() *BlobClonerTestCase_Step_Differences {
-	if x != nil {
-		if x, ok := x.Op.(*BlobClonerTestCase_Step_Differences_); ok {
-			return x.Differences
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1948,9 +1312,15 @@ type BlobClonerTestCase_Step_Differences_ struct {
 	Differences *BlobClonerTestCase_Step_Differences `protobuf:"bytes,2,opt,name=differences,proto3,oneof"`
 }
 
-func (*BlobClonerTestCase_Step_Expectation_) isBlobClonerTestCase_Step_Op() {}
+func (*BlobClonerTestCase_Step_Expectation_) isBlobClonerTestCase_Step_Op() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*BlobClonerTestCase_Step_Differences_) isBlobClonerTestCase_Step_Op() {}
+func (*BlobClonerTestCase_Step_Differences_) isBlobClonerTestCase_Step_Op() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type BlobClonerTestCase_File_AddOrUpdate struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1960,47 +1330,30 @@ type BlobClonerTestCase_File_AddOrUpdate struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_File_AddOrUpdate) Reset() {
-	*x = BlobClonerTestCase_File_AddOrUpdate{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_File_AddOrUpdate) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase_File_AddOrUpdate) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase_File_AddOrUpdate) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase_File_AddOrUpdate) ProtoMessage() {}
+func (*BlobClonerTestCase_File_AddOrUpdate) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_File_AddOrUpdate) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_File_AddOrUpdate.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_File_AddOrUpdate) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_File_AddOrUpdate) GetName() string {
-	if x != nil {
-		return x.Name
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *BlobClonerTestCase_File_AddOrUpdate) GetContent() string {
-	if x != nil {
-		return x.Content
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -2011,42 +1364,24 @@ type BlobClonerTestCase_File_Delete struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_File_Delete) Reset() {
-	*x = BlobClonerTestCase_File_Delete{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_File_Delete) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase_File_Delete) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase_File_Delete) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase_File_Delete) ProtoMessage() {}
+func (*BlobClonerTestCase_File_Delete) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_File_Delete) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_File_Delete.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_File_Delete) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 0, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *BlobClonerTestCase_File_Delete) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *BlobClonerTestCase_File_Delete) GetName() string { _ = "STUB: not implemented"; return "" }
 
 type BlobClonerTestCase_Step_Differences struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
@@ -2055,40 +1390,25 @@ type BlobClonerTestCase_Step_Differences struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_Step_Differences) Reset() {
-	*x = BlobClonerTestCase_Step_Differences{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_Step_Differences) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase_Step_Differences) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase_Step_Differences) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase_Step_Differences) ProtoMessage() {}
+func (*BlobClonerTestCase_Step_Differences) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step_Differences) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_Step_Differences.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_Step_Differences) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_Step_Differences) GetFiles() []*BlobClonerTestCase_File {
-	if x != nil {
-		return x.Files
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2101,54 +1421,35 @@ type BlobClonerTestCase_Step_Expectation struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_Step_Expectation) Reset() {
-	*x = BlobClonerTestCase_Step_Expectation{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_Step_Expectation) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BlobClonerTestCase_Step_Expectation) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BlobClonerTestCase_Step_Expectation) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BlobClonerTestCase_Step_Expectation) ProtoMessage() {}
+func (*BlobClonerTestCase_Step_Expectation) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step_Expectation) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_Step_Expectation.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_Step_Expectation) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_Step_Expectation) GetAll() map[string]*BlobClonerTestCase_Step_Expectation_Files {
-	if x != nil {
-		return x.All
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BlobClonerTestCase_Step_Expectation) GetAddedOrUpdated() []*BlobClonerTestCase_Step_Expectation_Info {
-	if x != nil {
-		return x.AddedOrUpdated
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BlobClonerTestCase_Step_Expectation) GetDeleted() []*BlobClonerTestCase_Step_Expectation_Info {
-	if x != nil {
-		return x.Deleted
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2159,40 +1460,28 @@ type BlobClonerTestCase_Step_Expectation_Files struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_Step_Expectation_Files) Reset() {
-	*x = BlobClonerTestCase_Step_Expectation_Files{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_Step_Expectation_Files) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step_Expectation_Files) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*BlobClonerTestCase_Step_Expectation_Files) ProtoMessage() {}
+func (*BlobClonerTestCase_Step_Expectation_Files) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step_Expectation_Files) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_Step_Expectation_Files.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_Step_Expectation_Files) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 1, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_Step_Expectation_Files) GetFiles() []string {
-	if x != nil {
-		return x.Files
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2204,47 +1493,33 @@ type BlobClonerTestCase_Step_Expectation_Info struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BlobClonerTestCase_Step_Expectation_Info) Reset() {
-	*x = BlobClonerTestCase_Step_Expectation_Info{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BlobClonerTestCase_Step_Expectation_Info) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step_Expectation_Info) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*BlobClonerTestCase_Step_Expectation_Info) ProtoMessage() {}
+func (*BlobClonerTestCase_Step_Expectation_Info) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BlobClonerTestCase_Step_Expectation_Info) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BlobClonerTestCase_Step_Expectation_Info.ProtoReflect.Descriptor instead.
 func (*BlobClonerTestCase_Step_Expectation_Info) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{1, 1, 1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BlobClonerTestCase_Step_Expectation_Info) GetEtag() string {
-	if x != nil {
-		return x.Etag
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *BlobClonerTestCase_Step_Expectation_Info) GetFile() string {
-	if x != nil {
-		return x.File
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -2256,47 +1531,30 @@ type ServerTestCase_AccessEvaluationCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_AccessEvaluationCall) Reset() {
-	*x = ServerTestCase_AccessEvaluationCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_AccessEvaluationCall) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_AccessEvaluationCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_AccessEvaluationCall) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_AccessEvaluationCall) ProtoMessage() {}
+func (*ServerTestCase_AccessEvaluationCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AccessEvaluationCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_AccessEvaluationCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_AccessEvaluationCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_AccessEvaluationCall) GetInput() *v17.AccessEvaluationRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_AccessEvaluationCall) GetWantResponse() *v17.AccessEvaluationResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2308,47 +1566,33 @@ type ServerTestCase_AccessEvaluationBatchCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_AccessEvaluationBatchCall) Reset() {
-	*x = ServerTestCase_AccessEvaluationBatchCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_AccessEvaluationBatchCall) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AccessEvaluationBatchCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerTestCase_AccessEvaluationBatchCall) ProtoMessage() {}
+func (*ServerTestCase_AccessEvaluationBatchCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AccessEvaluationBatchCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_AccessEvaluationBatchCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_AccessEvaluationBatchCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_AccessEvaluationBatchCall) GetInput() *v17.AccessEvaluationBatchRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_AccessEvaluationBatchCall) GetWantResponse() *v17.AccessEvaluationBatchResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2360,47 +1604,30 @@ type ServerTestCase_PlanResourcesCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_PlanResourcesCall) Reset() {
-	*x = ServerTestCase_PlanResourcesCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_PlanResourcesCall) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_PlanResourcesCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_PlanResourcesCall) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_PlanResourcesCall) ProtoMessage() {}
+func (*ServerTestCase_PlanResourcesCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlanResourcesCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_PlanResourcesCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_PlanResourcesCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_PlanResourcesCall) GetInput() *v18.PlanResourcesRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_PlanResourcesCall) GetWantResponse() *v16.PlanResourcesResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2412,47 +1639,30 @@ type ServerTestCase_CheckResourceSetCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_CheckResourceSetCall) Reset() {
-	*x = ServerTestCase_CheckResourceSetCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_CheckResourceSetCall) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_CheckResourceSetCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_CheckResourceSetCall) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_CheckResourceSetCall) ProtoMessage() {}
+func (*ServerTestCase_CheckResourceSetCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_CheckResourceSetCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_CheckResourceSetCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_CheckResourceSetCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_CheckResourceSetCall) GetInput() *v18.CheckResourceSetRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_CheckResourceSetCall) GetWantResponse() *v16.CheckResourceSetResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2464,47 +1674,33 @@ type ServerTestCase_CheckResourceBatchCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_CheckResourceBatchCall) Reset() {
-	*x = ServerTestCase_CheckResourceBatchCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_CheckResourceBatchCall) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_CheckResourceBatchCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerTestCase_CheckResourceBatchCall) ProtoMessage() {}
+func (*ServerTestCase_CheckResourceBatchCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_CheckResourceBatchCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_CheckResourceBatchCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_CheckResourceBatchCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_CheckResourceBatchCall) GetInput() *v18.CheckResourceBatchRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_CheckResourceBatchCall) GetWantResponse() *v16.CheckResourceBatchResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2516,47 +1712,30 @@ type ServerTestCase_CheckResourcesCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_CheckResourcesCall) Reset() {
-	*x = ServerTestCase_CheckResourcesCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_CheckResourcesCall) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_CheckResourcesCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_CheckResourcesCall) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_CheckResourcesCall) ProtoMessage() {}
+func (*ServerTestCase_CheckResourcesCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_CheckResourcesCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_CheckResourcesCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_CheckResourcesCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_CheckResourcesCall) GetInput() *v18.CheckResourcesRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_CheckResourcesCall) GetWantResponse() *v16.CheckResourcesResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2568,47 +1747,33 @@ type ServerTestCase_PlaygroundValidateCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_PlaygroundValidateCall) Reset() {
-	*x = ServerTestCase_PlaygroundValidateCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_PlaygroundValidateCall) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlaygroundValidateCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerTestCase_PlaygroundValidateCall) ProtoMessage() {}
+func (*ServerTestCase_PlaygroundValidateCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlaygroundValidateCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_PlaygroundValidateCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_PlaygroundValidateCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_PlaygroundValidateCall) GetInput() *v18.PlaygroundValidateRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_PlaygroundValidateCall) GetWantResponse() *v16.PlaygroundValidateResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2620,47 +1785,30 @@ type ServerTestCase_PlaygroundTestCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_PlaygroundTestCall) Reset() {
-	*x = ServerTestCase_PlaygroundTestCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_PlaygroundTestCall) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_PlaygroundTestCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_PlaygroundTestCall) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_PlaygroundTestCall) ProtoMessage() {}
+func (*ServerTestCase_PlaygroundTestCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlaygroundTestCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_PlaygroundTestCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_PlaygroundTestCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_PlaygroundTestCall) GetInput() *v18.PlaygroundTestRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_PlaygroundTestCall) GetWantResponse() *v16.PlaygroundTestResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2672,47 +1820,33 @@ type ServerTestCase_PlaygroundEvaluateCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_PlaygroundEvaluateCall) Reset() {
-	*x = ServerTestCase_PlaygroundEvaluateCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_PlaygroundEvaluateCall) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlaygroundEvaluateCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerTestCase_PlaygroundEvaluateCall) ProtoMessage() {}
+func (*ServerTestCase_PlaygroundEvaluateCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlaygroundEvaluateCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_PlaygroundEvaluateCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_PlaygroundEvaluateCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_PlaygroundEvaluateCall) GetInput() *v18.PlaygroundEvaluateRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_PlaygroundEvaluateCall) GetWantResponse() *v16.PlaygroundEvaluateResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2724,47 +1858,30 @@ type ServerTestCase_PlaygroundProxyCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_PlaygroundProxyCall) Reset() {
-	*x = ServerTestCase_PlaygroundProxyCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[41]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_PlaygroundProxyCall) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_PlaygroundProxyCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_PlaygroundProxyCall) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_PlaygroundProxyCall) ProtoMessage() {}
+func (*ServerTestCase_PlaygroundProxyCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_PlaygroundProxyCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[41]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_PlaygroundProxyCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_PlaygroundProxyCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_PlaygroundProxyCall) GetInput() *v18.PlaygroundProxyRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_PlaygroundProxyCall) GetWantResponse() *v16.PlaygroundProxyResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2776,47 +1893,33 @@ type ServerTestCase_AdminAddOrUpdatePolicyCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_AdminAddOrUpdatePolicyCall) Reset() {
-	*x = ServerTestCase_AdminAddOrUpdatePolicyCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[42]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_AdminAddOrUpdatePolicyCall) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AdminAddOrUpdatePolicyCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerTestCase_AdminAddOrUpdatePolicyCall) ProtoMessage() {}
+func (*ServerTestCase_AdminAddOrUpdatePolicyCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AdminAddOrUpdatePolicyCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[42]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_AdminAddOrUpdatePolicyCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_AdminAddOrUpdatePolicyCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_AdminAddOrUpdatePolicyCall) GetInput() *v18.AddOrUpdatePolicyRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_AdminAddOrUpdatePolicyCall) GetWantResponse() *v16.AddOrUpdatePolicyResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2828,47 +1931,33 @@ type ServerTestCase_AdminAddOrUpdateSchemaCall struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_AdminAddOrUpdateSchemaCall) Reset() {
-	*x = ServerTestCase_AdminAddOrUpdateSchemaCall{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[43]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_AdminAddOrUpdateSchemaCall) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AdminAddOrUpdateSchemaCall) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*ServerTestCase_AdminAddOrUpdateSchemaCall) ProtoMessage() {}
+func (*ServerTestCase_AdminAddOrUpdateSchemaCall) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_AdminAddOrUpdateSchemaCall) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[43]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_AdminAddOrUpdateSchemaCall.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_AdminAddOrUpdateSchemaCall) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 11}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *ServerTestCase_AdminAddOrUpdateSchemaCall) GetInput() *v18.AddOrUpdateSchemaRequest {
-	if x != nil {
-		return x.Input
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *ServerTestCase_AdminAddOrUpdateSchemaCall) GetWantResponse() *v16.AddOrUpdateSchemaResponse {
-	if x != nil {
-		return x.WantResponse
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2880,49 +1969,26 @@ type ServerTestCase_Status struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *ServerTestCase_Status) Reset() {
-	*x = ServerTestCase_Status{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ServerTestCase_Status) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ServerTestCase_Status) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ServerTestCase_Status) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ServerTestCase_Status) ProtoMessage() {}
+func (*ServerTestCase_Status) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ServerTestCase_Status) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ServerTestCase_Status.ProtoReflect.Descriptor instead.
 func (*ServerTestCase_Status) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{3, 12}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ServerTestCase_Status) GetHttpStatusCode() uint32 {
-	if x != nil {
-		return x.HttpStatusCode
-	}
-	return 0
-}
+func (x *ServerTestCase_Status) GetHttpStatusCode() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *ServerTestCase_Status) GetGrpcStatusCode() uint32 {
-	if x != nil {
-		return x.GrpcStatusCode
-	}
-	return 0
-}
+func (x *ServerTestCase_Status) GetGrpcStatusCode() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type IndexBuilderTestCase_CompilationUnit struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
@@ -2933,54 +1999,38 @@ type IndexBuilderTestCase_CompilationUnit struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *IndexBuilderTestCase_CompilationUnit) Reset() {
-	*x = IndexBuilderTestCase_CompilationUnit{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[45]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuilderTestCase_CompilationUnit) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuilderTestCase_CompilationUnit) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*IndexBuilderTestCase_CompilationUnit) ProtoMessage() {}
+func (*IndexBuilderTestCase_CompilationUnit) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuilderTestCase_CompilationUnit) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[45]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuilderTestCase_CompilationUnit.ProtoReflect.Descriptor instead.
 func (*IndexBuilderTestCase_CompilationUnit) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{4, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *IndexBuilderTestCase_CompilationUnit) GetMainFqn() string {
-	if x != nil {
-		return x.MainFqn
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *IndexBuilderTestCase_CompilationUnit) GetDefinitionFqns() []string {
-	if x != nil {
-		return x.DefinitionFqns
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *IndexBuilderTestCase_CompilationUnit) GetAncestorFqns() []string {
-	if x != nil {
-		return x.AncestorFqns
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2994,63 +2044,33 @@ type CompileTestCase_Variables struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CompileTestCase_Variables) Reset() {
-	*x = CompileTestCase_Variables{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[47]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CompileTestCase_Variables) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CompileTestCase_Variables) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CompileTestCase_Variables) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CompileTestCase_Variables) ProtoMessage() {}
+func (*CompileTestCase_Variables) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CompileTestCase_Variables) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[47]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CompileTestCase_Variables.ProtoReflect.Descriptor instead.
 func (*CompileTestCase_Variables) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{5, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *CompileTestCase_Variables) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *CompileTestCase_Variables) GetScope() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CompileTestCase_Variables) GetVariables() []string {
-	if x != nil {
-		return x.Variables
-	}
-	return nil
-}
+func (x *CompileTestCase_Variables) GetVariables() []string { _ = "STUB: not implemented"; return nil }
 
 func (x *CompileTestCase_Variables) GetDerivedRoles() []*CompileTestCase_Variables_DerivedRole {
-	if x != nil {
-		return x.DerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *CompileTestCase_Variables) GetConstants() []string {
-	if x != nil {
-		return x.Constants
-	}
-	return nil
-}
+func (x *CompileTestCase_Variables) GetConstants() []string { _ = "STUB: not implemented"; return nil }
 
 type CompileTestCase_Variables_DerivedRole struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3061,54 +2081,38 @@ type CompileTestCase_Variables_DerivedRole struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CompileTestCase_Variables_DerivedRole) Reset() {
-	*x = CompileTestCase_Variables_DerivedRole{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[48]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CompileTestCase_Variables_DerivedRole) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *CompileTestCase_Variables_DerivedRole) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*CompileTestCase_Variables_DerivedRole) ProtoMessage() {}
+func (*CompileTestCase_Variables_DerivedRole) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CompileTestCase_Variables_DerivedRole) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[48]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CompileTestCase_Variables_DerivedRole.ProtoReflect.Descriptor instead.
 func (*CompileTestCase_Variables_DerivedRole) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{5, 0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *CompileTestCase_Variables_DerivedRole) GetName() string {
-	if x != nil {
-		return x.Name
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *CompileTestCase_Variables_DerivedRole) GetVariables() []string {
-	if x != nil {
-		return x.Variables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *CompileTestCase_Variables_DerivedRole) GetConstants() []string {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3123,70 +2127,38 @@ type QueryPlannerTestSuite_Test struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *QueryPlannerTestSuite_Test) Reset() {
-	*x = QueryPlannerTestSuite_Test{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[49]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *QueryPlannerTestSuite_Test) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *QueryPlannerTestSuite_Test) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *QueryPlannerTestSuite_Test) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*QueryPlannerTestSuite_Test) ProtoMessage() {}
+func (*QueryPlannerTestSuite_Test) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *QueryPlannerTestSuite_Test) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[49]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use QueryPlannerTestSuite_Test.ProtoReflect.Descriptor instead.
 func (*QueryPlannerTestSuite_Test) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{9, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *QueryPlannerTestSuite_Test) GetAction() string {
-	if x != nil {
-		return x.Action
-	}
-	return ""
-}
+func (x *QueryPlannerTestSuite_Test) GetAction() string { _ = "STUB: not implemented"; return "" }
 
-func (x *QueryPlannerTestSuite_Test) GetActions() []string {
-	if x != nil {
-		return x.Actions
-	}
-	return nil
-}
+func (x *QueryPlannerTestSuite_Test) GetActions() []string { _ = "STUB: not implemented"; return nil }
 
 func (x *QueryPlannerTestSuite_Test) GetWant() *v11.PlanResourcesFilter {
-	if x != nil {
-		return x.Want
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *QueryPlannerTestSuite_Test) GetResource() *v11.PlanResourcesInput_Resource {
-	if x != nil {
-		return x.Resource
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *QueryPlannerTestSuite_Test) GetWantErr() bool {
-	if x != nil {
-		return x.WantErr
-	}
-	return false
-}
+func (x *QueryPlannerTestSuite_Test) GetWantErr() bool { _ = "STUB: not implemented"; return false }
 
 type VerifyTestCase_Config struct {
 	state                       protoimpl.MessageState `protogen:"open.v1"`
@@ -3197,54 +2169,35 @@ type VerifyTestCase_Config struct {
 	sizeCache                   protoimpl.SizeCache
 }
 
-func (x *VerifyTestCase_Config) Reset() {
-	*x = VerifyTestCase_Config{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[50]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *VerifyTestCase_Config) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *VerifyTestCase_Config) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *VerifyTestCase_Config) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*VerifyTestCase_Config) ProtoMessage() {}
+func (*VerifyTestCase_Config) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *VerifyTestCase_Config) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[50]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use VerifyTestCase_Config.ProtoReflect.Descriptor instead.
 func (*VerifyTestCase_Config) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{12, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *VerifyTestCase_Config) GetExcludedResourcePolicyFqns() []string {
-	if x != nil {
-		return x.ExcludedResourcePolicyFqns
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *VerifyTestCase_Config) GetExcludedPrincipalPolicyFqns() []string {
-	if x != nil {
-		return x.ExcludedPrincipalPolicyFqns
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *VerifyTestCase_Config) GetIncludedTestNamesRegexp() string {
-	if x != nil {
-		return x.IncludedTestNamesRegexp
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -3256,49 +2209,26 @@ type ProtoYamlTestCase_Want struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ProtoYamlTestCase_Want) Reset() {
-	*x = ProtoYamlTestCase_Want{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[51]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ProtoYamlTestCase_Want) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ProtoYamlTestCase_Want) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ProtoYamlTestCase_Want) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ProtoYamlTestCase_Want) ProtoMessage() {}
+func (*ProtoYamlTestCase_Want) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ProtoYamlTestCase_Want) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[51]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ProtoYamlTestCase_Want.ProtoReflect.Descriptor instead.
 func (*ProtoYamlTestCase_Want) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{13, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *ProtoYamlTestCase_Want) GetMessage() *v1.Policy {
-	if x != nil {
-		return x.Message
-	}
-	return nil
-}
+func (x *ProtoYamlTestCase_Want) GetMessage() *v1.Policy { _ = "STUB: not implemented"; return nil }
 
-func (x *ProtoYamlTestCase_Want) GetErrors() []*v15.Error {
-	if x != nil {
-		return x.Errors
-	}
-	return nil
-}
+func (x *ProtoYamlTestCase_Want) GetErrors() []*v15.Error { _ = "STUB: not implemented"; return nil }
 
 type WellKnownTypes_Nested struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3308,47 +2238,27 @@ type WellKnownTypes_Nested struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *WellKnownTypes_Nested) Reset() {
-	*x = WellKnownTypes_Nested{}
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[52]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *WellKnownTypes_Nested) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *WellKnownTypes_Nested) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *WellKnownTypes_Nested) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*WellKnownTypes_Nested) ProtoMessage() {}
+func (*WellKnownTypes_Nested) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *WellKnownTypes_Nested) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_private_v1_test_proto_msgTypes[52]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use WellKnownTypes_Nested.ProtoReflect.Descriptor instead.
 func (*WellKnownTypes_Nested) Descriptor() ([]byte, []int) {
-	return file_cerbos_private_v1_test_proto_rawDescGZIP(), []int{14, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *WellKnownTypes_Nested) GetStringField() string {
-	if x != nil {
-		return x.StringField
-	}
-	return ""
-}
+func (x *WellKnownTypes_Nested) GetStringField() string { _ = "STUB: not implemented"; return "" }
 
 func (x *WellKnownTypes_Nested) GetValueField() *structpb.Value {
-	if x != nil {
-		return x.ValueField
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3616,12 +2526,7 @@ var (
 	file_cerbos_private_v1_test_proto_rawDescData []byte
 )
 
-func file_cerbos_private_v1_test_proto_rawDescGZIP() []byte {
-	file_cerbos_private_v1_test_proto_rawDescOnce.Do(func() {
-		file_cerbos_private_v1_test_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cerbos_private_v1_test_proto_rawDesc), len(file_cerbos_private_v1_test_proto_rawDesc)))
-	})
-	return file_cerbos_private_v1_test_proto_rawDescData
-}
+func file_cerbos_private_v1_test_proto_rawDescGZIP() []byte { _ = "STUB: not implemented"; return nil }
 
 var file_cerbos_private_v1_test_proto_msgTypes = make([]protoimpl.MessageInfo, 53)
 var file_cerbos_private_v1_test_proto_goTypes = []any{
@@ -3871,60 +2776,5 @@ var file_cerbos_private_v1_test_proto_depIdxs = []int32{
 	0,   // [0:125] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_private_v1_test_proto_init() }
-func file_cerbos_private_v1_test_proto_init() {
-	if File_cerbos_private_v1_test_proto != nil {
-		return
-	}
-	file_cerbos_private_v1_test_proto_msgTypes[3].OneofWrappers = []any{
-		(*ServerTestCase_CheckResourceSet)(nil),
-		(*ServerTestCase_CheckResourceBatch)(nil),
-		(*ServerTestCase_PlaygroundValidate)(nil),
-		(*ServerTestCase_PlaygroundEvaluate)(nil),
-		(*ServerTestCase_AdminAddOrUpdatePolicy)(nil),
-		(*ServerTestCase_PlaygroundProxy)(nil),
-		(*ServerTestCase_PlanResources)(nil),
-		(*ServerTestCase_AdminAddOrUpdateSchema)(nil),
-		(*ServerTestCase_PlaygroundTest)(nil),
-		(*ServerTestCase_CheckResources)(nil),
-		(*ServerTestCase_AccessEvaluation)(nil),
-		(*ServerTestCase_AccessEvaluationBatch)(nil),
-	}
-	file_cerbos_private_v1_test_proto_msgTypes[7].OneofWrappers = []any{
-		(*SchemaTestCase_CheckInput)(nil),
-		(*SchemaTestCase_PlanResourcesInput)(nil),
-	}
-	file_cerbos_private_v1_test_proto_msgTypes[18].OneofWrappers = []any{
-		(*InspectTestCase_PolicySetsExpectation_CompileErrors)(nil),
-		(*InspectTestCase_PolicySetsExpectation_IndexBuildErrors)(nil),
-	}
-	file_cerbos_private_v1_test_proto_msgTypes[19].OneofWrappers = []any{
-		(*InspectTestCase_RuleTablesExpectation_CompileErrors)(nil),
-		(*InspectTestCase_RuleTablesExpectation_IndexBuildErrors)(nil),
-	}
-	file_cerbos_private_v1_test_proto_msgTypes[23].OneofWrappers = []any{
-		(*BlobClonerTestCase_File_AddOrUpdate_)(nil),
-		(*BlobClonerTestCase_File_Delete_)(nil),
-	}
-	file_cerbos_private_v1_test_proto_msgTypes[24].OneofWrappers = []any{
-		(*BlobClonerTestCase_Step_Expectation_)(nil),
-		(*BlobClonerTestCase_Step_Differences_)(nil),
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_private_v1_test_proto_rawDesc), len(file_cerbos_private_v1_test_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   53,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_cerbos_private_v1_test_proto_goTypes,
-		DependencyIndexes: file_cerbos_private_v1_test_proto_depIdxs,
-		MessageInfos:      file_cerbos_private_v1_test_proto_msgTypes,
-	}.Build()
-	File_cerbos_private_v1_test_proto = out.File
-	file_cerbos_private_v1_test_proto_goTypes = nil
-	file_cerbos_private_v1_test_proto_depIdxs = nil
-}
+func init()                                   { file_cerbos_private_v1_test_proto_init() }
+func file_cerbos_private_v1_test_proto_init() { _ = "STUB: not implemented"; return }

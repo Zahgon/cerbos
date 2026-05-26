@@ -19,56 +19,9 @@ type AuditFilters struct {
 	Tail    uint16        `help:"View the last N records"`
 }
 
-func (af *AuditFilters) Validate() error {
-	filterCount := 0
-	if af.Tail > 0 {
-		filterCount++
-	}
-
-	if af.Between.IsSet() {
-		filterCount++
-	}
-
-	if af.Since > 0 {
-		filterCount++
-	}
-
-	if af.Lookup != "" {
-		filterCount++
-	}
-
-	if filterCount > 1 {
-		return errMoreThanOneFilter
-	}
-
-	if filterCount == 0 {
-		af.Tail = 30
-	}
-
-	return nil
-}
+func (af *AuditFilters) Validate() error { _ = "STUB: not implemented"; return nil }
 
 func (af *AuditFilters) GenOptions() cerbos.AuditLogOptions {
-	switch {
-	case af.Tail > 0:
-		return cerbos.AuditLogOptions{
-			Tail: uint32(af.Tail),
-		}
-	case af.Between.IsSet():
-		return cerbos.AuditLogOptions{
-			StartTime: af.Between.Values[0].AsTime(),
-			EndTime:   af.Between.Values[1].AsTime(),
-		}
-	case af.Since > 0:
-		return cerbos.AuditLogOptions{
-			StartTime: time.Now().Add(time.Duration(-1) * af.Since),
-			EndTime:   time.Now(),
-		}
-	case af.Lookup != "":
-		return cerbos.AuditLogOptions{
-			Lookup: af.Lookup,
-		}
-	default:
-		return cerbos.AuditLogOptions{}
-	}
+	_ = "STUB: not implemented"
+	return *new(cerbos.AuditLogOptions)
 }

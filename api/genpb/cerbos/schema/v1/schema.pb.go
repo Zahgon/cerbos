@@ -10,11 +10,10 @@
 package schemav1
 
 import (
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -47,30 +46,31 @@ var (
 )
 
 func (x ValidationError_Source) Enum() *ValidationError_Source {
-	p := new(ValidationError_Source)
-	*p = x
-	return p
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (x ValidationError_Source) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
+func (x ValidationError_Source) String() string { _ = "STUB: not implemented"; return "" }
 
 func (ValidationError_Source) Descriptor() protoreflect.EnumDescriptor {
-	return file_cerbos_schema_v1_schema_proto_enumTypes[0].Descriptor()
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumDescriptor)
 }
 
 func (ValidationError_Source) Type() protoreflect.EnumType {
-	return &file_cerbos_schema_v1_schema_proto_enumTypes[0]
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumType)
 }
 
 func (x ValidationError_Source) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.EnumNumber)
 }
 
 // Deprecated: Use ValidationError_Source.Descriptor instead.
 func (ValidationError_Source) EnumDescriptor() ([]byte, []int) {
-	return file_cerbos_schema_v1_schema_proto_rawDescGZIP(), []int{0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type ValidationError struct {
@@ -82,55 +82,27 @@ type ValidationError struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ValidationError) Reset() {
-	*x = ValidationError{}
-	mi := &file_cerbos_schema_v1_schema_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *ValidationError) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *ValidationError) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *ValidationError) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*ValidationError) ProtoMessage() {}
+func (*ValidationError) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *ValidationError) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_schema_v1_schema_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use ValidationError.ProtoReflect.Descriptor instead.
-func (*ValidationError) Descriptor() ([]byte, []int) {
-	return file_cerbos_schema_v1_schema_proto_rawDescGZIP(), []int{0}
-}
+func (*ValidationError) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *ValidationError) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
+func (x *ValidationError) GetPath() string { _ = "STUB: not implemented"; return "" }
 
-func (x *ValidationError) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
+func (x *ValidationError) GetMessage() string { _ = "STUB: not implemented"; return "" }
 
 func (x *ValidationError) GetSource() ValidationError_Source {
-	if x != nil {
-		return x.Source
-	}
-	return ValidationError_SOURCE_UNSPECIFIED
+	_ = "STUB: not implemented"
+	return *new(ValidationError_Source)
 }
 
 type Schema struct {
@@ -141,49 +113,23 @@ type Schema struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Schema) Reset() {
-	*x = Schema{}
-	mi := &file_cerbos_schema_v1_schema_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Schema) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Schema) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Schema) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Schema) ProtoMessage() {}
+func (*Schema) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Schema) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_schema_v1_schema_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Schema.ProtoReflect.Descriptor instead.
-func (*Schema) Descriptor() ([]byte, []int) {
-	return file_cerbos_schema_v1_schema_proto_rawDescGZIP(), []int{1}
-}
+func (*Schema) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Schema) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
+func (x *Schema) GetId() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Schema) GetDefinition() []byte {
-	if x != nil {
-		return x.Definition
-	}
-	return nil
-}
+func (x *Schema) GetDefinition() []byte { _ = "STUB: not implemented"; return nil }
 
 var File_cerbos_schema_v1_schema_proto protoreflect.FileDescriptor
 
@@ -212,12 +158,7 @@ var (
 	file_cerbos_schema_v1_schema_proto_rawDescData []byte
 )
 
-func file_cerbos_schema_v1_schema_proto_rawDescGZIP() []byte {
-	file_cerbos_schema_v1_schema_proto_rawDescOnce.Do(func() {
-		file_cerbos_schema_v1_schema_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cerbos_schema_v1_schema_proto_rawDesc), len(file_cerbos_schema_v1_schema_proto_rawDesc)))
-	})
-	return file_cerbos_schema_v1_schema_proto_rawDescData
-}
+func file_cerbos_schema_v1_schema_proto_rawDescGZIP() []byte { _ = "STUB: not implemented"; return nil }
 
 var file_cerbos_schema_v1_schema_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cerbos_schema_v1_schema_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
@@ -235,27 +176,5 @@ var file_cerbos_schema_v1_schema_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_schema_v1_schema_proto_init() }
-func file_cerbos_schema_v1_schema_proto_init() {
-	if File_cerbos_schema_v1_schema_proto != nil {
-		return
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_schema_v1_schema_proto_rawDesc), len(file_cerbos_schema_v1_schema_proto_rawDesc)),
-			NumEnums:      1,
-			NumMessages:   2,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_cerbos_schema_v1_schema_proto_goTypes,
-		DependencyIndexes: file_cerbos_schema_v1_schema_proto_depIdxs,
-		EnumInfos:         file_cerbos_schema_v1_schema_proto_enumTypes,
-		MessageInfos:      file_cerbos_schema_v1_schema_proto_msgTypes,
-	}.Build()
-	File_cerbos_schema_v1_schema_proto = out.File
-	file_cerbos_schema_v1_schema_proto_goTypes = nil
-	file_cerbos_schema_v1_schema_proto_depIdxs = nil
-}
+func init()                                    { file_cerbos_schema_v1_schema_proto_init() }
+func file_cerbos_schema_v1_schema_proto_init() { _ = "STUB: not implemented"; return }

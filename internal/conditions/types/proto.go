@@ -8,7 +8,4 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func MessageType[T proto.Message]() *types.Type {
-	var message T
-	return types.NewObjectType(string(message.ProtoReflect().Descriptor().FullName()))
-}
+func MessageType[T proto.Message]() *types.Type { _ = "STUB: not implemented"; return nil }

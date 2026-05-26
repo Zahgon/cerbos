@@ -3,20 +3,11 @@
 
 package errors
 
-import "fmt"
-
-func NewPutError(path, message string) *PutError {
-	return &PutError{
-		Path:    path,
-		Message: message,
-	}
-}
+func NewPutError(path, message string) *PutError { _ = "STUB: not implemented"; return nil }
 
 type PutError struct {
 	Path    string
 	Message string
 }
 
-func (pe *PutError) Error() string {
-	return fmt.Sprintf("%s | %s", pe.Path, pe.Message)
-}
+func (pe *PutError) Error() string { _ = "STUB: not implemented"; return "" }

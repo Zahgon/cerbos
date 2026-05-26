@@ -4,7 +4,6 @@
 package root
 
 import (
-	"fmt"
 	"io"
 
 	"github.com/alecthomas/kong"
@@ -21,7 +20,6 @@ import (
 	"github.com/cerbos/cerbos/cmd/cerbosctl/put"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/store"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/version"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const description = `A CLI for managing Cerbos
@@ -63,45 +61,16 @@ type Cli struct {
 }
 
 func Run(args []string, exit func(int), stdout, stderr io.Writer) {
-	parser, cli := createParser(exit, stdout, stderr)
-
-	ctx, err := parser.Parse(args)
-	if err != nil {
-		parser.FatalIfErrorf(err)
-		return
-	}
-
-	ctx.FatalIfErrorf(ctx.Run(&cli.Globals))
+	_ = "STUB: not implemented"
+	return
 }
 
 func createParser(exit func(int), stdout, stderr io.Writer) (*kong.Kong, *Cli) {
-	cli := &Cli{}
-	parser, err := kong.New(cli,
-		kong.Name("cerbosctl"),
-		kong.Description(description),
-		kong.UsageOnError(),
-		kong.Vars{"version": util.AppVersion()},
-		kong.Exit(exit),
-		kong.Writers(stdout, stderr),
-		kong.BindToProvider(createClientContext),
-	)
-	if err != nil {
-		panic(err)
-	}
-
-	return parser, cli
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func createClientContext(globals *flagset.Globals) (*client.Context, error) {
-	c, err := client.GetClient(globals)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get the client: %w", err)
-	}
-
-	ac, err := client.GetAdminClient(globals)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get the admin client: %w", err)
-	}
-
-	return &client.Context{Client: c, AdminClient: ac}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

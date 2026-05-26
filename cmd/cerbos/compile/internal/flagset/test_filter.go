@@ -10,18 +10,6 @@ import (
 type TestFilter []string
 
 func (tf TestFilter) ToFilterConfig() (*verify.FilterConfig, error) {
-	if len(tf) == 0 {
-		return nil, nil
-	}
-
-	var result *verify.FilterConfig
-	for _, f := range tf {
-		parsed, err := verify.ParseFilterConfig(f)
-		if err != nil {
-			return nil, err
-		}
-		result = result.Merge(parsed)
-	}
-
-	return result, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

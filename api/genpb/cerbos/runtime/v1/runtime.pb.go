@@ -10,6 +10,8 @@
 package runtimev1
 
 import (
+	sync "sync"
+
 	v11 "github.com/cerbos/cerbos/api/genpb/cerbos/effect/v1"
 	v1 "github.com/cerbos/cerbos/api/genpb/cerbos/policy/v1"
 	v12 "github.com/cerbos/cerbos/api/genpb/cerbos/source/v1"
@@ -18,9 +20,6 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	structpb "google.golang.org/protobuf/types/known/structpb"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -46,103 +45,55 @@ type RunnablePolicySet struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *RunnablePolicySet) Reset() {
-	*x = RunnablePolicySet{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnablePolicySet) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnablePolicySet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnablePolicySet) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnablePolicySet) ProtoMessage() {}
+func (*RunnablePolicySet) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnablePolicySet) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnablePolicySet.ProtoReflect.Descriptor instead.
-func (*RunnablePolicySet) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{0}
-}
+func (*RunnablePolicySet) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RunnablePolicySet) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RunnablePolicySet) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnablePolicySet) GetPolicySet() isRunnablePolicySet_PolicySet {
-	if x != nil {
-		return x.PolicySet
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isRunnablePolicySet_PolicySet)
 }
 
 func (x *RunnablePolicySet) GetResourcePolicy() *RunnableResourcePolicySet {
-	if x != nil {
-		if x, ok := x.PolicySet.(*RunnablePolicySet_ResourcePolicy); ok {
-			return x.ResourcePolicy
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePolicySet) GetPrincipalPolicy() *RunnablePrincipalPolicySet {
-	if x != nil {
-		if x, ok := x.PolicySet.(*RunnablePolicySet_PrincipalPolicy); ok {
-			return x.PrincipalPolicy
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnablePolicySet) GetDerivedRoles() *RunnableDerivedRolesSet {
-	if x != nil {
-		if x, ok := x.PolicySet.(*RunnablePolicySet_DerivedRoles); ok {
-			return x.DerivedRoles
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnablePolicySet) GetVariables() *RunnableVariablesSet {
-	if x != nil {
-		if x, ok := x.PolicySet.(*RunnablePolicySet_Variables); ok {
-			return x.Variables
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePolicySet) GetRolePolicy() *RunnableRolePolicySet {
-	if x != nil {
-		if x, ok := x.PolicySet.(*RunnablePolicySet_RolePolicy); ok {
-			return x.RolePolicy
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RunnablePolicySet) GetCompilerVersion() uint32 {
-	if x != nil {
-		return x.CompilerVersion
-	}
-	return 0
-}
+func (x *RunnablePolicySet) GetCompilerVersion() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type isRunnablePolicySet_PolicySet interface {
 	isRunnablePolicySet_PolicySet()
@@ -170,15 +121,30 @@ type RunnablePolicySet_RolePolicy struct {
 	RolePolicy *RunnableRolePolicySet `protobuf:"bytes,7,opt,name=role_policy,json=rolePolicy,proto3,oneof"`
 }
 
-func (*RunnablePolicySet_ResourcePolicy) isRunnablePolicySet_PolicySet() {}
+func (*RunnablePolicySet_ResourcePolicy) isRunnablePolicySet_PolicySet() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*RunnablePolicySet_PrincipalPolicy) isRunnablePolicySet_PolicySet() {}
+func (*RunnablePolicySet_PrincipalPolicy) isRunnablePolicySet_PolicySet() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*RunnablePolicySet_DerivedRoles) isRunnablePolicySet_PolicySet() {}
+func (*RunnablePolicySet_DerivedRoles) isRunnablePolicySet_PolicySet() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*RunnablePolicySet_Variables) isRunnablePolicySet_PolicySet() {}
+func (*RunnablePolicySet_Variables) isRunnablePolicySet_PolicySet() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*RunnablePolicySet_RolePolicy) isRunnablePolicySet_PolicySet() {}
+func (*RunnablePolicySet_RolePolicy) isRunnablePolicySet_PolicySet() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type RuleTable struct {
 	state              protoimpl.MessageState                   `protogen:"open.v1"`
@@ -194,91 +160,44 @@ type RuleTable struct {
 	sizeCache          protoimpl.SizeCache
 }
 
-func (x *RuleTable) Reset() {
-	*x = RuleTable{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable) ProtoMessage() {}
+func (*RuleTable) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable.ProtoReflect.Descriptor instead.
-func (*RuleTable) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1}
-}
+func (*RuleTable) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RuleTable) GetRules() []*RuleTable_RuleRow {
-	if x != nil {
-		return x.Rules
-	}
-	return nil
-}
+func (x *RuleTable) GetRules() []*RuleTable_RuleRow { _ = "STUB: not implemented"; return nil }
 
-func (x *RuleTable) GetSchemas() map[uint64]*v1.Schemas {
-	if x != nil {
-		return x.Schemas
-	}
-	return nil
-}
+func (x *RuleTable) GetSchemas() map[uint64]*v1.Schemas { _ = "STUB: not implemented"; return nil }
 
-func (x *RuleTable) GetMeta() map[uint64]*RuleTableMetadata {
-	if x != nil {
-		return x.Meta
-	}
-	return nil
-}
+func (x *RuleTable) GetMeta() map[uint64]*RuleTableMetadata { _ = "STUB: not implemented"; return nil }
 
 func (x *RuleTable) GetScopeParentRoles() map[string]*RuleTable_RoleParentRoles {
-	if x != nil {
-		return x.ScopeParentRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RuleTable) GetPolicyDerivedRoles() map[uint64]*RuleTable_PolicyDerivedRoles {
-	if x != nil {
-		return x.PolicyDerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RuleTable) GetJsonSchemas() map[string]*RuleTable_JSONSchema {
-	if x != nil {
-		return x.JsonSchemas
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RuleTable) GetManifest() *RuleTable_Manifest {
-	if x != nil {
-		return x.Manifest
-	}
-	return nil
-}
+func (x *RuleTable) GetManifest() *RuleTable_Manifest { _ = "STUB: not implemented"; return nil }
 
-func (x *RuleTable) GetCompilerVersion() uint32 {
-	if x != nil {
-		return x.CompilerVersion
-	}
-	return 0
-}
+func (x *RuleTable) GetCompilerVersion() uint32 { _ = "STUB: not implemented"; return 0 }
 
 type RuleTableMetadata struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -296,95 +215,42 @@ type RuleTableMetadata struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RuleTableMetadata) Reset() {
-	*x = RuleTableMetadata{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTableMetadata) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTableMetadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTableMetadata) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTableMetadata) ProtoMessage() {}
+func (*RuleTableMetadata) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTableMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTableMetadata.ProtoReflect.Descriptor instead.
-func (*RuleTableMetadata) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{2}
-}
+func (*RuleTableMetadata) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RuleTableMetadata) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RuleTableMetadata) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTableMetadata) GetName() isRuleTableMetadata_Name {
-	if x != nil {
-		return x.Name
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isRuleTableMetadata_Name)
 }
 
-func (x *RuleTableMetadata) GetResource() string {
-	if x != nil {
-		if x, ok := x.Name.(*RuleTableMetadata_Resource); ok {
-			return x.Resource
-		}
-	}
-	return ""
-}
+func (x *RuleTableMetadata) GetResource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTableMetadata) GetRole() string {
-	if x != nil {
-		if x, ok := x.Name.(*RuleTableMetadata_Role); ok {
-			return x.Role
-		}
-	}
-	return ""
-}
+func (x *RuleTableMetadata) GetRole() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTableMetadata) GetPrincipal() string {
-	if x != nil {
-		if x, ok := x.Name.(*RuleTableMetadata_Principal); ok {
-			return x.Principal
-		}
-	}
-	return ""
-}
+func (x *RuleTableMetadata) GetPrincipal() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTableMetadata) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *RuleTableMetadata) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTableMetadata) GetSourceAttributes() map[string]*v1.SourceAttributes {
-	if x != nil {
-		return x.SourceAttributes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RuleTableMetadata) GetAnnotations() map[string]string {
-	if x != nil {
-		return x.Annotations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -404,11 +270,11 @@ type RuleTableMetadata_Principal struct {
 	Principal string `protobuf:"bytes,7,opt,name=principal,proto3,oneof"`
 }
 
-func (*RuleTableMetadata_Resource) isRuleTableMetadata_Name() {}
+func (*RuleTableMetadata_Resource) isRuleTableMetadata_Name() { _ = "STUB: not implemented"; return }
 
-func (*RuleTableMetadata_Role) isRuleTableMetadata_Name() {}
+func (*RuleTableMetadata_Role) isRuleTableMetadata_Name() { _ = "STUB: not implemented"; return }
 
-func (*RuleTableMetadata_Principal) isRuleTableMetadata_Name() {}
+func (*RuleTableMetadata_Principal) isRuleTableMetadata_Name() { _ = "STUB: not implemented"; return }
 
 type RunnableRolePolicySet struct {
 	state protoimpl.MessageState          `protogen:"open.v1"`
@@ -427,90 +293,52 @@ type RunnableRolePolicySet struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnableRolePolicySet) Reset() {
-	*x = RunnableRolePolicySet{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableRolePolicySet) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableRolePolicySet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableRolePolicySet) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableRolePolicySet) ProtoMessage() {}
+func (*RunnableRolePolicySet) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableRolePolicySet) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableRolePolicySet.ProtoReflect.Descriptor instead.
 func (*RunnableRolePolicySet) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnableRolePolicySet) GetMeta() *RunnableRolePolicySet_Metadata {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RunnableRolePolicySet) GetRole() string {
-	if x != nil {
-		return x.Role
-	}
-	return ""
-}
+func (x *RunnableRolePolicySet) GetRole() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RunnableRolePolicySet) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *RunnableRolePolicySet) GetScope() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnableRolePolicySet) GetScopePermissions() v1.ScopePermissions {
-	if x != nil {
-		return x.ScopePermissions
-	}
-	return v1.ScopePermissions(0)
+	_ = "STUB: not implemented"
+	return *new(v1.ScopePermissions)
 }
 
-func (x *RunnableRolePolicySet) GetParentRoles() []string {
-	if x != nil {
-		return x.ParentRoles
-	}
-	return nil
-}
+func (x *RunnableRolePolicySet) GetParentRoles() []string { _ = "STUB: not implemented"; return nil }
 
 func (x *RunnableRolePolicySet) GetResources() map[string]*RunnableRolePolicySet_RuleList {
-	if x != nil {
-		return x.Resources
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableRolePolicySet) GetOrderedVariables() []*Variable {
-	if x != nil {
-		return x.OrderedVariables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableRolePolicySet) GetConstants() map[string]*structpb.Value {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -537,56 +365,34 @@ type RunnableResourcePolicySet struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableResourcePolicySet) Reset() {
-	*x = RunnableResourcePolicySet{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableResourcePolicySet) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableResourcePolicySet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableResourcePolicySet) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableResourcePolicySet) ProtoMessage() {}
+func (*RunnableResourcePolicySet) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableResourcePolicySet) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableResourcePolicySet.ProtoReflect.Descriptor instead.
 func (*RunnableResourcePolicySet) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnableResourcePolicySet) GetMeta() *RunnableResourcePolicySet_Metadata {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet) GetPolicies() []*RunnableResourcePolicySet_Policy {
-	if x != nil {
-		return x.Policies
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RunnableResourcePolicySet) GetSchemas() *v1.Schemas {
-	if x != nil {
-		return x.Schemas
-	}
-	return nil
-}
+func (x *RunnableResourcePolicySet) GetSchemas() *v1.Schemas { _ = "STUB: not implemented"; return nil }
 
 type RunnableDerivedRole struct {
 	state       protoimpl.MessageState    `protogen:"open.v1"`
@@ -602,85 +408,49 @@ type RunnableDerivedRole struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnableDerivedRole) Reset() {
-	*x = RunnableDerivedRole{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableDerivedRole) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableDerivedRole) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableDerivedRole) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableDerivedRole) ProtoMessage() {}
+func (*RunnableDerivedRole) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableDerivedRole) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableDerivedRole.ProtoReflect.Descriptor instead.
 func (*RunnableDerivedRole) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableDerivedRole) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *RunnableDerivedRole) GetName() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableDerivedRole) GetParentRoles() map[string]*emptypb.Empty {
-	if x != nil {
-		return x.ParentRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnableDerivedRole) GetVariables() map[string]*Expr {
-	if x != nil {
-		return x.Variables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RunnableDerivedRole) GetCondition() *Condition {
-	if x != nil {
-		return x.Condition
-	}
-	return nil
-}
+func (x *RunnableDerivedRole) GetCondition() *Condition { _ = "STUB: not implemented"; return nil }
 
 func (x *RunnableDerivedRole) GetOrderedVariables() []*Variable {
-	if x != nil {
-		return x.OrderedVariables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableDerivedRole) GetConstants() map[string]*structpb.Value {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RunnableDerivedRole) GetOriginFqn() string {
-	if x != nil {
-		return x.OriginFqn
-	}
-	return ""
-}
+func (x *RunnableDerivedRole) GetOriginFqn() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 type RunnableDerivedRolesSet struct {
@@ -691,47 +461,30 @@ type RunnableDerivedRolesSet struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableDerivedRolesSet) Reset() {
-	*x = RunnableDerivedRolesSet{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableDerivedRolesSet) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableDerivedRolesSet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableDerivedRolesSet) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableDerivedRolesSet) ProtoMessage() {}
+func (*RunnableDerivedRolesSet) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableDerivedRolesSet) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableDerivedRolesSet.ProtoReflect.Descriptor instead.
 func (*RunnableDerivedRolesSet) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnableDerivedRolesSet) GetMeta() *RunnableDerivedRolesSet_Metadata {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableDerivedRolesSet) GetDerivedRoles() map[string]*RunnableDerivedRole {
-	if x != nil {
-		return x.DerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -744,47 +497,30 @@ type RunnableVariablesSet struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableVariablesSet) Reset() {
-	*x = RunnableVariablesSet{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableVariablesSet) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableVariablesSet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableVariablesSet) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableVariablesSet) ProtoMessage() {}
+func (*RunnableVariablesSet) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableVariablesSet) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableVariablesSet.ProtoReflect.Descriptor instead.
 func (*RunnableVariablesSet) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnableVariablesSet) GetMeta() *RunnableVariablesSet_Metadata {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableVariablesSet) GetVariables() map[string]*Expr {
-	if x != nil {
-		return x.Variables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -799,47 +535,30 @@ type RunnablePrincipalPolicySet struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnablePrincipalPolicySet) Reset() {
-	*x = RunnablePrincipalPolicySet{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnablePrincipalPolicySet) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnablePrincipalPolicySet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnablePrincipalPolicySet) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnablePrincipalPolicySet) ProtoMessage() {}
+func (*RunnablePrincipalPolicySet) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnablePrincipalPolicySet) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnablePrincipalPolicySet.ProtoReflect.Descriptor instead.
 func (*RunnablePrincipalPolicySet) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnablePrincipalPolicySet) GetMeta() *RunnablePrincipalPolicySet_Metadata {
-	if x != nil {
-		return x.Meta
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet) GetPolicies() []*RunnablePrincipalPolicySet_Policy {
-	if x != nil {
-		return x.Policies
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -851,49 +570,23 @@ type Expr struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Expr) Reset() {
-	*x = Expr{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Expr) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Expr) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Expr) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Expr) ProtoMessage() {}
+func (*Expr) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Expr) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Expr.ProtoReflect.Descriptor instead.
-func (*Expr) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{9}
-}
+func (*Expr) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Expr) GetOriginal() string {
-	if x != nil {
-		return x.Original
-	}
-	return ""
-}
+func (x *Expr) GetOriginal() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Expr) GetChecked() *v1alpha1.CheckedExpr {
-	if x != nil {
-		return x.Checked
-	}
-	return nil
-}
+func (x *Expr) GetChecked() *v1alpha1.CheckedExpr { _ = "STUB: not implemented"; return nil }
 
 type Output struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -902,42 +595,21 @@ type Output struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Output) Reset() {
-	*x = Output{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Output) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Output) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Output) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Output) ProtoMessage() {}
+func (*Output) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Output) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Output.ProtoReflect.Descriptor instead.
-func (*Output) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{10}
-}
+func (*Output) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Output) GetWhen() *Output_When {
-	if x != nil {
-		return x.When
-	}
-	return nil
-}
+func (x *Output) GetWhen() *Output_When { _ = "STUB: not implemented"; return nil }
 
 type Variable struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -947,49 +619,23 @@ type Variable struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Variable) Reset() {
-	*x = Variable{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Variable) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Variable) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Variable) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Variable) ProtoMessage() {}
+func (*Variable) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Variable) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Variable.ProtoReflect.Descriptor instead.
-func (*Variable) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{11}
-}
+func (*Variable) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Variable) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *Variable) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Variable) GetExpr() *Expr {
-	if x != nil {
-		return x.Expr
-	}
-	return nil
-}
+func (x *Variable) GetExpr() *Expr { _ = "STUB: not implemented"; return nil }
 
 type Condition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1004,78 +650,29 @@ type Condition struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Condition) Reset() {
-	*x = Condition{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Condition) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Condition) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Condition) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Condition) ProtoMessage() {}
+func (*Condition) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Condition) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Condition.ProtoReflect.Descriptor instead.
-func (*Condition) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{12}
-}
+func (*Condition) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Condition) GetOp() isCondition_Op {
-	if x != nil {
-		return x.Op
-	}
-	return nil
-}
+func (x *Condition) GetOp() isCondition_Op { _ = "STUB: not implemented"; return *new(isCondition_Op) }
 
-func (x *Condition) GetAll() *Condition_ExprList {
-	if x != nil {
-		if x, ok := x.Op.(*Condition_All); ok {
-			return x.All
-		}
-	}
-	return nil
-}
+func (x *Condition) GetAll() *Condition_ExprList { _ = "STUB: not implemented"; return nil }
 
-func (x *Condition) GetAny() *Condition_ExprList {
-	if x != nil {
-		if x, ok := x.Op.(*Condition_Any); ok {
-			return x.Any
-		}
-	}
-	return nil
-}
+func (x *Condition) GetAny() *Condition_ExprList { _ = "STUB: not implemented"; return nil }
 
-func (x *Condition) GetNone() *Condition_ExprList {
-	if x != nil {
-		if x, ok := x.Op.(*Condition_None); ok {
-			return x.None
-		}
-	}
-	return nil
-}
+func (x *Condition) GetNone() *Condition_ExprList { _ = "STUB: not implemented"; return nil }
 
-func (x *Condition) GetExpr() *Expr {
-	if x != nil {
-		if x, ok := x.Op.(*Condition_Expr); ok {
-			return x.Expr
-		}
-	}
-	return nil
-}
+func (x *Condition) GetExpr() *Expr { _ = "STUB: not implemented"; return nil }
 
 type isCondition_Op interface {
 	isCondition_Op()
@@ -1097,13 +694,13 @@ type Condition_Expr struct {
 	Expr *Expr `protobuf:"bytes,4,opt,name=expr,proto3,oneof"`
 }
 
-func (*Condition_All) isCondition_Op() {}
+func (*Condition_All) isCondition_Op() { _ = "STUB: not implemented"; return }
 
-func (*Condition_Any) isCondition_Op() {}
+func (*Condition_Any) isCondition_Op() { _ = "STUB: not implemented"; return }
 
-func (*Condition_None) isCondition_Op() {}
+func (*Condition_None) isCondition_Op() { _ = "STUB: not implemented"; return }
 
-func (*Condition_Expr) isCondition_Op() {}
+func (*Condition_Expr) isCondition_Op() { _ = "STUB: not implemented"; return }
 
 type CompileErrors struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1112,42 +709,21 @@ type CompileErrors struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CompileErrors) Reset() {
-	*x = CompileErrors{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CompileErrors) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CompileErrors) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CompileErrors) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CompileErrors) ProtoMessage() {}
+func (*CompileErrors) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CompileErrors) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CompileErrors.ProtoReflect.Descriptor instead.
-func (*CompileErrors) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{13}
-}
+func (*CompileErrors) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CompileErrors) GetErrors() []*CompileErrors_Err {
-	if x != nil {
-		return x.Errors
-	}
-	return nil
-}
+func (x *CompileErrors) GetErrors() []*CompileErrors_Err { _ = "STUB: not implemented"; return nil }
 
 type IndexBuildErrors struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1165,91 +741,53 @@ type IndexBuildErrors struct {
 	sizeCache                 protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors) Reset() {
-	*x = IndexBuildErrors{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuildErrors) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuildErrors) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuildErrors) ProtoMessage() {}
+func (*IndexBuildErrors) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors.ProtoReflect.Descriptor instead.
-func (*IndexBuildErrors) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14}
-}
+func (*IndexBuildErrors) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
-func (x *IndexBuildErrors) GetDisabled() []string {
-	if x != nil {
-		return x.Disabled
-	}
-	return nil
-}
+func (x *IndexBuildErrors) GetDisabled() []string { _ = "STUB: not implemented"; return nil }
 
 func (x *IndexBuildErrors) GetDuplicateDefs() []*IndexBuildErrors_DuplicateDef {
-	if x != nil {
-		return x.DuplicateDefs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *IndexBuildErrors) GetLoadFailures() []*IndexBuildErrors_LoadFailure {
-	if x != nil {
-		return x.LoadFailures
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *IndexBuildErrors) GetMissingImports() []*IndexBuildErrors_MissingImport {
-	if x != nil {
-		return x.MissingImports
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
-func (x *IndexBuildErrors) GetMissingScopes() []string {
-	if x != nil {
-		return x.MissingScopes
-	}
-	return nil
-}
+func (x *IndexBuildErrors) GetMissingScopes() []string { _ = "STUB: not implemented"; return nil }
 
 func (x *IndexBuildErrors) GetDisabledDefs() []*IndexBuildErrors_Disabled {
-	if x != nil {
-		return x.DisabledDefs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *IndexBuildErrors) GetMissingScopeDetails() []*IndexBuildErrors_MissingScope {
-	if x != nil {
-		return x.MissingScopeDetails
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *IndexBuildErrors) GetScopePermissionsConflicts() []*IndexBuildErrors_ScopePermissionsConflicts {
-	if x != nil {
-		return x.ScopePermissionsConflicts
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1264,60 +802,25 @@ type Errors struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Errors) Reset() {
-	*x = Errors{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Errors) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Errors) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Errors) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Errors) ProtoMessage() {}
+func (*Errors) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Errors) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Errors.ProtoReflect.Descriptor instead.
-func (*Errors) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{15}
-}
+func (*Errors) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Errors) GetKind() isErrors_Kind {
-	if x != nil {
-		return x.Kind
-	}
-	return nil
-}
+func (x *Errors) GetKind() isErrors_Kind { _ = "STUB: not implemented"; return *new(isErrors_Kind) }
 
-func (x *Errors) GetIndexBuildErrors() *IndexBuildErrors {
-	if x != nil {
-		if x, ok := x.Kind.(*Errors_IndexBuildErrors); ok {
-			return x.IndexBuildErrors
-		}
-	}
-	return nil
-}
+func (x *Errors) GetIndexBuildErrors() *IndexBuildErrors { _ = "STUB: not implemented"; return nil }
 
-func (x *Errors) GetCompileErrors() *CompileErrors {
-	if x != nil {
-		if x, ok := x.Kind.(*Errors_CompileErrors); ok {
-			return x.CompileErrors
-		}
-	}
-	return nil
-}
+func (x *Errors) GetCompileErrors() *CompileErrors { _ = "STUB: not implemented"; return nil }
 
 type isErrors_Kind interface {
 	isErrors_Kind()
@@ -1331,13 +834,17 @@ type Errors_CompileErrors struct {
 	CompileErrors *CompileErrors `protobuf:"bytes,2,opt,name=compile_errors,json=compileErrors,proto3,oneof"`
 }
 
-func (*Errors_IndexBuildErrors) isErrors_Kind() {}
+func (*Errors_IndexBuildErrors) isErrors_Kind() { _ = "STUB: not implemented"; return }
 
-func (*Errors_CompileErrors) isErrors_Kind() {}
+func (*Errors_CompileErrors) isErrors_Kind() {
+	_ = "STUB: not implemented"
 
-// BitmapIndex is a wire-only format for persisting a pre-computed roaring
-// bitmap index. It is not a runtime type; consumers unmarshal it into the
-// existing in-memory index structures.
+	// BitmapIndex is a wire-only format for persisting a pre-computed roaring
+	// bitmap index. It is not a runtime type; consumers unmarshal it into the
+	// existing in-memory index structures.
+	return
+}
+
 type BitmapIndex struct {
 	state              protoimpl.MessageState              `protogen:"open.v1"`
 	Version            []*BitmapIndex_Entry                `protobuf:"bytes,1,rep,name=version,proto3" json:"version,omitempty"`
@@ -1356,117 +863,50 @@ type BitmapIndex struct {
 	sizeCache          protoimpl.SizeCache
 }
 
-func (x *BitmapIndex) Reset() {
-	*x = BitmapIndex{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex) ProtoMessage() {}
+func (*BitmapIndex) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex.ProtoReflect.Descriptor instead.
-func (*BitmapIndex) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16}
-}
+func (*BitmapIndex) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *BitmapIndex) GetVersion() []*BitmapIndex_Entry {
-	if x != nil {
-		return x.Version
-	}
-	return nil
-}
+func (x *BitmapIndex) GetVersion() []*BitmapIndex_Entry { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetScope() []*BitmapIndex_Entry {
-	if x != nil {
-		return x.Scope
-	}
-	return nil
-}
+func (x *BitmapIndex) GetScope() []*BitmapIndex_Entry { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetRole() *BitmapIndex_GlobDimension {
-	if x != nil {
-		return x.Role
-	}
-	return nil
-}
+func (x *BitmapIndex) GetRole() *BitmapIndex_GlobDimension { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetAction() *BitmapIndex_GlobDimension {
-	if x != nil {
-		return x.Action
-	}
-	return nil
-}
+func (x *BitmapIndex) GetAction() *BitmapIndex_GlobDimension { _ = "STUB: not implemented"; return nil }
 
 func (x *BitmapIndex) GetResource() *BitmapIndex_GlobDimension {
-	if x != nil {
-		return x.Resource
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *BitmapIndex) GetPolicyKind() map[int32][]byte {
-	if x != nil {
-		return x.PolicyKind
-	}
-	return nil
-}
+func (x *BitmapIndex) GetPolicyKind() map[int32][]byte { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetPrincipal() []*BitmapIndex_Entry {
-	if x != nil {
-		return x.Principal
-	}
-	return nil
-}
+func (x *BitmapIndex) GetPrincipal() []*BitmapIndex_Entry { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetUniverse() []byte {
-	if x != nil {
-		return x.Universe
-	}
-	return nil
-}
+func (x *BitmapIndex) GetUniverse() []byte { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetAllowActionsBitmap() []byte {
-	if x != nil {
-		return x.AllowActionsBitmap
-	}
-	return nil
-}
+func (x *BitmapIndex) GetAllowActionsBitmap() []byte { _ = "STUB: not implemented"; return nil }
 
-func (x *BitmapIndex) GetBindings() []*BitmapIndex_Binding {
-	if x != nil {
-		return x.Bindings
-	}
-	return nil
-}
+func (x *BitmapIndex) GetBindings() []*BitmapIndex_Binding { _ = "STUB: not implemented"; return nil }
 
 func (x *BitmapIndex) GetCores() []*BitmapIndex_FunctionalCore {
-	if x != nil {
-		return x.Cores
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BitmapIndex) GetParentRoles() map[string]*BitmapIndex_RoleParents {
-	if x != nil {
-		return x.ParentRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1499,186 +939,85 @@ type RuleTable_RuleRow struct {
 	sizeCache            protoimpl.SizeCache
 }
 
-func (x *RuleTable_RuleRow) Reset() {
-	*x = RuleTable_RuleRow{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_RuleRow) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_RuleRow) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_RuleRow) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_RuleRow) ProtoMessage() {}
+func (*RuleTable_RuleRow) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_RuleRow) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_RuleRow.ProtoReflect.Descriptor instead.
-func (*RuleTable_RuleRow) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 0}
-}
+func (*RuleTable_RuleRow) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RuleTable_RuleRow) GetOriginFqn() string {
-	if x != nil {
-		return x.OriginFqn
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetOriginFqn() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTable_RuleRow) GetResource() string {
-	if x != nil {
-		return x.Resource
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetResource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTable_RuleRow) GetRole() string {
-	if x != nil {
-		return x.Role
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetRole() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTable_RuleRow) GetActionSet() isRuleTable_RuleRow_ActionSet {
-	if x != nil {
-		return x.ActionSet
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isRuleTable_RuleRow_ActionSet)
 }
 
-func (x *RuleTable_RuleRow) GetAction() string {
-	if x != nil {
-		if x, ok := x.ActionSet.(*RuleTable_RuleRow_Action); ok {
-			return x.Action
-		}
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetAction() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTable_RuleRow) GetAllowActions() *RuleTable_RuleRow_AllowActions {
-	if x != nil {
-		if x, ok := x.ActionSet.(*RuleTable_RuleRow_AllowActions_); ok {
-			return x.AllowActions
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RuleTable_RuleRow) GetCondition() *Condition {
-	if x != nil {
-		return x.Condition
-	}
-	return nil
-}
+func (x *RuleTable_RuleRow) GetCondition() *Condition { _ = "STUB: not implemented"; return nil }
 
 func (x *RuleTable_RuleRow) GetDerivedRoleCondition() *Condition {
-	if x != nil {
-		return x.DerivedRoleCondition
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RuleTable_RuleRow) GetEffect() v11.Effect {
-	if x != nil {
-		return x.Effect
-	}
-	return v11.Effect(0)
+	_ = "STUB: not implemented"
+	return *new(v11.Effect)
 }
 
-func (x *RuleTable_RuleRow) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetScope() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTable_RuleRow) GetScopePermissions() v1.ScopePermissions {
-	if x != nil {
-		return x.ScopePermissions
-	}
-	return v1.ScopePermissions(0)
+	_ = "STUB: not implemented"
+	return *new(v1.ScopePermissions)
 }
 
-func (x *RuleTable_RuleRow) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTable_RuleRow) GetOriginDerivedRole() string {
-	if x != nil {
-		return x.OriginDerivedRole
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetOriginDerivedRole() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTable_RuleRow) GetEmitOutput() *Output {
-	if x != nil {
-		return x.EmitOutput
-	}
-	return nil
-}
+func (x *RuleTable_RuleRow) GetEmitOutput() *Output { _ = "STUB: not implemented"; return nil }
 
-func (x *RuleTable_RuleRow) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RuleTable_RuleRow) GetPrincipal() string {
-	if x != nil {
-		return x.Principal
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetPrincipal() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTable_RuleRow) GetParams() *RuleTable_RuleRow_Params {
-	if x != nil {
-		return x.Params
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RuleTable_RuleRow) GetDerivedRoleParams() *RuleTable_RuleRow_Params {
-	if x != nil {
-		return x.DerivedRoleParams
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RuleTable_RuleRow) GetEvaluationKey() string {
-	if x != nil {
-		return x.EvaluationKey
-	}
-	return ""
-}
+func (x *RuleTable_RuleRow) GetEvaluationKey() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RuleTable_RuleRow) GetPolicyKind() v1.Kind {
-	if x != nil {
-		return x.PolicyKind
-	}
-	return v1.Kind(0)
+	_ = "STUB: not implemented"
+	return *new(v1.Kind)
 }
 
-func (x *RuleTable_RuleRow) GetFromRolePolicy() bool {
-	if x != nil {
-		return x.FromRolePolicy
-	}
-	return false
-}
+func (x *RuleTable_RuleRow) GetFromRolePolicy() bool { _ = "STUB: not implemented"; return false }
 
 type isRuleTable_RuleRow_ActionSet interface {
 	isRuleTable_RuleRow_ActionSet()
@@ -1692,9 +1031,12 @@ type RuleTable_RuleRow_AllowActions_ struct {
 	AllowActions *RuleTable_RuleRow_AllowActions `protobuf:"bytes,15,opt,name=allow_actions,json=allowActions,proto3,oneof"`
 }
 
-func (*RuleTable_RuleRow_Action) isRuleTable_RuleRow_ActionSet() {}
+func (*RuleTable_RuleRow_Action) isRuleTable_RuleRow_ActionSet() { _ = "STUB: not implemented"; return }
 
-func (*RuleTable_RuleRow_AllowActions_) isRuleTable_RuleRow_ActionSet() {}
+func (*RuleTable_RuleRow_AllowActions_) isRuleTable_RuleRow_ActionSet() {
+	_ = "STUB: not implemented"
+	return
+}
 
 type RuleTable_RoleParentRoles struct {
 	state           protoimpl.MessageState                            `protogen:"open.v1"`
@@ -1703,40 +1045,25 @@ type RuleTable_RoleParentRoles struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *RuleTable_RoleParentRoles) Reset() {
-	*x = RuleTable_RoleParentRoles{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_RoleParentRoles) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_RoleParentRoles) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_RoleParentRoles) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_RoleParentRoles) ProtoMessage() {}
+func (*RuleTable_RoleParentRoles) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_RoleParentRoles) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_RoleParentRoles.ProtoReflect.Descriptor instead.
 func (*RuleTable_RoleParentRoles) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RuleTable_RoleParentRoles) GetRoleParentRoles() map[string]*RuleTable_RoleParentRoles_ParentRoles {
-	if x != nil {
-		return x.RoleParentRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1747,40 +1074,25 @@ type RuleTable_PolicyDerivedRoles struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RuleTable_PolicyDerivedRoles) Reset() {
-	*x = RuleTable_PolicyDerivedRoles{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_PolicyDerivedRoles) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_PolicyDerivedRoles) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_PolicyDerivedRoles) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_PolicyDerivedRoles) ProtoMessage() {}
+func (*RuleTable_PolicyDerivedRoles) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_PolicyDerivedRoles) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_PolicyDerivedRoles.ProtoReflect.Descriptor instead.
 func (*RuleTable_PolicyDerivedRoles) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RuleTable_PolicyDerivedRoles) GetDerivedRoles() map[string]*RunnableDerivedRole {
-	if x != nil {
-		return x.DerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1791,42 +1103,24 @@ type RuleTable_JSONSchema struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RuleTable_JSONSchema) Reset() {
-	*x = RuleTable_JSONSchema{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_JSONSchema) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_JSONSchema) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_JSONSchema) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_JSONSchema) ProtoMessage() {}
+func (*RuleTable_JSONSchema) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_JSONSchema) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_JSONSchema.ProtoReflect.Descriptor instead.
 func (*RuleTable_JSONSchema) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RuleTable_JSONSchema) GetContent() []byte {
-	if x != nil {
-		return x.Content
-	}
-	return nil
-}
+func (x *RuleTable_JSONSchema) GetContent() []byte { _ = "STUB: not implemented"; return nil }
 
 type RuleTable_Manifest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1835,42 +1129,21 @@ type RuleTable_Manifest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RuleTable_Manifest) Reset() {
-	*x = RuleTable_Manifest{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_Manifest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_Manifest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_Manifest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_Manifest) ProtoMessage() {}
+func (*RuleTable_Manifest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_Manifest) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_Manifest.ProtoReflect.Descriptor instead.
-func (*RuleTable_Manifest) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 4}
-}
+func (*RuleTable_Manifest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *RuleTable_Manifest) GetBundleId() string {
-	if x != nil {
-		return x.BundleId
-	}
-	return ""
-}
+func (x *RuleTable_Manifest) GetBundleId() string { _ = "STUB: not implemented"; return "" }
 
 type RuleTable_RuleRow_AllowActions struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
@@ -1879,40 +1152,25 @@ type RuleTable_RuleRow_AllowActions struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RuleTable_RuleRow_AllowActions) Reset() {
-	*x = RuleTable_RuleRow_AllowActions{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_RuleRow_AllowActions) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_RuleRow_AllowActions) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_RuleRow_AllowActions) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_RuleRow_AllowActions) ProtoMessage() {}
+func (*RuleTable_RuleRow_AllowActions) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_RuleRow_AllowActions) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_RuleRow_AllowActions.ProtoReflect.Descriptor instead.
 func (*RuleTable_RuleRow_AllowActions) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 0, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RuleTable_RuleRow_AllowActions) GetActions() map[string]*emptypb.Empty {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1924,47 +1182,30 @@ type RuleTable_RuleRow_Params struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RuleTable_RuleRow_Params) Reset() {
-	*x = RuleTable_RuleRow_Params{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_RuleRow_Params) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RuleTable_RuleRow_Params) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RuleTable_RuleRow_Params) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RuleTable_RuleRow_Params) ProtoMessage() {}
+func (*RuleTable_RuleRow_Params) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_RuleRow_Params) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_RuleRow_Params.ProtoReflect.Descriptor instead.
 func (*RuleTable_RuleRow_Params) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 0, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RuleTable_RuleRow_Params) GetOrderedVariables() []*Variable {
-	if x != nil {
-		return x.OrderedVariables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RuleTable_RuleRow_Params) GetConstants() map[string]*structpb.Value {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -1975,40 +1216,28 @@ type RuleTable_RoleParentRoles_ParentRoles struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RuleTable_RoleParentRoles_ParentRoles) Reset() {
-	*x = RuleTable_RoleParentRoles_ParentRoles{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RuleTable_RoleParentRoles_ParentRoles) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_RoleParentRoles_ParentRoles) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*RuleTable_RoleParentRoles_ParentRoles) ProtoMessage() {}
+func (*RuleTable_RoleParentRoles_ParentRoles) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RuleTable_RoleParentRoles_ParentRoles) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RuleTable_RoleParentRoles_ParentRoles.ProtoReflect.Descriptor instead.
 func (*RuleTable_RoleParentRoles_ParentRoles) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{1, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RuleTable_RoleParentRoles_ParentRoles) GetRoles() []string {
-	if x != nil {
-		return x.Roles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2022,61 +1251,34 @@ type RunnableRolePolicySet_Metadata struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnableRolePolicySet_Metadata) Reset() {
-	*x = RunnableRolePolicySet_Metadata{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableRolePolicySet_Metadata) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableRolePolicySet_Metadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableRolePolicySet_Metadata) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableRolePolicySet_Metadata) ProtoMessage() {}
+func (*RunnableRolePolicySet_Metadata) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableRolePolicySet_Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableRolePolicySet_Metadata.ProtoReflect.Descriptor instead.
 func (*RunnableRolePolicySet_Metadata) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{3, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableRolePolicySet_Metadata) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RunnableRolePolicySet_Metadata) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RunnableRolePolicySet_Metadata) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *RunnableRolePolicySet_Metadata) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableRolePolicySet_Metadata) GetSourceAttributes() map[string]*v1.SourceAttributes {
-	if x != nil {
-		return x.SourceAttributes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableRolePolicySet_Metadata) GetAnnotations() map[string]string {
-	if x != nil {
-		return x.Annotations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2091,70 +1293,38 @@ type RunnableRolePolicySet_Rule struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableRolePolicySet_Rule) Reset() {
-	*x = RunnableRolePolicySet_Rule{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableRolePolicySet_Rule) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableRolePolicySet_Rule) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableRolePolicySet_Rule) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableRolePolicySet_Rule) ProtoMessage() {}
+func (*RunnableRolePolicySet_Rule) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableRolePolicySet_Rule) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableRolePolicySet_Rule.ProtoReflect.Descriptor instead.
 func (*RunnableRolePolicySet_Rule) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{3, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableRolePolicySet_Rule) GetResource() string {
-	if x != nil {
-		return x.Resource
-	}
-	return ""
-}
+func (x *RunnableRolePolicySet_Rule) GetResource() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableRolePolicySet_Rule) GetAllowActions() map[string]*emptypb.Empty {
-	if x != nil {
-		return x.AllowActions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableRolePolicySet_Rule) GetCondition() *Condition {
-	if x != nil {
-		return x.Condition
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *RunnableRolePolicySet_Rule) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *RunnableRolePolicySet_Rule) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *RunnableRolePolicySet_Rule) GetEmitOutput() *Output {
-	if x != nil {
-		return x.EmitOutput
-	}
-	return nil
-}
+func (x *RunnableRolePolicySet_Rule) GetEmitOutput() *Output { _ = "STUB: not implemented"; return nil }
 
 type RunnableRolePolicySet_RuleList struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
@@ -2163,40 +1333,25 @@ type RunnableRolePolicySet_RuleList struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableRolePolicySet_RuleList) Reset() {
-	*x = RunnableRolePolicySet_RuleList{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableRolePolicySet_RuleList) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableRolePolicySet_RuleList) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableRolePolicySet_RuleList) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableRolePolicySet_RuleList) ProtoMessage() {}
+func (*RunnableRolePolicySet_RuleList) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableRolePolicySet_RuleList) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableRolePolicySet_RuleList.ProtoReflect.Descriptor instead.
 func (*RunnableRolePolicySet_RuleList) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{3, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnableRolePolicySet_RuleList) GetRules() []*RunnableRolePolicySet_Rule {
-	if x != nil {
-		return x.Rules
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2211,68 +1366,42 @@ type RunnableResourcePolicySet_Metadata struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnableResourcePolicySet_Metadata) Reset() {
-	*x = RunnableResourcePolicySet_Metadata{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableResourcePolicySet_Metadata) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableResourcePolicySet_Metadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableResourcePolicySet_Metadata) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableResourcePolicySet_Metadata) ProtoMessage() {}
+func (*RunnableResourcePolicySet_Metadata) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableResourcePolicySet_Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableResourcePolicySet_Metadata.ProtoReflect.Descriptor instead.
 func (*RunnableResourcePolicySet_Metadata) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{4, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableResourcePolicySet_Metadata) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RunnableResourcePolicySet_Metadata) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableResourcePolicySet_Metadata) GetResource() string {
-	if x != nil {
-		return x.Resource
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnableResourcePolicySet_Metadata) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnableResourcePolicySet_Metadata) GetSourceAttributes() map[string]*v1.SourceAttributes {
-	if x != nil {
-		return x.SourceAttributes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Metadata) GetAnnotations() map[string]string {
-	if x != nil {
-		return x.Annotations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2291,90 +1420,58 @@ type RunnableResourcePolicySet_Policy struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnableResourcePolicySet_Policy) Reset() {
-	*x = RunnableResourcePolicySet_Policy{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[45]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableResourcePolicySet_Policy) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableResourcePolicySet_Policy) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableResourcePolicySet_Policy) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableResourcePolicySet_Policy) ProtoMessage() {}
+func (*RunnableResourcePolicySet_Policy) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableResourcePolicySet_Policy) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[45]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableResourcePolicySet_Policy.ProtoReflect.Descriptor instead.
 func (*RunnableResourcePolicySet_Policy) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{4, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableResourcePolicySet_Policy) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *RunnableResourcePolicySet_Policy) GetScope() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableResourcePolicySet_Policy) GetDerivedRoles() map[string]*RunnableDerivedRole {
-	if x != nil {
-		return x.DerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnableResourcePolicySet_Policy) GetVariables() map[string]*Expr {
-	if x != nil {
-		return x.Variables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy) GetRules() []*RunnableResourcePolicySet_Policy_Rule {
-	if x != nil {
-		return x.Rules
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy) GetSchemas() *v1.Schemas {
-	if x != nil {
-		return x.Schemas
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy) GetOrderedVariables() []*Variable {
-	if x != nil {
-		return x.OrderedVariables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy) GetScopePermissions() v1.ScopePermissions {
-	if x != nil {
-		return x.ScopePermissions
-	}
-	return v1.ScopePermissions(0)
+	_ = "STUB: not implemented"
+	return *new(v1.ScopePermissions)
 }
 
 func (x *RunnableResourcePolicySet_Policy) GetConstants() map[string]*structpb.Value {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2393,90 +1490,64 @@ type RunnableResourcePolicySet_Policy_Rule struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableResourcePolicySet_Policy_Rule) Reset() {
-	*x = RunnableResourcePolicySet_Policy_Rule{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[48]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableResourcePolicySet_Policy_Rule) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*RunnableResourcePolicySet_Policy_Rule) ProtoMessage() {}
+func (*RunnableResourcePolicySet_Policy_Rule) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[48]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableResourcePolicySet_Policy_Rule.ProtoReflect.Descriptor instead.
 func (*RunnableResourcePolicySet_Policy_Rule) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{4, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetName() string {
-	if x != nil {
-		return x.Name
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetActions() map[string]*emptypb.Empty {
-	if x != nil {
-		return x.Actions
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetDerivedRoles() map[string]*emptypb.Empty {
-	if x != nil {
-		return x.DerivedRoles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetRoles() map[string]*emptypb.Empty {
-	if x != nil {
-		return x.Roles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetCondition() *Condition {
-	if x != nil {
-		return x.Condition
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetEffect() v11.Effect {
-	if x != nil {
-		return x.Effect
-	}
-	return v11.Effect(0)
+	_ = "STUB: not implemented"
+	return *new(v11.Effect)
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnableResourcePolicySet_Policy_Rule) GetOutput() *Expr {
-	if x != nil {
-		return x.Output
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnableResourcePolicySet_Policy_Rule) GetEmitOutput() *Output {
-	if x != nil {
-		return x.EmitOutput
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2488,47 +1559,27 @@ type RunnableDerivedRolesSet_Metadata struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableDerivedRolesSet_Metadata) Reset() {
-	*x = RunnableDerivedRolesSet_Metadata{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[58]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableDerivedRolesSet_Metadata) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableDerivedRolesSet_Metadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableDerivedRolesSet_Metadata) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableDerivedRolesSet_Metadata) ProtoMessage() {}
+func (*RunnableDerivedRolesSet_Metadata) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableDerivedRolesSet_Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[58]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableDerivedRolesSet_Metadata.ProtoReflect.Descriptor instead.
 func (*RunnableDerivedRolesSet_Metadata) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{6, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableDerivedRolesSet_Metadata) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RunnableDerivedRolesSet_Metadata) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableDerivedRolesSet_Metadata) GetAnnotations() map[string]string {
-	if x != nil {
-		return x.Annotations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2540,47 +1591,27 @@ type RunnableVariablesSet_Metadata struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnableVariablesSet_Metadata) Reset() {
-	*x = RunnableVariablesSet_Metadata{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[61]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnableVariablesSet_Metadata) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnableVariablesSet_Metadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnableVariablesSet_Metadata) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnableVariablesSet_Metadata) ProtoMessage() {}
+func (*RunnableVariablesSet_Metadata) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnableVariablesSet_Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[61]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnableVariablesSet_Metadata.ProtoReflect.Descriptor instead.
 func (*RunnableVariablesSet_Metadata) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{7, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnableVariablesSet_Metadata) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RunnableVariablesSet_Metadata) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnableVariablesSet_Metadata) GetAnnotations() map[string]string {
-	if x != nil {
-		return x.Annotations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2595,68 +1626,42 @@ type RunnablePrincipalPolicySet_Metadata struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnablePrincipalPolicySet_Metadata) Reset() {
-	*x = RunnablePrincipalPolicySet_Metadata{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[64]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnablePrincipalPolicySet_Metadata) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnablePrincipalPolicySet_Metadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnablePrincipalPolicySet_Metadata) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnablePrincipalPolicySet_Metadata) ProtoMessage() {}
+func (*RunnablePrincipalPolicySet_Metadata) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnablePrincipalPolicySet_Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[64]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnablePrincipalPolicySet_Metadata.ProtoReflect.Descriptor instead.
 func (*RunnablePrincipalPolicySet_Metadata) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{8, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnablePrincipalPolicySet_Metadata) GetFqn() string {
-	if x != nil {
-		return x.Fqn
-	}
-	return ""
-}
+func (x *RunnablePrincipalPolicySet_Metadata) GetFqn() string { _ = "STUB: not implemented"; return "" }
 
 func (x *RunnablePrincipalPolicySet_Metadata) GetPrincipal() string {
-	if x != nil {
-		return x.Principal
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnablePrincipalPolicySet_Metadata) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnablePrincipalPolicySet_Metadata) GetSourceAttributes() map[string]*v1.SourceAttributes {
-	if x != nil {
-		return x.SourceAttributes
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet_Metadata) GetAnnotations() map[string]string {
-	if x != nil {
-		return x.Annotations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2673,76 +1678,48 @@ type RunnablePrincipalPolicySet_Policy struct {
 	sizeCache        protoimpl.SizeCache
 }
 
-func (x *RunnablePrincipalPolicySet_Policy) Reset() {
-	*x = RunnablePrincipalPolicySet_Policy{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[65]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnablePrincipalPolicySet_Policy) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *RunnablePrincipalPolicySet_Policy) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *RunnablePrincipalPolicySet_Policy) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*RunnablePrincipalPolicySet_Policy) ProtoMessage() {}
+func (*RunnablePrincipalPolicySet_Policy) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *RunnablePrincipalPolicySet_Policy) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[65]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnablePrincipalPolicySet_Policy.ProtoReflect.Descriptor instead.
 func (*RunnablePrincipalPolicySet_Policy) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{8, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *RunnablePrincipalPolicySet_Policy) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *RunnablePrincipalPolicySet_Policy) GetScope() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnablePrincipalPolicySet_Policy) GetVariables() map[string]*Expr {
-	if x != nil {
-		return x.Variables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy) GetResourceRules() map[string]*RunnablePrincipalPolicySet_Policy_ResourceRules {
-	if x != nil {
-		return x.ResourceRules
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy) GetOrderedVariables() []*Variable {
-	if x != nil {
-		return x.OrderedVariables
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy) GetScopePermissions() v1.ScopePermissions {
-	if x != nil {
-		return x.ScopePermissions
-	}
-	return v1.ScopePermissions(0)
+	_ = "STUB: not implemented"
+	return *new(v1.ScopePermissions)
 }
 
 func (x *RunnablePrincipalPolicySet_Policy) GetConstants() map[string]*structpb.Value {
-	if x != nil {
-		return x.Constants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2759,76 +1736,57 @@ type RunnablePrincipalPolicySet_Policy_ActionRule struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RunnablePrincipalPolicySet_Policy_ActionRule) Reset() {
-	*x = RunnablePrincipalPolicySet_Policy_ActionRule{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[68]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *RunnablePrincipalPolicySet_Policy_ActionRule) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*RunnablePrincipalPolicySet_Policy_ActionRule) ProtoMessage() {}
+func (*RunnablePrincipalPolicySet_Policy_ActionRule) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[68]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnablePrincipalPolicySet_Policy_ActionRule.ProtoReflect.Descriptor instead.
 func (*RunnablePrincipalPolicySet_Policy_ActionRule) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{8, 1, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) GetAction() string {
-	if x != nil {
-		return x.Action
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) GetName() string {
-	if x != nil {
-		return x.Name
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) GetCondition() *Condition {
-	if x != nil {
-		return x.Condition
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) GetEffect() v11.Effect {
-	if x != nil {
-		return x.Effect
-	}
-	return v11.Effect(0)
+	_ = "STUB: not implemented"
+	return *new(v11.Effect)
 }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) GetOutput() *Expr {
-	if x != nil {
-		return x.Output
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ActionRule) GetEmitOutput() *Output {
-	if x != nil {
-		return x.EmitOutput
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2840,39 +1798,33 @@ type RunnablePrincipalPolicySet_Policy_ResourceRules struct {
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ResourceRules) Reset() {
-	*x = RunnablePrincipalPolicySet_Policy_ResourceRules{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[69]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ResourceRules) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*RunnablePrincipalPolicySet_Policy_ResourceRules) ProtoMessage() {}
+func (*RunnablePrincipalPolicySet_Policy_ResourceRules) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (x *RunnablePrincipalPolicySet_Policy_ResourceRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[69]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use RunnablePrincipalPolicySet_Policy_ResourceRules.ProtoReflect.Descriptor instead.
 func (*RunnablePrincipalPolicySet_Policy_ResourceRules) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{8, 1, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *RunnablePrincipalPolicySet_Policy_ResourceRules) GetActionRules() []*RunnablePrincipalPolicySet_Policy_ActionRule {
-	if x != nil {
-		return x.ActionRules
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -2884,49 +1836,23 @@ type Output_When struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *Output_When) Reset() {
-	*x = Output_When{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[73]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Output_When) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Output_When) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Output_When) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Output_When) ProtoMessage() {}
+func (*Output_When) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Output_When) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[73]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Output_When.ProtoReflect.Descriptor instead.
-func (*Output_When) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{10, 0}
-}
+func (*Output_When) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Output_When) GetRuleActivated() *Expr {
-	if x != nil {
-		return x.RuleActivated
-	}
-	return nil
-}
+func (x *Output_When) GetRuleActivated() *Expr { _ = "STUB: not implemented"; return nil }
 
-func (x *Output_When) GetConditionNotMet() *Expr {
-	if x != nil {
-		return x.ConditionNotMet
-	}
-	return nil
-}
+func (x *Output_When) GetConditionNotMet() *Expr { _ = "STUB: not implemented"; return nil }
 
 type Condition_ExprList struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -2935,42 +1861,21 @@ type Condition_ExprList struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Condition_ExprList) Reset() {
-	*x = Condition_ExprList{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[74]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Condition_ExprList) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Condition_ExprList) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Condition_ExprList) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Condition_ExprList) ProtoMessage() {}
+func (*Condition_ExprList) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Condition_ExprList) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[74]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Condition_ExprList.ProtoReflect.Descriptor instead.
-func (*Condition_ExprList) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{12, 0}
-}
+func (*Condition_ExprList) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Condition_ExprList) GetExpr() []*Condition {
-	if x != nil {
-		return x.Expr
-	}
-	return nil
-}
+func (x *Condition_ExprList) GetExpr() []*Condition { _ = "STUB: not implemented"; return nil }
 
 type CompileErrors_Err struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -2983,70 +1888,29 @@ type CompileErrors_Err struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CompileErrors_Err) Reset() {
-	*x = CompileErrors_Err{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[75]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *CompileErrors_Err) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *CompileErrors_Err) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *CompileErrors_Err) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*CompileErrors_Err) ProtoMessage() {}
+func (*CompileErrors_Err) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *CompileErrors_Err) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[75]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use CompileErrors_Err.ProtoReflect.Descriptor instead.
-func (*CompileErrors_Err) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{13, 0}
-}
+func (*CompileErrors_Err) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *CompileErrors_Err) GetFile() string {
-	if x != nil {
-		return x.File
-	}
-	return ""
-}
+func (x *CompileErrors_Err) GetFile() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CompileErrors_Err) GetError() string {
-	if x != nil {
-		return x.Error
-	}
-	return ""
-}
+func (x *CompileErrors_Err) GetError() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CompileErrors_Err) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
+func (x *CompileErrors_Err) GetDescription() string { _ = "STUB: not implemented"; return "" }
 
-func (x *CompileErrors_Err) GetPosition() *v12.Position {
-	if x != nil {
-		return x.Position
-	}
-	return nil
-}
+func (x *CompileErrors_Err) GetPosition() *v12.Position { _ = "STUB: not implemented"; return nil }
 
-func (x *CompileErrors_Err) GetContext() string {
-	if x != nil {
-		return x.Context
-	}
-	return ""
-}
+func (x *CompileErrors_Err) GetContext() string { _ = "STUB: not implemented"; return "" }
 
 type IndexBuildErrors_DuplicateDef struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3058,61 +1922,31 @@ type IndexBuildErrors_DuplicateDef struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors_DuplicateDef) Reset() {
-	*x = IndexBuildErrors_DuplicateDef{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[76]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors_DuplicateDef) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuildErrors_DuplicateDef) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuildErrors_DuplicateDef) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuildErrors_DuplicateDef) ProtoMessage() {}
+func (*IndexBuildErrors_DuplicateDef) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors_DuplicateDef) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[76]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors_DuplicateDef.ProtoReflect.Descriptor instead.
 func (*IndexBuildErrors_DuplicateDef) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14, 0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *IndexBuildErrors_DuplicateDef) GetFile() string {
-	if x != nil {
-		return x.File
-	}
-	return ""
-}
+func (x *IndexBuildErrors_DuplicateDef) GetFile() string { _ = "STUB: not implemented"; return "" }
 
-func (x *IndexBuildErrors_DuplicateDef) GetOtherFile() string {
-	if x != nil {
-		return x.OtherFile
-	}
-	return ""
-}
+func (x *IndexBuildErrors_DuplicateDef) GetOtherFile() string { _ = "STUB: not implemented"; return "" }
 
-func (x *IndexBuildErrors_DuplicateDef) GetPolicy() string {
-	if x != nil {
-		return x.Policy
-	}
-	return ""
-}
+func (x *IndexBuildErrors_DuplicateDef) GetPolicy() string { _ = "STUB: not implemented"; return "" }
 
 func (x *IndexBuildErrors_DuplicateDef) GetPosition() *v12.Position {
-	if x != nil {
-		return x.Position
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3129,84 +1963,51 @@ type IndexBuildErrors_MissingImport struct {
 	sizeCache       protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors_MissingImport) Reset() {
-	*x = IndexBuildErrors_MissingImport{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[77]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors_MissingImport) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuildErrors_MissingImport) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuildErrors_MissingImport) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuildErrors_MissingImport) ProtoMessage() {}
+func (*IndexBuildErrors_MissingImport) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors_MissingImport) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[77]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors_MissingImport.ProtoReflect.Descriptor instead.
 func (*IndexBuildErrors_MissingImport) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *IndexBuildErrors_MissingImport) GetImportingFile() string {
-	if x != nil {
-		return x.ImportingFile
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
-func (x *IndexBuildErrors_MissingImport) GetDesc() string {
-	if x != nil {
-		return x.Desc
-	}
-	return ""
-}
+func (x *IndexBuildErrors_MissingImport) GetDesc() string { _ = "STUB: not implemented"; return "" }
 
 func (x *IndexBuildErrors_MissingImport) GetImportingPolicy() string {
-	if x != nil {
-		return x.ImportingPolicy
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *IndexBuildErrors_MissingImport) GetImportKind() string {
-	if x != nil {
-		return x.ImportKind
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *IndexBuildErrors_MissingImport) GetImportName() string {
-	if x != nil {
-		return x.ImportName
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *IndexBuildErrors_MissingImport) GetPosition() *v12.Position {
-	if x != nil {
-		return x.Position
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *IndexBuildErrors_MissingImport) GetContext() string {
-	if x != nil {
-		return x.Context
-	}
-	return ""
-}
+func (x *IndexBuildErrors_MissingImport) GetContext() string { _ = "STUB: not implemented"; return "" }
 
 type IndexBuildErrors_MissingScope struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3216,47 +2017,30 @@ type IndexBuildErrors_MissingScope struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors_MissingScope) Reset() {
-	*x = IndexBuildErrors_MissingScope{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[78]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors_MissingScope) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuildErrors_MissingScope) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuildErrors_MissingScope) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuildErrors_MissingScope) ProtoMessage() {}
+func (*IndexBuildErrors_MissingScope) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors_MissingScope) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[78]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors_MissingScope.ProtoReflect.Descriptor instead.
 func (*IndexBuildErrors_MissingScope) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *IndexBuildErrors_MissingScope) GetMissingPolicy() string {
-	if x != nil {
-		return x.MissingPolicy
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *IndexBuildErrors_MissingScope) GetDescendants() []string {
-	if x != nil {
-		return x.Descendants
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3267,40 +2051,31 @@ type IndexBuildErrors_ScopePermissionsConflicts struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors_ScopePermissionsConflicts) Reset() {
-	*x = IndexBuildErrors_ScopePermissionsConflicts{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[79]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors_ScopePermissionsConflicts) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors_ScopePermissionsConflicts) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*IndexBuildErrors_ScopePermissionsConflicts) ProtoMessage() {}
+func (*IndexBuildErrors_ScopePermissionsConflicts) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 
 func (x *IndexBuildErrors_ScopePermissionsConflicts) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[79]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors_ScopePermissionsConflicts.ProtoReflect.Descriptor instead.
 func (*IndexBuildErrors_ScopePermissionsConflicts) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *IndexBuildErrors_ScopePermissionsConflicts) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -3314,55 +2089,30 @@ type IndexBuildErrors_LoadFailure struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors_LoadFailure) Reset() {
-	*x = IndexBuildErrors_LoadFailure{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[80]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors_LoadFailure) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuildErrors_LoadFailure) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuildErrors_LoadFailure) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuildErrors_LoadFailure) ProtoMessage() {}
+func (*IndexBuildErrors_LoadFailure) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors_LoadFailure) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[80]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors_LoadFailure.ProtoReflect.Descriptor instead.
 func (*IndexBuildErrors_LoadFailure) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14, 4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *IndexBuildErrors_LoadFailure) GetFile() string {
-	if x != nil {
-		return x.File
-	}
-	return ""
-}
+func (x *IndexBuildErrors_LoadFailure) GetFile() string { _ = "STUB: not implemented"; return "" }
 
 // Deprecated: Marked as deprecated in cerbos/runtime/v1/runtime.proto.
-func (x *IndexBuildErrors_LoadFailure) GetError() string {
-	if x != nil {
-		return x.Error
-	}
-	return ""
-}
+func (x *IndexBuildErrors_LoadFailure) GetError() string { _ = "STUB: not implemented"; return "" }
 
 func (x *IndexBuildErrors_LoadFailure) GetErrorDetails() *v12.Error {
-	if x != nil {
-		return x.ErrorDetails
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3375,54 +2125,29 @@ type IndexBuildErrors_Disabled struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IndexBuildErrors_Disabled) Reset() {
-	*x = IndexBuildErrors_Disabled{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[81]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *IndexBuildErrors_Disabled) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *IndexBuildErrors_Disabled) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *IndexBuildErrors_Disabled) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*IndexBuildErrors_Disabled) ProtoMessage() {}
+func (*IndexBuildErrors_Disabled) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *IndexBuildErrors_Disabled) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[81]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use IndexBuildErrors_Disabled.ProtoReflect.Descriptor instead.
 func (*IndexBuildErrors_Disabled) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{14, 5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *IndexBuildErrors_Disabled) GetFile() string {
-	if x != nil {
-		return x.File
-	}
-	return ""
-}
+func (x *IndexBuildErrors_Disabled) GetFile() string { _ = "STUB: not implemented"; return "" }
 
-func (x *IndexBuildErrors_Disabled) GetPolicy() string {
-	if x != nil {
-		return x.Policy
-	}
-	return ""
-}
+func (x *IndexBuildErrors_Disabled) GetPolicy() string { _ = "STUB: not implemented"; return "" }
 
 func (x *IndexBuildErrors_Disabled) GetPosition() *v12.Position {
-	if x != nil {
-		return x.Position
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3434,49 +2159,23 @@ type BitmapIndex_Entry struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_Entry) Reset() {
-	*x = BitmapIndex_Entry{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[82]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_Entry) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_Entry) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_Entry) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_Entry) ProtoMessage() {}
+func (*BitmapIndex_Entry) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_Entry) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[82]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_Entry.ProtoReflect.Descriptor instead.
-func (*BitmapIndex_Entry) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 0}
-}
+func (*BitmapIndex_Entry) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *BitmapIndex_Entry) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
+func (x *BitmapIndex_Entry) GetKey() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Entry) GetBitmap() []byte {
-	if x != nil {
-		return x.Bitmap
-	}
-	return nil
-}
+func (x *BitmapIndex_Entry) GetBitmap() []byte { _ = "STUB: not implemented"; return nil }
 
 type BitmapIndex_GlobDimension struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3486,47 +2185,30 @@ type BitmapIndex_GlobDimension struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_GlobDimension) Reset() {
-	*x = BitmapIndex_GlobDimension{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[83]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_GlobDimension) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_GlobDimension) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_GlobDimension) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_GlobDimension) ProtoMessage() {}
+func (*BitmapIndex_GlobDimension) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_GlobDimension) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[83]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_GlobDimension.ProtoReflect.Descriptor instead.
 func (*BitmapIndex_GlobDimension) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BitmapIndex_GlobDimension) GetLiterals() []*BitmapIndex_Entry {
-	if x != nil {
-		return x.Literals
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BitmapIndex_GlobDimension) GetGlobs() []*BitmapIndex_Entry {
-	if x != nil {
-		return x.Globs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3537,42 +2219,24 @@ type BitmapIndex_AllowActions struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_AllowActions) Reset() {
-	*x = BitmapIndex_AllowActions{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[84]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_AllowActions) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_AllowActions) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_AllowActions) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_AllowActions) ProtoMessage() {}
+func (*BitmapIndex_AllowActions) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_AllowActions) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[84]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_AllowActions.ProtoReflect.Descriptor instead.
 func (*BitmapIndex_AllowActions) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *BitmapIndex_AllowActions) GetActions() []string {
-	if x != nil {
-		return x.Actions
-	}
-	return nil
-}
+func (x *BitmapIndex_AllowActions) GetActions() []string { _ = "STUB: not implemented"; return nil }
 
 type BitmapIndex_Binding struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
@@ -3596,135 +2260,54 @@ type BitmapIndex_Binding struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_Binding) Reset() {
-	*x = BitmapIndex_Binding{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[85]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_Binding) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_Binding) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_Binding) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_Binding) ProtoMessage() {}
+func (*BitmapIndex_Binding) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_Binding) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[85]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_Binding.ProtoReflect.Descriptor instead.
 func (*BitmapIndex_Binding) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *BitmapIndex_Binding) GetId() uint32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
+func (x *BitmapIndex_Binding) GetId() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *BitmapIndex_Binding) GetCoreIndex() uint32 {
-	if x != nil {
-		return x.CoreIndex
-	}
-	return 0
-}
+func (x *BitmapIndex_Binding) GetCoreIndex() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (x *BitmapIndex_Binding) GetRole() string {
-	if x != nil {
-		return x.Role
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetRole() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetScope() string {
-	if x != nil {
-		return x.Scope
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetScope() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetResource() string {
-	if x != nil {
-		return x.Resource
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetResource() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetPrincipal() string {
-	if x != nil {
-		return x.Principal
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetPrincipal() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetOriginFqn() string {
-	if x != nil {
-		return x.OriginFqn
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetOriginFqn() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetOriginDerivedRole() string {
-	if x != nil {
-		return x.OriginDerivedRole
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetOriginDerivedRole() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *BitmapIndex_Binding) GetEvaluationKey() string {
-	if x != nil {
-		return x.EvaluationKey
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetEvaluationKey() string { _ = "STUB: not implemented"; return "" }
 
 func (x *BitmapIndex_Binding) GetActionSet() isBitmapIndex_Binding_ActionSet {
-	if x != nil {
-		return x.ActionSet
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(isBitmapIndex_Binding_ActionSet)
 }
 
-func (x *BitmapIndex_Binding) GetAction() string {
-	if x != nil {
-		if x, ok := x.ActionSet.(*BitmapIndex_Binding_Action); ok {
-			return x.Action
-		}
-	}
-	return ""
-}
+func (x *BitmapIndex_Binding) GetAction() string { _ = "STUB: not implemented"; return "" }
 
 func (x *BitmapIndex_Binding) GetAllowActions() *BitmapIndex_AllowActions {
-	if x != nil {
-		if x, ok := x.ActionSet.(*BitmapIndex_Binding_AllowActions); ok {
-			return x.AllowActions
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3740,13 +2323,20 @@ type BitmapIndex_Binding_AllowActions struct {
 	AllowActions *BitmapIndex_AllowActions `protobuf:"bytes,13,opt,name=allow_actions,json=allowActions,proto3,oneof"`
 }
 
-func (*BitmapIndex_Binding_Action) isBitmapIndex_Binding_ActionSet() {}
+func (*BitmapIndex_Binding_Action) isBitmapIndex_Binding_ActionSet() {
+	_ = "STUB: not implemented"
+	return
+}
 
-func (*BitmapIndex_Binding_AllowActions) isBitmapIndex_Binding_ActionSet() {}
+func (*BitmapIndex_Binding_AllowActions) isBitmapIndex_Binding_ActionSet() {
+	_ = "STUB: not implemented"
 
-// FunctionalCore captures the behavioral part of a rule. Fields only needed
-// for mutation (origins, sum, fqnBindings) are omitted because the
-// unmarshaled index is static (no DeletePolicy or incremental IndexRules).
+	// FunctionalCore captures the behavioral part of a rule. Fields only needed
+	// for mutation (origins, sum, fqnBindings) are omitted because the
+	// unmarshaled index is static (no DeletePolicy or incremental IndexRules).
+	return
+}
+
 type BitmapIndex_FunctionalCore struct {
 	state                protoimpl.MessageState    `protogen:"open.v1"`
 	Effect               v11.Effect                `protobuf:"varint,1,opt,name=effect,proto3,enum=cerbos.effect.v1.Effect" json:"effect,omitempty"`
@@ -3762,96 +2352,62 @@ type BitmapIndex_FunctionalCore struct {
 	sizeCache            protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_FunctionalCore) Reset() {
-	*x = BitmapIndex_FunctionalCore{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[86]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_FunctionalCore) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_FunctionalCore) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_FunctionalCore) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_FunctionalCore) ProtoMessage() {}
+func (*BitmapIndex_FunctionalCore) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_FunctionalCore) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[86]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_FunctionalCore.ProtoReflect.Descriptor instead.
 func (*BitmapIndex_FunctionalCore) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BitmapIndex_FunctionalCore) GetEffect() v11.Effect {
-	if x != nil {
-		return x.Effect
-	}
-	return v11.Effect(0)
+	_ = "STUB: not implemented"
+	return *new(v11.Effect)
 }
 
 func (x *BitmapIndex_FunctionalCore) GetCondition() *Condition {
-	if x != nil {
-		return x.Condition
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BitmapIndex_FunctionalCore) GetDerivedRoleCondition() *Condition {
-	if x != nil {
-		return x.DerivedRoleCondition
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *BitmapIndex_FunctionalCore) GetEmitOutput() *Output {
-	if x != nil {
-		return x.EmitOutput
-	}
-	return nil
-}
+func (x *BitmapIndex_FunctionalCore) GetEmitOutput() *Output { _ = "STUB: not implemented"; return nil }
 
 func (x *BitmapIndex_FunctionalCore) GetScopePermissions() v1.ScopePermissions {
-	if x != nil {
-		return x.ScopePermissions
-	}
-	return v1.ScopePermissions(0)
+	_ = "STUB: not implemented"
+	return *new(v1.ScopePermissions)
 }
 
 func (x *BitmapIndex_FunctionalCore) GetPolicyKind() v1.Kind {
-	if x != nil {
-		return x.PolicyKind
-	}
-	return v1.Kind(0)
+	_ = "STUB: not implemented"
+	return *new(v1.Kind)
 }
 
 func (x *BitmapIndex_FunctionalCore) GetFromRolePolicy() bool {
-	if x != nil {
-		return x.FromRolePolicy
-	}
+	_ = "STUB: not implemented"
 	return false
 }
 
 func (x *BitmapIndex_FunctionalCore) GetParams() *RuleTable_RuleRow_Params {
-	if x != nil {
-		return x.Params
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *BitmapIndex_FunctionalCore) GetDerivedRoleParams() *RuleTable_RuleRow_Params {
-	if x != nil {
-		return x.DerivedRoleParams
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -3862,42 +2418,24 @@ type BitmapIndex_Parents struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_Parents) Reset() {
-	*x = BitmapIndex_Parents{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[87]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_Parents) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_Parents) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_Parents) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_Parents) ProtoMessage() {}
+func (*BitmapIndex_Parents) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_Parents) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[87]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_Parents.ProtoReflect.Descriptor instead.
 func (*BitmapIndex_Parents) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *BitmapIndex_Parents) GetParents() []string {
-	if x != nil {
-		return x.Parents
-	}
-	return nil
-}
+func (x *BitmapIndex_Parents) GetParents() []string { _ = "STUB: not implemented"; return nil }
 
 type BitmapIndex_RoleParents struct {
 	state         protoimpl.MessageState          `protogen:"open.v1"`
@@ -3906,40 +2444,25 @@ type BitmapIndex_RoleParents struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BitmapIndex_RoleParents) Reset() {
-	*x = BitmapIndex_RoleParents{}
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[88]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *BitmapIndex_RoleParents) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *BitmapIndex_RoleParents) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *BitmapIndex_RoleParents) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*BitmapIndex_RoleParents) ProtoMessage() {}
+func (*BitmapIndex_RoleParents) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *BitmapIndex_RoleParents) ProtoReflect() protoreflect.Message {
-	mi := &file_cerbos_runtime_v1_runtime_proto_msgTypes[88]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use BitmapIndex_RoleParents.ProtoReflect.Descriptor instead.
 func (*BitmapIndex_RoleParents) Descriptor() ([]byte, []int) {
-	return file_cerbos_runtime_v1_runtime_proto_rawDescGZIP(), []int{16, 6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *BitmapIndex_RoleParents) GetRoles() map[string]*BitmapIndex_Parents {
-	if x != nil {
-		return x.Roles
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -4373,10 +2896,8 @@ var (
 )
 
 func file_cerbos_runtime_v1_runtime_proto_rawDescGZIP() []byte {
-	file_cerbos_runtime_v1_runtime_proto_rawDescOnce.Do(func() {
-		file_cerbos_runtime_v1_runtime_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cerbos_runtime_v1_runtime_proto_rawDesc), len(file_cerbos_runtime_v1_runtime_proto_rawDesc)))
-	})
-	return file_cerbos_runtime_v1_runtime_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_cerbos_runtime_v1_runtime_proto_msgTypes = make([]protoimpl.MessageInfo, 92)
@@ -4653,56 +3174,5 @@ var file_cerbos_runtime_v1_runtime_proto_depIdxs = []int32{
 	0,   // [0:161] is the sub-list for field type_name
 }
 
-func init() { file_cerbos_runtime_v1_runtime_proto_init() }
-func file_cerbos_runtime_v1_runtime_proto_init() {
-	if File_cerbos_runtime_v1_runtime_proto != nil {
-		return
-	}
-	file_cerbos_runtime_v1_runtime_proto_msgTypes[0].OneofWrappers = []any{
-		(*RunnablePolicySet_ResourcePolicy)(nil),
-		(*RunnablePolicySet_PrincipalPolicy)(nil),
-		(*RunnablePolicySet_DerivedRoles)(nil),
-		(*RunnablePolicySet_Variables)(nil),
-		(*RunnablePolicySet_RolePolicy)(nil),
-	}
-	file_cerbos_runtime_v1_runtime_proto_msgTypes[2].OneofWrappers = []any{
-		(*RuleTableMetadata_Resource)(nil),
-		(*RuleTableMetadata_Role)(nil),
-		(*RuleTableMetadata_Principal)(nil),
-	}
-	file_cerbos_runtime_v1_runtime_proto_msgTypes[12].OneofWrappers = []any{
-		(*Condition_All)(nil),
-		(*Condition_Any)(nil),
-		(*Condition_None)(nil),
-		(*Condition_Expr)(nil),
-	}
-	file_cerbos_runtime_v1_runtime_proto_msgTypes[15].OneofWrappers = []any{
-		(*Errors_IndexBuildErrors)(nil),
-		(*Errors_CompileErrors)(nil),
-	}
-	file_cerbos_runtime_v1_runtime_proto_msgTypes[17].OneofWrappers = []any{
-		(*RuleTable_RuleRow_Action)(nil),
-		(*RuleTable_RuleRow_AllowActions_)(nil),
-	}
-	file_cerbos_runtime_v1_runtime_proto_msgTypes[85].OneofWrappers = []any{
-		(*BitmapIndex_Binding_Action)(nil),
-		(*BitmapIndex_Binding_AllowActions)(nil),
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerbos_runtime_v1_runtime_proto_rawDesc), len(file_cerbos_runtime_v1_runtime_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   92,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_cerbos_runtime_v1_runtime_proto_goTypes,
-		DependencyIndexes: file_cerbos_runtime_v1_runtime_proto_depIdxs,
-		MessageInfos:      file_cerbos_runtime_v1_runtime_proto_msgTypes,
-	}.Build()
-	File_cerbos_runtime_v1_runtime_proto = out.File
-	file_cerbos_runtime_v1_runtime_proto_goTypes = nil
-	file_cerbos_runtime_v1_runtime_proto_depIdxs = nil
-}
+func init()                                      { file_cerbos_runtime_v1_runtime_proto_init() }
+func file_cerbos_runtime_v1_runtime_proto_init() { _ = "STUB: not implemented"; return }

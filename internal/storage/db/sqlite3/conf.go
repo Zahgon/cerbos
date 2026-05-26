@@ -16,6 +16,4 @@ type Conf struct {
 	DSN string `yaml:"dsn" conf:"required,example=\":memory:?_fk=true\""`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }

@@ -29,38 +29,24 @@ type dbOpt struct {
 	sourceAttributes []policy.SourceAttribute
 }
 
-func newDbOpt() *dbOpt {
-	return &dbOpt{
-		regexpCache: util.NewRegexpCache(),
-	}
-}
+func newDbOpt() *dbOpt { _ = "STUB: not implemented"; return nil }
 
 // WithUpsertSchema sets custom upsert schema function.
-func WithUpsertSchema(f upsertSchemaFunc) DBOpt {
-	return func(opt *dbOpt) {
-		opt.upsertSchema = f
-	}
-}
+func WithUpsertSchema(f upsertSchemaFunc) DBOpt { _ = "STUB: not implemented"; return *new(DBOpt) }
 
 // WithUpsertPolicy sets custom upsert policy function.
-func WithUpsertPolicy(f upsertPolicyFunc) DBOpt {
-	return func(opt *dbOpt) {
-		opt.upsertPolicy = f
-	}
-}
+func WithUpsertPolicy(f upsertPolicyFunc) DBOpt { _ = "STUB: not implemented"; return *new(DBOpt) }
 
 // WithRegexpCacheOverride overrides the default regexp cache for DB queries requiring compiled expressions.
 // This is only required for DB drivers that require access to the cache (e.g. The SQLite driver retrieves the compiled
 // expressions for the application-defined function).
 func WithRegexpCacheOverride(c *util.RegexpCache) DBOpt {
-	return func(opt *dbOpt) {
-		opt.regexpCache = c
-	}
+	_ = "STUB: not implemented"
+	return *new(DBOpt)
 }
 
 // WithSourceAttributes sets the policy source attributes.
 func WithSourceAttributes(attr ...policy.SourceAttribute) DBOpt {
-	return func(opt *dbOpt) {
-		opt.sourceAttributes = attr
-	}
+	_ = "STUB: not implemented"
+	return *new(DBOpt)
 }

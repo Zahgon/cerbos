@@ -167,133 +167,41 @@ var (
 	}
 )
 
-func unarySPIFFEIDFnImpl(v ref.Val) ref.Val {
-	switch sv := v.(type) {
-	case SPIFFEID:
-		return sv
-	case types.String:
-		sid, err := spiffeid.FromString(string(sv))
-		if err != nil {
-			return types.NewErr("failed to parse SPIFFE ID: %v", err)
-		}
-		return SPIFFEID{id: sid}
-	default:
-		return types.MaybeNoSuchOverloadErr(v)
-	}
-}
+func unarySPIFFEIDFnImpl(v ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 func unarySPIFFETrustDomainFnImpl(v ref.Val) ref.Val {
-	switch sv := v.(type) {
-	case SPIFFETrustDomain:
-		return sv
-	case SPIFFEID:
-		return SPIFFETrustDomain{td: sv.id.TrustDomain()}
-	case types.String:
-		td, err := spiffeid.TrustDomainFromString(string(sv))
-		if err != nil {
-			return types.NewErr("failed to parse SPIFFE trust domain: %v", err)
-		}
-		return SPIFFETrustDomain{td: td}
-	default:
-		return types.MaybeNoSuchOverloadErr(v)
-	}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func unarySPIFFEMatchAnyFnImpl(args ...ref.Val) ref.Val {
-	if len(args) > 0 {
-		return types.NoSuchOverloadErr()
-	}
-
-	return SPIFFEMatcher{matcher: spiffeid.MatchAny()}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func unarySPIFFEMatchExactFnImpl(v ref.Val) ref.Val {
-	switch sv := v.(type) {
-	case SPIFFEID:
-		return SPIFFEMatcher{matcher: spiffeid.MatchID(sv.id)}
-	case types.String:
-		sid, err := spiffeid.FromString(string(sv))
-		if err != nil {
-			return types.NewErr("failed to parse SPIFFE ID: %v", err)
-		}
-		return SPIFFEMatcher{matcher: spiffeid.MatchID(sid)}
-	default:
-		return types.MaybeNoSuchOverloadErr(v)
-	}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func unarySPIFFEMatchOneOfFnImpl(v ref.Val) ref.Val {
-	l, ok := v.(traits.Lister)
-	if !ok {
-		return types.MaybeNoSuchOverloadErr(v)
-	}
-
-	if m, err := convertSPIFFEIDListToMatcher(l); err == nil {
-		return SPIFFEMatcher{matcher: m}
-	}
-
-	if m, err := convertStringListToMatcher(l); err == nil {
-		return SPIFFEMatcher{matcher: m}
-	}
-
-	return types.MaybeNoSuchOverloadErr(v)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func convertSPIFFEIDListToMatcher(l traits.Lister) (spiffeid.Matcher, error) {
-	maybeSpiffeIDs, err := l.ConvertToNative(reflect.SliceOf(reflect.TypeFor[SPIFFEID]()))
-	if err != nil {
-		return nil, fmt.Errorf("failed to convert list to SPIFFEID slice: %w", err)
-	}
-
-	spiffeIDWrappers, ok := maybeSpiffeIDs.([]SPIFFEID)
-	if !ok {
-		return nil, fmt.Errorf("expected SPIFFEID slice but got %T", maybeSpiffeIDs)
-	}
-
-	spiffeIDs := make([]spiffeid.ID, len(spiffeIDWrappers))
-	for i, sid := range spiffeIDWrappers {
-		spiffeIDs[i] = sid.id
-	}
-
-	return spiffeid.MatchOneOf(spiffeIDs...), nil
+	_ = "STUB: not implemented"
+	return *new(spiffeid.Matcher), nil
 }
 
 func convertStringListToMatcher(l traits.Lister) (spiffeid.Matcher, error) {
-	maybeSpiffeIDs, err := l.ConvertToNative(reflect.SliceOf(reflect.TypeFor[string]()))
-	if err != nil {
-		return nil, fmt.Errorf("failed to convert list to string slice: %w", err)
-	}
-
-	spiffeIDStrs, ok := maybeSpiffeIDs.([]string)
-	if !ok {
-		return nil, fmt.Errorf("expected string slice but got %T", maybeSpiffeIDs)
-	}
-
-	spiffeIDs := make([]spiffeid.ID, len(spiffeIDStrs))
-	for i, idStr := range spiffeIDStrs {
-		sid, err := spiffeid.FromString(idStr)
-		if err != nil {
-			return nil, fmt.Errorf("failed to convert %q to SPIFFE ID: %w", idStr, err)
-		}
-		spiffeIDs[i] = sid
-	}
-
-	return spiffeid.MatchOneOf(spiffeIDs...), nil
+	_ = "STUB: not implemented"
+	return *new(spiffeid.Matcher), nil
 }
 
 func unarySPIFFEMatchTrustDomainFnImpl(v ref.Val) ref.Val {
-	switch sv := v.(type) {
-	case SPIFFETrustDomain:
-		return SPIFFEMatcher{matcher: spiffeid.MatchMemberOf(sv.td)}
-	case types.String:
-		td, err := spiffeid.TrustDomainFromString(string(sv))
-		if err != nil {
-			return types.NewErr("failed to parse SPIFFE trust domain: %v", err)
-		}
-		return SPIFFEMatcher{matcher: spiffeid.MatchMemberOf(td)}
-	default:
-		return types.MaybeNoSuchOverloadErr(v)
-	}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 type SPIFFEID struct {
@@ -302,95 +210,44 @@ type SPIFFEID struct {
 
 // ConvertToNative implements ref.Val.ConvertToNative.
 func (sid SPIFFEID) ConvertToNative(typeDesc reflect.Type) (any, error) {
+	_ = "STUB: not implemented"
 	//nolint:exhaustive
-	switch typeDesc.Kind() {
-	case reflect.String:
-		return sid.id.String(), nil
-	case reflect.Interface:
-		sv := sid.Value()
-		if reflect.TypeOf(sv).Implements(typeDesc) {
-			return sv, nil
-		}
-
-		if reflect.TypeFor[SPIFFEID]().Implements(typeDesc) {
-			return sid, nil
-		}
-	}
-
-	return nil, fmt.Errorf("unsupported native conversion from SPIFFEID to '%v'", typeDesc)
+	return *new(any), nil
 }
 
 // ConvertToType implements ref.Val.ConvertToType.
 func (sid SPIFFEID) ConvertToType(typeVal ref.Type) ref.Val {
-	switch typeVal {
-	case types.StringType:
-		return types.String(sid.id.String())
-	case types.TypeType:
-		return SPIFFEIDType
-	}
-
-	return types.NewErr("type conversion error from '%s' to '%s'", SPIFFEIDType, typeVal)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Type implements ref.Val.Type.
 func (sid SPIFFEID) Type() ref.Type {
-	return SPIFFEIDType
+	_ = "STUB: not implemented"
+	return *
+
+	// Value implements ref.Val.Value.
+	new(ref.Type)
 }
 
-// Value implements ref.Val.Value.
 func (sid SPIFFEID) Value() any {
-	return sid.id
+	_ = "STUB: not implemented"
+
+	// Equal implements ref.Val.Equal.
+	return *new(any)
 }
 
-// Equal implements ref.Val.Equal.
-func (sid SPIFFEID) Equal(other ref.Val) ref.Val {
-	if other == nil {
-		return types.Bool(false)
-	}
-
-	switch v := other.(type) {
-	case SPIFFEID:
-		return types.Bool(v.id.String() == sid.id.String())
-	case types.String:
-		return types.Bool(sid.id.String() == string(v))
-	default:
-		return types.MaybeNoSuchOverloadErr(other)
-	}
-}
+func (sid SPIFFEID) Equal(other ref.Val) ref.Val { _ = "STUB: not implemented"; return *new(ref.Val) }
 
 // Receive implements traits.Receiver.Receive.
 func (sid SPIFFEID) Receive(function, _ string, args []ref.Val) ref.Val {
-	switch function {
-	case overloadSpiffeIDIsMemberOf:
-		if len(args) != 1 {
-			return types.NoSuchOverloadErr()
-		}
-		return spiffeIDIsMemberOf(sid, args[0])
-	case overloadSpiffeIDPath:
-		if len(args) != 0 {
-			return types.NoSuchOverloadErr()
-		}
-		return types.String(sid.id.Path())
-	case overloadSpiffeIDTrustDomain:
-		if len(args) != 0 {
-			return types.NoSuchOverloadErr()
-		}
-		return SPIFFETrustDomain{td: sid.id.TrustDomain()}
-	}
-	return types.NoSuchOverloadErr()
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 func spiffeIDIsMemberOf(s SPIFFEID, arg ref.Val) ref.Val {
-	if arg == nil {
-		return types.Bool(false)
-	}
-
-	td, ok := arg.(SPIFFETrustDomain)
-	if !ok {
-		return types.MaybeNoSuchOverloadErr(arg)
-	}
-
-	return types.Bool(s.id.MemberOf(td.td))
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 type SPIFFETrustDomain struct {
@@ -399,99 +256,43 @@ type SPIFFETrustDomain struct {
 
 // ConvertToNative implements ref.Val.ConvertToNative.
 func (std SPIFFETrustDomain) ConvertToNative(typeDesc reflect.Type) (any, error) {
+	_ = "STUB: not implemented"
 	//nolint:exhaustive
-	switch typeDesc.Kind() {
-	case reflect.String:
-		return std.td.String(), nil
-	case reflect.Interface:
-		sv := std.Value()
-		if reflect.TypeOf(sv).Implements(typeDesc) {
-			return sv, nil
-		}
-
-		if reflect.TypeFor[SPIFFETrustDomain]().Implements(typeDesc) {
-			return std, nil
-		}
-	}
-
-	return nil, fmt.Errorf("unsupported native conversion from SPIFFETrustDomain to '%v'", typeDesc)
+	return *new(any), nil
 }
 
 // ConvertToType implements ref.Val.ConvertToType.
 func (std SPIFFETrustDomain) ConvertToType(typeVal ref.Type) ref.Val {
-	switch typeVal {
-	case types.StringType:
-		return types.String(std.td.String())
-	case types.TypeType:
-		return SPIFFETrustDomainType
-	}
-
-	return types.NewErr("type conversion error from '%s' to '%s'", SPIFFETrustDomainType, typeVal)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Type implements ref.Val.Type.
-func (std SPIFFETrustDomain) Type() ref.Type {
-	return SPIFFETrustDomainType
-}
+func (std SPIFFETrustDomain) Type() ref.Type { _ = "STUB: not implemented"; return *new(ref.Type) }
 
 // Value implements ref.Val.Value.
 func (std SPIFFETrustDomain) Value() any {
-	return std.td
+	_ = "STUB: not implemented"
+
+	// Equal implements ref.Val.Equal.
+	return *new(any)
 }
 
-// Equal implements ref.Val.Equal.
 func (std SPIFFETrustDomain) Equal(other ref.Val) ref.Val {
-	if other == nil {
-		return types.Bool(false)
-	}
-
-	switch v := other.(type) {
-	case SPIFFETrustDomain:
-		return types.Bool(v.td.Compare(std.td) == 0)
-	case types.String:
-		otd, err := spiffeid.TrustDomainFromString(string(v))
-		if err != nil {
-			return types.Bool(false)
-		}
-
-		return types.Bool(otd.Compare(std.td) == 0)
-	default:
-		return types.MaybeNoSuchOverloadErr(other)
-	}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Compare implements traits.Comparer.
 func (std SPIFFETrustDomain) Compare(other ref.Val) ref.Val {
-	switch v := other.(type) {
-	case SPIFFETrustDomain:
-		return types.Int(v.td.Compare(std.td))
-	case types.String:
-		otd, err := spiffeid.TrustDomainFromString(string(v))
-		if err != nil {
-			return types.NewErr("failed to parse trust domain: %v", err)
-		}
-
-		return types.Int(otd.Compare(std.td))
-	default:
-		return types.MaybeNoSuchOverloadErr(other)
-	}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Receive implements traits.Receiver.Receive.
 func (std SPIFFETrustDomain) Receive(function, _ string, args []ref.Val) ref.Val {
-	switch function {
-	case overloadSpiffeTrustDomainID:
-		if len(args) != 0 {
-			return types.NoSuchOverloadErr()
-		}
-		return types.String(std.td.IDString())
-	case overloadSpiffeTrustDomainName:
-		if len(args) != 0 {
-			return types.NoSuchOverloadErr()
-		}
-		return types.String(std.td.Name())
-	}
-	return types.NoSuchOverloadErr()
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 type SPIFFEMatcher struct {
@@ -500,61 +301,42 @@ type SPIFFEMatcher struct {
 
 // ConvertToNative implements ref.Val.ConvertToNative.
 func (sm SPIFFEMatcher) ConvertToNative(typeDesc reflect.Type) (any, error) {
+	_ = "STUB: not implemented"
 	//nolint:exhaustive
-	if typeDesc.Kind() == reflect.Interface {
-		sv := sm.Value()
-		if reflect.TypeOf(sv).Implements(typeDesc) {
-			return sv, nil
-		}
-
-		if reflect.TypeFor[SPIFFEMatcher]().Implements(typeDesc) {
-			return sm, nil
-		}
-	}
-
-	return nil, fmt.Errorf("unsupported native conversion from SPIFFEMatcher to '%v'", typeDesc)
+	return *new(any), nil
 }
 
 // ConvertToType implements ref.Val.ConvertToType.
 func (sm SPIFFEMatcher) ConvertToType(typeVal ref.Type) ref.Val {
-	if typeVal == types.TypeType {
-		return SPIFFEMatcherType
-	}
-
-	return types.NewErr("type conversion error from '%s' to '%s'", SPIFFEMatcherType, typeVal)
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }
 
 // Type implements ref.Val.Type.
 func (sm SPIFFEMatcher) Type() ref.Type {
-	return SPIFFEMatcherType
+	_ = "STUB: not implemented"
+	return *
+
+	// Value implements ref.Val.Value.
+	new(ref.Type)
 }
 
-// Value implements ref.Val.Value.
 func (sm SPIFFEMatcher) Value() any {
-	return sm.matcher
+	_ = "STUB: not implemented"
+
+	// Equal implements ref.Val.Equal.
+	return *new(any)
 }
 
-// Equal implements ref.Val.Equal.
 func (sm SPIFFEMatcher) Equal(_ ref.Val) ref.Val {
-	return types.Bool(false)
+	_ = "STUB: not implemented"
+	return *
+
+	// Receive implements traits.Receiver.Receive.
+	new(ref.Val)
 }
 
-// Receive implements traits.Receiver.Receive.
 func (sm SPIFFEMatcher) Receive(function, _ string, args []ref.Val) ref.Val {
-	if function != overloadSpiffeMatcherMatchesID || len(args) != 1 {
-		return types.NoSuchOverloadErr()
-	}
-
-	switch argv := args[0].(type) {
-	case SPIFFEID:
-		return types.Bool(sm.matcher(argv.id) == nil)
-	case types.String:
-		sid, err := spiffeid.FromString(string(argv))
-		if err != nil {
-			return types.NewErr("invalid SPIFFE ID: %v", err)
-		}
-		return types.Bool(sm.matcher(sid) == nil)
-	default:
-		return types.MaybeNoSuchOverloadErr(args[0])
-	}
+	_ = "STUB: not implemented"
+	return *new(ref.Val)
 }

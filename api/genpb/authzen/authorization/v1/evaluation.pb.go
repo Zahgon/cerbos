@@ -10,12 +10,11 @@
 package authorizationv1
 
 import (
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -35,56 +34,25 @@ type Subject struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Subject) Reset() {
-	*x = Subject{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Subject) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Subject) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Subject) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Subject) ProtoMessage() {}
+func (*Subject) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Subject) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Subject.ProtoReflect.Descriptor instead.
-func (*Subject) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{0}
-}
+func (*Subject) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Subject) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
+func (x *Subject) GetType() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Subject) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
+func (x *Subject) GetId() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Subject) GetProperties() map[string]*structpb.Value {
-	if x != nil {
-		return x.Properties
-	}
-	return nil
-}
+func (x *Subject) GetProperties() map[string]*structpb.Value { _ = "STUB: not implemented"; return nil }
 
 // Resource represents the target of the access request
 type Resource struct {
@@ -96,54 +64,26 @@ type Resource struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Resource) Reset() {
-	*x = Resource{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Resource) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Resource) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Resource) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Resource) ProtoMessage() {}
+func (*Resource) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Resource) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Resource.ProtoReflect.Descriptor instead.
-func (*Resource) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{1}
-}
+func (*Resource) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Resource) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
+func (x *Resource) GetType() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Resource) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
+func (x *Resource) GetId() string { _ = "STUB: not implemented"; return "" }
 
 func (x *Resource) GetProperties() map[string]*structpb.Value {
-	if x != nil {
-		return x.Properties
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -156,49 +96,23 @@ type Action struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Action) Reset() {
-	*x = Action{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *Action) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *Action) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *Action) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*Action) ProtoMessage() {}
+func (*Action) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *Action) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use Action.ProtoReflect.Descriptor instead.
-func (*Action) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{2}
-}
+func (*Action) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *Action) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
+func (x *Action) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (x *Action) GetProperties() map[string]*structpb.Value {
-	if x != nil {
-		return x.Properties
-	}
-	return nil
-}
+func (x *Action) GetProperties() map[string]*structpb.Value { _ = "STUB: not implemented"; return nil }
 
 // AuthZEN evaluation request message
 type AccessEvaluationRequest struct {
@@ -211,61 +125,31 @@ type AccessEvaluationRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AccessEvaluationRequest) Reset() {
-	*x = AccessEvaluationRequest{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AccessEvaluationRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AccessEvaluationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AccessEvaluationRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AccessEvaluationRequest) ProtoMessage() {}
+func (*AccessEvaluationRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AccessEvaluationRequest.ProtoReflect.Descriptor instead.
 func (*AccessEvaluationRequest) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *AccessEvaluationRequest) GetSubject() *Subject {
-	if x != nil {
-		return x.Subject
-	}
-	return nil
-}
+func (x *AccessEvaluationRequest) GetSubject() *Subject { _ = "STUB: not implemented"; return nil }
 
-func (x *AccessEvaluationRequest) GetResource() *Resource {
-	if x != nil {
-		return x.Resource
-	}
-	return nil
-}
+func (x *AccessEvaluationRequest) GetResource() *Resource { _ = "STUB: not implemented"; return nil }
 
-func (x *AccessEvaluationRequest) GetAction() *Action {
-	if x != nil {
-		return x.Action
-	}
-	return nil
-}
+func (x *AccessEvaluationRequest) GetAction() *Action { _ = "STUB: not implemented"; return nil }
 
 func (x *AccessEvaluationRequest) GetContext() map[string]*structpb.Value {
-	if x != nil {
-		return x.Context
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -278,47 +162,27 @@ type AccessEvaluationResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AccessEvaluationResponse) Reset() {
-	*x = AccessEvaluationResponse{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AccessEvaluationResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AccessEvaluationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AccessEvaluationResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AccessEvaluationResponse) ProtoMessage() {}
+func (*AccessEvaluationResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AccessEvaluationResponse.ProtoReflect.Descriptor instead.
 func (*AccessEvaluationResponse) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *AccessEvaluationResponse) GetDecision() bool {
-	if x != nil && x.Decision != nil {
-		return *x.Decision
-	}
-	return false
-}
+func (x *AccessEvaluationResponse) GetDecision() bool { _ = "STUB: not implemented"; return false }
 
 func (x *AccessEvaluationResponse) GetContext() map[string]*structpb.Value {
-	if x != nil {
-		return x.Context
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -335,75 +199,44 @@ type AccessEvaluationBatchRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AccessEvaluationBatchRequest) Reset() {
-	*x = AccessEvaluationBatchRequest{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AccessEvaluationBatchRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AccessEvaluationBatchRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AccessEvaluationBatchRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AccessEvaluationBatchRequest) ProtoMessage() {}
+func (*AccessEvaluationBatchRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationBatchRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AccessEvaluationBatchRequest.ProtoReflect.Descriptor instead.
 func (*AccessEvaluationBatchRequest) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (x *AccessEvaluationBatchRequest) GetSubject() *Subject {
-	if x != nil {
-		return x.Subject
-	}
-	return nil
-}
+func (x *AccessEvaluationBatchRequest) GetSubject() *Subject { _ = "STUB: not implemented"; return nil }
 
 func (x *AccessEvaluationBatchRequest) GetResource() *Resource {
-	if x != nil {
-		return x.Resource
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (x *AccessEvaluationBatchRequest) GetAction() *Action {
-	if x != nil {
-		return x.Action
-	}
-	return nil
-}
+func (x *AccessEvaluationBatchRequest) GetAction() *Action { _ = "STUB: not implemented"; return nil }
 
 func (x *AccessEvaluationBatchRequest) GetContext() map[string]*structpb.Value {
-	if x != nil {
-		return x.Context
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AccessEvaluationBatchRequest) GetEvaluations() []*AccessEvaluationBatchRequest_Evaluation {
-	if x != nil {
-		return x.Evaluations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AccessEvaluationBatchRequest) GetOptions() *AccessEvaluationsOptions {
-	if x != nil {
-		return x.Options
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -415,40 +248,25 @@ type AccessEvaluationBatchResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AccessEvaluationBatchResponse) Reset() {
-	*x = AccessEvaluationBatchResponse{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AccessEvaluationBatchResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AccessEvaluationBatchResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AccessEvaluationBatchResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AccessEvaluationBatchResponse) ProtoMessage() {}
+func (*AccessEvaluationBatchResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationBatchResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AccessEvaluationBatchResponse.ProtoReflect.Descriptor instead.
 func (*AccessEvaluationBatchResponse) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *AccessEvaluationBatchResponse) GetEvaluations() []*AccessEvaluationResponse {
-	if x != nil {
-		return x.Evaluations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -458,35 +276,19 @@ type MetadataRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MetadataRequest) Reset() {
-	*x = MetadataRequest{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *MetadataRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *MetadataRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *MetadataRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*MetadataRequest) ProtoMessage() {}
+func (*MetadataRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *MetadataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use MetadataRequest.ProtoReflect.Descriptor instead.
-func (*MetadataRequest) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{7}
-}
+func (*MetadataRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 type MetadataResponse struct {
 	state                     protoimpl.MessageState `protogen:"open.v1"`
@@ -497,54 +299,29 @@ type MetadataResponse struct {
 	sizeCache                 protoimpl.SizeCache
 }
 
-func (x *MetadataResponse) Reset() {
-	*x = MetadataResponse{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *MetadataResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *MetadataResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *MetadataResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*MetadataResponse) ProtoMessage() {}
+func (*MetadataResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *MetadataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use MetadataResponse.ProtoReflect.Descriptor instead.
-func (*MetadataResponse) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{8}
-}
+func (*MetadataResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (x *MetadataResponse) GetPolicyDecisionPoint() string {
-	if x != nil {
-		return x.PolicyDecisionPoint
-	}
-	return ""
-}
+func (x *MetadataResponse) GetPolicyDecisionPoint() string { _ = "STUB: not implemented"; return "" }
 
 func (x *MetadataResponse) GetAccessEvaluationEndpoint() string {
-	if x != nil {
-		return x.AccessEvaluationEndpoint
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (x *MetadataResponse) GetAccessEvaluationsEndpoint() string {
-	if x != nil {
-		return x.AccessEvaluationsEndpoint
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -557,40 +334,25 @@ type AccessEvaluationsOptions struct {
 	sizeCache           protoimpl.SizeCache
 }
 
-func (x *AccessEvaluationsOptions) Reset() {
-	*x = AccessEvaluationsOptions{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AccessEvaluationsOptions) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *AccessEvaluationsOptions) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *AccessEvaluationsOptions) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*AccessEvaluationsOptions) ProtoMessage() {}
+func (*AccessEvaluationsOptions) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationsOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AccessEvaluationsOptions.ProtoReflect.Descriptor instead.
 func (*AccessEvaluationsOptions) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *AccessEvaluationsOptions) GetEvaluationsSemantic() string {
-	if x != nil {
-		return x.EvaluationsSemantic
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -604,61 +366,43 @@ type AccessEvaluationBatchRequest_Evaluation struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AccessEvaluationBatchRequest_Evaluation) Reset() {
-	*x = AccessEvaluationBatchRequest_Evaluation{}
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+func (x *AccessEvaluationBatchRequest_Evaluation) Reset() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationBatchRequest_Evaluation) String() string {
-	return protoimpl.X.MessageStringOf(x)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (*AccessEvaluationBatchRequest_Evaluation) ProtoMessage() {}
+func (*AccessEvaluationBatchRequest_Evaluation) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *AccessEvaluationBatchRequest_Evaluation) ProtoReflect() protoreflect.Message {
-	mi := &file_authzen_authorization_v1_evaluation_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use AccessEvaluationBatchRequest_Evaluation.ProtoReflect.Descriptor instead.
 func (*AccessEvaluationBatchRequest_Evaluation) Descriptor() ([]byte, []int) {
-	return file_authzen_authorization_v1_evaluation_proto_rawDescGZIP(), []int{5, 1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (x *AccessEvaluationBatchRequest_Evaluation) GetSubject() *Subject {
-	if x != nil {
-		return x.Subject
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AccessEvaluationBatchRequest_Evaluation) GetResource() *Resource {
-	if x != nil {
-		return x.Resource
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AccessEvaluationBatchRequest_Evaluation) GetAction() *Action {
-	if x != nil {
-		return x.Action
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (x *AccessEvaluationBatchRequest_Evaluation) GetContext() map[string]*structpb.Value {
-	if x != nil {
-		return x.Context
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -759,10 +503,8 @@ var (
 )
 
 func file_authzen_authorization_v1_evaluation_proto_rawDescGZIP() []byte {
-	file_authzen_authorization_v1_evaluation_proto_rawDescOnce.Do(func() {
-		file_authzen_authorization_v1_evaluation_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_authzen_authorization_v1_evaluation_proto_rawDesc), len(file_authzen_authorization_v1_evaluation_proto_rawDesc)))
-	})
-	return file_authzen_authorization_v1_evaluation_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_authzen_authorization_v1_evaluation_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
@@ -821,27 +563,5 @@ var file_authzen_authorization_v1_evaluation_proto_depIdxs = []int32{
 	0,  // [0:26] is the sub-list for field type_name
 }
 
-func init() { file_authzen_authorization_v1_evaluation_proto_init() }
-func file_authzen_authorization_v1_evaluation_proto_init() {
-	if File_authzen_authorization_v1_evaluation_proto != nil {
-		return
-	}
-	file_authzen_authorization_v1_evaluation_proto_msgTypes[4].OneofWrappers = []any{}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_authzen_authorization_v1_evaluation_proto_rawDesc), len(file_authzen_authorization_v1_evaluation_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   18,
-			NumExtensions: 0,
-			NumServices:   0,
-		},
-		GoTypes:           file_authzen_authorization_v1_evaluation_proto_goTypes,
-		DependencyIndexes: file_authzen_authorization_v1_evaluation_proto_depIdxs,
-		MessageInfos:      file_authzen_authorization_v1_evaluation_proto_msgTypes,
-	}.Build()
-	File_authzen_authorization_v1_evaluation_proto = out.File
-	file_authzen_authorization_v1_evaluation_proto_goTypes = nil
-	file_authzen_authorization_v1_evaluation_proto_depIdxs = nil
-}
+func init()                                                { file_authzen_authorization_v1_evaluation_proto_init() }
+func file_authzen_authorization_v1_evaluation_proto_init() { _ = "STUB: not implemented"; return }

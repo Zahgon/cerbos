@@ -5,14 +5,10 @@ package templates
 
 import (
 	"embed"
-	"encoding/json"
-	"fmt"
 	"text/template"
 )
 
-func parse(fsys embed.FS) *template.Template {
-	return template.Must(template.ParseFS(fsys, "*/*"))
-}
+func parse(fsys embed.FS) *template.Template { _ = "STUB: not implemented"; return nil }
 
 var (
 	//go:embed binary
@@ -30,9 +26,7 @@ type Platform struct {
 	Arch string
 }
 
-func (p Platform) String() string {
-	return fmt.Sprintf("%s-%s", p.OS, p.Arch)
-}
+func (p Platform) String() string { _ = "STUB: not implemented"; return "" }
 
 type BinaryPackageData struct {
 	Platform
@@ -48,26 +42,13 @@ type WrapperPackageData struct {
 }
 
 func (w WrapperPackageData) OptionalDependencies() (string, error) {
-	optionalDependencies := make(map[string]string, len(w.Platforms))
-
-	for _, platform := range w.Platforms {
-		optionalDependencies[fmt.Sprintf("@cerbos/%s-%s", w.Name, platform)] = w.Version
-	}
-
-	return toJSON(optionalDependencies, "  ")
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 func (w WrapperPackageData) SupportedPlatforms() (string, error) {
-	supportedPlatforms := make([]string, len(w.Platforms))
-
-	for i, platform := range w.Platforms {
-		supportedPlatforms[i] = platform.String()
-	}
-
-	return toJSON(supportedPlatforms, "")
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
-func toJSON(value any, prefix string) (string, error) {
-	result, err := json.MarshalIndent(value, prefix, "  ")
-	return string(result), err
-}
+func toJSON(value any, prefix string) (string, error) { _ = "STUB: not implemented"; return "", nil }

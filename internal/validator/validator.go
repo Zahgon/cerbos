@@ -14,9 +14,11 @@ var Validator = validator(protovalidate.Validate)
 type validator func(proto.Message, ...protovalidate.ValidationOption) error
 
 func (v validator) Validate(msg proto.Message, options ...protovalidate.ValidationOption) error {
-	return v(msg, options...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func Validate(msg proto.Message, options ...protovalidate.ValidationOption) error {
-	return protovalidate.Validate(msg, options...)
+	_ = "STUB: not implemented"
+	return nil
 }

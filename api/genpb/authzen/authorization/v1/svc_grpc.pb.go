@@ -11,9 +11,8 @@ package authorizationv1
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -46,37 +45,23 @@ type authorizationServiceClient struct {
 }
 
 func NewAuthorizationServiceClient(cc grpc.ClientConnInterface) AuthorizationServiceClient {
-	return &authorizationServiceClient{cc}
+	_ = "STUB: not implemented"
+	return *new(AuthorizationServiceClient)
 }
 
 func (c *authorizationServiceClient) Metadata(ctx context.Context, in *MetadataRequest, opts ...grpc.CallOption) (*MetadataResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MetadataResponse)
-	err := c.cc.Invoke(ctx, AuthorizationService_Metadata_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authorizationServiceClient) AccessEvaluation(ctx context.Context, in *AccessEvaluationRequest, opts ...grpc.CallOption) (*AccessEvaluationResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AccessEvaluationResponse)
-	err := c.cc.Invoke(ctx, AuthorizationService_AccessEvaluation_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *authorizationServiceClient) AccessEvaluationBatch(ctx context.Context, in *AccessEvaluationBatchRequest, opts ...grpc.CallOption) (*AccessEvaluationBatchResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AccessEvaluationBatchResponse)
-	err := c.cc.Invoke(ctx, AuthorizationService_AccessEvaluationBatch_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AuthorizationServiceServer is the server API for AuthorizationService service.
@@ -102,16 +87,28 @@ type AuthorizationServiceServer interface {
 type UnimplementedAuthorizationServiceServer struct{}
 
 func (UnimplementedAuthorizationServiceServer) Metadata(context.Context, *MetadataRequest) (*MetadataResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method Metadata not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthorizationServiceServer) AccessEvaluation(context.Context, *AccessEvaluationRequest) (*AccessEvaluationResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method AccessEvaluation not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (UnimplementedAuthorizationServiceServer) AccessEvaluationBatch(context.Context, *AccessEvaluationBatchRequest) (*AccessEvaluationBatchResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method AccessEvaluationBatch not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (UnimplementedAuthorizationServiceServer) mustEmbedUnimplementedAuthorizationServiceServer() {}
-func (UnimplementedAuthorizationServiceServer) testEmbeddedByValue()                              {}
+
+func (UnimplementedAuthorizationServiceServer) mustEmbedUnimplementedAuthorizationServiceServer() {
+	_ = "STUB: not implemented"
+	return
+}
+func (UnimplementedAuthorizationServiceServer) testEmbeddedByValue() {
+	_ = "STUB: not implemented"
+	return
+}
 
 // UnsafeAuthorizationServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to AuthorizationServiceServer will
@@ -121,68 +118,27 @@ type UnsafeAuthorizationServiceServer interface {
 }
 
 func RegisterAuthorizationServiceServer(s grpc.ServiceRegistrar, srv AuthorizationServiceServer) {
+	_ = "STUB: not implemented"
 	// If the following call panics, it indicates UnimplementedAuthorizationServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
-	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
-		t.testEmbeddedByValue()
-	}
-	s.RegisterService(&AuthorizationService_ServiceDesc, srv)
+	return
 }
 
 func _AuthorizationService_Metadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MetadataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthorizationServiceServer).Metadata(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthorizationService_Metadata_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthorizationServiceServer).Metadata(ctx, req.(*MetadataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthorizationService_AccessEvaluation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AccessEvaluationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthorizationServiceServer).AccessEvaluation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthorizationService_AccessEvaluation_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthorizationServiceServer).AccessEvaluation(ctx, req.(*AccessEvaluationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _AuthorizationService_AccessEvaluationBatch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AccessEvaluationBatchRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthorizationServiceServer).AccessEvaluationBatch(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthorizationService_AccessEvaluationBatch_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthorizationServiceServer).AccessEvaluationBatch(ctx, req.(*AccessEvaluationBatchRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AuthorizationService_ServiceDesc is the grpc.ServiceDesc for AuthorizationService service.

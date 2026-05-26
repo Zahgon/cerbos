@@ -5,10 +5,4 @@
 
 package util
 
-import (
-	"go.uber.org/zap"
-)
-
-func logError(globExpr string, err error) {
-	zap.L().Named("glob-cache").Warn("Invalid glob expression", zap.String("glob", globExpr), zap.Error(err))
-}
+func logError(globExpr string, err error) { _ = "STUB: not implemented"; return }

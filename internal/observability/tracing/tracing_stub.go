@@ -21,13 +21,15 @@ type Span interface {
 type noopSpan struct{}
 
 // TODO(saml) change all stub interface/function parameters to `struct{}` rather than `any` where possible
-func (*noopSpan) End(_ ...struct{})           {}
-func (*noopSpan) SetAttributes(_ ...struct{}) {}
+func (*noopSpan) End(_ ...struct{})           { _ = "STUB: not implemented"; return }
+func (*noopSpan) SetAttributes(_ ...struct{}) { _ = "STUB: not implemented"; return }
 
 func StartSpan(ctx context.Context, name string) (context.Context, Span) {
-	return ctx, &noopSpan{}
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(Span)
 }
 
 func StartTracer(_ tracer.Sink) tracer.Context {
-	return tracer.Start(nil)
+	_ = "STUB: not implemented"
+	return *new(tracer.Context)
 }

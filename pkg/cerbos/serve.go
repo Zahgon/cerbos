@@ -5,19 +5,8 @@ package cerbos
 
 import (
 	"context"
-	"os"
 
-	"github.com/google/gops/agent"
-	gomaxecs "github.com/rdforte/gomaxecs/maxprocs"
-	"go.uber.org/automaxprocs/maxprocs"
-	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-
-	"github.com/cerbos/cerbos/internal/config"
-	"github.com/cerbos/cerbos/internal/integrations"
-	"github.com/cerbos/cerbos/internal/observability/logging"
-	"github.com/cerbos/cerbos/internal/observability/otel"
-	"github.com/cerbos/cerbos/internal/server"
 )
 
 type LogLevel string
@@ -46,156 +35,51 @@ type ServeOption func(*serveOptions)
 // WithConfigFile sets the path to the [server configuration file].
 //
 // [server configuration file]: https://docs.cerbos.dev/cerbos/latest/configuration/
-func WithConfigFile(path string) ServeOption {
-	return func(opts *serveOptions) {
-		opts.configFilePath = path
-	}
-}
+func WithConfigFile(path string) ServeOption { _ = "STUB: not implemented"; return *new(ServeOption) }
 
 // WithConfig sets [server configuration], overriding any values present in the configuration file.
 //
 // [server configuration]: https://docs.cerbos.dev/cerbos/latest/configuration/
 func WithConfig(overrides map[string]any) ServeOption {
-	return func(opts *serveOptions) {
-		opts.configOverrides = overrides
-	}
+	_ = "STUB: not implemented"
+	return *new(ServeOption)
 }
 
 // WithDebug enables the [gops] agent listening on the given host:port.
 //
 // [gops]: https://github.com/google/gops
-func WithDebug(addr string) ServeOption {
-	return func(opts *serveOptions) {
-		opts.debugListenAddr = addr
-	}
-}
+func WithDebug(addr string) ServeOption { _ = "STUB: not implemented"; return *new(ServeOption) }
 
 // WithLogLevel sets the minimum level at which logs will be emitted.
-func WithLogLevel(level LogLevel) ServeOption {
-	return func(opts *serveOptions) {
-		opts.logLevel = level
-	}
-}
+func WithLogLevel(level LogLevel) ServeOption { _ = "STUB: not implemented"; return *new(ServeOption) }
 
 // WithMetricsDisabled disables registering OpenTelemetry metrics publishers.
-func WithMetricsDisabled() ServeOption {
-	return func(opts *serveOptions) {
-		opts.metricsDisabled = true
-	}
-}
+func WithMetricsDisabled() ServeOption { _ = "STUB: not implemented"; return *new(ServeOption) }
 
 // WithTracesDisabled disables registering OpenTelemetry trace publishers.
-func WithTracesDisabled() ServeOption {
-	return func(opts *serveOptions) {
-		opts.tracesDisabled = true
-	}
-}
+func WithTracesDisabled() ServeOption { _ = "STUB: not implemented"; return *new(ServeOption) }
 
 // WithGoMaxProcsDisabled disables automatically setting GOMAXPROCS.
-func WithGoMaxProcsDisabled() ServeOption {
-	return func(opts *serveOptions) {
-		opts.goMaxProcsDisabled = true
-	}
-}
+func WithGoMaxProcsDisabled() ServeOption { _ = "STUB: not implemented"; return *new(ServeOption) }
 
 // WithZapCore sets the Zap core used by the logging system.
 func WithZapCore(zapCore zapcore.Core) ServeOption {
-	return func(opts *serveOptions) {
-		opts.zapCore = zapCore
-	}
+	_ = "STUB: not implemented"
+	return *new(ServeOption)
 }
 
 // Serve runs the Cerbos policy decision point server, stopping it when the context is canceled.
 func Serve(ctx context.Context, options ...ServeOption) error {
-	opts := serveOptions{logLevel: LogLevelInfo}
-	for _, option := range options {
-		option(&opts)
-	}
-
-	logging.InitLogging(ctx, string(opts.logLevel), opts.zapCore)
-	defer zap.L().Sync() //nolint:errcheck
-
-	log := zap.S().Named("server")
-
-	if !opts.goMaxProcsDisabled {
-		var undo func()
-		var err error
-		if gomaxecs.IsECS() {
-			undo, err = gomaxecs.Set(gomaxecs.WithLogger(log.Infof))
-		} else {
-			undo, err = maxprocs.Set(maxprocs.Logger(log.Infof))
-		}
-
-		defer undo()
-		if err != nil {
-			log.Warnw("Failed to adjust GOMAXPROCS", "error", err)
-		}
-	}
-
-	// initialize metrics
-	if !opts.metricsDisabled {
-		metricsDone, err := otel.InitMetrics(ctx, otel.Env(os.LookupEnv))
-		if err != nil {
-			return err
-		}
-		defer func() {
-			if err := metricsDone(); err != nil {
-				log.Warnw("Metrics exporter did not shutdown cleanly", "error", err)
-			}
-		}()
-	}
-
-	if opts.debugListenAddr != "" {
-		startDebugListener(opts.debugListenAddr)
-		defer agent.Close()
-	}
-
-	// load configuration
-	if opts.configFilePath == "" {
-		log.Info("Loading default configuration")
-	} else {
-		log.Infof("Loading configuration from %s", opts.configFilePath)
-	}
-	if err := config.Load(opts.configFilePath, opts.configOverrides); err != nil {
-		log.Errorw("Failed to load configuration", "error", err)
-		return err
-	}
-
-	// initialize tracing
-	if !opts.tracesDisabled {
-		tracingDone, err := otel.InitTraces(ctx, otel.Env(os.LookupEnv))
-		if err != nil {
-			return err
-		}
-		defer func() {
-			if err := tracingDone(); err != nil {
-				log.Warnw("Trace exporter did not shutdown cleanly", "error", err)
-			}
-		}()
-	}
-
-	if err := integrations.Init(ctx); err != nil {
-		return err
-	}
-
-	if err := server.Start(ctx); err != nil {
-		log.Errorw("Failed to start server", "error", err)
-		return err
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func startDebugListener(listenAddr string) {
-	log := zap.S().Named("debug")
-	log.Infof("Starting debug listener at %s", listenAddr)
+//nolint:errcheck
 
-	err := agent.Listen(agent.Options{
-		Addr:                   listenAddr,
-		ShutdownCleanup:        false,
-		ReuseSocketAddrAndPort: true,
-	})
-	if err != nil {
-		log.Errorw("Failed to start debug agent", "error", err)
-	}
-}
+// initialize metrics
+
+// load configuration
+
+// initialize tracing
+
+func startDebugListener(listenAddr string) { _ = "STUB: not implemented"; return }

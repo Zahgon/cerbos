@@ -7,16 +7,10 @@ package hub
 
 import (
 	"errors"
-	"fmt"
-	"os"
-	"path/filepath"
-
-	"go.uber.org/multierr"
 
 	"github.com/cerbos/cerbos/internal/config"
 	"github.com/cerbos/cerbos/internal/hub"
 	"github.com/cerbos/cerbos/internal/storage"
-	"github.com/cerbos/cerbos/internal/util"
 )
 
 const (
@@ -69,161 +63,30 @@ type RemoteSourceConf struct {
 	DisableBootstrap bool `yaml:"disableBootstrap" conf:",ignore"`
 }
 
-func (conf *Conf) Key() string {
-	return confKey
-}
+func (conf *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (conf *Conf) SetDefaults() {
-	conf.CacheSize = defaultCacheSize
-}
+func (conf *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (conf *Conf) Validate() (outErr error) {
-	if conf.Local == nil && conf.Remote == nil {
-		return ErrNoSource
-	}
+func (conf *Conf) Validate() (outErr error) { _ = "STUB: not implemented"; return nil }
 
-	if conf.CacheSize == 0 {
-		outErr = multierr.Append(outErr, errors.New("cacheSize must be greater than zero"))
-	}
+func (conf *Conf) validateCredentials() error { _ = "STUB: not implemented"; return nil }
 
-	if err := conf.Local.validate(); err != nil {
-		outErr = multierr.Append(outErr, err)
-	}
+func (lc *LocalSourceConf) validate() error { _ = "STUB: not implemented"; return nil }
 
-	if err := conf.Remote.validate(); err != nil {
-		outErr = multierr.Append(outErr, err)
-	}
+func (lc *LocalSourceConf) setDefaultsForUnsetFields() error { _ = "STUB: not implemented"; return nil }
 
-	if err := conf.validateCredentials(); err != nil {
-		outErr = multierr.Append(outErr, err)
-	}
-
-	return outErr
-}
-
-func (conf *Conf) validateCredentials() error {
-	if conf.Credentials != nil {
-		util.DeprecationReplacedWarning("storage.bundle.credentials section", "hub.credentials")
-		return errors.New("storage.bundle.credentials section is no longer supported")
-	}
-
-	hubConf, err := hub.GetConf()
-	if err != nil {
-		return fmt.Errorf("failed to read Cerbos Hub configuration: %w", err)
-	}
-
-	conf.Credentials = &hubConf.Credentials
-	return conf.Credentials.Validate()
-}
-
-func (lc *LocalSourceConf) validate() error {
-	if lc == nil {
-		return nil
-	}
-
-	stat, err := os.Stat(lc.BundlePath)
-	if err != nil {
-		return fmt.Errorf("failed to stat localSource.bundlePath %q: %w", lc.BundlePath, err)
-	}
-
-	if stat.IsDir() || stat.Size() == 0 {
-		return fmt.Errorf("localSource.bundlePath %q is empty or a directory", lc.BundlePath)
-	}
-
-	return nil
-}
-
-func (lc *LocalSourceConf) setDefaultsForUnsetFields() error {
-	if lc == nil {
-		return errors.New("configuration is undefined")
-	}
-
-	if lc.TempDir == "" {
-		dir, err := os.MkdirTemp("", "cerbos-hub-*")
-		if err != nil {
-			return fmt.Errorf("failed to create temporary directory: %w", err)
-		}
-		lc.TempDir = dir
-	}
-
-	return nil
-}
-
-func (rc *RemoteSourceConf) validate() error {
-	if rc == nil {
-		return nil
-	}
-
-	return rc.setDefaultsForUnsetFields()
-}
+func (rc *RemoteSourceConf) validate() error { _ = "STUB: not implemented"; return nil }
 
 func (rc *RemoteSourceConf) setDefaultsForUnsetFields() error {
-	if rc.BundleLabel == "" {
-		rc.BundleLabel = hub.GetEnv(hub.BundleLabelKey)
-	}
-
-	if rc.DeploymentID == "" {
-		rc.DeploymentID = hub.GetEnv(hub.DeploymentIDKey)
-	}
-
-	if rc.PlaygroundID == "" {
-		rc.PlaygroundID = hub.GetEnv(hub.PlaygroundIDKey)
-	}
-
-	if rc.BundleLabel == "" && rc.DeploymentID == "" && rc.PlaygroundID == "" {
-		return errors.New("bundleLabel, deploymentID or playgroundID must be specified")
-	}
-
-	if (rc.BundleLabel != "" && (rc.DeploymentID != "" || rc.PlaygroundID != "")) ||
-		(rc.DeploymentID != "" && (rc.BundleLabel != "" || rc.PlaygroundID != "")) ||
-		(rc.PlaygroundID != "" && (rc.BundleLabel != "" || rc.DeploymentID != "")) {
-		return errors.New("only one of the bundleLabel, deploymentID or playgroundID must be specified")
-	}
-
-	if rc.TempDir == "" {
-		dir, err := os.MkdirTemp("", "cerbos-hub-*")
-		if err != nil {
-			return fmt.Errorf("failed to create temporary directory: %w", err)
-		}
-		rc.TempDir = dir
-	}
-
-	if rc.CacheDir == "" {
-		cacheDir, err := os.UserCacheDir()
-		if err != nil {
-			return fmt.Errorf("failed to determine cache directory: %w", err)
-		}
-
-		dir := filepath.Join(cacheDir, "cerbos-hub")
-		//nolint:mnd
-		if err := os.MkdirAll(dir, 0o764); err != nil {
-			return fmt.Errorf("failed to create cache dir %q: %w", dir, err)
-		}
-
-		rc.CacheDir = dir
-	}
-
-	if rc.Connection != nil {
-		util.DeprecationReplacedWarning("storage.bundle.remote.connection section", "hub.connection")
-		return errors.New("storage.bundle.remote.connection configuration is no longer supported")
-	}
-
-	hubConf, err := hub.GetConf()
-	if err != nil {
-		return fmt.Errorf("failed to read Cerbos Hub configuration: %w", err)
-	}
-
-	rc.Connection = &hubConf.Connection
-	return rc.Connection.Validate()
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func GetConf() (*Conf, error) {
-	return GetConfFromWrapper(config.Global())
-}
+//nolint:mnd
+
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }
 
 func GetConfFromWrapper(confW *config.Wrapper) (*Conf, error) {
-	conf := &Conf{}
-	err := confW.GetSection(conf)
-
-	return conf, err
+	_ = "STUB: not implemented"
+	return nil, nil
 }

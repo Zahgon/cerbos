@@ -9,22 +9,22 @@ import (
 	"context"
 )
 
-func KindKey(string) string   { return "" }
-func DriverKey(string) string { return "" }
+func KindKey(string) string   { _ = "STUB: not implemented"; return "" }
+func DriverKey(string) string { _ = "STUB: not implemented"; return "" }
 
-func CompileDuration() any { return nil }
+func CompileDuration() any { _ = "STUB: not implemented"; return *new(any) }
 
-func IndexCRUDCount() any             { return nil }
-func IndexEntryCount() any            { return nil }
-func StorePollCount() any             { return nil }
-func StoreSyncErrorCount() any        { return nil }
-func StoreLastSuccessfulRefresh() any { return nil }
+func IndexCRUDCount() any             { _ = "STUB: not implemented"; return *new(any) }
+func IndexEntryCount() any            { _ = "STUB: not implemented"; return *new(any) }
+func StorePollCount() any             { _ = "STUB: not implemented"; return *new(any) }
+func StoreSyncErrorCount() any        { _ = "STUB: not implemented"; return *new(any) }
+func StoreLastSuccessfulRefresh() any { _ = "STUB: not implemented"; return *new(any) }
 
-func Record(context.Context, ...any) {}
+func Record(context.Context, ...any) { _ = "STUB: not implemented"; return }
 func RecordDuration2[T any](any, func() (T, error)) (T, error) {
-	var zero T
-	return zero, nil
+	_ = "STUB: not implemented"
+	return *new(T), nil
 }
 
-func Inc(context.Context, ...any) {}
-func Add(context.Context, ...any) {}
+func Inc(context.Context, ...any) { _ = "STUB: not implemented"; return }
+func Add(context.Context, ...any) { _ = "STUB: not implemented"; return }

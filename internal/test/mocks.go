@@ -13,10 +13,10 @@ import (
 
 // AnyContext is a function that can be passed to mock.MatchedBy to match any context.
 func AnyContext(context.Context) bool {
-	return true
+	_ = "STUB: not implemented"
+
+	// AnyPolicy is a function that can be passed to mock.MatchedBy to match any policy.
+	return false
 }
 
-// AnyPolicy is a function that can be passed to mock.MatchedBy to match any policy.
-func AnyPolicy(*policyv1.Policy) bool {
-	return true
-}
+func AnyPolicy(*policyv1.Policy) bool { _ = "STUB: not implemented"; return false }

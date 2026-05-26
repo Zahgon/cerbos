@@ -30,17 +30,6 @@ type Cmd struct { //betteralign:ignore
 	Store       store.Cmd `cmd:"" name:"store"`
 }
 
-func (c *Cmd) BeforeReset(ctx *kong.Context) error {
-	flags := ctx.Flags()
-	for _, f := range flags {
-		if _, exists := hideGlobals[f.Name]; exists {
-			f.Hidden = true
-		}
-	}
+func (c *Cmd) BeforeReset(ctx *kong.Context) error { _ = "STUB: not implemented"; return nil }
 
-	return nil
-}
-
-func (*Cmd) Help() string {
-	return hubCmdHelp
-}
+func (*Cmd) Help() string { _ = "STUB: not implemented"; return "" }

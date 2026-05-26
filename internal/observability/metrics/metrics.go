@@ -7,13 +7,10 @@ package metrics
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"sync"
 	"time"
 
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"go.opentelemetry.io/contrib/instrumentation/runtime"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
@@ -193,66 +190,36 @@ var (
 	})
 )
 
-func NewHandler() (http.Handler, error) {
-	if err := runtime.Start(runtime.WithMinimumReadMemStatsInterval(time.Second)); err != nil {
-		return nil, fmt.Errorf("failed to start runtime metrics collector: %w", err)
-	}
+func NewHandler() (http.Handler, error) { _ = "STUB: not implemented"; return *new(http.Handler), nil }
 
-	return promhttp.Handler(), nil
-}
+func once[T any](fn func() (T, error)) func() T { _ = "STUB: not implemented"; return nil }
 
-func once[T any](fn func() (T, error)) func() T {
-	return sync.OnceValue(func() T {
-		return must(fn())
-	})
-}
-
-func must[T any](retVal T, err error) T {
-	if err != nil {
-		panic(fmt.Errorf("failed to create measure: %w", err))
-	}
-
-	return retVal
-}
+func must[T any](retVal T, err error) T { _ = "STUB: not implemented"; return *new(T) }
 
 func RecordDuration2[T any](hist metric.Float64Histogram, fn func() (T, error)) (T, error) {
-	start := time.Now()
-	res, err := fn()
-	totalTime := TotalTimeMS(start)
-	if err != nil {
-		hist.Record(context.Background(), totalTime, metric.WithAttributes(StatusKey("failure")))
-	} else {
-		hist.Record(context.Background(), totalTime, metric.WithAttributes(StatusKey("success")))
-	}
-	return res, err
+	_ = "STUB: not implemented"
+	return *new(T), nil
 }
 
 func RecordDuration3[A, B any](hist metric.Float64Histogram, fn func() (A, B, error)) (A, B, error) {
-	start := time.Now()
-	a, b, err := fn()
-	totalTime := TotalTimeMS(start)
-	if err != nil {
-		hist.Record(context.Background(), totalTime, metric.WithAttributes(StatusKey("failure")))
-	} else {
-		hist.Record(context.Background(), totalTime, metric.WithAttributes(StatusKey("success")))
-	}
-	return a, b, err
+	_ = "STUB: not implemented"
+	return *new(A), *new(B), nil
 }
 
-func TotalTimeMS(startTime time.Time) float64 {
-	return float64(time.Since(startTime)) / float64(time.Millisecond)
-}
+func TotalTimeMS(startTime time.Time) float64 { _ = "STUB: not implemented"; return 0 }
 
 type counter interface {
 	Add(context.Context, int64, ...metric.AddOption)
 }
 
 func Inc[T counter](ctx context.Context, m T, attr ...attribute.KeyValue) {
-	m.Add(ctx, 1, metric.WithAttributes(attr...))
+	_ = "STUB: not implemented"
+	return
 }
 
 func Add[T counter](ctx context.Context, m T, v int64, attr ...attribute.KeyValue) {
-	m.Add(ctx, v, metric.WithAttributes(attr...))
+	_ = "STUB: not implemented"
+	return
 }
 
 type gauge interface {
@@ -260,5 +227,6 @@ type gauge interface {
 }
 
 func Record[T gauge](ctx context.Context, m T, v int64, attr ...attribute.KeyValue) {
-	m.Record(ctx, v, metric.WithAttributes(attr...))
+	_ = "STUB: not implemented"
+	return
 }

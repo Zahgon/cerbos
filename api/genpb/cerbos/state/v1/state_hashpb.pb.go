@@ -11,9 +11,6 @@ import (
 // HashPB computes a hash of the message using the given hash function
 // The ignore set must contain fully-qualified field names (pkg.msg.field) that should be ignored from the hash
 func (m *TelemetryState) HashPB(hasher hash.Hash, ignore map[string]struct{}) {
-	if m != nil {
-		b := hashpb_bufPool.Get().(*[10]byte)
-		cerbos_state_v1_TelemetryState_hashpb_sum(m, hasher, ignore, b)
-		hashpb_bufPool.Put(b)
-	}
+	_ = "STUB: not implemented"
+	return
 }

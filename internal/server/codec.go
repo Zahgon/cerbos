@@ -4,15 +4,12 @@
 package server
 
 import (
-	"fmt"
-
 	vtgrpc "github.com/planetscale/vtprotobuf/codec/grpc"
 	"google.golang.org/grpc/encoding"
 
 	// Import the default grpc encoding to ensure that it gets replaced by this codec.
 	"google.golang.org/grpc/encoding/gzip"
 	_ "google.golang.org/grpc/encoding/proto"
-	"google.golang.org/protobuf/proto"
 )
 
 const name = "proto"
@@ -29,30 +26,8 @@ type Codec struct {
 	vtcodec vtgrpc.Codec
 }
 
-func (c Codec) Name() string {
-	return name
-}
+func (c Codec) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (c Codec) Marshal(v any) ([]byte, error) {
-	if b, err := c.vtcodec.Marshal(v); err == nil {
-		return b, nil
-	}
+func (c Codec) Marshal(v any) ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	vv, ok := v.(proto.Message)
-	if !ok {
-		return nil, fmt.Errorf("failed to marshal, message is %T, want proto.Message", v)
-	}
-	return proto.Marshal(vv)
-}
-
-func (c Codec) Unmarshal(data []byte, v any) error {
-	if err := c.vtcodec.Unmarshal(data, v); err == nil {
-		return nil
-	}
-
-	vv, ok := v.(proto.Message)
-	if !ok {
-		return fmt.Errorf("failed to unmarshal, message is %T, want proto.Message", v)
-	}
-	return proto.Unmarshal(data, vv)
-}
+func (c Codec) Unmarshal(data []byte, v any) error { _ = "STUB: not implemented"; return nil }

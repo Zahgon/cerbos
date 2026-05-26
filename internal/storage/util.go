@@ -20,22 +20,6 @@ func BatchLoadPolicy(
 	processPolicyFn func(*policy.Wrapper) error,
 	ids ...string,
 ) error {
-	for idx := range ids {
-		if idx%maxPoliciesInBatch == 0 {
-			idxEnd := min(idx+maxPoliciesInBatch, len(ids))
-			var err error
-			policies, err := loadPolicyFn(ctx, ids[idx:idxEnd]...)
-			if err != nil {
-				return err
-			}
-
-			for _, p := range policies {
-				if err := processPolicyFn(p); err != nil {
-					return err
-				}
-			}
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }

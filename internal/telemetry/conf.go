@@ -20,18 +20,8 @@ type Conf struct {
 	ReportInterval time.Duration `yaml:"reportInterval" conf:",example=1h"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.ReportInterval = defaultReportInterval
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (c *Conf) Validate() (errs error) {
-	if c.ReportInterval == 0 {
-		c.ReportInterval = defaultReportInterval
-	}
-
-	return nil
-}
+func (c *Conf) Validate() (errs error) { _ = "STUB: not implemented"; return nil }

@@ -4,55 +4,26 @@
 package policy
 
 import (
-	"errors"
-	"fmt"
 	"io"
 	"io/fs"
 
 	policyv1 "github.com/cerbos/cerbos/api/genpb/cerbos/policy/v1"
 	sourcev1 "github.com/cerbos/cerbos/api/genpb/cerbos/source/v1"
-	"github.com/cerbos/cerbos/internal/namer"
-	"github.com/cerbos/cerbos/internal/policy"
 )
 
 type ReadError struct {
 	Errors []*sourcev1.Error
 }
 
-func (ReadError) Error() string {
-	return "failed to parse"
-}
+func (ReadError) Error() string { _ = "STUB: not implemented"; return "" }
 
-func Wrap(p *policyv1.Policy) *sourcev1.PolicyWrapper {
-	return policy.Wrap(p).ToProto()
-}
+func Wrap(p *policyv1.Policy) *sourcev1.PolicyWrapper { _ = "STUB: not implemented"; return nil }
 
 func ReadFromFile(fsys fs.FS, path string) (*policyv1.Policy, error) {
-	return policy.ReadPolicyFromFile(fsys, path)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func Read(src io.Reader) (*policyv1.Policy, error) {
-	p, sc, err := policy.ReadPolicyWithSourceContextFromReader(src)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read policy: %w", err)
-	}
+func Read(src io.Reader) (*policyv1.Policy, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	if errs := sc.GetErrors(); len(errs) > 0 {
-		return nil, ReadError{Errors: errs}
-	}
-
-	if err := policy.Validate(p, sc); err != nil {
-		var verr policy.ValidationError
-		if errors.As(err, &verr) {
-			return nil, ReadError{Errors: []*sourcev1.Error{verr.Err}}
-		}
-
-		return nil, fmt.Errorf("failed to validate policy: %w", err)
-	}
-
-	return p, nil
-}
-
-func IDFromPolicyKey(key string) uint64 {
-	return namer.GenModuleIDFromFQN(namer.FQNFromPolicyKey(key)).RawValue()
-}
+func IDFromPolicyKey(key string) uint64 { _ = "STUB: not implemented"; return 0 }

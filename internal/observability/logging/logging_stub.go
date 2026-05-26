@@ -9,34 +9,26 @@ import "context"
 
 type Logger struct{}
 
-func NewLogger(string) *Logger {
-	return &Logger{}
-}
+func NewLogger(string) *Logger { _ = "STUB: not implemented"; return nil }
 
 func FromContext(context.Context) *Logger {
-	return &Logger{}
-}
+	_ = "STUB: not implemented"
 
-// Add any missing required stub methods here
-func (*Logger) Debug(...any)          {}
-func (*Logger) Debugw(string, ...any) {}
-func (*Logger) Debugf(string, ...any) {}
-func (*Logger) Warn(string, ...any)   {}
-func (*Logger) Warnw(string, ...any)  {}
-func (*Logger) Info(...any)           {}
-
-func String(string, string) any {
+	// Add any missing required stub methods here
 	return nil
 }
 
-func Strings(string, []string) any {
-	return nil
-}
+func (*Logger) Debug(...any)          { _ = "STUB: not implemented"; return }
+func (*Logger) Debugw(string, ...any) { _ = "STUB: not implemented"; return }
+func (*Logger) Debugf(string, ...any) { _ = "STUB: not implemented"; return }
+func (*Logger) Warn(string, ...any)   { _ = "STUB: not implemented"; return }
+func (*Logger) Warnw(string, ...any)  { _ = "STUB: not implemented"; return }
+func (*Logger) Info(...any)           { _ = "STUB: not implemented"; return }
 
-func Error(error) any {
-	return nil
-}
+func String(string, string) any { _ = "STUB: not implemented"; return *new(any) }
 
-func Uint32(string, uint32) any {
-	return nil
-}
+func Strings(string, []string) any { _ = "STUB: not implemented"; return *new(any) }
+
+func Error(error) any { _ = "STUB: not implemented"; return *new(any) }
+
+func Uint32(string, uint32) any { _ = "STUB: not implemented"; return *new(any) }

@@ -4,21 +4,9 @@
 package auth
 
 import (
-	"context"
 	"crypto/tls"
-	"crypto/x509"
-	"errors"
-	"fmt"
-	"os"
-	"os/signal"
-	"syscall"
 
 	"github.com/alecthomas/kong"
-	"go.uber.org/zap"
-
-	"github.com/cerbos/cerbos/internal/observability/logging"
-	"github.com/cerbos/cerbos/internal/util"
-	"github.com/cerbos/cloud-api/base"
 )
 
 type Cmd struct {
@@ -32,70 +20,8 @@ type Cmd struct {
 	TLSInsecure   bool   `name:"tls-insecure" hidden:"" help:"Skip validating server certificate" env:"CERBOS_HUB_TLS_INSECURE"`
 }
 
-func (c *Cmd) Run(k *kong.Kong, cmd *Cmd) error {
-	tlsConf, err := c.buildTLSConf()
-	if err != nil {
-		return err
-	}
+func (c *Cmd) Run(k *kong.Kong, cmd *Cmd) error { _ = "STUB: not implemented"; return nil }
 
-	ctx, stopFunc := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stopFunc()
+//nolint:errcheck
 
-	logging.InitLogging(ctx, c.LogLevel, nil)
-	defer zap.L().Sync() //nolint:errcheck
-
-	log := zap.L().Named("auth")
-
-	if c.ClientID != "" && c.ClientSecret != "" {
-		log.Debug("Logging in using client credentials")
-		if err := base.ClientLogin(ctx, c.APIEndpoint, tlsConf, c.ClientID, c.ClientSecret); err != nil {
-			log.Error("Failed to log in using client credentials", zap.Error(err))
-			return err
-		}
-
-		log.Info("Successfully authenticated using client credentials")
-		return nil
-	}
-
-	log.Debug("Initiating device auth flow")
-	if err := base.DeviceLogin(ctx, c.APIEndpoint, tlsConf); err != nil {
-		log.Error("Failed to authenticate", zap.Error(err))
-		return err
-	}
-
-	log.Info("Device successfully authenticated")
-	return nil
-}
-
-func (c *Cmd) buildTLSConf() (*tls.Config, error) {
-	tlsConf := util.DefaultTLSConfig()
-
-	if c.TLSInsecure {
-		tlsConf.InsecureSkipVerify = true
-	}
-
-	if c.TLSCACert != "" {
-		bs, err := os.ReadFile(c.TLSCACert)
-		if err != nil {
-			return nil, fmt.Errorf("failed to load CA certificate from %s: %w", c.TLSCACert, err)
-		}
-
-		certPool := x509.NewCertPool()
-		ok := certPool.AppendCertsFromPEM(bs)
-		if !ok {
-			return nil, errors.New("failed to append CA certificates to the pool")
-		}
-
-		tlsConf.RootCAs = certPool
-	}
-
-	if c.TLSClientCert != "" && c.TLSClientKey != "" {
-		certificate, err := tls.LoadX509KeyPair(c.TLSClientCert, c.TLSClientKey)
-		if err != nil {
-			return nil, fmt.Errorf("failed to load client certificate and key from [%s, %s]: %w", c.TLSClientCert, c.TLSClientKey, err)
-		}
-		tlsConf.Certificates = []tls.Certificate{certificate}
-	}
-
-	return tlsConf, nil
-}
+func (c *Cmd) buildTLSConf() (*tls.Config, error) { _ = "STUB: not implemented"; return nil, nil }

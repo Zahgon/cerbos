@@ -6,13 +6,11 @@
 package internal
 
 import (
-	"context"
 	"testing"
 	"time"
 
 	"github.com/cerbos/cerbos-sdk-go/testutil"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/internal/flagset"
-	"github.com/stretchr/testify/require"
 )
 
 const (
@@ -22,34 +20,11 @@ const (
 )
 
 func StartTestServer(t *testing.T) *testutil.CerbosServerInstance {
-	t.Helper()
-	t.Setenv("CERBOS_TEST_DEBUG", "true")
-
-	conf := testutil.LaunchConf{
-		Cmd: []string{
-			"server",
-			"--set=server.adminAPI.enabled=true",
-			"--set=storage.driver=sqlite3",
-			"--set=storage.sqlite3.dsn=:mem:?_fk=true",
-		},
-	}
-
-	ctx, cancel := context.WithTimeout(t.Context(), readyTimeout)
-	t.Cleanup(cancel)
-
-	s, err := testutil.LaunchCerbosServer(ctx, conf)
-	require.NoError(t, err)
-
-	return s
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func CreateGlobalsFlagset(t *testing.T, address string) *flagset.Globals {
-	t.Helper()
-
-	return &flagset.Globals{
-		Server:    address,
-		Username:  adminUsername,
-		Password:  adminPassword,
-		Plaintext: true,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -26,170 +26,51 @@ type bitmapIndex struct {
 	bindings           []*Binding
 }
 
-func newBitmapIndex() *bitmapIndex {
-	return &bitmapIndex{
-		version:            newDimension[string](),
-		scope:              newDimension[string](),
-		role:               newGlobDimension(),
-		action:             newGlobDimension(),
-		resource:           newGlobDimension(),
-		policyKind:         newDimension[policyv1.Kind](),
-		principal:          newDimension[string](),
-		universe:           NewBitmap(),
-		allowActionsBitmap: NewBitmap(),
-		fqnBindings:        newFqnDimension(),
-		coresBySum:         make(map[uint64]*FunctionalCore),
-	}
-}
+func newBitmapIndex() *bitmapIndex { _ = "STUB: not implemented"; return nil }
 
 // allocID returns a uint32 to use as a binding's bit position across all bitmaps.
 // It reuses IDs freed by freeID so that repeated add/remove cycles don't grow the
 // bindings slice or make the bitmaps increasingly sparse.
-func (idx *bitmapIndex) allocID() uint32 {
-	if len(idx.freeIDs) > 0 {
-		id := idx.freeIDs[len(idx.freeIDs)-1]
-		idx.freeIDs = idx.freeIDs[:len(idx.freeIDs)-1]
-		return id
-	}
-	return uint32(len(idx.bindings))
-}
+func (idx *bitmapIndex) allocID() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (idx *bitmapIndex) freeID(id uint32) {
-	idx.bindings[id] = nil
-	idx.freeIDs = append(idx.freeIDs, id)
-}
+func (idx *bitmapIndex) freeID(id uint32) { _ = "STUB: not implemented"; return }
 
-func (idx *bitmapIndex) addBinding(b *Binding) {
-	id := idx.allocID()
-	b.ID = id
-	if int(id) < len(idx.bindings) {
-		idx.bindings[id] = b
-	} else {
-		idx.bindings = append(idx.bindings, b)
-	}
+func (idx *bitmapIndex) addBinding(b *Binding) { _ = "STUB: not implemented"; return }
 
-	idx.universe.Add(id)
-
-	// Scope "" is a valid literal (root scope), always indexed. Other dimensions
-	// skip "" to avoid leaking empties from policies that don't participate in
-	// them (e.g. principal-policy noop rows have no role/resource).
-	idx.scope.Add(b.Scope, id)
-	if b.Version != "" {
-		idx.version.Add(b.Version, id)
-	}
-	if b.Role != "" {
-		idx.role.Set(b.Role, id)
-	}
-	if b.Resource != "" {
-		idx.resource.Set(b.Resource, id)
-	}
-
-	if b.AllowActions != nil {
-		idx.allowActionsBitmap.Add(id)
-	} else if b.Action != "" {
-		idx.action.Set(b.Action, id)
-	}
-
-	idx.policyKind.Add(b.Core.PolicyKind, id)
-
-	if b.Principal != "" {
-		idx.principal.Add(b.Principal, id)
-	}
-
-	idx.fqnBindings.Add(b.OriginFqn, id)
-}
+// Scope "" is a valid literal (root scope), always indexed. Other dimensions
+// skip "" to avoid leaking empties from policies that don't participate in
+// them (e.g. principal-policy noop rows have no role/resource).
 
 // removeBinding removes the binding from the slice and all dimension bitmaps,
 // and returns the ID to the free list.
 // It does NOT touch fqnBindings — that is managed by DeletePolicy, which needs
 // to inspect fqnBindings across origins before deciding whether to remove the binding.
-func (idx *bitmapIndex) removeBinding(b *Binding) {
-	id := b.ID
+func (idx *bitmapIndex) removeBinding(b *Binding) { _ = "STUB: not implemented"; return }
 
-	idx.universe.Remove(id)
-	idx.version.Remove(b.Version, id)
-	idx.scope.Remove(b.Scope, id)
-
-	idx.role.Remove(b.Role, id)
-	idx.resource.Remove(b.Resource, id)
-
-	if b.AllowActions != nil {
-		idx.allowActionsBitmap.Remove(id)
-	} else if b.Action != "" {
-		idx.action.Remove(b.Action, id)
-	}
-
-	idx.policyKind.Remove(b.Core.PolicyKind, id)
-	idx.principal.Remove(b.Principal, id)
-
-	idx.freeID(id)
-}
-
-func (idx *bitmapIndex) getBinding(id uint32) *Binding {
-	return idx.bindings[id]
-}
+func (idx *bitmapIndex) getBinding(id uint32) *Binding { _ = "STUB: not implemented"; return nil }
 
 // dimension is a thin wrapper around map[T]*Bitmap for exact-match dimensions.
 type dimension[T comparable] struct {
 	m map[T]*Bitmap
 }
 
-func newDimension[T comparable]() dimension[T] {
-	return dimension[T]{m: make(map[T]*Bitmap)}
-}
+func newDimension[T comparable]() dimension[T] { _ = "STUB: not implemented"; return nil }
 
-func (d dimension[T]) Add(key T, id uint32) {
-	bm, ok := d.m[key]
-	if !ok {
-		bm = NewBitmap()
-		d.m[key] = bm
-	}
-	bm.Add(id)
-}
+func (d dimension[T]) Add(key T, id uint32) { _ = "STUB: not implemented"; return }
 
-func (d dimension[T]) Remove(key T, id uint32) {
-	if bm, ok := d.m[key]; ok {
-		bm.Remove(id)
-		if bm.IsEmpty() {
-			delete(d.m, key)
-		}
-	}
-}
+func (d dimension[T]) Remove(key T, id uint32) { _ = "STUB: not implemented"; return }
 
-func (d dimension[T]) Get(key T) (*Bitmap, bool) {
-	bm, ok := d.m[key]
-	return bm, ok
-}
+func (d dimension[T]) Get(key T) (*Bitmap, bool) { _ = "STUB: not implemented"; return nil, false }
 
-func (d dimension[T]) Delete(key T) {
-	delete(d.m, key)
-}
+func (d dimension[T]) Delete(key T) { _ = "STUB: not implemented"; return }
 
-func (d dimension[T]) Keys() []T {
-	keys := make([]T, 0, len(d.m))
-	for k := range d.m {
-		keys = append(keys, k)
-	}
-	return keys
-}
+func (d dimension[T]) Keys() []T { _ = "STUB: not implemented"; return nil }
 
 // Query returns OR(d[k] for k in keys).
 // The returned bitmap may alias a stored bitmap; callers must not mutate it.
 func (d dimension[T]) Query(arena *bitmapArena, keys []T) *Bitmap {
-	parts := make([]*Bitmap, 0, len(keys))
-	for _, k := range keys {
-		if bm, ok := d.m[k]; ok {
-			parts = append(parts, bm)
-		}
-	}
-	switch len(parts) {
-	case 0:
-		return emptyBitmap
-	case 1:
-		return parts[0]
-	default:
-		return arena.orInto(parts)
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // fqnDimension maps policy FQNs to the binding IDs that originated from them.
@@ -199,23 +80,13 @@ type fqnDimension struct {
 
 const fqnSliceInitCap = 4
 
-func newFqnDimension() fqnDimension {
-	return fqnDimension{m: make(map[string][]uint32)}
-}
+func newFqnDimension() fqnDimension { _ = "STUB: not implemented"; return *new(fqnDimension) }
 
-func (d fqnDimension) Add(fqn string, id uint32) {
-	ids, ok := d.m[fqn]
-	if !ok {
-		ids = make([]uint32, 0, fqnSliceInitCap)
-	}
-	d.m[fqn] = append(ids, id)
-}
+func (d fqnDimension) Add(fqn string, id uint32) { _ = "STUB: not implemented"; return }
 
 func (d fqnDimension) Get(fqn string) ([]uint32, bool) {
-	ids, ok := d.m[fqn]
-	return ids, ok
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
-func (d fqnDimension) Delete(fqn string) {
-	delete(d.m, fqn)
-}
+func (d fqnDimension) Delete(fqn string) { _ = "STUB: not implemented"; return }

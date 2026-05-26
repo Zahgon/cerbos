@@ -7,10 +7,6 @@ package structtag
 
 import (
 	"errors"
-	"fmt"
-	"strconv"
-
-	"github.com/go-andiamo/splitter"
 )
 
 var (
@@ -30,95 +26,6 @@ type Tag struct {
 	Options []string
 }
 
-func Parse(tag string) (*Tags, error) {
-	var tags []*Tag
+func Parse(tag string) (*Tags, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	hasTag := tag != ""
-	for tag != "" {
-		i := 0
-		for i < len(tag) && tag[i] == ' ' {
-			i++
-		}
-		tag = tag[i:]
-		if tag == "" {
-			break
-		}
-
-		i = 0
-		for i < len(tag) && tag[i] > ' ' && tag[i] != ':' && tag[i] != '"' && tag[i] != 0x7f {
-			i++
-		}
-
-		if i == 0 {
-			return nil, errTagKeySyntax
-		}
-		if i+1 >= len(tag) || tag[i] != ':' {
-			return nil, errTagSyntax
-		}
-		if tag[i+1] != '"' {
-			return nil, errTagValueSyntax
-		}
-
-		key := tag[:i]
-		tag = tag[i+1:]
-
-		i = 1
-		for i < len(tag) && tag[i] != '"' {
-			if tag[i] == '\\' {
-				i++
-			}
-			i++
-		}
-		if i >= len(tag) {
-			return nil, errTagValueSyntax
-		}
-
-		qvalue := tag[:i+1]
-		tag = tag[i+1:]
-
-		value, err := strconv.Unquote(qvalue)
-		if err != nil {
-			return nil, errTagValueSyntax
-		}
-
-		split, err := splitter.NewSplitter(',', splitter.SquareBrackets)
-		if err != nil {
-			return nil, fmt.Errorf("failed to create a new splitter: %w", err)
-		}
-
-		res, err := split.Split(value)
-		if err != nil {
-			return nil, fmt.Errorf("failed to split value %s: %w", value, err)
-		}
-
-		name := res[0]
-		options := res[1:]
-		if len(options) == 0 {
-			options = nil
-		}
-
-		tags = append(tags, &Tag{
-			Key:     key,
-			Name:    name,
-			Options: options,
-		})
-	}
-
-	if hasTag && len(tags) == 0 {
-		return nil, nil
-	}
-
-	return &Tags{
-		tags: tags,
-	}, nil
-}
-
-func (t *Tags) Get(key string) (*Tag, error) {
-	for _, tag := range t.tags {
-		if tag.Key == key {
-			return tag, nil
-		}
-	}
-
-	return nil, errTagNotExist
-}
+func (t *Tags) Get(key string) (*Tag, error) { _ = "STUB: not implemented"; return nil, nil }

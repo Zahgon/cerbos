@@ -6,12 +6,9 @@
 package overlay
 
 import (
-	"errors"
 	"time"
 
-	"github.com/cerbos/cerbos/internal/config"
 	"github.com/cerbos/cerbos/internal/storage"
-	"go.uber.org/multierr"
 )
 
 const (
@@ -33,44 +30,10 @@ type Conf struct {
 	FallbackErrorWindow time.Duration `yaml:"fallbackErrorWindow" conf:",example=5m"`
 }
 
-func (conf *Conf) Key() string {
-	return confKey
-}
+func (conf *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (conf *Conf) Validate() error {
-	var errs []error
+func (conf *Conf) Validate() error { _ = "STUB: not implemented"; return nil }
 
-	if conf.BaseDriver == "" {
-		errs = append(errs, errors.New("baseDriver is required"))
-	}
+func (conf *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-	if conf.FallbackDriver == "" {
-		errs = append(errs, errors.New("fallbackDriver is required"))
-	}
-
-	if conf.BaseDriver != "" && conf.BaseDriver == conf.FallbackDriver {
-		errs = append(errs, errors.New("baseDriver and fallbackDriver cannot be the same"))
-	}
-
-	if len(errs) > 0 {
-		return multierr.Combine(errs...)
-	}
-
-	return nil
-}
-
-func (conf *Conf) SetDefaults() {
-	if conf.FallbackErrorThreshold == 0 {
-		conf.FallbackErrorThreshold = defaultFallbackErrorThreshold
-	}
-	if conf.FallbackErrorWindow == 0 {
-		conf.FallbackErrorWindow = defaultFallbackErrorWindow
-	}
-}
-
-func GetConf() (*Conf, error) {
-	conf := &Conf{}
-	err := config.GetSection(conf)
-
-	return conf, err
-}
+func GetConf() (*Conf, error) { _ = "STUB: not implemented"; return nil, nil }

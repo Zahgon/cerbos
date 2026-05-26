@@ -8,25 +8,17 @@ package hub
 import (
 	"context"
 	"io"
-	"net/http"
-	"time"
-
-	"go.opentelemetry.io/otel/metric"
 
 	auditv1 "github.com/cerbos/cerbos/api/genpb/cerbos/audit/v1"
 	responsev1 "github.com/cerbos/cerbos/api/genpb/cerbos/response/v1"
 	runtimev1 "github.com/cerbos/cerbos/api/genpb/cerbos/runtime/v1"
 	"github.com/cerbos/cerbos/internal/namer"
-	"github.com/cerbos/cerbos/internal/observability/metrics"
-	"github.com/cerbos/cerbos/internal/observability/tracing"
 	"github.com/cerbos/cerbos/internal/ruletable"
 	"github.com/cerbos/cerbos/internal/storage"
 )
 
 // instrument wraps the given source to produce metrics.
-func instrument(name string, source Source) Source {
-	return instrumentedSource{name: name, source: source}
-}
+func instrument(name string, source Source) Source { _ = "STUB: not implemented"; return *new(Source) }
 
 // instrumentedSource is a source that measures the time taken by each operation.
 type instrumentedSource struct {
@@ -34,122 +26,74 @@ type instrumentedSource struct {
 	name   string
 }
 
-func (instrumentedSource) Driver() string {
-	return DriverName
-}
+func (instrumentedSource) Driver() string { _ = "STUB: not implemented"; return "" }
 
 func (is instrumentedSource) GetRuleTable() (*ruletable.RuleTable, error) {
-	return is.source.GetRuleTable()
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) InspectPolicies(ctx context.Context, params storage.ListPolicyIDsParams) (map[string]*responsev1.InspectPoliciesResponse_Result, error) {
-	return measureBinaryOp(ctx, is.name, "InspectPolicies", func(ctx context.Context) (map[string]*responsev1.InspectPoliciesResponse_Result, error) {
-		return is.source.InspectPolicies(ctx, params)
-	})
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) ListPolicyIDs(ctx context.Context, params storage.ListPolicyIDsParams) ([]string, error) {
-	return measureBinaryOp(ctx, is.name, "ListPolicyIDs", func(ctx context.Context) ([]string, error) {
-		return is.source.ListPolicyIDs(ctx, params)
-	})
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) ListSchemaIDs(ctx context.Context) ([]string, error) {
-	return measureBinaryOp(ctx, is.name, "ListSchemaIDs", func(ctx context.Context) ([]string, error) {
-		return is.source.ListSchemaIDs(ctx)
-	})
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) LoadSchema(ctx context.Context, id string) (io.ReadCloser, error) {
-	return measureBinaryOp(ctx, is.name, "LoadSchema", func(ctx context.Context) (io.ReadCloser, error) {
-		return is.source.LoadSchema(ctx, id)
-	})
+	_ = "STUB: not implemented"
+	return *new(io.ReadCloser), nil
 }
 
 func (is instrumentedSource) GetFirstMatch(ctx context.Context, candidates []namer.ModuleID) (*runtimev1.RunnablePolicySet, error) {
-	return measureBinaryOp(ctx, is.name, "GetFirstMatch", func(ctx context.Context) (*runtimev1.RunnablePolicySet, error) {
-		return is.source.GetFirstMatch(ctx, candidates)
-	})
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) GetAll(ctx context.Context) ([]*runtimev1.RunnablePolicySet, error) {
-	return measureBinaryOp(ctx, is.name, "GetAll", func(ctx context.Context) ([]*runtimev1.RunnablePolicySet, error) {
-		return is.source.GetAll(ctx)
-	})
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) GetAllMatching(ctx context.Context, modIDs []namer.ModuleID) ([]*runtimev1.RunnablePolicySet, error) {
-	return measureBinaryOp(ctx, is.name, "GetAllMatching", func(ctx context.Context) ([]*runtimev1.RunnablePolicySet, error) {
-		return is.source.GetAllMatching(ctx, modIDs)
-	})
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (is instrumentedSource) Reload(ctx context.Context) error {
-	if r, ok := is.source.(storage.Reloadable); ok {
-		return r.Reload(ctx)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (is instrumentedSource) RepoStats(ctx context.Context) storage.RepoStats {
-	if r, ok := is.source.(storage.Instrumented); ok {
-		return r.RepoStats(ctx)
-	}
-
-	return storage.RepoStats{}
+	_ = "STUB: not implemented"
+	return *new(storage.RepoStats)
 }
 
-func (is instrumentedSource) Source() *auditv1.PolicySource {
-	return is.source.Source()
-}
+func (is instrumentedSource) Source() *auditv1.PolicySource { _ = "STUB: not implemented"; return nil }
 
-func (is instrumentedSource) Subscribe(s storage.Subscriber) {
-	is.source.Subscribe(s)
-}
+func (is instrumentedSource) Subscribe(s storage.Subscriber) { _ = "STUB: not implemented"; return }
 
-func (is instrumentedSource) Unsubscribe(s storage.Subscriber) {
-	is.source.Unsubscribe(s)
-}
+func (is instrumentedSource) Unsubscribe(s storage.Subscriber) { _ = "STUB: not implemented"; return }
 
-func (is instrumentedSource) Close() error {
-	if c, ok := is.source.(io.Closer); ok {
-		return c.Close()
-	}
-	return nil
-}
+func (is instrumentedSource) Close() error { _ = "STUB: not implemented"; return nil }
 
-func (is instrumentedSource) SourceKind() string {
-	return is.source.SourceKind()
-}
+func (is instrumentedSource) SourceKind() string { _ = "STUB: not implemented"; return "" }
 
 func measureBinaryOp[T any](ctx context.Context, source, opName string, op func(context.Context) (T, error)) (T, error) {
-	startTime := time.Now()
-	result, err := withTrace(ctx, source, opName, op)
-	latencyMs := metrics.TotalTimeMS(startTime)
-
-	status := "success"
-	if err != nil {
-		status = "failure"
-	}
-
-	metrics.BundleStoreLatency().Record(context.Background(), latencyMs, metric.WithAttributes(
-		metrics.SourceKey(source),
-		metrics.OpKey(opName),
-		metrics.StatusKey(status),
-	))
-
-	return result, err
+	_ = "STUB: not implemented"
+	return *new(T), nil
 }
 
 func withTrace[T any](ctx context.Context, source, opName string, op func(context.Context) (T, error)) (T, error) {
-	newCtx, span := tracing.StartSpan(ctx, "bundle."+opName)
-	span.SetAttributes(tracing.BundleSource(source))
-
-	result, err := op(newCtx)
-	if err != nil {
-		tracing.MarkFailed(span, http.StatusInternalServerError, err)
-	}
-
-	span.End()
-	return result, err
+	_ = "STUB: not implemented"
+	return *new(T), nil
 }

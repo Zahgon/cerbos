@@ -5,4 +5,4 @@
 
 package util
 
-func logError(string, error) {}
+func logError(string, error) { _ = "STUB: not implemented"; return }

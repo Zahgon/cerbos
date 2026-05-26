@@ -4,9 +4,6 @@
 package file
 
 import (
-	"fmt"
-	"strings"
-
 	"github.com/cerbos/cerbos/internal/audit"
 )
 
@@ -32,18 +29,8 @@ type LogRotationConf struct {
 	MaxFileCount uint `yaml:"maxFileCount" conf:",example=10"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.Path = "stdout"
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (c *Conf) Validate() error {
-	if strings.TrimSpace(c.Path) == "" {
-		return fmt.Errorf("invalid path %q", c.Path)
-	}
-
-	return nil
-}
+func (c *Conf) Validate() error { _ = "STUB: not implemented"; return nil }

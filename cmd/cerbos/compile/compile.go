@@ -4,34 +4,12 @@
 package compile
 
 import (
-	"context"
-	"errors"
-	"fmt"
 	"io/fs"
-	"os"
-	"os/signal"
 
 	"github.com/alecthomas/kong"
-	"github.com/fatih/color"
-	"github.com/pterm/pterm"
-	"go.uber.org/zap"
 
-	policyv1 "github.com/cerbos/cerbos/api/genpb/cerbos/policy/v1"
-	compileerrors "github.com/cerbos/cerbos/cmd/cerbos/compile/errors"
-	internalcompile "github.com/cerbos/cerbos/cmd/cerbos/compile/internal/compilation"
 	"github.com/cerbos/cerbos/cmd/cerbos/compile/internal/flagset"
-	"github.com/cerbos/cerbos/cmd/cerbos/compile/internal/lint"
-	"github.com/cerbos/cerbos/cmd/cerbos/compile/internal/verification"
-	"github.com/cerbos/cerbos/internal/compile"
-	"github.com/cerbos/cerbos/internal/engine"
 	"github.com/cerbos/cerbos/internal/outputcolor"
-	"github.com/cerbos/cerbos/internal/printer"
-	"github.com/cerbos/cerbos/internal/ruletable"
-	internalschema "github.com/cerbos/cerbos/internal/schema"
-	"github.com/cerbos/cerbos/internal/storage/disk"
-	"github.com/cerbos/cerbos/internal/storage/index"
-	"github.com/cerbos/cerbos/internal/util"
-	"github.com/cerbos/cerbos/internal/verify"
 )
 
 const (
@@ -72,135 +50,13 @@ type Cmd struct { //betteralign:ignore
 	Verbose       bool                              `help:"Verbose output on test failure"`
 }
 
-func (c *Cmd) Run(k *kong.Kong) error {
-	ctx, stopFunc := signal.NotifyContext(context.Background(), os.Interrupt)
-	defer stopFunc()
+func (c *Cmd) Run(k *kong.Kong) error { _ = "STUB: not implemented"; return nil }
 
-	colorLevel := c.Color.Resolve(c.NoColor)
-
-	color.NoColor = !colorLevel.Enabled()
-
-	if colorLevel.Enabled() {
-		pterm.EnableColor()
-	} else {
-		pterm.DisableColor()
-	}
-
-	p := printer.New(k.Stdout, k.Stderr)
-
-	fsys, err := util.OpenDirectoryFS(c.Dir)
-	if err != nil {
-		return fmt.Errorf("failed to open policy repository at %q: %w", c.Dir, err)
-	}
-
-	idx, err := index.Build(ctx, fsys, index.WithBuildFailureLogLevel(zap.DebugLevel))
-	if err != nil {
-		idxErr := new(index.BuildError)
-		if errors.As(err, &idxErr) {
-			return lint.Display(p, idxErr, c.Output, colorLevel)
-		}
-
-		return fmt.Errorf("failed to load policy repository at %q: %w", c.Dir, err)
-	}
-
-	store := disk.NewFromIndexWithConf(idx, &disk.Conf{})
-	defer store.Close()
-
-	enforcement := internalschema.EnforcementReject
-	if c.IgnoreSchemas {
-		enforcement = internalschema.EnforcementNone
-	}
-	schemaMgr := internalschema.NewFromConf(ctx, store, internalschema.NewConf(enforcement))
-
-	if err := compile.BatchCompile(idx.GetAllCompilationUnits(ctx), schemaMgr); err != nil {
-		compErr := new(compile.ErrorSet)
-		if errors.As(err, &compErr) {
-			return internalcompile.Display(p, *compErr, c.Output, colorLevel)
-		}
-
-		return fmt.Errorf("failed to compile policies: %w", err)
-	}
-
-	if c.TestOutput == nil {
-		var value flagset.VerificationOutputFormat
-		switch c.Output {
-		case flagset.OutputFormatTree:
-			value = flagset.VerificationOutputFormatTree
-		case flagset.OutputFormatList:
-			value = flagset.VerificationOutputFormatList
-		case flagset.OutputFormatJSON:
-			value = flagset.VerificationOutputFormatJSON
-		}
-		c.TestOutput = &value
-	}
-
-	if !c.SkipTests { //nolint:nestif
-		filterConfig, err := c.TestFilter.ToFilterConfig()
-		if err != nil {
-			return fmt.Errorf("invalid test filter: %w", err)
-		}
-
-		verifyConf := verify.Config{
-			IncludedTestNamesRegexp: c.RunRegexp,
-			Trace:                   c.Verbose,
-			SkipBatching:            c.SkipBatching,
-			Filter:                  filterConfig,
-		}
-
-		compileMgr, err := compile.NewManager(ctx, store)
-		if err != nil {
-			return err
-		}
-
-		ruleTable, err := ruletable.NewRuleTableFromLoader(ctx, compileMgr)
-		if err != nil {
-			return fmt.Errorf("failed to create rule table from loader: %w", err)
-		}
-
-		ruletableMgr, err := ruletable.NewRuleTableManager(ruleTable, compileMgr, schemaMgr)
-		if err != nil {
-			return fmt.Errorf("failed to create ruletable manager: %w", err)
-		}
-
-		eng := engine.NewEphemeral(nil, ruletableMgr, schemaMgr)
-
-		testFsys, testDir, err := c.testsDir()
-		if err != nil {
-			return err
-		}
-
-		results, err := verify.Verify(ctx, testFsys, eng, verifyConf)
-		if err != nil {
-			return fmt.Errorf("failed to run tests from %q: %w", testDir, err)
-		}
-
-		if err = verification.Display(p, results, *c.TestOutput, c.Verbose, colorLevel); err != nil {
-			return fmt.Errorf("failed to display test results: %w", err)
-		}
-
-		switch results.Summary.OverallResult {
-		case policyv1.TestResults_RESULT_FAILED, policyv1.TestResults_RESULT_ERRORED:
-			return compileerrors.ErrTestsFailed
-		default:
-		}
-	}
-
-	return nil
-}
+//nolint:nestif
 
 func (c *Cmd) testsDir() (fs.FS, string, error) {
-	dir := c.Dir
-	if c.Tests != "" {
-		dir = c.Tests
-	}
-
-	fsys, err := util.OpenDirectoryFS(dir)
-	if err != nil {
-		return nil, "", fmt.Errorf("failed to open tests directory at %q: %w", dir, err)
-	}
-	return fsys, dir, nil
+	_ = "STUB: not implemented"
+	return *new(fs.FS), "", nil
 }
 
-func (c *Cmd) Help() string {
-	return help
-}
+func (c *Cmd) Help() string { _ = "STUB: not implemented"; return "" }

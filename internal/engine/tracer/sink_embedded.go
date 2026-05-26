@@ -12,12 +12,8 @@ type Sink interface {
 
 type noopSink struct{}
 
-func NewZapSink(any) Sink {
-	return noopSink{}
-}
+func NewZapSink(any) Sink { _ = "STUB: not implemented"; return *new(Sink) }
 
-func (noopSink) Enabled() bool {
-	return false
-}
+func (noopSink) Enabled() bool { _ = "STUB: not implemented"; return false }
 
-func (noopSink) AddTrace(any) {}
+func (noopSink) AddTrace(any) { _ = "STUB: not implemented"; return }

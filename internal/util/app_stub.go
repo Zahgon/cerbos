@@ -5,6 +5,6 @@
 
 package util
 
-func DeprecationWarning(deprecated string) {}
+func DeprecationWarning(deprecated string) { _ = "STUB: not implemented"; return }
 
-func DeprecationReplacedWarning(deprecated, replacement string) {}
+func DeprecationReplacedWarning(deprecated, replacement string) { _ = "STUB: not implemented"; return }

@@ -6,28 +6,9 @@
 package hub
 
 import (
-	"os"
 	"testing"
 )
 
-func ClearEnvVars(t *testing.T) {
-	t.Helper()
-	existingValues := make(map[string]string)
-	for _, varNames := range envVars {
-		for _, varName := range varNames {
-			val, set := os.LookupEnv(varName)
-			if set {
-				existingValues[varName] = val
-				t.Logf("Unsetting %s", varName)
-				os.Unsetenv(varName)
-			}
-		}
-	}
+func ClearEnvVars(t *testing.T) { _ = "STUB: not implemented"; return }
 
-	t.Cleanup(func() {
-		for varName, varVal := range existingValues {
-			//nolint:usetesting
-			os.Setenv(varName, varVal)
-		}
-	})
-}
+//nolint:usetesting

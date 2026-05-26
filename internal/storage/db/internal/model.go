@@ -7,7 +7,6 @@ package internal
 
 import (
 	"database/sql/driver"
-	"fmt"
 	"time"
 
 	"github.com/jackc/pgtype"
@@ -77,29 +76,11 @@ type PolicyDefWrapper struct {
 }
 
 func (pdw PolicyDefWrapper) Value() (driver.Value, error) {
-	return pdw.MarshalVT()
+	_ = "STUB: not implemented"
+	return *new(driver.Value), nil
 }
 
-func (pdw *PolicyDefWrapper) Scan(src any) error {
-	var source []byte
-	switch t := src.(type) {
-	case nil:
-		return nil
-	case string:
-		source = []byte(t)
-	case []byte:
-		source = t
-	default:
-		return fmt.Errorf("unexpected type for policy definition: %T", src)
-	}
-
-	pdw.Policy = &policyv1.Policy{}
-	if err := pdw.UnmarshalVT(source); err != nil {
-		return fmt.Errorf("failed to unmarshal policy definition: %w", err)
-	}
-
-	return nil
-}
+func (pdw *PolicyDefWrapper) Scan(src any) error { _ = "STUB: not implemented"; return nil }
 
 type PolicyRevision struct {
 	Timestamp   time.Time `db:"update_timestamp"`

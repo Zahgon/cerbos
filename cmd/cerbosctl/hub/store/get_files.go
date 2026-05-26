@@ -4,12 +4,7 @@
 package store
 
 import (
-	"context"
-	"errors"
-
 	"github.com/alecthomas/kong"
-
-	"github.com/cerbos/cerbos-sdk-go/cerbos/hub"
 )
 
 const getFilesHelp = `
@@ -28,38 +23,9 @@ type GetFilesCmd struct { //betteralign:ignore
 	Files      []string `arg:"" required:"" help:"List of files to retrieve"`
 }
 
-func (*GetFilesCmd) Help() string {
-	return getFilesHelp
-}
+func (*GetFilesCmd) Help() string { _ = "STUB: not implemented"; return "" }
 
 func (gfc *GetFilesCmd) Run(k *kong.Kong, cmd *Cmd) (outErr error) {
-	client, err := cmd.storeClient()
-	if err != nil {
-		return gfc.toCommandError(k.Stderr, err)
-	}
-
-	fw, err := newFileWriter(gfc.OutputPath)
-	if err != nil {
-		return gfc.toCommandError(k.Stderr, err)
-	}
-	defer func() {
-		outErr = errors.Join(outErr, gfc.toCommandError(k.Stderr, fw.Close()))
-	}()
-
-	req := hub.NewGetFilesRequest(cmd.StoreID, gfc.Files)
-	resp, err := client.GetFiles(context.Background(), req)
-	if err != nil {
-		return gfc.toCommandError(k.Stderr, err)
-	}
-
-	downloaded := resp.GetFiles()
-	if len(downloaded) == 0 {
-		return newNoFilesDownloadedError()
-	}
-
-	if err := fw.writeFiles(downloaded); err != nil {
-		return gfc.toCommandError(k.Stderr, err)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }

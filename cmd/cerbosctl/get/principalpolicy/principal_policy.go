@@ -7,9 +7,7 @@ import (
 	"github.com/alecthomas/kong"
 
 	"github.com/cerbos/cerbos/cmd/cerbosctl/get/internal/flagset"
-	cmdpolicy "github.com/cerbos/cerbos/cmd/cerbosctl/get/internal/policy"
 	"github.com/cerbos/cerbos/cmd/cerbosctl/internal/client"
-	"github.com/cerbos/cerbos/internal/policy"
 )
 
 const help = `# List principal policies
@@ -46,22 +44,8 @@ type Cmd struct { //betteralign:ignore
 	flagset.Filters
 }
 
-func (c *Cmd) Run(k *kong.Kong, ctx *client.Context) error {
-	return cmdpolicy.DoCmd(k, ctx.AdminClient, policy.PrincipalKind, &c.Filters, &c.Format, &c.Sort, c.PolicyIDs)
-}
+func (c *Cmd) Run(k *kong.Kong, ctx *client.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (c *Cmd) Validate() error {
-	if err := c.Filters.Validate(policy.PrincipalKind, len(c.PolicyIDs) == 0); err != nil {
-		return err
-	}
+func (c *Cmd) Validate() error { _ = "STUB: not implemented"; return nil }
 
-	if err := c.Format.Validate(len(c.PolicyIDs) == 0); err != nil {
-		return err
-	}
-
-	return c.Sort.Validate(policy.PrincipalKind, len(c.PolicyIDs) == 0)
-}
-
-func (c *Cmd) Help() string {
-	return help
-}
+func (c *Cmd) Help() string { _ = "STUB: not implemented"; return "" }

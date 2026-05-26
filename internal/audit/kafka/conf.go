@@ -4,9 +4,6 @@
 package kafka
 
 import (
-	"errors"
-	"fmt"
-	"strings"
 	"time"
 
 	"github.com/cerbos/cerbos/internal/audit"
@@ -64,86 +61,15 @@ type Conf struct {
 	ProduceSync bool `yaml:"produceSync" conf:",example=false"`
 }
 
-func (c *Conf) Key() string {
-	return confKey
-}
+func (c *Conf) Key() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Conf) SetDefaults() {
-	c.Ack = defaultAcknowledgement
-	c.Encoding = defaultEncoding
-	c.CloseTimeout = defaultCloseTimeout
-	c.ClientID = defaultClientID
-	c.MaxBufferedRecords = defaultMaxBufferedRecords
-	c.Compression = []string{CompressionSnappy, CompressionNone}
-}
+func (c *Conf) SetDefaults() { _ = "STUB: not implemented"; return }
 
-func (c *Conf) Validate() error {
-	if _, err := formatAck(c.Ack); err != nil {
-		return err
-	}
+func (c *Conf) Validate() error { _ = "STUB: not implemented"; return nil }
 
-	if strings.TrimSpace(c.Topic) == "" {
-		return errors.New("invalid topic")
-	}
-
-	switch c.Encoding {
-	case EncodingJSON, EncodingProtobuf:
-	default:
-		return fmt.Errorf("invalid encoding format: %s", c.Encoding)
-	}
-
-	if c.CloseTimeout <= 0 {
-		return errors.New("invalid close timeout")
-	}
-
-	if strings.TrimSpace(c.ClientID) == "" {
-		return errors.New("invalid client ID")
-	}
-
-	if len(c.Brokers) == 0 {
-		return errors.New("empty brokers")
-	}
-
-	_, err := formatCompression(c.Compression)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func formatAck(ack string) (kgo.Acks, error) {
-	switch ack {
-	case AckNone:
-		return kgo.NoAck(), nil
-	case AckAll:
-		return kgo.AllISRAcks(), nil
-	case AckLeader:
-		return kgo.LeaderAck(), nil
-	default:
-		return kgo.NoAck(), fmt.Errorf("invalid ack value: %s", ack)
-	}
-}
+func formatAck(ack string) (kgo.Acks, error) { _ = "STUB: not implemented"; return *new(kgo.Acks), nil }
 
 func formatCompression(compression []string) ([]kgo.CompressionCodec, error) {
-	codecs := make([]kgo.CompressionCodec, 0, len(compression))
-
-	for _, c := range compression {
-		switch c {
-		case CompressionNone:
-			codecs = append(codecs, kgo.NoCompression())
-		case CompressionGzip:
-			codecs = append(codecs, kgo.GzipCompression())
-		case CompressionSnappy:
-			codecs = append(codecs, kgo.SnappyCompression())
-		case CompressionLZ4:
-			codecs = append(codecs, kgo.Lz4Compression())
-		case CompressionZstd:
-			codecs = append(codecs, kgo.ZstdCompression())
-		default:
-			return nil, fmt.Errorf("invalid compression algorithm: %s", compression)
-		}
-	}
-
-	return codecs, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
